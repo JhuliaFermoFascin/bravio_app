@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background_text_primary">#ebe2cd</color>
+    <color name="button_green_primary">#2d572c</color>
+    <color name="border_button_purple_primary">#6a0d37</color>
+    <color name="border_text_purple_primary">#551c44</color>
+    <color name="button_text_green_primary">#1c3a13</color>
+    <color name="text_green_secondary">#4a6b4e</color>
+    <color name="button_green_terciary">#7a8c3e</color>
+</resources>
