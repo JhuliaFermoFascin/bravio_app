@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 
-public abstract class AbstrataDAO {
+public abstract class   AbstrataDAO {
     protected SQLiteDatabase db;
     protected DPOpenHelper helper;
 
