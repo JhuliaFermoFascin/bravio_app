@@ -1,49 +1,47 @@
 package com.example.vinhedobravioapp.database.model;
 
-public class VinhoModel {
+public class WineModel {
 
-    public static String TABLE_NAME = "tb_vinho";
+    public static String TABLE_NAME = "tb_wine";
     public static String
-    WINE_ID_COLUMN = "wine_id",
-    NAME_COLUMN = "name",
-    TYPE_COLUMN = "wine_type",
-    VINTAGE_COLUMN = "vintage",
-    DESCRIPTION_COLUM = "description",
-    TASTING_NOTE_COLUMN = "tasting_note",
-    FOOD_PARINGS_COLUMN = "food_parings",
-    ALCOHOL_CONTENT_COLUMN = "alcohol_content",
-    VOLUME_COLUMN = "volume",
-    IMAGE_COLUM = "id_image";
+            WINE_ID_COLUMN = "wine_id",
+            NAME_COLUMN = "name",
+            TYPE_COLUMN = "wine_type",
+            VINTAGE_COLUMN = "vintage",
+            DESCRIPTION_COLUM = "description",
+            TASTING_NOTE_COLUMN = "tasting_note",
+            FOOD_PARINGS_COLUMN = "food_parings",
+            ALCOHOL_CONTENT_COLUMN = "alcohol_content",
+            VOLUME_COLUMN = "volume";
 
-    public static String CREATE_TABLE_VINHO =
-    "CREATE TABLE "+TABLE_NAME
-            +" ( "
-            + WINE_ID_COLUMN + " INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, "
-            +NAME_COLUMN +" TEXT NOT NULL, "
-            +TYPE_COLUMN +" TEXT NOT NULL, "
-            +VINTAGE_COLUMN +" INTEGER NOT NULL, "
-            +DESCRIPTION_COLUM +" TEXT NOT NULL, "
-            +TASTING_NOTE_COLUMN +" TEXT NOT NULL, "
-            +FOOD_PARINGS_COLUMN +" TEXT NOT NULL, "
-            +ALCOHOL_CONTENT_COLUMN +" DOUBLE NOT NULL, "
-            +VOLUME_COLUMN +" INTEGER NOT NULL, "
-            +IMAGE_COLUM +" TEXT, "
-            + " );";
+    public static String CREATE_WINE_TABLE=
+            "CREATE TABLE " + TABLE_NAME
+                    + " ( "
+                    + WINE_ID_COLUMN + " INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, "
+                    + NAME_COLUMN + " TEXT NOT NULL, "
+                    + TYPE_COLUMN + " INTEGER NOT NULL, "
+                    + VINTAGE_COLUMN + " INTEGER NOT NULL, "
+                    + DESCRIPTION_COLUM + " TEXT NOT NULL, "
+                    + TASTING_NOTE_COLUMN + " INTEGER NOT NULL, "
+                    + FOOD_PARINGS_COLUMN + " TEXT NOT NULL, "
+                    + ALCOHOL_CONTENT_COLUMN + " DECIMAL NOT NULL, "
+                    + VOLUME_COLUMN + " INTEGER NOT NULL, "
+                    + "FOREIGN KEY(" + TYPE_COLUMN + ") REFERENCES tb_wine_type(id)"
+                    + "FOREIGN KEY(" + TASTING_NOTE_COLUMN + ") REFERENCES tb_tasting_note(id)"
+                    + " );";
 
     public static String DROP_TABLE =
-            "DROP TABLE IF EXISTS "+TABLE_NAME;
+            "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     private long id;
-    private String vinho;
-    private String tipo;
-    private Integer safra;
-    private String descricao;
-    private String notas;
-    private String harmonizacoes;
-    private Double teor_alcoolico;
+    private String name;
+    private Integer type;
+    private Integer vintage;
+    private String description;
+    private String tasting_note;
+    private String food_parings;
+    private Double alcohol_content;
     private Integer volume;
-    private Double valor;
-    private String imagem;
 
     public long getId() {
         return id;
@@ -53,60 +51,60 @@ public class VinhoModel {
         this.id = id;
     }
 
-    public String getVinho() {
-        return vinho;
+    public String getName() {
+        return name;
     }
 
-    public void setVinho(String vinho) {
-        this.vinho = vinho;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getType() {
+        return type;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Integer getSafra() {
-        return safra;
+    public Integer getVintage() {
+        return vintage;
     }
 
-    public void setSafra(Integer safra) {
-        this.safra = safra;
+    public void setVintage(Integer vintage) {
+        this.vintage = vintage;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getHarmonizacoes() {
-        return harmonizacoes;
+    public String getTasting_note() {
+        return tasting_note;
     }
 
-    public void setHarmonizacoes(String harmonizacoes) {
-        this.harmonizacoes = harmonizacoes;
+    public void setTasting_note(String tasting_note) {
+        this.tasting_note = tasting_note;
     }
 
-    public String getNotas() {
-        return notas;
+    public String getFood_parings() {
+        return food_parings;
     }
 
-    public void setNotas(String notas) {
-        this.notas = notas;
+    public void setFood_parings(String food_parings) {
+        this.food_parings = food_parings;
     }
 
-    public Double getTeor_alcoolico() {
-        return teor_alcoolico;
+    public Double getAlcohol_content() {
+        return alcohol_content;
     }
 
-    public void setTeor_alcoolico(Double teor_alcoolico) {
-        this.teor_alcoolico = teor_alcoolico;
+    public void setAlcohol_content(Double alcohol_content) {
+        this.alcohol_content = alcohol_content;
     }
 
     public Integer getVolume() {
@@ -116,20 +114,6 @@ public class VinhoModel {
     public void setVolume(Integer volume) {
         this.volume = volume;
     }
-
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public String getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
-    }
 }
+
+

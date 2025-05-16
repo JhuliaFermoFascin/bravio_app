@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.vinhedobravioapp.database.model.VinhoModel;
+import com.example.vinhedobravioapp.database.model.WineModel;
 
 public class DPOpenHelper extends SQLiteOpenHelper {
 
@@ -17,7 +17,7 @@ public class DPOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(VinhoModel.CREATE_TABLE_VINHO);
+        sqLiteDatabase.execSQL(WineModel.CREATE_WINE_TABLE);
     }
 
     @Override
