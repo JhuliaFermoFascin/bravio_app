@@ -4,32 +4,30 @@ public class VinhoModel {
 
     public static String TABLE_NAME = "tb_vinho";
     public static String
-    COLUNA_ID_VINHO = "_id",
-    COLUNA_NOME_VINHO = "nome",
-    COLUNA_TIPO = "tipo",
-    COLUNA_SAFRA = "safra",
-    COLUNA_DESCRICAO = "descricao",
-    COLUNA_NOTAS_DEGUSTACAO = "notas_degustacao",
-    COLUNA_HARMONIZACOES = "harmonizacoes",
-    COLUNA_TEOR_ALCOOLICO = "teor_alcoolico",
-    COLUNA_VOLUME = "volum_ml",
-    COLUNA_VALOR_UNITARIO = "valor_unitario",
-    COLUNA_IMAGEM = "imagem_url";
+    WINE_ID_COLUMN = "wine_id",
+    NAME_COLUMN = "name",
+    TYPE_COLUMN = "wine_type",
+    VINTAGE_COLUMN = "vintage",
+    DESCRIPTION_COLUM = "description",
+    TASTING_NOTE_COLUMN = "tasting_note",
+    FOOD_PARINGS_COLUMN = "food_parings",
+    ALCOHOL_CONTENT_COLUMN = "alcohol_content",
+    VOLUME_COLUMN = "volume",
+    IMAGE_COLUM = "id_image";
 
     public static String CREATE_TABLE_VINHO =
     "CREATE TABLE "+TABLE_NAME
             +" ( "
-            + COLUNA_ID_VINHO + " INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, "
-            +COLUNA_NOME_VINHO +" TEXT NOT NULL, "
-            +COLUNA_TIPO +" TEXT NOT NULL, "
-            +COLUNA_SAFRA +" INTEGER NOT NULL, "
-            +COLUNA_DESCRICAO +" TEXT NOT NULL, "
-            +COLUNA_NOTAS_DEGUSTACAO +" TEXT NOT NULL, "
-            +COLUNA_HARMONIZACOES +" TEXT NOT NULL, "
-            +COLUNA_TEOR_ALCOOLICO +" DOUBLE NOT NULL, "
-            +COLUNA_VOLUME +" INTEGER NOT NULL, "
-            +COLUNA_VALOR_UNITARIO +" DOUBLE NOT NULL, "
-            +COLUNA_IMAGEM +" TEXT, "
+            + WINE_ID_COLUMN + " INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, "
+            +NAME_COLUMN +" TEXT NOT NULL, "
+            +TYPE_COLUMN +" TEXT NOT NULL, "
+            +VINTAGE_COLUMN +" INTEGER NOT NULL, "
+            +DESCRIPTION_COLUM +" TEXT NOT NULL, "
+            +TASTING_NOTE_COLUMN +" TEXT NOT NULL, "
+            +FOOD_PARINGS_COLUMN +" TEXT NOT NULL, "
+            +ALCOHOL_CONTENT_COLUMN +" DOUBLE NOT NULL, "
+            +VOLUME_COLUMN +" INTEGER NOT NULL, "
+            +IMAGE_COLUM +" TEXT, "
             + " );";
 
     public static String DROP_TABLE =
