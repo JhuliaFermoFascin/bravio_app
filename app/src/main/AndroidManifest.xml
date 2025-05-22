@@ -16,7 +16,7 @@
         android:theme="@style/Theme.VinhedoBravioApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.components.login.LoginActivity"
+            android:name=".ui.components.login.PainelAdmActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.VinhedoBravioApp">
@@ -26,6 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.components.login.CadastroVinhoActivity" />
+        <activity android:name=".ui.components.login.EstoqueActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

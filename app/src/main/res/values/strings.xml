@@ -1,11 +1,56 @@
 <resources>
     <string name="app_name">Vinhedo Bravio App</string>
+
+    <!-- Painel Administrativo -->
+    <string name="administrative_panel">Painel Adminsitrativo</string>
+    <string name="welcome">Bem-vindo(a), user</string>
+    <string name="inventory">Estoque</string>
+    <string name="customers">Clientes</string>
+    <string name="representatives">Representantes</string>
+    <string name="orders">Pedidos</string>
+    <string name="commissions">Comissões</string>
+    <string name="reports">Relatórios</string>
+    <string name="users">Usuários</string>
+        <!-- Estoque -->
+        <string name="inventory_search">Buscar por nome ou tipo</string>
+        <string name="add_wine">+ Novo Vinho</string>
+        <string name="add_new_wine">Cadastrar Novo Vinho</string>
+            <!-- Estoque Form -->
+            <string name="wine_name">Nome do vinho</string>
+            <string name="add_wine_name">Informe o nome do vinho</string>
+            <string name="harvest">Safra</string>
+            <string name="add_harvest">Informe o ano da safra</string>
+            <string name="wine_type">Tipo</string>
+            <string name="description">Descrição</string>
+            <string name="add_description">Descreva o vinho a ser cadastrado</string>
+            <string name="tasting_notes">Notas de degustação</string>
+            <string name="add_tasting_notes">Selecione as notas de degustação</string>
+            <string name="food_parings">Harmonizações</string>
+            <string name="add_food_parings">Harmonizações sugeridas</string>
+            <string name="alcohol_content">Teor Alcoólico</string>
+            <string name="add_alcohol_content">Informe o teor Alcoólico</string>
+            <string name="volume">Volume</string>
+            <string name="add_volume">Informe o volume</string>
+            <string name="quantity">Quantidade</string>
+            <string name="add_quantity">Informe a quantidade</string>
+            <string name="unit_price">Valor unitário</string>
+            <string name="add_unit_price">Informe o valor unitário</string>
+
+
+    <!-- Utils -->
+    <string name="exit">Sair</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+
+
+
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
