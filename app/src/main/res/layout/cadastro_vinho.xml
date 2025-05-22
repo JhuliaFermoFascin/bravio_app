@@ -1,6 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:background="@color/background_text_primary">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_new_wine"
+        android:fontFamily="@font/cinzel"
+        android:textStyle="bold"
+        android:textColor="@color/background_text_primary"
+        android:background="@drawable/button_purple"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp"
+        android:background="@drawable/border_purple">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wine_name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/border_purple"
+                android:hint="@string/add_wine_name"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/harvest"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/border_purple"
+                android:hint="@string/add_harvest"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wine_type"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/wineType"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/border_purple"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:popupBackground="@color/background_text_primary"
+                android:spinnerMode="dropdown"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:background="@drawable/border_purple"
+                android:hint="@string/add_description"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:inputType="text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tasting_notes"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/tastingNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:background="@drawable/border_purple"
+                android:hint="@string/add_tasting_notes"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:clickable="true"
+                android:cursorVisible="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/food_parings"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/border_purple"
+                android:hint="@string/add_food_parings"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:inputType="text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alcohol_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/border_purple"
+                android:hint="@string/add_alcohol_content"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:inputType="numberDecimal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/volume"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/border_purple"
+                android:hint="@string/add_volume"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unit_price"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/border_purple"
+                android:hint="@string/add_unit_price"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:inputType="numberDecimal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quantity"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/border_purple"
+                android:hint="@string/add_quantity"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColorHint="@color/text_green_secondary"
+                android:fontFamily="@font/baskervville"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/winePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/icon_photo"
+            app:iconSize="80dp"
+            app:iconTint="@null"
+            android:padding="12dp"
+            android:background="@android:color/transparent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="2">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/purple_button_hover"
+                android:text="@string/cancel"
+                android:textColor="@color/background_text_primary"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginEnd="5dp"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/green_button_hover"
+                android:text="@string/save"
+                android:textColor="@color/background_text_primary"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginStart="5dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

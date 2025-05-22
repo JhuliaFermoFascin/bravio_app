@@ -5,7 +5,7 @@
             <corners android:radius="13dp" />
             <stroke
                 android:width="2dp"
-                android:color="@color/border_text_purple_primary" />
+                android:color="@color/button_text_green_primary" />
         </shape>
     </item>
     <item>

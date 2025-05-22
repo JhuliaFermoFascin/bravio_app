@@ -4,30 +4,30 @@ public class WineModel {
 
     public static String TABLE_NAME = "tb_wine";
     public static String
-        COLUMN_ID = "wine_id",
-        COLUMN_NAME = "name",
-        COLUMN_WINE_TYPE_ID = "wine_type_id",
-        COLUMN_VINTAGE = "vintage",
-        COLUMN_DESCRIPTION = "description",
-        COLUMN_TASTING_NOTE_ID = "tasting_note_id",
-        COLUMN_FOOD_PAIRINGS = "food_pairings",
-        COLUMN_ALCOHOL_CONTENT = "alcohol_content",
-        COLUMN_VOLUME = "volume_ml";
+            WINE_ID_COLUMN = "wine_id",
+            NAME_COLUMN = "name",
+        WINE_TYPE_ID_COLUMN = "wine_type_id",
+            VINTAGE_COLUMN = "vintage",
+            DESCRIPTION_COLUM = "description",
+            TASTING_NOTE_COLUMN = "tasting_note_id",
+            FOOD_PARINGS_COLUMN = "food_pairings",
+            ALCOHOL_CONTENT_COLUMN = "alcohol_content",
+            VOLUME_COLUMN = "volume_ml";
 
     public static String CREATE_TABLE_VINHO =
         "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
-        + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-        + COLUMN_NAME + " TEXT NOT NULL, "
-        + COLUMN_WINE_TYPE_ID + " INTEGER NOT NULL, "
-        + COLUMN_VINTAGE + " INTEGER NOT NULL, "
-        + COLUMN_DESCRIPTION + " TEXT NOT NULL, "
-        + COLUMN_TASTING_NOTE_ID + " INTEGER NOT NULL, "
-        + COLUMN_FOOD_PAIRINGS + " TEXT NOT NULL, "
-        + COLUMN_ALCOHOL_CONTENT + " REAL NOT NULL, "
-        + COLUMN_VOLUME + " INTEGER NOT NULL, "
-        + "UNIQUE (" + COLUMN_ID + "), "
-        + "FOREIGN KEY (" + COLUMN_WINE_TYPE_ID + ") REFERENCES tb_wine_type(wine_type_id) ON DELETE RESTRICT ON UPDATE CASCADE, "
-        + "FOREIGN KEY (" + COLUMN_TASTING_NOTE_ID + ") REFERENCES tb_tasting_note(tasting_note_id) ON DELETE RESTRICT ON UPDATE CASCADE"
+        + WINE_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+        + NAME_COLUMN + " TEXT NOT NULL, "
+        + WINE_TYPE_ID_COLUMN + " INTEGER NOT NULL, "
+        + VINTAGE_COLUMN + " INTEGER NOT NULL, "
+        + DESCRIPTION_COLUM + " TEXT NOT NULL, "
+        + TASTING_NOTE_COLUMN + " INTEGER NOT NULL, "
+        + FOOD_PARINGS_COLUMN + " TEXT NOT NULL, "
+        + ALCOHOL_CONTENT_COLUMN + " REAL NOT NULL, "
+        + VOLUME_COLUMN + " INTEGER NOT NULL, "
+        + "UNIQUE (" + WINE_ID_COLUMN + "), "
+        + "FOREIGN KEY (" + WINE_TYPE_ID_COLUMN + ") REFERENCES tb_wine_type(wine_type_id) ON DELETE RESTRICT ON UPDATE CASCADE, "
+        + "FOREIGN KEY (" + TASTING_NOTE_COLUMN + ") REFERENCES tb_tasting_note(tasting_note_id) ON DELETE RESTRICT ON UPDATE CASCADE"
         + ");";
 
     public static String DROP_TABLE =

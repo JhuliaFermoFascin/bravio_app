@@ -26,6 +26,8 @@ public class InventoryMovementModel {
         + COLUMN_DOCUMENT_REFERENCE + " TEXT DEFAULT NULL, "
         + COLUMN_USER_ID + " INTEGER NOT NULL, "
         + COLUMN_NOTES + " TEXT DEFAULT NULL"
+        + "FOREIGN KEY (" + COLUMN_WINE_ID + ") REFERENCES tb_wine(wine_id) ON UPDATE CASCADE, "
+        + "FOREIGN KEY (" + COLUMN_USER_ID + ") REFERENCES tb_user(user_id) ON UPDATE CASCADE, "
         + ");";
 
     public static String DROP_TABLE =
