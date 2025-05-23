@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_text_primary"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/logo_description"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/bemvindo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bem-vindo ao universo\n dos nossos vinhos"
+        android:fontFamily="@font/cinzel"
+        android:gravity="center"
+        android:textColor="@color/button_text_green_primary"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/botao_entrarAdm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="40dp"
+        android:text="Entrar como Administrador"
+        android:background="@drawable/border_purple"
+        android:textColor="@color/button_text_green_primary"
+        android:padding="14dp"
+        android:fontFamily="@font/baskervville"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:textSize="20dp"
+        android:focusable="true"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/botao_entrarRepresentante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="28dp"
+        android:text="Entrar como Representante"
+        android:background="@drawable/border_purple"
+        android:textColor="@color/button_text_green_primary"
+        android:padding="14dp"
+        android:fontFamily="@font/baskervville"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:textSize="20dp"
+        android:focusable="true"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/botao_explorarVisitante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="28dp"
+        android:text="Explorar como Visitante"
+        android:background="@drawable/button_green"
+        android:textColor="@color/white"
+        android:padding="14dp"
+        android:fontFamily="@font/baskervville"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:textSize="20dp"
+        android:focusable="true"
+        android:textAlignment="center"/>
+
+</LinearLayout>
