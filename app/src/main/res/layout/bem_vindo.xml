@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_text_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center_horizontal">
+
+        <!-- Logo -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/logo_description"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_bem_vindo"
+            android:textColor="@color/border_text_purple_primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/cinzel"
+            android:layout_marginBottom="9dp" />
+
+        <TextView
+            android:id="@+id/textDescricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/descricao_vinicola"
+            android:textColor="@color/border_text_purple_primary"
+            android:textAlignment="center"
+            android:fontFamily="@font/baskervville"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/botao_conhecaVinhos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="23dp"
+            android:text="@string/botao_conheca_vinhos"
+            android:background="@drawable/button_purple"
+            android:textColor="@color/white"
+            android:padding="14dp"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:textSize="20dp"
+            android:focusable="true"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/botao_sobreVinicula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="23dp"
+            android:text="@string/botao_sobre_vinicula"
+            android:background="@drawable/border_purple_rounded"
+            android:textColor="@color/border_text_purple_primary"
+            android:padding="14dp"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:textSize="20dp"
+            android:focusable="true"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/botao_contato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="23dp"
+            android:text="@string/botao_contato"
+            android:background="@drawable/border_purple_rounded"
+            android:textColor="@color/border_text_purple_primary"
+            android:padding="14dp"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:layout_marginTop="18dp"
+            android:textSize="20dp"
+            android:focusable="true"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/rodape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rodape"
+            android:textColor="@color/border_text_purple_primary"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:layout_marginTop="40dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
