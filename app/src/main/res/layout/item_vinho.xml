@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="4dp"
-    android:background="@drawable/border_purple"
     android:backgroundTint="@color/background_text_primary">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="@drawable/border_purple">
 
         <ImageView
             android:id="@+id/imagemVinho"
@@ -32,33 +33,40 @@
                 android:id="@+id/nomeVinho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nome do Vinho"
+                android:text="Nome do Vinho: "
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tipoVinho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tipo: Tinto" />
+                android:text="Tipo: " />
 
             <TextView
                 android:id="@+id/safraVinho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Safra: 2021" />
+                android:text="Safra: " />
 
             <TextView
                 android:id="@+id/quantidadeVinho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quantidade: 10" />
+                android:text="Quantidade: " />
 
             <TextView
                 android:id="@+id/valorVinho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Valor: R$99,90" />
+                android:text="Valor: " />
         </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="top|center_horizontal"
+        android:layout_marginStart="4dp">
 
         <ImageButton
             android:id="@+id/btnEditar"
@@ -73,5 +81,6 @@
             android:layout_height="wrap_content"
             android:src="@drawable/icon_trash"
             android:background="?attr/selectableItemBackgroundBorderless" />
+    </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

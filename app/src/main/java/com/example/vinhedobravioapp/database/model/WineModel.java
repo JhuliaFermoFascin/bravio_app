@@ -1,6 +1,8 @@
 package com.example.vinhedobravioapp.database.model;
 
-public class WineModel {
+import java.io.Serializable;
+
+public class WineModel implements Serializable {
 
     public static String TABLE_NAME = "tb_wine";
     public static String

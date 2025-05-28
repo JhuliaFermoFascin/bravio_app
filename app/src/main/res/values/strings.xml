@@ -13,7 +13,7 @@
     <string name="users">Usuários</string>
         <!-- Estoque -->
         <string name="inventory_search">Buscar por nome ou tipo</string>
-        <string name="add_wine">+ Novo Vinho</string>
+        <string name="add_wine">+ </string>
         <string name="add_new_wine">Cadastrar Novo Vinho</string>
             <!-- Estoque Form -->
             <string name="wine_name">Nome do vinho</string>
@@ -37,10 +37,26 @@
             <string name="add_unit_price">Informe o valor unitário</string>
 
 
+
+
+    <!-- Wine Details -->
+    <string name="details_wine_name">Nome do vinho:</string>
+    <string name="details_harvest">Safra:</string>
+    <string name="details_wine_type">Tipo:</string>
+    <string name="details_description">Descrição:</string>
+    <string name="details_tasting_notes">Notas de degustação:</string>
+    <string name="details_food_parings">Harmonizações:</string>
+    <string name="details_alcohol_content">Teor Alcoólico:</string>
+    <string name="details_volume">Volume:</string>
+    <string name="details_quantity">Quantidade:</string>
+    <string name="details_unit_price">Valor unitário:</string>
+
+
     <!-- Utils -->
     <string name="exit">Sair</string>
     <string name="save">Salvar</string>
     <string name="cancel">Cancelar</string>
+    <string name="close">Fechar</string>
 
 
 

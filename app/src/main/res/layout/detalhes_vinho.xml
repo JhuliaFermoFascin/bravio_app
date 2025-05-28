@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/border_button_purple_primary">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:layout_margin="2dp"
+        android:background="@color/background_text_primary">
+
+        <ImageView
+            android:id="@+id/detail_imagem"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_photo" />
+
+        <TextView
+            android:id="@+id/detail_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_wine_name"
+            android:layout_marginTop="16dp"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_safra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_harvest"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_tipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_wine_type"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_descricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_description"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_quantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_quantity"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_notas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_tasting_notes"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_harmonizacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_food_parings"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_teor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alcohol_content"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_volume"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_valor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_unit_price"
+            style="@style/TextoDetalheVinho"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+        <Button
+            android:id="@+id/close_btn"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="90dp"
+            android:text="@string/close"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/background_text_primary"
+            android:backgroundTint="@color/green_button_hover"/>
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
