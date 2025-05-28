@@ -36,9 +36,6 @@
             <string name="unit_price">Valor unitário</string>
             <string name="add_unit_price">Informe o valor unitário</string>
 
-
-
-
     <!-- Wine Details -->
     <string name="details_wine_name">Nome do vinho:</string>
     <string name="details_harvest">Safra:</string>
@@ -51,21 +48,40 @@
     <string name="details_quantity">Quantidade:</string>
     <string name="details_unit_price">Valor unitário:</string>
 
-
     <!-- Utils -->
     <string name="exit">Sair</string>
     <string name="save">Salvar</string>
     <string name="cancel">Cancelar</string>
     <string name="close">Fechar</string>
-
-
-
     <string name="action_settings">Settings</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
+    <!--  tela inicial  -->
+    <string name="logo_description">Logo da aplicação</string>
+    <!--  menu  -->
+    <string name="bem_vindo">Bem-vindo ao universo\n dos nossos vinhos</string>
+    <string name="entrar_administrador">Entrar como Administrador</string>
+    <string name="entrar_representante">Entrar como Representante</string>
+    <string name="explorar_visitante">Explorar como Visitante</string>
+    <!--  logins  -->
+    <string name="login_representante">Login como Representante</string>
+    <string name="login_adm">Login como Admistrador</string>
+    <string name="email">E-mail de acesso</string>
+    <string name="senha">Senha</string>
+    <string name="esqueci_senha">Esqueci minha senha</string>
+    <string name="retornar_menu">Retornar ao menu inicial</string>
+    <!--  tela bem vindos  -->
+    <string name="titulo_bem_vindo">BEM-VINDO!</string>
+    <string name="descricao_vinicola">Descubra a excelência de nossa vinícola.\nNossa missão é produzir vinhos de alta\n qualidade com dedicação e tradição.</string>
+    <string name="botao_conheca_vinhos">Conheça nossos vinhos</string>
+    <string name="botao_sobre_vinicula">Sobre a Vinícola</string>
+    <string name="botao_contato">Contato</string>
+    <string name="rodape">Endereço\nTelefone\nRedes Sociais</string>
 
 
     <string name="lorem_ipsum">
