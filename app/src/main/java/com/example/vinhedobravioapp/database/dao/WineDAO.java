@@ -6,6 +6,8 @@ import android.content.Context;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.WineModel;
 
+import java.util.List;
+
 public class WineDAO extends AbstrataDAO{
 
     public WineDAO(Context context){
@@ -37,4 +39,10 @@ public class WineDAO extends AbstrataDAO{
         }
         return result;
     }
+
+    //private List<WineModel> buscarVinhos() {
+        // Use seu WineRepository aqui
+      //  return wineRepository.getAll(); // substitua conforme sua implementação
+   // }
+
 }

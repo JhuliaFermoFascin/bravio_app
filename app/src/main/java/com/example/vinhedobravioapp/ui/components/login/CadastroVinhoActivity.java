@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -32,6 +33,9 @@ public class CadastroVinhoActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro_vinho);
+
+        Button cancel = findViewById(R.id.cancel_btn);
+        cancel.setOnClickListener(v -> finish());
 
         // Setup do Spinner de tipo de vinho
         Spinner wineType = findViewById(R.id.wineType);
