@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_text_primary"
@@ -25,58 +27,40 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/botao_entrarAdm"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="40dp"
-        android:text="Entrar como Administrador"
-        android:background="@drawable/border_purple"
-        android:textColor="@color/button_text_green_primary"
-        android:padding="14dp"
-        android:fontFamily="@font/baskervville"
-        android:textStyle="bold"
-        android:clickable="true"
-        android:textSize="20dp"
-        android:focusable="true"
-        android:textAlignment="center"/>
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="40dp">
 
-    <TextView
-        android:id="@+id/botao_entrarRepresentante"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="28dp"
-        android:text="Entrar como Representante"
-        android:background="@drawable/border_purple"
-        android:textColor="@color/button_text_green_primary"
-        android:padding="14dp"
-        android:fontFamily="@font/baskervville"
-        android:textStyle="bold"
-        android:clickable="true"
-        android:textSize="20dp"
-        android:focusable="true"
-        android:textAlignment="center"/>
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
+            android:id="@+id/botao_entrarAdm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="MENU_PRIMARY"
+            app:btn_text="@string/entrar_administrador"
+            android:layout_marginBottom="20dp"
+            />
 
-    <TextView
-        android:id="@+id/botao_explorarVisitante"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="28dp"
-        android:text="Explorar como Visitante"
-        android:background="@drawable/button_green"
-        android:textColor="@color/white"
-        android:padding="14dp"
-        android:fontFamily="@font/baskervville"
-        android:textStyle="bold"
-        android:clickable="true"
-        android:textSize="20dp"
-        android:focusable="true"
-        android:textAlignment="center"/>
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
+            android:id="@+id/botao_entrarRepresentante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="MENU_PRIMARY"
+            app:btn_text="@string/entrar_representante"
+            android:layout_marginBottom="20dp"
+            />
+
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
+            android:id="@+id/botao_explorarVisitante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="MENU_SECONDARY"
+            app:btn_text="@string/explorar_visitante"
+            />
+
+
+    </LinearLayout>
 
 </LinearLayout>

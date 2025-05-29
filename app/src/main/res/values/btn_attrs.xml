@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomButtonAttrs">
+        <attr name="btn_style" format="enum">
+            <enum name="PRIMARY" value="0"/>
+            <enum name="SECONDARY" value="1"/>
+            <enum name="EXIT" value="2"/>
+            <enum name="SAVE" value="3"/>
+            <enum name="MENU_PRIMARY" value="4"/>
+            <enum name="MENU_SECONDARY" value="5"/>
+        </attr>
+        <attr name="btn_text" format="string" />
+        <attr name="btn_icon" format="reference" />
+    </declare-styleable>
+</resources>
