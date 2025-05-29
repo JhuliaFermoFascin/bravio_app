@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.components.CustomButtonComponent;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro_vinho);
 
-        Button cancel = findViewById(R.id.cancel_btn);
+        CustomButtonComponent cancel = findViewById(R.id.cancel_btn);
         cancel.setOnClickListener(v -> finish());
 
         // Setup do Spinner de tipo de vinho

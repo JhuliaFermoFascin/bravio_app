@@ -9,10 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.components.CustomButtonComponent;
 
 public class PainelAdmActivity extends AppCompatActivity {
 
-    private Button estoque_btn;
+    private CustomButtonComponent estoque_btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

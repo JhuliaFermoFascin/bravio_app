@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
     android:background="@color/background_text_primary"
     android:gravity="center">
+
 
     <TextView
         android:layout_width="match_parent"
@@ -23,6 +26,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,106 +45,94 @@
         android:paddingHorizontal="20dp"
         android:paddingVertical="20dp">
 
-    <Button
-        android:id="@+id/estoque_btn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:fontFamily="@font/baskervville"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@color/background_text_primary"
-        android:text="@string/inventory"
-        android:backgroundTint="@color/purple_button_hover"
-        android:drawableLeft="@drawable/icon_wine"
-        android:layout_marginBottom="5dp"/>
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
+            android:id="@+id/estoque_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/inventory"
+            app:btn_icon="@drawable/icon_wine"
+            android:layout_marginBottom="10dp"
+            />
 
-        <Button
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
             android:id="@+id/cliente_btn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/background_text_primary"
-            android:text="@string/customers"
-            android:backgroundTint="@color/purple_button_hover"
-            android:drawableLeft="@drawable/icon_people"
-            android:layout_marginBottom="5dp"/>
-        <Button
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/customers"
+            app:btn_icon="@drawable/icon_people"
+            android:layout_marginBottom="10dp"
+            />
+
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
             android:id="@+id/representantes_btn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/background_text_primary"
-            android:text="@string/representatives"
-            android:backgroundTint="@color/purple_button_hover"
-            android:drawableLeft="@drawable/icon_business"
-            android:layout_marginBottom="5dp"/>
-        <Button
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/representatives"
+            app:btn_icon="@drawable/icon_business"
+            android:layout_marginBottom="10dp"
+            />
+
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
             android:id="@+id/pedidos_btn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/background_text_primary"
-            android:text="@string/orders"
-            android:backgroundTint="@color/purple_button_hover"
-            android:drawableLeft="@drawable/icon_document"
-            android:layout_marginBottom="5dp"/>
-        <Button
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/orders"
+            app:btn_icon="@drawable/icon_document"
+            android:layout_marginBottom="10dp"
+            />
+
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
             android:id="@+id/comissoes_btn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/background_text_primary"
-            android:text="@string/commissions"
-            android:backgroundTint="@color/purple_button_hover"
-            android:drawableLeft="@drawable/icon_money"
-            android:layout_marginBottom="5dp"/>
-        <Button
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/commissions"
+            app:btn_icon="@drawable/icon_money"
+            android:layout_marginBottom="10dp"
+            />
+
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
             android:id="@+id/relatorios_btn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/background_text_primary"
-            android:text="@string/reports"
-            android:backgroundTint="@color/purple_button_hover"
-            android:drawableLeft="@drawable/icon_performance"
-            android:layout_marginBottom="5dp"/>
-        <Button
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/reports"
+            app:btn_icon="@drawable/icon_performance"
+            android:layout_marginBottom="10dp"
+            />
+
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
             android:id="@+id/usuarios_btn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/background_text_primary"
-            android:text="@string/users"
-            android:backgroundTint="@color/purple_button_hover"
-            android:drawableLeft="@drawable/icon_user"
-            android:layout_marginBottom="5dp"/>
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/users"
+            app:btn_icon="@drawable/icon_user"
+            android:layout_marginBottom="10dp"
+            />
+
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="60dp"
-        android:gravity="center"
-        android:fontFamily="@font/baskervville"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@color/background_text_primary"
-        android:text="@string/exit"
-        android:backgroundTint="@color/green_button_hover"
-        android:drawableLeft="@drawable/icon_out"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="40dp">
+
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
+            android:id="@+id/exit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="EXIT"
+            app:btn_text="@string/exit"
+            app:btn_icon="@drawable/icon_out"
+            />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
