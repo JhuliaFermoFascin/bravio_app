@@ -26,8 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.components.login.CadastroVinhoActivity" />
-        <activity android:name=".ui.components.login.EstoqueActivity" />
+        <activity android:name=".ui.components.vinhos.CadastroVinhoActivity" />
+        <activity android:name=".ui.components.vinhos.EstoqueActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

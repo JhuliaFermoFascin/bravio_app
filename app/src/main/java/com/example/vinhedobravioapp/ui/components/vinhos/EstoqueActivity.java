@@ -1,4 +1,4 @@
-package com.example.vinhedobravioapp.ui.components.login;
+package com.example.vinhedobravioapp.ui.components.vinhos;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.WineAdapter;
+import com.example.vinhedobravioapp.components.CustomHeaderComponent;
 import com.example.vinhedobravioapp.database.model.WineModel;
+import com.example.vinhedobravioapp.ui.components.login.PainelAdmActivity;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -24,13 +26,7 @@ public class EstoqueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estoque);
 
-        ImageView back_home = findViewById(R.id.return_home);
-        back_home.setOnClickListener(v -> {
-            Intent intent = new Intent(EstoqueActivity.this, PainelAdmActivity.class);
-            intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        });
+        CustomHeaderComponent.configurarHeader(this, getString(R.string.inventory));
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addWine_btn);
         addWine_btn.setOnClickListener(new View.OnClickListener() {

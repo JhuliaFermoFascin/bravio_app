@@ -3,13 +3,13 @@ package com.example.vinhedobravioapp.ui.components.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.vinhos.EstoqueActivity;
 
 public class PainelAdmActivity extends AppCompatActivity {
 

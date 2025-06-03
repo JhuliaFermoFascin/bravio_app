@@ -38,12 +38,11 @@ public class CustomButtonComponent extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        LayoutInflater.from(context).inflate(R.layout.view_button, this, true);
+        LayoutInflater.from(context).inflate(R.layout.view_custom_button, this, true);
 
         container = findViewById(R.id.container_btn);
         textView = findViewById(R.id.btn_text);
         iconView = findViewById(R.id.btn_icon);
-        progressView = findViewById(R.id.btn_progress);
 
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomButtonAttrs);
@@ -73,17 +72,6 @@ public class CustomButtonComponent extends LinearLayout {
     public void setBtnIcon(Drawable drawable){
         iconView.setImageDrawable(drawable);
         iconView.setVisibility(VISIBLE);
-    }
-
-    public void showBtnLoading(boolean loading){
-        progressView.setVisibility(loading ? VISIBLE: GONE);
-        textView.setVisibility(loading ? GONE : VISIBLE);
-
-        if(iconView.getDrawable() != null){
-            iconView.setVisibility(loading ? GONE : VISIBLE);
-        }
-
-        container.setEnabled(!loading);
     }
 
     public void setOnClickListener(OnClickListener listener) {
