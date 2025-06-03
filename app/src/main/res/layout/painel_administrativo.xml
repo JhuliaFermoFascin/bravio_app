@@ -31,11 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/administrative_panel"
-        android:fontFamily="@font/cinzel"
-        android:textStyle="bold"
-        android:textColor="@color/button_text_green_primary"
         android:gravity="center"
-        android:textSize="25sp"
+        style="@style/MainTitle"
         />
 
     <LinearLayout

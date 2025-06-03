@@ -4,28 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
     android:background="@color/background_text_primary">
 
-    <ImageView
-        android:id="@+id/return_home"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:src="@drawable/icon_arrow_back"
-        android:clickable="true"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_new_wine"
-        android:fontFamily="@font/cinzel"
-        android:textStyle="bold"
-        android:textColor="@color/background_text_primary"
-        android:background="@drawable/button_purple"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:layout_marginBottom="30dp"/>
+    <include layout="@layout/view_custom_header"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,95 +16,143 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="20dp"
-        android:background="@drawable/border_purple">
+        android:background="@drawable/border_purple"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp">
+<!--        Ajustar margem inferior-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/general_informations"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                style="@style/MainTitle"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wine_name"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
+               style="@style/AddVinhoTitle" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/border_purple"
                 android:hint="@string/add_wine_name"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:textColorHint="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:inputType="number" />
+                android:inputType="text"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/winery_name"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/add_winery_name"
+                android:inputType="text"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/commercial_category"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/add_commercial_category"
+                android:inputType="text"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:hint="@string/add_description"
+                android:inputType="text"
+                style="@style/InputAddVinho"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            android:layout_marginVertical="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/identification_origin"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                style="@style/MainTitle"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/harvest"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
+                style="@style/AddVinhoTitle" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/border_purple"
                 android:hint="@string/add_harvest"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:textColorHint="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:inputType="number" />
-        </LinearLayout>
+                android:inputType="number"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"
+                />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/geographic_origin"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/add_geographic_origin"
+                android:inputType="text"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wine_type"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
+                style="@style/AddVinhoTitle" />
 
             <Spinner
                 android:id="@+id/wineType"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/border_purple"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
+                style="@style/InputAddVinho"
                 android:popupBackground="@color/background_text_primary"
                 android:spinnerMode="dropdown"
                 />
@@ -133,216 +162,239 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            android:layout_marginVertical="20dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/identification_origin"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                style="@style/MainTitle"/>
+<!--*****************************************************-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/description"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
+                android:text="@string/composition"
+                style="@style/AddVinhoTitle" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:background="@drawable/border_purple"
-                android:hint="@string/add_description"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:textColorHint="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:inputType="text"/>
+                android:hint="Fazer como no tipo"
+                android:inputType="text"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"/>
+            <!--*****************************************************-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/grapes"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:hint="Fazer como em notas de degustação"
+                android:inputType="text"
+                style="@style/InputAddVinho"/>
+            <!--*****************************************************-->
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            android:layout_marginVertical="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/technical_characteristics"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                style="@style/MainTitle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alcohol_content"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:hint="@string/add_alcohol_content"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/volume"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:hint="@string/add_volume"
+                android:inputType="number"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/acidity"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:hint="@string/add_acidity"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ideal_temperature"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:hint="@string/add_ideal_temperature"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/estimated_storage_time"
+                style="@style/AddVinhoTitle" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:hint="@string/add_estimated_storage_time"
+                android:inputType="numberDecimal"
+                style="@style/InputAddVinho"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/experience_reviews"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                style="@style/MainTitle"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tasting_notes"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
+                style="@style/AddVinhoTitle" />
 
             <EditText
                 android:id="@+id/tastingNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:background="@drawable/border_purple"
                 android:hint="@string/add_tasting_notes"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:textColorHint="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:clickable="true"
-                android:cursorVisible="false"/>
-        </LinearLayout>
+                android:cursorVisible="false"
+                android:layout_marginBottom="20dp"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+                style="@style/InputAddVinho"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/food_parings"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
+                style="@style/AddVinhoTitle" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/border_purple"
                 android:hint="@string/add_food_parings"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:textColorHint="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:inputType="text"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+                android:inputType="text"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/alcohol_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
+                android:text="@string/reviews"
+                style="@style/AddVinhoTitle" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/border_purple"
-                android:hint="@string/add_alcohol_content"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:textColorHint="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:inputType="numberDecimal"/>
+                android:hint="@string/add_reviews"
+                android:inputType="text"
+                style="@style/InputAddVinho"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            android:layout_marginVertical="20dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/volume"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
-
-            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/border_purple"
-                android:hint="@string/add_volume"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:textColorHint="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:inputType="number"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+                android:layout_height="wrap_content"
+                android:text="@string/inventory_marketing"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                style="@style/MainTitle"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/unit_price"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
+                style="@style/AddVinhoTitle" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/border_purple"
                 android:hint="@string/add_unit_price"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:textColorHint="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:inputType="numberDecimal"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="20dp"
+                style="@style/InputAddVinho" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/quantity"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:layout_marginBottom="8dp" />
+                style="@style/AddVinhoTitle" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/border_purple"
                 android:hint="@string/add_quantity"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
-                android:textColorHint="@color/text_green_secondary"
-                android:fontFamily="@font/baskervville"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:inputType="number"/>
+                android:inputType="numberDecimal"
+                style="@style/InputAddVinho" />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -357,9 +409,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:layout_marginBottom="10dp">
 
             <com.example.vinhedobravioapp.components.CustomButtonComponent
                 android:id="@+id/cancel_btn"
