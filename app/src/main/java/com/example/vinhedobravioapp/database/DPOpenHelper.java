@@ -16,7 +16,7 @@ import com.example.vinhedobravioapp.database.model.VisitModel;
 
 public class DPOpenHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "Vinhedo Bravio";
+    private static final String DATABASE_NAME = "VinhedoBravio.db";
     private static final int DATABASE_VERSION = 1;
 
     public DPOpenHelper(Context context){
