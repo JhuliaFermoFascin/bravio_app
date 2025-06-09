@@ -1,4 +1,4 @@
-package com.example.vinhedobravioapp.ui.components.login;
+package com.example.vinhedobravioapp.ui.components.vinhos;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -16,6 +17,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.components.CustomHeaderComponent;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -32,6 +35,11 @@ public class CadastroVinhoActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro_vinho);
+
+        CustomHeaderComponent.configurarHeader(this, getString(R.string.add_new_wine));
+
+        CustomButtonComponent cancel = findViewById(R.id.cancel_btn);
+        cancel.setOnClickListener(v -> finish());
 
         // Setup do Spinner de tipo de vinho
         Spinner wineType = findViewById(R.id.wineType);

@@ -33,10 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
         // FAB (botão flutuante)
         binding.fab.setOnClickListener(view -> {
             Snackbar.make(view, "FAB clicado", Snackbar.LENGTH_LONG).show();

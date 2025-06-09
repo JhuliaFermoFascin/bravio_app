@@ -3,24 +3,23 @@ package com.example.vinhedobravioapp.ui.components.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.database.DPOpenHelper;
+import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.vinhos.EstoqueActivity;
 
 public class PainelAdmActivity extends AppCompatActivity {
 
-    private Button estoque_btn;
+    private CustomButtonComponent estoque_btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.painel_administrativo);
-        DPOpenHelper dbHelper = new DPOpenHelper(this); // 'this' é o contexto
-        dbHelper.getWritableDatabase(); // Isso garante a criação do banco/tabelas
+
         estoque_btn = findViewById(R.id.estoque_btn);
 
         estoque_btn.setOnClickListener(new View.OnClickListener() {
