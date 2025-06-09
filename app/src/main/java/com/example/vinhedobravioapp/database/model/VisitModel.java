@@ -19,9 +19,9 @@ public class VisitModel {
         + COLUMN_DATE_TIME + " DATETIME NOT NULL, "
         + COLUMN_LOCATION + " TEXT NOT NULL, "
         + COLUMN_WINES + " TEXT NOT NULL, "
-        + COLUMN_USER_ID + " INTEGER NOT NULL"
+        + COLUMN_USER_ID + " INTEGER NOT NULL, "
         + "FOREIGN KEY (" + COLUMN_CUSTOMER_ID + ") REFERENCES tb_customer(customer_id) ON UPDATE CASCADE, "
-        + "FOREIGN KEY (" + COLUMN_USER_ID + ") REFERENCES tb_user(user_id) ON UPDATE CASCADE, "
+        + "FOREIGN KEY (" + COLUMN_USER_ID + ") REFERENCES tb_user(user_id) ON UPDATE CASCADE"
         + ");";
 
     public static String DROP_TABLE =

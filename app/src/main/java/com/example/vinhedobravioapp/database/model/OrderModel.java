@@ -12,15 +12,15 @@ public class OrderModel {
         COLUMN_USER_ID = "tb_user_user_id";
 
     public static String CREATE_TABLE =
-        "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
-        + COLUMN_ID + " INTEGER PRIMARY KEY, "
-        + COLUMN_CUSTOMER_ID + " INTEGER NOT NULL, "
-        + COLUMN_DATE + " DATE NOT NULL, "
-        + COLUMN_STATUS + " TEXT NOT NULL, "
-        + COLUMN_USER_ID + " INTEGER NOT NULL"
-        + "FOREIGN KEY (" + COLUMN_CUSTOMER_ID + ") REFERENCES tb_customer(customer_id) ON UPDATE CASCADE, "
-        + "FOREIGN KEY (" + COLUMN_USER_ID + ") REFERENCES tb_user(user_id) ON UPDATE CASCADE, "
-        + ");";
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
+                    + COLUMN_ID + " INTEGER PRIMARY KEY, "
+                    + COLUMN_CUSTOMER_ID + " INTEGER NOT NULL, "
+                    + COLUMN_DATE + " DATE NOT NULL, "
+                    + COLUMN_STATUS + " TEXT NOT NULL, "
+                    + COLUMN_USER_ID + " INTEGER NOT NULL, "
+                    + "FOREIGN KEY (" + COLUMN_CUSTOMER_ID + ") REFERENCES tb_customer(customer_id) ON UPDATE CASCADE, "
+                    + "FOREIGN KEY (" + COLUMN_USER_ID + ") REFERENCES tb_user(user_id) ON UPDATE CASCADE"
+                    + ");";
 
     public static String DROP_TABLE =
         "DROP TABLE IF EXISTS " + TABLE_NAME;
