@@ -73,6 +73,33 @@ public class WineModel implements Serializable {
     private Double idealTemperatureCelsius;
     private String agingPotential;
 
+    // Default constructor
+    public WineModel() {}
+
+    // Full constructor
+    public WineModel(long wineId, String name, Long wineryId, long wineTypeId, Long commercialCategoryId,
+                     Long originId, String vintage, String description, String compositionType,
+                     Long tastingNoteId, String foodPairings, Double alcoholContent, Integer volume,
+                     Long grapeId, String acidity, Double idealTemperatureCelsius, String agingPotential) {
+        this.wineId = wineId;
+        this.name = name;
+        this.wineryId = wineryId;
+        this.wineTypeId = wineTypeId;
+        this.commercialCategoryId = commercialCategoryId;
+        this.originId = originId;
+        this.vintage = vintage;
+        this.description = description;
+        this.compositionType = compositionType;
+        this.tastingNoteId = tastingNoteId;
+        this.foodPairings = foodPairings;
+        this.alcoholContent = alcoholContent;
+        this.volume = volume;
+        this.grapeId = grapeId;
+        this.acidity = acidity;
+        this.idealTemperatureCelsius = idealTemperatureCelsius;
+        this.agingPotential = agingPotential;
+    }
+
     // Getters and Setters
     public long getWineId() { return wineId; }
     public void setWineId(long wineId) { this.wineId = wineId; }
