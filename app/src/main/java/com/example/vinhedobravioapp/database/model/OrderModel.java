@@ -9,7 +9,7 @@ public class OrderModel {
         COLUMN_CUSTOMER_ID = "customer_id",
         COLUMN_DATE = "date",
         COLUMN_STATUS = "status",
-        COLUMN_USER_ID = "tb_user_user_id";
+        COLUMN_USER_ID = "user_id"; // Corrigido para user_id
 
     public static String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("

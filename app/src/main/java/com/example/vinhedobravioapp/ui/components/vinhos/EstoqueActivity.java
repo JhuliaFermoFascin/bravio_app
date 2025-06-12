@@ -54,32 +54,48 @@ public class EstoqueActivity extends AppCompatActivity {
         WineModel wine1 = new WineModel();
         wine1.setWineId(1);
         wine1.setName("Vinho Tinto Reserva");
+        wine1.setWineryId(1L);
         wine1.setWineTypeId(2);
-        wine1.setVintage(2018);
+        wine1.setCommercialCategoryId(1L);
+        wine1.setOriginId(1L);
+        wine1.setVintage("2018");
         wine1.setDescription("Intenso e encorpado.");
-        wine1.setTastingNoteId(1);
+        wine1.setCompositionType("Única");
+        wine1.setTastingNoteId(1L);
         wine1.setFoodPairings("Carnes vermelhas");
         wine1.setAlcoholContent(13.5);
         wine1.setVolume(750);
+        wine1.setGrapeId(1L);
+        wine1.setAcidity("Média");
+        wine1.setIdealTemperatureCelsius(18.0);
+        wine1.setAgingPotential("8 anos");
 
         WineModel wine2 = new WineModel();
         wine2.setWineId(2);
         wine2.setName("Vinho Branco Suave");
+        wine2.setWineryId(2L);
         wine2.setWineTypeId(1);
-        wine2.setVintage(2020);
+        wine2.setCommercialCategoryId(2L);
+        wine2.setOriginId(2L);
+        wine2.setVintage("2020");
         wine2.setDescription("Refrescante e leve.");
-        wine2.setTastingNoteId(2);
+        wine2.setCompositionType("Blend");
+        wine2.setTastingNoteId(2L);
         wine2.setFoodPairings("Peixes e saladas");
         wine2.setAlcoholContent(11.0);
         wine2.setVolume(750);
+        wine2.setGrapeId(2L);
+        wine2.setAcidity("Baixa");
+        wine2.setIdealTemperatureCelsius(10.0);
+        wine2.setAgingPotential("2 anos");
 
         WineModel wine3 = new WineModel();
         wine3.setWineId(3);
         wine3.setName("Vinho Rosé Floral");
         wine3.setWineTypeId(3);
-        wine3.setVintage(2019);
+        wine3.setVintage("1991");
         wine3.setDescription("Aromático e delicado.");
-        wine3.setTastingNoteId(3);
+        wine3.setTastingNoteId(3L);
         wine3.setFoodPairings("Frutos do mar");
         wine3.setAlcoholContent(12.0);
         wine3.setVolume(750);
@@ -88,9 +104,9 @@ public class EstoqueActivity extends AppCompatActivity {
         wine4.setWineId(4);
         wine4.setName("Espumante Brut");
         wine4.setWineTypeId(4);
-        wine4.setVintage(2021);
+        wine4.setVintage("2021");
         wine4.setDescription("Seco e efervescente.");
-        wine4.setTastingNoteId(4);
+        wine4.setTastingNoteId(4L);
         wine4.setFoodPairings("Aperitivos e frutos do mar");
         wine4.setAlcoholContent(12.5);
         wine4.setVolume(750);
@@ -99,9 +115,9 @@ public class EstoqueActivity extends AppCompatActivity {
         wine5.setWineId(5);
         wine5.setName("Vinho Tinto Reserva Especial");
         wine5.setWineTypeId(2);
-        wine5.setVintage(2016);
+        wine5.setVintage("2016");
         wine5.setDescription("Complexo, com taninos suaves.");
-        wine5.setTastingNoteId(5);
+        wine5.setTastingNoteId(5L);
         wine5.setFoodPairings("Carnes assadas");
         wine5.setAlcoholContent(14.0);
         wine5.setVolume(750);
@@ -110,56 +126,14 @@ public class EstoqueActivity extends AppCompatActivity {
         wine6.setWineId(6);
         wine6.setName("Vinho Branco Seco");
         wine6.setWineTypeId(1);
-        wine6.setVintage(2019);
+        wine6.setVintage("2021");
         wine6.setDescription("Cítrico e fresco.");
-        wine6.setTastingNoteId(2);
+        wine6.setTastingNoteId(2L);
         wine6.setFoodPairings("Massas e peixes");
         wine6.setAlcoholContent(12.0);
         wine6.setVolume(750);
 
-        WineModel wine7 = new WineModel();
-        wine7.setWineId(7);
-        wine7.setName("Vinho Rosé Frutado");
-        wine7.setWineTypeId(3);
-        wine7.setVintage(2020);
-        wine7.setDescription("Leve, com notas de morango.");
-        wine7.setTastingNoteId(3);
-        wine7.setFoodPairings("Saladas e pratos leves");
-        wine7.setAlcoholContent(11.5);
-        wine7.setVolume(750);
 
-        WineModel wine8 = new WineModel();
-        wine8.setWineId(8);
-        wine8.setName("Espumante Demi-Sec");
-        wine8.setWineTypeId(4);
-        wine8.setVintage(2022);
-        wine8.setDescription("Doce, ideal para sobremesas.");
-        wine8.setTastingNoteId(4);
-        wine8.setFoodPairings("Sobremesas e queijos suaves");
-        wine8.setAlcoholContent(11.5);
-        wine8.setVolume(750);
-
-        WineModel wine9 = new WineModel();
-        wine9.setWineId(9);
-        wine9.setName("Vinho Tinto Jovem");
-        wine9.setWineTypeId(2);
-        wine9.setVintage(2021);
-        wine9.setDescription("Frutado e vibrante.");
-        wine9.setTastingNoteId(1);
-        wine9.setFoodPairings("Carnes grelhadas");
-        wine9.setAlcoholContent(13.0);
-        wine9.setVolume(750);
-
-        WineModel wine10 = new WineModel();
-        wine10.setWineId(10);
-        wine10.setName("Vinho Branco Aromático");
-        wine10.setWineTypeId(1);
-        wine10.setVintage(2021);
-        wine10.setDescription("Notas florais e frutadas.");
-        wine10.setTastingNoteId(2);
-        wine10.setFoodPairings("Peixes e frutos do mar");
-        wine10.setAlcoholContent(12.5);
-        wine10.setVolume(750);
 
         listaDeVinhos.add(wine1);
         listaDeVinhos.add(wine2);
@@ -167,10 +141,7 @@ public class EstoqueActivity extends AppCompatActivity {
         listaDeVinhos.add(wine4);
         listaDeVinhos.add(wine5);
         listaDeVinhos.add(wine6);
-        listaDeVinhos.add(wine7);
-        listaDeVinhos.add(wine8);
-        listaDeVinhos.add(wine9);
-        listaDeVinhos.add(wine10);
+
 
 
         // ✅ Atualiza o adapter com os vinhos mockados
