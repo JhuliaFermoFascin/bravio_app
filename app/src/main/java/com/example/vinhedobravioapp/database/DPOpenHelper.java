@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.vinhedobravioapp.database.model.UserModel;
-import com.example.vinhedobravioapp.database.model.ClientModel;
+import com.example.vinhedobravioapp.database.model.CustomerModel;
 import com.example.vinhedobravioapp.database.model.WineTypeModel;
 import com.example.vinhedobravioapp.database.model.WineModel;
 import com.example.vinhedobravioapp.database.model.TastingNoteModel;
@@ -32,7 +32,7 @@ public class DPOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(UserModel.CREATE_TABLE_USER);
-        sqLiteDatabase.execSQL(ClientModel.CREATE_TABLE_CUSTOMER);
+        sqLiteDatabase.execSQL(CustomerModel.CREATE_TABLE_CUSTOMER);
         sqLiteDatabase.execSQL(WineTypeModel.CREATE_TABLE_WINE_TYPE);
         sqLiteDatabase.execSQL(WineryModel.CREATE_TABLE);
         sqLiteDatabase.execSQL(CommercialCategoryModel.CREATE_TABLE);

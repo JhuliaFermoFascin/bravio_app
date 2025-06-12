@@ -1,7 +1,6 @@
 package com.example.vinhedobravioapp.database.model;
 
-public class ClientModel {
-
+public class CustomerModel {
     public static String TABLE_NAME = "tb_customer";
 
     public static String
