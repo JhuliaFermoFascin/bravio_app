@@ -53,6 +53,7 @@
                 <string name="add_ideal_temperature">Informe a temperatura ideal</string>
                 <string name="add_estimated_storage_time">Informe o tempo de guarda estimado</string>
                 <string name="add_reviews">Informe as avaliações</string>
+                <string name="add_grapes">Selecione as uvas</string>
             <!-- Estoque Form Titles -->
                 <string name="general_informations">Informações Gerais</string>
                 <string name="identification_origin">Identificação e Origem</string>
@@ -77,6 +78,7 @@
     <!-- Utils -->
     <string name="exit">Sair</string>
     <string name="save">Salvar</string>
+    <string name="confirm">Confirmar</string>
     <string name="cancel">Cancelar</string>
     <string name="close">Fechar</string>
     <string name="login">Entrar</string>
