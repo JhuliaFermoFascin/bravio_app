@@ -102,7 +102,11 @@
     <string name="email">E-mail de acesso</string>
     <string name="senha">Senha</string>
     <string name="esqueci_senha">Esqueci minha senha</string>
+    <string name="recuperar_senha">A senha até pode ser esquecida, mas não o seu bom gosto. Entre em contato com nosso SAC e recupere seu acesso.</string>
+    <string name="esqueceu_senha_title">Esqueceu sua senha?</string>
     <string name="retornar_menu">Retornar ao menu inicial</string>
+    <string name="retornar_login">Retornar ao login</string>
+    <string name="manter_logado">Manter-me logado</string>
     <!--  tela bem vindos  -->
     <string name="titulo_bem_vindo">BEM-VINDO!</string>
     <string name="descricao_vinicola">Descubra a excelência de nossa vinícola.\nNossa missão é produzir vinhos de alta\n qualidade com dedicação e tradição.</string>
@@ -110,4 +114,5 @@
     <string name="botao_sobre_vinicula">Sobre a Vinícola</string>
     <string name="botao_contato">Contato</string>
     <string name="rodape">Endereço\nTelefone\nRedes Sociais</string>
+    <string name="bem_vindo_title">Bem-vindo ao universo\n dos nossos vinhos</string>
 </resources>
