@@ -9,7 +9,6 @@
     android:background="@color/background_text_primary"
     android:gravity="center">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -113,22 +112,6 @@
             />
 
     </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="40dp">
-
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/exit_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_style="EXIT"
-            app:btn_text="@string/exit"
-            app:btn_icon="@drawable/icon_out"
-            />
-        </LinearLayout>
 
     </LinearLayout>
 

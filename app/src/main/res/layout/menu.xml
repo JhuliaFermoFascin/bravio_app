@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_text_primary"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center">
 
     <ImageView
         android:layout_width="match_parent"
@@ -16,10 +16,9 @@
         android:src="@drawable/logo" />
 
     <TextView
-        android:id="@+id/bemvindo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bem-vindo ao universo\n dos nossos vinhos"
+        android:text="@string/bem_vindo_title"
         android:fontFamily="@font/cinzel"
         android:gravity="center"
         android:textColor="@color/button_text_green_primary"
@@ -35,7 +34,7 @@
         android:layout_marginHorizontal="40dp">
 
         <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/botao_entrarAdm"
+            android:id="@+id/btnEntrarAdm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:btn_style="MENU_PRIMARY"
@@ -44,7 +43,7 @@
             />
 
         <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/botao_entrarRepresentante"
+            android:id="@+id/btnEntrarRepresentante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:btn_style="MENU_PRIMARY"
@@ -53,7 +52,7 @@
             />
 
         <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/botao_explorarVisitante"
+            android:id="@+id/BtnEntrarVisitante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:btn_style="MENU_SECONDARY"

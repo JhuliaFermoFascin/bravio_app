@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_text_primary"
-    android:gravity="center">
+    android:gravity="center_vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:paddingBottom="40dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:gravity="center_horizontal">
 
         <ImageView
@@ -24,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/titulo_bem_vindo"
+            android:text="@string/esqueceu_senha_title"
             android:textColor="@color/border_text_purple_primary"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -35,7 +37,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/descricao_vinicola"
+            android:text="@string/recuperar_senha"
             android:textColor="@color/border_text_purple_primary"
             android:textAlignment="center"
             android:fontFamily="@font/baskervville"
@@ -47,32 +49,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginHorizontal="30dp">
+            android:layout_marginHorizontal="30dp"
+            android:paddingTop="80dp">
 
             <com.example.vinhedobravioapp.components.CustomButtonComponent
-                android:id="@+id/btnCatalogo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:btn_style="SECONDARY"
-                app:btn_text="@string/botao_conheca_vinhos"
-                android:layout_marginBottom="15dp"
-                />
-
-            <com.example.vinhedobravioapp.components.CustomButtonComponent
-                android:id="@+id/btnSobre"
+                android:id="@+id/btnRetornar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:btn_style="MENU_PRIMARY"
-                app:btn_text="@string/botao_sobre_vinicula"
-                android:layout_marginBottom="15dp"
-                />
-
-            <com.example.vinhedobravioapp.components.CustomButtonComponent
-                android:id="@+id/btnContato"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:btn_style="MENU_PRIMARY"
-                app:btn_text="@string/botao_contato"
+                app:btn_text="@string/retornar_login"
                 />
 
         </LinearLayout>

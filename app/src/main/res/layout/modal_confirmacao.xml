@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_text_primary">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONFIRMAR SAÍDA"
+        android:textColor="@color/border_text_purple_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/cinzel"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deseja realmente ir para o menu inicial?"
+        android:textColor="@color/button_text_green_primary"
+        android:fontFamily="@font/baskervville"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnNo"
+            android:layout_width="90dp"
+            android:backgroundTint="@color/purple_button_hover"
+            android:textColor="@color/background_text_primary"
+            android:text="NÃO"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baskervville"
+            android:layout_marginRight="4dp"
+            />
+
+        <Button
+            android:id="@+id/btnYes"
+            android:layout_width="90dp"
+            android:backgroundTint="@color/purple_button_hover"
+            android:textColor="@color/background_text_primary"
+            android:text="SIM"
+            android:fontFamily="@font/baskervville"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+</LinearLayout>

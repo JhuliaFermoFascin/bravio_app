@@ -16,10 +16,7 @@
         android:theme="@style/Theme.VinhedoBravioApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.components.inicial.BemVindoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.components.login.PainelAdmActivity"
+            android:name=".ui.components.inicial.InicialActivity"
             android:exported="true"
             android:theme="@style/Theme.VinhedoBravioApp">
             <intent-filter>
@@ -28,6 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.components.inicial.MenuActivity" />
+        <activity android:name=".ui.components.inicial.BemVindoActivity" />
+        <activity android:name=".ui.components.login.LoginActivity" />
+        <activity android:name=".ui.components.login.PainelAdmActivity" />
+        <activity android:name=".ui.components.login.EsqueceuSenhaActivity" />
         <activity android:name=".ui.components.vinhos.CadastroVinhoActivity" />
         <activity android:name=".ui.components.vinhos.EstoqueActivity" />
 

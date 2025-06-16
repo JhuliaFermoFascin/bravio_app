@@ -1,20 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_text_primary"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp"
-    android:background="@color/background_text_primary">
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/logo_description"
+        android:src="@drawable/logo" />
 
     <TextView
-        android:id="@+id/botao_customizado"
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email de acessp"
-        android:background="@drawable/button_purple"
+        android:text="@string/login_geral"
+        android:fontFamily="@font/cinzel"
+        android:gravity="center"
         android:textColor="@color/button_text_green_primary"
-        android:padding="16dp"
-        android:clickable="true"
-        android:focusable="true"/>
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:layout_marginTop="22dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="40dp"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_purple"
+            android:fontFamily="@font/baskervville"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:textColor="@color/button_text_green_primary"
+            android:textColorHint="@color/button_text_green_primary"
+            android:autofillHints="emailAddress"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/border_purple"
+            android:layout_marginTop="20dp"
+            android:padding="12dp">
+
+            <EditText
+                android:id="@+id/senha"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/senha"
+                android:background="@android:color/transparent"
+                android:inputType="textPassword"
+                android:textColor="@color/button_text_green_primary"
+                android:textColorHint="@color/button_text_green_primary"
+                android:fontFamily="@font/baskervville"
+                android:autofillHints="password"/>
+
+            <ImageView
+                android:id="@+id/iconToggleSenha"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/logo_description"
+                android:src="@drawable/icon_eye_close" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5dp">
+
+            <CheckBox
+                android:id="@+id/checkboxManterLogado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/manter_logado"
+                android:textColor="@color/button_text_green_primary"
+                android:fontFamily="@font/baskervville"
+                android:buttonTint="@color/border_button_purple_primary"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/esqueceuSenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/esqueci_senha"
+                android:textColor="@color/button_text_green_primary"
+                android:textSize="15sp"
+                android:fontFamily="@font/baskervville"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
+
+            <com.example.vinhedobravioapp.components.CustomButtonComponent
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_style="SECONDARY"
+                app:btn_text="@string/login"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>
+
+

@@ -2,23 +2,38 @@ package com.example.vinhedobravioapp.ui.components.inicial;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.database.DPOpenHelper;
+import com.example.vinhedobravioapp.ui.components.login.PainelAdmActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 
 public class InicialActivity extends Activity {
+
+    private static final int DELAY_MS = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_inicial);
 
+        new Handler().postDelayed(() -> {
+            SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+            boolean isLoggedIn = prefs.getBoolean("manterLogado", false);
 
-        // Redireciona para a próxima Activity (painel, login, etc)
-        Intent intent = new Intent(InicialActivity.this, BemVindoActivity.class);
-        startActivity(intent);
-        finish(); // Fecha a tela inicial
+            Intent intent;
+            if (isLoggedIn) {
+                intent = new Intent(this, PainelAdmActivity.class);
+            } else {
+                intent = new Intent(this, MenuActivity.class);
+            }
+
+            startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            finish();
+        }, DELAY_MS);
     }
 
 }
