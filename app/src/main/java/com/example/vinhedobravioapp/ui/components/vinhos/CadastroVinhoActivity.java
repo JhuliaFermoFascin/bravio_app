@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,7 +84,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
     }
 
     private void configurarNotasDegustacao() {
-        tastingNotes = findViewById(R.id.tastingNotes);
+        EditText tastingNotes = findViewById(R.id.editTextTastingNotes);
         String[] notas = {"Frutado", "Amadeirado", "Herbal", "Especiarias", "Floral"};
         boolean[] checkedItems = new boolean[notas.length];
         List<String> selectedNotas = new ArrayList<>();
@@ -140,21 +141,21 @@ public class CadastroVinhoActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(v -> {
             Log.d("WineDAO", "Botão salvar clicado");
             // Recupera os campos do formulário
-            EditText nameEt = findViewById(R.id.editTextWineName); // Adapte o id conforme seu XML
+            EditText nameEt = findViewById(R.id.editTextWineName);
             EditText wineryEt = findViewById(R.id.editTextWineryName);
             EditText categoryEt = findViewById(R.id.editTextCommercialCategory);
             EditText descriptionEt = findViewById(R.id.editTextDescription);
             EditText vintageEt = findViewById(R.id.editTextHarvest);
             EditText originEt = findViewById(R.id.editTextGeographicOrigin);
             Spinner wineTypeSp = findViewById(R.id.wineType);
-            EditText compositionEt = findViewById(R.id.editTextComposition);
+            Spinner compositionEt = findViewById(R.id.wineComposition);
             EditText grapesEt = findViewById(R.id.editTextGrapes);
             EditText alcoholEt = findViewById(R.id.editTextAlcoholContent);
             EditText volumeEt = findViewById(R.id.editTextVolume);
             EditText acidityEt = findViewById(R.id.editTextAcidity);
             EditText tempEt = findViewById(R.id.editTextIdealTemperature);
             EditText agingEt = findViewById(R.id.editTextEstimatedStorageTime);
-            EditText tastingNotesEt = findViewById(R.id.tastingNotes);
+            EditText tastingNotesEt = findViewById(R.id.editTextTastingNotes);
             EditText foodPairingsEt = findViewById(R.id.editTextFoodPairings);
             // ... outros campos conforme necessário
 
@@ -174,7 +175,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
             wine.setOriginId(0L); // Long
             wine.setVintage(vintageEt.getText().toString().trim());
             wine.setDescription(descriptionEt.getText().toString().trim());
-            wine.setCompositionType(compositionEt.getText().toString().trim());
+//            wine.setCompositionType(compositionEt.getText().toString().trim());
             wine.setTastingNoteId(0L); // Long
             wine.setFoodPairings(foodPairingsEt.getText().toString().trim());
             try {
@@ -210,7 +211,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
 
     private void configurarComposicaoESelecaoUvas() {
         wineComposition = findViewById(R.id.wineComposition);
-        wineGrapes = findViewById(R.id.wineGrapes);
+        wineGrapes = findViewById(R.id.editTextGrapes);
 
         List<String> opcoesComposicao = Arrays.asList("Varietal", "Blend");
 

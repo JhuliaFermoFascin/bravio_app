@@ -200,7 +200,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
-                android:id="@+id/wineGrapes"
+                android:id="@+id/editTextGrapes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -333,7 +333,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
-                android:id="@+id/tastingNotes"
+                android:id="@+id/editTextTastingNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
