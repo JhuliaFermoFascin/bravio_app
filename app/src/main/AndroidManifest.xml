@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +16,9 @@
         android:theme="@style/Theme.VinhedoBravioApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.components.inicial.BemVindoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.components.login.PainelAdmActivity"
             android:exported="true"
             android:theme="@style/Theme.VinhedoBravioApp">
@@ -27,6 +30,7 @@
         </activity>
         <activity android:name=".ui.components.vinhos.CadastroVinhoActivity" />
         <activity android:name=".ui.components.vinhos.EstoqueActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

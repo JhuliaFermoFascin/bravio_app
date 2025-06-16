@@ -2,9 +2,14 @@ package com.example.vinhedobravioapp.database.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
 
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.OrderModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDAO extends AbstrataDAO {
 
@@ -28,4 +33,35 @@ public class OrderDAO extends AbstrataDAO {
         }
         return result;
     }
+    public List<OrderModel> getAll() {
+        List<OrderModel> orderList = new ArrayList<>();
+        Cursor cursor = null;
+
+        try {
+            Open();
+            cursor = db.query(OrderModel.TABLE_NAME, null, null, null, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    OrderModel order = new OrderModel();
+                    order.setOrderId(cursor.getLong(cursor.getColumnIndexOrThrow(OrderModel.COLUMN_ID)));
+                    order.setCustomerId(cursor.getLong(cursor.getColumnIndexOrThrow(OrderModel.COLUMN_CUSTOMER_ID)));
+                    order.setDate(cursor.getString(cursor.getColumnIndexOrThrow(OrderModel.COLUMN_DATE)));
+                    order.setStatus(cursor.getString(cursor.getColumnIndexOrThrow(OrderModel.COLUMN_STATUS)));
+                    order.setUserId(cursor.getLong(cursor.getColumnIndexOrThrow(OrderModel.COLUMN_USER_ID)));
+
+                    orderList.add(order);
+                } while (cursor.moveToNext());
+            }
+
+        } catch (Exception e) {
+            Log.e("OrderDAO", "Erro ao buscar pedidos", e);
+        } finally {
+            if (cursor != null) cursor.close();
+            Close();
+        }
+
+        return orderList;
+    }
+
 }
