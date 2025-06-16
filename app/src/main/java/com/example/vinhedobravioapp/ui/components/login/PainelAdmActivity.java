@@ -24,32 +24,6 @@ public class PainelAdmActivity extends AppCompatActivity {
     private CustomButtonComponent estoque_btn;
     private CustomButtonComponent exit_btn;
 
-    // Inicialização do banco
-    DPOpenHelper dbHelper = new DPOpenHelper(this);
-        dbHelper.getWritableDatabase();
-
-
-    OrderDAO orderDAO = new OrderDAO(this);
-
-    // Hard code: cria novo pedido
-    OrderModel newOrder = new OrderModel();
-        newOrder.setOrderId(1); // cuidado com ID duplicado
-        newOrder.setCustomerId(123);
-        newOrder.setDate("2025-06-16");
-        newOrder.setStatus("Pendente");
-        newOrder.setUserId(1);
-
-    long result = orderDAO.insert(newOrder);
-        Log.d("DB", "Inserção result: " + result);
-
-    // Recupera todos e mostra no log
-        for (OrderModel order : orderDAO.getAll()) {
-        Log.d("DB", "Pedido #" + order.getOrderId() + ": Cliente " + order.getCustomerId() + ", Data " + order.getDate() + ", Status: " + order.getStatus());
-    }
-
-
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
