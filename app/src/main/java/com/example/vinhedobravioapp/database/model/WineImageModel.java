@@ -23,4 +23,12 @@ public class WineImageModel {
     public void setWineId(long wineId) { this.wineId = wineId; }
     public String getImageBase64() { return imageBase64; }
     public void setImageBase64(String imageBase64) { this.imageBase64 = imageBase64; }
+
+    @Override
+    public String toString() {
+        return "WineImageModel{" +
+                "wineId=" + wineId +
+                ", imageBase64='" + (imageBase64 != null ? imageBase64.substring(0, Math.min(10, imageBase64.length())) + "..." : null) + '\'' +
+                '}';
+    }
 }

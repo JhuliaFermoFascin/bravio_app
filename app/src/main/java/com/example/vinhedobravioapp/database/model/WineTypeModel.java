@@ -38,4 +38,12 @@ public class WineTypeModel {
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
+
+    @Override
+    public String toString() {
+        return "WineTypeModel{" +
+                "wineTypeId=" + wineTypeId +
+                ", typeName='" + typeName + '\'' +
+                '}';
+    }
 }

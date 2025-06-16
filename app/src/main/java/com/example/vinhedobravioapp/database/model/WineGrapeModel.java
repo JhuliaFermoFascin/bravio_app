@@ -24,4 +24,12 @@ public class WineGrapeModel {
     public void setWineId(long wineId) { this.wineId = wineId; }
     public long getGrapeId() { return grapeId; }
     public void setGrapeId(long grapeId) { this.grapeId = grapeId; }
+
+    @Override
+    public String toString() {
+        return "WineGrapeModel{" +
+                "wineId=" + wineId +
+                ", grapeId=" + grapeId +
+                '}';
+    }
 }

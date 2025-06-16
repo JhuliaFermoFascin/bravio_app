@@ -32,4 +32,14 @@ public class WineReviewModel {
     public void setReviewText(String reviewText) { this.reviewText = reviewText; }
     public double getRating() { return rating; }
     public void setRating(double rating) { this.rating = rating; }
+
+    @Override
+    public String toString() {
+        return "WineReviewModel{" +
+                "reviewId=" + reviewId +
+                ", wineId=" + wineId +
+                ", reviewText='" + reviewText + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
 }

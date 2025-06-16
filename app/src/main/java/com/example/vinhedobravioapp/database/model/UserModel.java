@@ -114,4 +114,19 @@ public class UserModel {
     public void setLastLogin(String lastLogin) {
         this.lastLogin = lastLogin;
     }
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", isAdmin=" + isAdmin +
+                ", status=" + status +
+                ", createdAt='" + createdAt + '\'' +
+                ", lastUpdate='" + lastUpdate + '\'' +
+                ", lastLogin='" + lastLogin + '\'' +
+                '}';
+    }
 }

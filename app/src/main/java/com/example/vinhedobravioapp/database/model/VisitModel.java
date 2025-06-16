@@ -48,4 +48,16 @@ public class VisitModel {
     public void setWines(String wines) { this.wines = wines; }
     public long getUserId() { return userId; }
     public void setUserId(long userId) { this.userId = userId; }
+
+    @Override
+    public String toString() {
+        return "VisitModel{" +
+                "visitId=" + visitId +
+                ", customerId=" + customerId +
+                ", dateTime='" + dateTime + '\'' +
+                ", location='" + location + '\'' +
+                ", wines='" + wines + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }

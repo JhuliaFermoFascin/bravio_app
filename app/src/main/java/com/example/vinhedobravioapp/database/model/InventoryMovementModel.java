@@ -63,4 +63,19 @@ public class InventoryMovementModel {
     public void setUserId(long userId) { this.userId = userId; }
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
+
+    @Override
+    public String toString() {
+        return "InventoryMovementModel{" +
+                "movementId=" + movementId +
+                ", wineId=" + wineId +
+                ", movementType='" + movementType + '\'' +
+                ", quantity=" + quantity +
+                ", unitPrice=" + unitPrice +
+                ", movementDate='" + movementDate + '\'' +
+                ", documentReference='" + documentReference + '\'' +
+                ", userId=" + userId +
+                ", notes='" + notes + '\'' +
+                '}';
+    }
 }

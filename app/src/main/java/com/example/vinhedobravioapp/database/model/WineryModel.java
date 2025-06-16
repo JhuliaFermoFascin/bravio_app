@@ -21,4 +21,12 @@ public class WineryModel {
     public void setWineryId(long wineryId) { this.wineryId = wineryId; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    @Override
+    public String toString() {
+        return "WineryModel{" +
+                "wineryId=" + wineryId +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -26,4 +26,13 @@ public class GeographicOriginModel {
     public void setCountry(String country) { this.country = country; }
     public String getRegion() { return region; }
     public void setRegion(String region) { this.region = region; }
+
+    @Override
+    public String toString() {
+        return "GeographicOriginModel{" +
+                "originId=" + originId +
+                ", country='" + country + '\'' +
+                ", region='" + region + '\'' +
+                '}';
+    }
 }

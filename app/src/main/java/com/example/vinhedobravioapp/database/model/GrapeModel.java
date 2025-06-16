@@ -21,4 +21,12 @@ public class GrapeModel {
     public void setGrapeId(long grapeId) { this.grapeId = grapeId; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    @Override
+    public String toString() {
+        return "GrapeModel{" +
+                "grapeId=" + grapeId +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

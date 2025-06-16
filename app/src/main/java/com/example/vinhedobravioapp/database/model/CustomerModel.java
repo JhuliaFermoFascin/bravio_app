@@ -93,4 +93,17 @@ public class CustomerModel {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "CustomerModel{" +
+                "customerId=" + customerId +
+                ", nameCompanyName='" + nameCompanyName + '\'' +
+                ", cpfCnpj='" + cpfCnpj + '\'' +
+                ", address='" + address + '\'' +
+                ", region='" + region + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

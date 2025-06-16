@@ -45,4 +45,15 @@ public class OrderItemModel {
     public void setQuantity(int quantity) { this.quantity = quantity; }
     public long getOrderId() { return orderId; }
     public void setOrderId(long orderId) { this.orderId = orderId; }
+
+    @Override
+    public String toString() {
+        return "OrderItemModel{" +
+                "orderItemId=" + orderItemId +
+                ", wineId=" + wineId +
+                ", value=" + value +
+                ", quantity=" + quantity +
+                ", orderId=" + orderId +
+                '}';
+    }
 }

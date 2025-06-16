@@ -24,7 +24,14 @@ public class InicialActivity extends Activity {
         DPOpenHelper db = new DPOpenHelper(this);
         Log.d("InicialActivity", "Iniciando app, chamando ensureDefaultUsers...");
         FindAnyUsers.ensureDefaultUsers(this);
+        FindAnyUsers.ensureDefaultWineTypes(this);
+        FindAnyUsers.ensureDefaultGeographicOrigins(this);
+        FindAnyUsers.ensureDefaultGrapes(this);
+        FindAnyUsers.ensureDefaultTastingNotes(this);
+        FindAnyUsers.ensureDefaultWineries(this);
         Log.d("InicialActivity", "ensureDefaultUsers executado");
+        DaoCrudTester.testAllDaos(this);
+
         new Handler().postDelayed(() -> {
             SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
             boolean isLoggedIn = prefs.getBoolean("manterLogado", false);
