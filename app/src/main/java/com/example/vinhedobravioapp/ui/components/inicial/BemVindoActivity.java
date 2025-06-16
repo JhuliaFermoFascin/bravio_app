@@ -14,7 +14,7 @@ public class BemVindoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bem_vindo);
+        setContentView(R.layout.activity_bem_vindo);
     }
     @Override
     public void onBackPressed() {
