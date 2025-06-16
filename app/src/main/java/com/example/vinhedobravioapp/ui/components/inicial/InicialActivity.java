@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.ui.components.login.PainelAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 
@@ -18,7 +20,11 @@ public class InicialActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_inicial);
-
+        
+        DPOpenHelper db = new DPOpenHelper(this);
+        Log.d("InicialActivity", "Iniciando app, chamando ensureDefaultUsers...");
+        FindAnyUsers.ensureDefaultUsers(this);
+        Log.d("InicialActivity", "ensureDefaultUsers executado");
         new Handler().postDelayed(() -> {
             SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
             boolean isLoggedIn = prefs.getBoolean("manterLogado", false);
