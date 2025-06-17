@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/background_popup_black">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/border_button_purple_primary"
+        android:padding="12dp"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MENU"
+                android:padding="10dp"
+                android:fontFamily="@font/baskervville"
+                android:textColor="@color/background_text_primary"/>
+
+            <LinearLayout
+                android:id="@+id/agenda_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_location"
+                        android:src="@drawable/icon_location"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/agenda"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cliente_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_people"
+                        android:src="@drawable/icon_people"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/customers"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comissoes_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_money"
+                        android:src="@drawable/icon_money"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/commissions"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pedidos_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_document"
+                        android:src="@drawable/icon_document"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/orders"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/relatorios_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="icone de vinho"
+                        android:src="@drawable/icon_performance"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reports"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/representantes_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_business"
+                        android:src="@drawable/icon_business"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/representatives"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/usuarios_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_user"
+                        android:src="@drawable/icon_user"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/users"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/estoque_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_vinho"
+                        android:src="@drawable/icon_wine"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wine"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/visitantes_page_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_visitors"
+                        android:src="@drawable/icon_visitors"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/visitors"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/representantes_page_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_representante"
+                        android:src="@drawable/icon_adm"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/representantes"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="167dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sair_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/icon_out"
+                android:src="@drawable/icon_out"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exit"
+                android:padding="10dp"
+                android:fontFamily="@font/baskervville"
+                android:textColor="@color/background_text_primary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fora_menu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@android:color/transparent">
+
+    </LinearLayout>
+
+</LinearLayout>
