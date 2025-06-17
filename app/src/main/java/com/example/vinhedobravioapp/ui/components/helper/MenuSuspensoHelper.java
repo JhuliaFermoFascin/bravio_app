@@ -75,18 +75,15 @@ public class MenuSuspensoHelper {
 
         visitantes_page_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, BemVindoActivity.class);
+            if(isDashboard){
+                intent.putExtra(activity.getString(R.string.tipo_usuario_input), 1);
+            }else{
+                intent.putExtra(activity.getString(R.string.tipo_usuario_input), 2);
+            }
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             popupWindow.dismiss();
         });
-
-//        Verificar funcionamento
-//        representantes_page_btn.setOnClickListener(view -> {
-//            Intent intent = new Intent(activity, PainelRepresentanteActivity.class);
-//            activity.startActivity(intent);
-//            activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-//            popupWindow.dismiss();
-//        });
 
         sair_btn.setOnClickListener(view -> {
             popupWindow.dismiss();
