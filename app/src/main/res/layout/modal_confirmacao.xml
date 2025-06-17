@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONFIRMAR SAÍDA"
+        android:text="@string/confirmar_saida"
         android:textColor="@color/border_text_purple_primary"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -17,9 +17,10 @@
         android:layout_marginBottom="5dp"/>
 
     <TextView
+        android:id="@+id/mensagem_confirmacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deseja realmente ir para o menu inicial?"
+        android:text="@string/pergunta_saida"
         android:textColor="@color/button_text_green_primary"
         android:fontFamily="@font/baskervville"
         android:textSize="18sp"/>
@@ -35,10 +36,9 @@
             android:layout_width="90dp"
             android:backgroundTint="@color/purple_button_hover"
             android:textColor="@color/background_text_primary"
-            android:text="NÃO"
+            android:text="@string/nao_sair"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baskervville"
-            android:layout_marginRight="4dp"
             />
 
         <Button
@@ -46,9 +46,10 @@
             android:layout_width="90dp"
             android:backgroundTint="@color/purple_button_hover"
             android:textColor="@color/background_text_primary"
-            android:text="SIM"
+            android:text="@string/sim_sair"
             android:fontFamily="@font/baskervville"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
             />
     </LinearLayout>
 </LinearLayout>

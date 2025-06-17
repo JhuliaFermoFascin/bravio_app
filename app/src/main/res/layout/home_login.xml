@@ -128,6 +128,14 @@
                 app:btn_style="SECONDARY"
                 app:btn_text="@string/login"
                 />
+            <com.example.vinhedobravioapp.components.CustomButtonComponent
+                android:id="@+id/btnVoltar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_style="MENU_PRIMARY"
+                app:btn_text="@string/retornar_menu"
+                android:layout_marginTop="10dp"
+                />
 
         </LinearLayout>
 

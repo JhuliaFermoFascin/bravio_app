@@ -17,7 +17,9 @@ import android.widget.Toast;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
 
 public class LoginActivity extends Activity {
@@ -48,6 +50,7 @@ public class LoginActivity extends Activity {
         TextView tituloLogin = findViewById(R.id.login);
         TextView esqueceuSenha = findViewById(R.id.esqueceuSenha);
         CustomButtonComponent btnLogin = findViewById(R.id.btnLogin);
+        CustomButtonComponent btnVoltar = findViewById(R.id.btnVoltar);
         EditText campoSenha = findViewById(R.id.senha);
         EditText campoEmail = findViewById(R.id.email);
         ImageView toggleSenha = findViewById(R.id.iconToggleSenha);
@@ -115,6 +118,10 @@ public class LoginActivity extends Activity {
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
+
+        btnVoltar.setOnClickListener(v -> {
+            mostrarConfirmacaoSaida();
+        });
     }
 
     private void verificaLogin(String emailDigitado, String senhaDigitada, int tipoUsuario, String emailCerto, String senhaCerta, CheckBox checkboxManterLogado) {
@@ -143,28 +150,24 @@ public class LoginActivity extends Activity {
         }
     }
 
+    private void mostrarConfirmacaoSaida() {
+        String mensagem = getString(R.string.pergunta_saida, getString(R.string.confirmar_retorno_menu));
+
+        ConfirmacaoHelper.mostrarConfirmacao(this, mensagem, () -> {
+            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
+            editor.clear();
+            editor.apply();
+
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            finish();
+        });
+    }
+
     @Override
     public void onBackPressed() {
-        View dialogView = getLayoutInflater().inflate(R.layout.modal_confirmacao, null);
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(dialogView)
-                .setCancelable(false)
-                .create();
-
-        Button btnYes = dialogView.findViewById(R.id.btnYes);
-        Button btnNo = dialogView.findViewById(R.id.btnNo);
-
-        btnYes.setOnClickListener(v -> {
-            dialog.dismiss();
-            super.onBackPressed();
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-        });
-
-        btnNo.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-
-        dialog.show();
+        mostrarConfirmacaoSaida();
     }
 }
