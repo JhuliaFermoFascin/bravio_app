@@ -3,7 +3,8 @@
 
     <!-- Painel Administrativo -->
     <string name="administrative_panel">Painel Adminsitrativo</string>
-    <string name="welcome">Bem-vindo(a), user</string>
+    <string name="welcome">Bem-vindo(a), </string>
+    <string name="welcomeUser">Nome Usuário</string>
     <string name="inventory">Estoque</string>
     <string name="customers">Clientes</string>
     <string name="representatives">Representantes</string>

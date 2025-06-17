@@ -24,7 +24,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+    
         SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         boolean manterLogado = prefs.getBoolean("manterLogado", false);
 
