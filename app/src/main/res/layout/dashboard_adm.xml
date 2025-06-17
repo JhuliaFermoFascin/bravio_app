@@ -4,37 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
     android:background="@color/background_text_primary">
     <ImageView
         android:id="@+id/menu_suspenso"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:padding="30dp"
         android:contentDescription="@string/icon_menu"
         android:src="@drawable/icon_menu"
         android:layout_gravity="start"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcome"
-        android:fontFamily="@font/baskervville"
-        android:textStyle="bold"
-        android:textColor="@color/button_text_green_primary"
-        android:textSize="20sp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
-        />
+        android:orientation="vertical"
+        android:paddingBottom="30dp"
+        android:paddingHorizontal="30dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
+            android:textColor="@color/button_text_green_primary"
+            android:textSize="20sp"
+            android:layout_marginBottom="30dp"
+            />
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/administrative_panel"
-        android:gravity="center"
-        style="@style/MainTitle"
-        android:layout_marginBottom="20dp"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/administrative_panel"
+            android:gravity="center"
+            style="@style/MainTitle"
+            android:layout_marginBottom="20dp"
+            />
 
 
         <TextView
@@ -68,5 +75,6 @@
             android:layout_height="200dp"
             />
 
+    </LinearLayout>
 
 </LinearLayout>

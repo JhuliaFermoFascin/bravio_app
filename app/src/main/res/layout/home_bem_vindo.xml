@@ -5,7 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_text_primary"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:contentDescription="@string/logo_description"
+        android:src="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,13 +20,6 @@
         android:orientation="vertical"
         android:padding="20dp"
         android:gravity="center_horizontal">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_marginTop="40dp"
-            android:contentDescription="@string/logo_description"
-            android:src="@drawable/logo" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,6 +73,24 @@
                 android:layout_height="wrap_content"
                 app:btn_style="MENU_PRIMARY"
                 app:btn_text="@string/botao_contato"
+                />
+
+            <com.example.vinhedobravioapp.components.CustomButtonComponent
+                android:id="@+id/btnVoltarDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_style="MENU_PRIMARY"
+                app:btn_text="Retornar ao dashboard"
+                android:layout_marginTop="10dp"
+                />
+
+            <com.example.vinhedobravioapp.components.CustomButtonComponent
+                android:id="@+id/btnVoltar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_style="MENU_PRIMARY"
+                app:btn_text="@string/retornar_menu"
+                android:layout_marginTop="10dp"
                 />
 
         </LinearLayout>

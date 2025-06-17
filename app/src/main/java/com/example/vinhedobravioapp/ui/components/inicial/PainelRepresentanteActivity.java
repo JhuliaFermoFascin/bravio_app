@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.helper.MenuSuspensoHelper;
 
 public class PainelRepresentanteActivity extends AppCompatActivity {
@@ -28,18 +29,9 @@ public class PainelRepresentanteActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        View dialogView = getLayoutInflater().inflate(R.layout.modal_confirmacao, null);
+        String mensagem = getString(R.string.pergunta_saida, getString(R.string.confirmar_retorno_menu));
 
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(dialogView)
-                .setCancelable(false)
-                .create();
-
-        Button btnYes = dialogView.findViewById(R.id.btnYes);
-        Button btnNo = dialogView.findViewById(R.id.btnNo);
-
-        btnYes.setOnClickListener(v -> {
-            dialog.dismiss();
+        ConfirmacaoHelper.mostrarConfirmacao(this, mensagem, () -> {
             SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
@@ -50,7 +42,5 @@ public class PainelRepresentanteActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         });
-        btnNo.setOnClickListener(v -> dialog.dismiss());
-        dialog.show();
     }
 }

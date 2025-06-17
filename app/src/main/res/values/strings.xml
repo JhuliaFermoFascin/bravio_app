@@ -208,4 +208,12 @@
     <string name="email_input">EMAIL_DIGITADO</string>
     <string name="tipo_usuario_input">TIPO_USUARIO</string>
 
+    <!-- modal de confirmação -->
+    <string name="confirmar_saida">CONFIRMAR SAÍDA</string>
+    <string name="pergunta_saida">Deseja realmente voltar para %s?</string>
+    <string name="sim_sair">SIM</string>
+    <string name="nao_sair">NÃO</string>
+    <string name="confirmar_retorno_adm">o dashboard</string>
+    <string name="confirmar_retorno_menu">o menu inicial</string>
+
 </resources>
