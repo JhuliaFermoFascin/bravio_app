@@ -50,7 +50,7 @@
         @NonNull
         @Override
         public WineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.item_vinho, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.estoque_item_vinho, parent, false);
             return new WineViewHolder(view);
         }
 
