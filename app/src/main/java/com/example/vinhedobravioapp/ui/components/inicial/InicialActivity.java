@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.ui.components.login.PainelAdmActivity;
-import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 
 public class InicialActivity extends Activity {
 
@@ -20,8 +18,8 @@ public class InicialActivity extends Activity {
         setContentView(R.layout.tela_inicial);
 
         new Handler().postDelayed(() -> {
-            SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-            boolean isLoggedIn = prefs.getBoolean("manterLogado", false);
+            SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
+            boolean isLoggedIn = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
 
             Intent intent;
             if (isLoggedIn) {

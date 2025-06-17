@@ -7,7 +7,6 @@ import android.os.Bundle;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.login.LoginActivity;
 import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.ui.components.login.PainelAdmActivity;
 
 public class MenuActivity extends Activity {
     @Override
@@ -30,7 +29,7 @@ public class MenuActivity extends Activity {
 
     private void abrirLogin(int tipoUsuario) {
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.putExtra("TIPO_USUARIO", tipoUsuario);
+        intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }

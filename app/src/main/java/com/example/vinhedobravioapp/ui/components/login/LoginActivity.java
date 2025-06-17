@@ -17,7 +17,8 @@ import android.widget.Toast;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.PainelAdmActivity;
 
 public class LoginActivity extends Activity {
 
@@ -25,14 +26,21 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-        boolean manterLogado = prefs.getBoolean("manterLogado", false);
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
+        boolean manterLogado = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
+        int tipoUsuario = prefs.getInt(getString(R.string.tipo_usuario_shared), getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0));
+        String nomeUsuario;
 
         if (manterLogado) {
-            Intent intent = new Intent(this, PainelAdmActivity.class);
+            Intent intent;
+            if (tipoUsuario == 1) {
+                intent = new Intent(this, DashboardAdmActivity.class);
+            } else {
+                intent = new Intent(this, PainelAdmActivity.class);
+            }
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
-            return;
         }
 
         setContentView(R.layout.login);
@@ -45,18 +53,19 @@ public class LoginActivity extends Activity {
         ImageView toggleSenha = findViewById(R.id.iconToggleSenha);
         CheckBox checkboxManterLogado = findViewById(R.id.checkboxManterLogado);
 
-        int tipoUsuario = prefs.getInt("tipoUsuario", getIntent().getIntExtra("TIPO_USUARIO", 0));
-        String nomeUsuario;
-        final String[] senhas = {"Adm", "Rep"};
-        final String[] emails = {"adm@bravio.com", "rep@bravio.com"};
+        String emailPreenchido = getIntent().getStringExtra(getString(R.string.email_input));
+        String senhaPreenchida = getIntent().getStringExtra(getString(R.string.senha_input));
+        if (emailPreenchido != null) campoEmail.setText(emailPreenchido);
+        if (senhaPreenchida != null) campoSenha.setText(senhaPreenchida);
+
+        final String[] senhas = {getString(R.string.senha_adm), getString(R.string.senha_rep)};
+        final String[] emails = {getString(R.string.email_adm), getString(R.string.email_rep)};
         final boolean[] senhaVisivel = {false};
 
         if (tipoUsuario == 1) {
-            nomeUsuario = "Administrador";
-        } else if (tipoUsuario == 2) {
-            nomeUsuario = "Representante";
+            nomeUsuario = getString(R.string.titulo_adm);
         } else {
-            nomeUsuario = "Usuário";
+            nomeUsuario = getString(R.string.titulo_rep);
         }
 
         toggleSenha.setOnClickListener(v -> {
@@ -79,12 +88,12 @@ public class LoginActivity extends Activity {
             String email = campoEmail.getText().toString().trim();
 
             if (email.isEmpty() || senha.isEmpty()) {
-                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.campos_vazios), Toast.LENGTH_SHORT).show();
                 return;
             }
 
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(this, "E-mail inválido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.email_senha_incorreto), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -100,7 +109,9 @@ public class LoginActivity extends Activity {
 
         esqueceuSenha.setOnClickListener(v -> {
             Intent intent = new Intent(this, EsqueceuSenhaActivity.class);
-            intent.putExtra("TIPO_USUARIO", tipoUsuario);
+            intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
+            intent.putExtra(getString(R.string.email_input), campoEmail.getText().toString().trim());
+            intent.putExtra(getString(R.string.senha_input), campoSenha.getText().toString().trim());
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
@@ -109,20 +120,26 @@ public class LoginActivity extends Activity {
     private void verificaLogin(String emailDigitado, String senhaDigitada, int tipoUsuario, String emailCerto, String senhaCerta, CheckBox checkboxManterLogado) {
         if (emailDigitado.equals(emailCerto) && senhaDigitada.equals(senhaCerta)) {
             if (checkboxManterLogado.isChecked()) {
-                SharedPreferences.Editor editor = getSharedPreferences("loginPrefs", MODE_PRIVATE).edit();
-                editor.putBoolean("manterLogado", true);
-                editor.putString("email", emailDigitado);
-                editor.putString("senha", senhaDigitada);
-                editor.putInt("tipoUsuario", tipoUsuario);
+                SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
+                editor.putBoolean(getString(R.string.manter_logado_shared), true);
+                editor.putString(getString(R.string.email_shared), emailDigitado);
+                editor.putString(getString(R.string.senha_shared), senhaDigitada);
+                editor.putInt(getString(R.string.tipo_usuario_shared), tipoUsuario);
                 editor.apply();
             }
 
-            Intent intent = new Intent(this, PainelAdmActivity.class);
+            Intent intent;
+            if (tipoUsuario == 1) {
+                intent = new Intent(this, DashboardAdmActivity.class);
+            } else {
+                intent = new Intent(this, PainelAdmActivity.class);
+            }
+
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         } else {
-            Toast.makeText(this, "E-mail ou senha incorretos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.email_senha_incorreto), Toast.LENGTH_SHORT).show();
         }
     }
 
