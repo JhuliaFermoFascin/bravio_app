@@ -7,13 +7,12 @@ import android.os.Bundle;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.login.LoginActivity;
 import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.ui.components.login.PainelAdmActivity;
 
 public class MenuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu);
+        setContentView(R.layout.home_menu);
 
         CustomButtonComponent btnAdm = findViewById(R.id.btnEntrarAdm);
         CustomButtonComponent btnRep = findViewById(R.id.btnEntrarRepresentante);

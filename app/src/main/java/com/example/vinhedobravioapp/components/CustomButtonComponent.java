@@ -38,7 +38,7 @@ public class CustomButtonComponent extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        LayoutInflater.from(context).inflate(R.layout.view_custom_button, this, true);
+        LayoutInflater.from(context).inflate(R.layout.component_view_custom_button, this, true);
 
         container = findViewById(R.id.container_btn);
         textView = findViewById(R.id.btn_text);

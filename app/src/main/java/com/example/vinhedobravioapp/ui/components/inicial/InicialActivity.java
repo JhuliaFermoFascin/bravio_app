@@ -12,7 +12,7 @@ public class InicialActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_inicial);
+        setContentView(R.layout.home_tela_inicial);
 
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(this, MenuActivity.class);

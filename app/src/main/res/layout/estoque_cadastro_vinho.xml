@@ -6,8 +6,12 @@
     android:orientation="vertical"
     android:background="@color/background_text_primary">
 
-    <include layout="@layout/view_custom_header"/>
+    <include layout="@layout/component_view_custom_header"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -445,4 +449,5 @@
         </LinearLayout>
     </LinearLayout>
     </ScrollView>
+    </LinearLayout>
 </LinearLayout>

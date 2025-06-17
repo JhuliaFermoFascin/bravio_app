@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
-    android:background="@color/background_text_primary"
-    android:gravity="center">
-
+    android:background="@color/background_text_primary">
 
     <TextView
         android:layout_width="match_parent"
@@ -21,11 +18,6 @@
         android:layout_marginBottom="30dp"
         />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
 
     <TextView
         android:layout_width="match_parent"
@@ -33,103 +25,40 @@
         android:text="@string/administrative_panel"
         android:gravity="center"
         style="@style/MainTitle"
+        android:layout_marginBottom="20dp"
         />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="20dp">
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/estoque_btn"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/titulo_pizza"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:btn_style="PRIMARY"
-            app:btn_text="@string/inventory"
-            app:btn_icon="@drawable/icon_wine"
-            android:layout_marginBottom="10dp"
+            android:text="@string/pieChart"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="20dp"
             />
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/cliente_btn"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:btn_style="PRIMARY"
-            app:btn_text="@string/customers"
-            app:btn_icon="@drawable/icon_people"
-            android:layout_marginBottom="10dp"
+            android:text="@string/lineChart"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal" />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             />
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/representantes_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_style="PRIMARY"
-            app:btn_text="@string/representatives"
-            app:btn_icon="@drawable/icon_business"
-            android:layout_marginBottom="10dp"
-            />
-
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/pedidos_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_style="PRIMARY"
-            app:btn_text="@string/orders"
-            app:btn_icon="@drawable/icon_document"
-            android:layout_marginBottom="10dp"
-            />
-
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/comissoes_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_style="PRIMARY"
-            app:btn_text="@string/commissions"
-            app:btn_icon="@drawable/icon_money"
-            android:layout_marginBottom="10dp"
-            />
-
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/relatorios_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_style="PRIMARY"
-            app:btn_text="@string/reports"
-            app:btn_icon="@drawable/icon_performance"
-            android:layout_marginBottom="10dp"
-            />
-
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/usuarios_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_style="PRIMARY"
-            app:btn_text="@string/users"
-            app:btn_icon="@drawable/icon_user"
-            android:layout_marginBottom="10dp"
-            />
-
-    </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="40dp">
-
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/exit_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_style="EXIT"
-            app:btn_text="@string/exit"
-            app:btn_icon="@drawable/icon_out"
-            />
-        </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

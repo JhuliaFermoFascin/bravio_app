@@ -11,9 +11,11 @@
     <string name="commissions">Comissões</string>
     <string name="reports">Relatórios</string>
     <string name="users">Usuários</string>
-        <!-- Estoque -->
+    <string name="pieChart">Vinhos mais vendidos</string>
+    <string name="lineChart">Pedidos por mês</string>
+
+    <!-- Estoque -->
         <string name="inventory_search">Buscar por nome ou tipo</string>
-        <string name="add_wine">+ </string>
         <string name="add_new_wine">Cadastrar Novo Vinho</string>
             <!-- Estoque Form -->
             <string name="wine_name">Nome do vinho</string>
@@ -75,6 +77,46 @@
     <string name="details_quantity">Quantidade:</string>
     <string name="details_unit_price">Valor unitário:</string>
 
+
+<!--    Pedidos-->
+    <string name="order_search">Buscar por cliente ou status</string>
+    <string name="order_title">Pedidos</string>
+    <string name="add_new_order">Cadastrar Novo Pedido</string>
+<!--    Pedidos Fomr-->
+        <string name="order_products">Itens</string>
+        <string name="selected_products">Produtos selecionados:</string>
+        <string name="order_payment">Pagamento</string>
+        <string name="order_summary">Resumo do Pedido</string>
+        <string name="order_customer">Cliente</string>
+        <string name="order_representative">Representante</string>
+        <string name="order_total">Total</string>
+        <string name="order_search_item">Buscar produto ...</string>
+        <string name="order_unit_price">Valor unitário: R$ 0,00</string>
+        <string name="order_select">Selecione o produto</string>
+        <string name="order_quantity">Quantidade</string>
+        <string name="add_order_customer">Informe o cliente</string>
+        <string name="add_order_representative">Informe o representante</string>
+        <string name="add_order_products">Adicionar produtos</string>
+    
+    
+    
+<!--    Representantes -->
+<!--    Visitas-->
+    <string name="visit">Visitas</string>
+    <string name="add_new_visit">Adicionar Nova Visita</string>
+    <string name="visit_filter">Buscar por cliente</string>
+    <string name="visit_nome">Nome/Razão Social</string>
+    <string name="visit_cpf">CPF/CNPJ</string>
+    <string name="visit_address">Endereço</string>
+    <string name="visit_contacts">Contatos</string>
+    <string name="visit_date_time">Data e Hora</string>
+    <string name="visit_select_customer">Selecione o cliente</string>
+    <string name="visit_select_address">Informe o endereço</string>
+    <string name="visit_add_date_time">Informe a data e horário</string>
+
+
+
+
     <!-- Utils -->
     <string name="exit">Sair</string>
     <string name="save">Salvar</string>
@@ -83,6 +125,7 @@
     <string name="close">Fechar</string>
     <string name="login">Entrar</string>
     <string name="action_settings">Settings</string>
+    <string name="add">+ </string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

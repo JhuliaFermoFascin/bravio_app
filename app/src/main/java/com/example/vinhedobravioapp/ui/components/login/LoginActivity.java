@@ -14,7 +14,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.home_login);
 
         TextView tituloLogin = findViewById(R.id.loginAdm);
         CustomButtonComponent btnVoltar = findViewById(R.id.btnRetornar);

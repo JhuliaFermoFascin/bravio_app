@@ -3,7 +3,6 @@ package com.example.vinhedobravioapp.ui.components.vinhos;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +12,6 @@ import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.WineAdapter;
 import com.example.vinhedobravioapp.components.CustomHeaderComponent;
 import com.example.vinhedobravioapp.database.model.WineModel;
-import com.example.vinhedobravioapp.ui.components.login.PainelAdmActivity;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;

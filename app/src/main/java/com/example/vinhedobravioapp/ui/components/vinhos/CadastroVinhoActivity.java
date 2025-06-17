@@ -2,19 +2,14 @@ package com.example.vinhedobravioapp.ui.components.vinhos;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.TextUtils;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,8 +20,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.components.CustomButtonComponent;
@@ -54,7 +47,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cadastro_vinho);
+        setContentView(R.layout.estoque_cadastro_vinho);
 
         context = this;
 
@@ -163,7 +156,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
     }
 
     private void abrirCustomDialogList(String titulo, String[] itens, boolean multiSelecao, boolean[] selecionadosBoolean, List<String> selecionadosLista, Runnable onConfirmar){
-        View dialogView = getLayoutInflater().inflate(R.layout.dialog_cadastro_vinhos, null);
+        View dialogView = getLayoutInflater().inflate(R.layout.estoque_dialog_cadastro_vinhos, null);
 
         TextView dialogTitle = dialogView.findViewById(R.id.dialogTitle);
         dialogTitle.setText(titulo);
