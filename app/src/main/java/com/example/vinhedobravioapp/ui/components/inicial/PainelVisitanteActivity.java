@@ -8,11 +8,11 @@ import android.widget.Button;
 
 import com.example.vinhedobravioapp.R;
 
-public class BemVindoActivity extends Activity {
+public class PainelVisitanteActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bem_vindo);
+        setContentView(R.layout.activity_painel_visitante);
     }
     @Override
     public void onBackPressed() {

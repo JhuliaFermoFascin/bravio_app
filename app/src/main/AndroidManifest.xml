@@ -27,8 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.components.inicial.MenuActivity" />
-        <activity android:name=".ui.components.inicial.BemVindoActivity" />
-        <activity android:name=".ui.components.inicial.DashboardAdmActivity" />
+        <activity android:name=".ui.components.inicial.PainelVisitanteActivity" />
+        <activity android:name=".ui.components.inicial.PainelAdmActivity" />
         <activity android:name=".ui.components.login.LoginActivity" />
         <activity android:name=".ui.components.inicial.PainelRepresentanteActivity" />
         <activity android:name=".ui.components.login.EsqueceuSenhaActivity" />

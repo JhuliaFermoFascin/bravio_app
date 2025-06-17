@@ -9,8 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.ui.components.inicial.BemVindoActivity;
-import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.PainelVisitanteActivity;
 import com.example.vinhedobravioapp.ui.components.pedidos.PedidosActivity;
 import com.example.vinhedobravioapp.ui.components.vinhos.EstoqueActivity;
 import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
@@ -74,7 +73,7 @@ public class MenuSuspensoHelper {
         });
 
         visitantes_page_btn.setOnClickListener(view -> {
-            Intent intent = new Intent(activity, BemVindoActivity.class);
+            Intent intent = new Intent(activity, PainelVisitanteActivity.class);
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             popupWindow.dismiss();

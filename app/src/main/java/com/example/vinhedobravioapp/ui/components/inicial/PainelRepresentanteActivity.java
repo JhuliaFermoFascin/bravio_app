@@ -19,7 +19,7 @@ public class PainelRepresentanteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard_representante);
+        setContentView(R.layout.activity_painel_representante);
 
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
 

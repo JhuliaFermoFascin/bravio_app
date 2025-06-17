@@ -17,11 +17,9 @@ import android.widget.Toast;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.database.dao.CommercialCategoryDAO;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
-import com.example.vinhedobravioapp.database.model.CommercialCategoryModel;
 import com.example.vinhedobravioapp.database.model.UserModel;
-import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.PainelAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
 
 public class LoginActivity extends Activity {
@@ -37,7 +35,7 @@ public class LoginActivity extends Activity {
         if (manterLogado) {
             Intent intent;
             if (tipoUsuario == 1) {
-                intent = new Intent(this, DashboardAdmActivity.class);
+                intent = new Intent(this, PainelAdmActivity.class);
             } else {
                 intent = new Intent(this, PainelRepresentanteActivity.class);
             }
@@ -134,7 +132,7 @@ public class LoginActivity extends Activity {
 
             Intent intent;
             if (user.getIsAdmin() == 1) {
-                intent = new Intent(this, DashboardAdmActivity.class);
+                intent = new Intent(this, PainelAdmActivity.class);
             } else {
                 intent = new Intent(this, PainelRepresentanteActivity.class);
             }

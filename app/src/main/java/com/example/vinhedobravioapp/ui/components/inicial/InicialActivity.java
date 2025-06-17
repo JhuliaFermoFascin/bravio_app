@@ -9,7 +9,8 @@ import android.util.Log;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
-import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
+import com.example.vinhedobravioapp.ui.components.utils.DaoCrudTester;
+import com.example.vinhedobravioapp.ui.components.utils.FindAnyUsers;
 
 public class InicialActivity extends Activity {
 

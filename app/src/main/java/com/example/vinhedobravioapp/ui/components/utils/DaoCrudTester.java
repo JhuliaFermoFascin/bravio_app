@@ -1,4 +1,4 @@
-package com.example.vinhedobravioapp.ui.components.inicial;
+package com.example.vinhedobravioapp.ui.components.utils;
 
 import android.content.Context;
 import android.util.Log;
