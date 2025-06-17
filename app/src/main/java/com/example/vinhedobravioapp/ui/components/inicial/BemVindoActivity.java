@@ -2,19 +2,17 @@ package com.example.vinhedobravioapp.ui.components.inicial;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
 
 public class BemVindoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bem_vindo);
+        setContentView(R.layout.home_bem_vindo);
     }
     @Override
     public void onBackPressed() {

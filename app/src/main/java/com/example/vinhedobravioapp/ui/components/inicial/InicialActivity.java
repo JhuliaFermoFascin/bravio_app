@@ -23,7 +23,7 @@ public class InicialActivity extends Activity {
 
             Intent intent;
             if (isLoggedIn) {
-                intent = new Intent(this, PainelAdmActivity.class);
+                intent = new Intent(this, PainelRepresentanteActivity.class);
             } else {
                 intent = new Intent(this, MenuActivity.class);
             }

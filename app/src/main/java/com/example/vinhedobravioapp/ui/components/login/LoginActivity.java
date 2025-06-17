@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.components.CustomButtonComponent;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
-import com.example.vinhedobravioapp.ui.components.inicial.PainelAdmActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
 
 public class LoginActivity extends Activity {
 
@@ -36,14 +36,14 @@ public class LoginActivity extends Activity {
             if (tipoUsuario == 1) {
                 intent = new Intent(this, DashboardAdmActivity.class);
             } else {
-                intent = new Intent(this, PainelAdmActivity.class);
+                intent = new Intent(this, PainelRepresentanteActivity.class);
             }
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         }
 
-        setContentView(R.layout.login);
+        setContentView(R.layout.home_login);
 
         TextView tituloLogin = findViewById(R.id.login);
         TextView esqueceuSenha = findViewById(R.id.esqueceuSenha);
@@ -132,7 +132,7 @@ public class LoginActivity extends Activity {
             if (tipoUsuario == 1) {
                 intent = new Intent(this, DashboardAdmActivity.class);
             } else {
-                intent = new Intent(this, PainelAdmActivity.class);
+                intent = new Intent(this, PainelRepresentanteActivity.class);
             }
 
             startActivity(intent);

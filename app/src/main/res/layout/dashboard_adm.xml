@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
-    android:background="@color/background_text_primary"
-    android:gravity="center">
-
+    android:background="@color/background_text_primary">
     <ImageView
         android:id="@+id/menu_suspenso"
         android:layout_width="20dp"
@@ -29,20 +26,47 @@
         android:layout_marginTop="30dp"
         />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/administrative_panel"
+        android:gravity="center"
+        style="@style/MainTitle"
+        android:layout_marginBottom="20dp"
+        />
+
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/titulo_pizza"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dashboard"
-            android:gravity="center"
-            style="@style/MainTitle"
+            android:text="@string/pieChart"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginBottom="20dp"
             />
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lineChart"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal" />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            />
+
 
 </LinearLayout>

@@ -31,13 +31,13 @@
         <activity android:name=".ui.components.inicial.BemVindoActivity" />
         <activity android:name=".ui.components.inicial.DashboardAdmActivity" />
         <activity android:name=".ui.components.login.LoginActivity" />
-        <activity android:name=".ui.components.inicial.PainelAdmActivity" />
+        <activity android:name=".ui.components.inicial.PainelRepresentanteActivity" />
         <activity android:name=".ui.components.login.EsqueceuSenhaActivity" />
         <activity android:name=".ui.components.vinhos.CadastroVinhoActivity" />
         <activity android:name=".ui.components.vinhos.EstoqueActivity" />
         <activity android:name=".ui.components.pedidos.PedidosActivity" />
         <activity android:name=".ui.components.pedidos.CadastroPedidoActivity" />
-<!--        <activity android:name=".ui.components.visitas.VisitasActivity" />-->
+        <activity android:name=".ui.components.visitas.VisitasActivity" />
         <activity android:name=".ui.components.visitas.CadastroVisitasActivity" />
         <meta-data
             android:name="preloaded_fonts"
