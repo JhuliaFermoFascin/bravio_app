@@ -10,4 +10,6 @@
     <color name="button_text_green_primary">#1c3a13</color>
     <color name="text_green_secondary">#4a6b4e</color>
     <color name="button_green_terciary">#7a8c3e</color>
+    <color name="background_popup_black">#73000000</color>
+    <color name="background_resumo_pedidos">#F9F5ED</color>
 </resources>

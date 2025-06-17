@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,7 +33,7 @@ public class DetalhesVinhoActivity  extends DialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         WineModel wine = (WineModel) getArguments().getSerializable(ARG_WINE);
 
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.detalhes_vinho, null);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.estoque_detalhes_vinho, null);
 
         TextView nome = view.findViewById(R.id.detail_nome);
         TextView safra = view.findViewById(R.id.detail_safra);

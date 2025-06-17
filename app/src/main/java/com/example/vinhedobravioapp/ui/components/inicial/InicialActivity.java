@@ -33,12 +33,12 @@ public class InicialActivity extends Activity {
         DaoCrudTester.testAllDaos(this);
 
         new Handler().postDelayed(() -> {
-            SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-            boolean isLoggedIn = prefs.getBoolean("manterLogado", false);
+            SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
+            boolean isLoggedIn = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
 
             Intent intent;
             if (isLoggedIn) {
-                intent = new Intent(this, PainelAdmActivity.class);
+                intent = new Intent(this, PainelRepresentanteActivity.class);
             } else {
                 intent = new Intent(this, MenuActivity.class);
             }

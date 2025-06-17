@@ -1,4 +1,4 @@
-package com.example.vinhedobravioapp.ui.components.login;
+package com.example.vinhedobravioapp.ui.components.inicial;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -18,27 +19,18 @@ import com.example.vinhedobravioapp.database.dao.OrderDAO;
 import com.example.vinhedobravioapp.database.model.OrderModel;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 import com.example.vinhedobravioapp.ui.components.vinhos.EstoqueActivity;
+import com.example.vinhedobravioapp.ui.components.helper.MenuSuspensoHelper;
 
-public class PainelAdmActivity extends AppCompatActivity {
-
-    private CustomButtonComponent estoque_btn;
-    private CustomButtonComponent exit_btn;
+public class PainelRepresentanteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.painel_administrativo);
+        setContentView(R.layout.dashboard_representante);
 
-        estoque_btn = findViewById(R.id.estoque_btn);
+        ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
 
-        estoque_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PainelAdmActivity.this, EstoqueActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            }
-        });
+        menu_suspenso.setOnClickListener(v -> MenuSuspensoHelper.show(this, false));
     }
 
     @Override
@@ -55,11 +47,11 @@ public class PainelAdmActivity extends AppCompatActivity {
 
         btnYes.setOnClickListener(v -> {
             dialog.dismiss();
-            SharedPreferences.Editor editor = getSharedPreferences("loginPrefs", MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
 
-            Intent intent = new Intent(PainelAdmActivity.this, MenuActivity.class);
+            Intent intent = new Intent(PainelRepresentanteActivity.this, MenuActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

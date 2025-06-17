@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_text_primary">
+
+    <include layout="@layout/component_view_custom_header"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="20dp"
+                android:background="@drawable/border_purple"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_customer"
+                        style="@style/AddVinhoTitle" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="@string/visit_select_customer"
+                        android:inputType="text"
+                        android:layout_marginBottom="20dp"
+                        style="@style/InputAddVinho"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/visit_cpf"
+                        style="@style/AddVinhoTitle" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="text"
+                        android:layout_marginBottom="20dp"
+                        style="@style/InputAddVinho"
+                        android:clickable="false"
+                        android:focusable="false"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/visit_contacts"
+                        style="@style/AddVinhoTitle" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="text"
+                        android:layout_marginBottom="20dp"
+                        style="@style/InputAddVinho"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/visit_address"
+                        style="@style/AddVinhoTitle" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="text"
+                        android:layout_marginBottom="20dp"
+                        style="@style/InputAddVinho"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/visit_date_time"
+                        style="@style/AddVinhoTitle" />
+
+                    <EditText
+                        android:id="@+id/date_time_visit"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="none"
+                        android:layout_marginBottom="20dp"
+                        android:hint="@string/visit_add_date_time"
+                        style="@style/InputAddVinho"
+                        android:focusable="false"
+                        android:clickable="true"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="2"
+                    android:layout_marginBottom="10dp">
+
+                    <com.example.vinhedobravioapp.components.CustomButtonComponent
+                        android:id="@+id/cancel_order_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:btn_style="SECONDARY"
+                        app:btn_text="@string/cancel"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="5dp"
+                        />
+
+                    <com.example.vinhedobravioapp.components.CustomButtonComponent
+                        android:id="@+id/save_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:btn_style="SAVE"
+                        app:btn_text="@string/save"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

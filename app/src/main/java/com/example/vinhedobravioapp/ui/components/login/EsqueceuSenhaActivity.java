@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 
 public class EsqueceuSenhaActivity extends Activity {
     @Override
@@ -16,11 +15,13 @@ public class EsqueceuSenhaActivity extends Activity {
 
         CustomButtonComponent btnVoltar = findViewById(R.id.btnRetornar);
 
-        int tipoUsuario = getIntent().getIntExtra("TIPO_USUARIO", 0);
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0);
 
         btnVoltar.setOnClickListener(v -> {
             Intent intent = new Intent(this, LoginActivity.class);
-            intent.putExtra("TIPO_USUARIO", tipoUsuario);
+            intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
+            intent.putExtra(getString(R.string.email_input), getIntent().getStringExtra(getString(R.string.email_input)));
+            intent.putExtra(getString(R.string.senha_input), getIntent().getStringExtra(getString(R.string.senha_input)));
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
