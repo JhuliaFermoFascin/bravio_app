@@ -17,7 +17,6 @@ public class TastingNoteDAO extends AbstrataDAO {
         try {
             Open();
             ContentValues values = new ContentValues();
-            values.put(TastingNoteModel.COLUMN_ID, tastingNoteModel.getTastingNoteId());
             values.put(TastingNoteModel.COLUMN_NOTE, tastingNoteModel.getNote());
             result = db.insert(TastingNoteModel.TABLE_NAME, null, values);
         } finally {
