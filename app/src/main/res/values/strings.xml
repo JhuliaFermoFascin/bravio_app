@@ -14,29 +14,9 @@
     <string name="reports">Relatórios</string>
     <string name="users">Usuários</string>
     <!-- Estoque -->
-    <string name="inventory_search">Buscar por nome ou tipo</string>
     <string name="add_wine">+ </string>
-    <string name="add_new_wine">Cadastrar Novo Vinho</string>
     <!-- Estoque Form -->
-    <string name="wine_name">Nome do vinho</string>
-    <string name="winery_name">Nome da vinícola</string>
-    <string name="commercial_category">Categoria Comercial</string>
-    <string name="geographic_origin">Origem geográfica</string>
-    <string name="harvest">Safra</string>
-    <string name="wine_type">Tipo</string>
-    <string name="description">Descrição</string>
-    <string name="tasting_notes">Notas de degustação</string>
-    <string name="food_parings">Harmonizações</string>
-    <string name="alcohol_content">Teor Alcoólico</string>
-    <string name="volume">Volume</string>
-    <string name="quantity">Quantidade disponível</string>
-    <string name="unit_price">Valor unitário</string>
-    <string name="composition">Composição</string>
-    <string name="grapes">Uvas</string>
-    <string name="acidity">Acidez</string>
-    <string name="ideal_temperature">Temperatura ideal</string>
-    <string name="estimated_storage_time">Tempo de guarda estimado</string>
-    <string name="reviews">Avaliações</string>
+
     <string name="agenda">Agendar Visita</string>
     <string name="visitors">Página de Visitantes</string>
     <string name="representantes">Página de Representantes</string>
@@ -68,6 +48,7 @@
             <string name="ideal_temperature">Temperatura ideal</string>
             <string name="estimated_storage_time">Tempo de guarda estimado</string>
             <string name="reviews">Avaliações</string>
+    <string name="dashboard">Dashboard</string>
 
             <!-- Add Estoque Form -->
                 <string name="add_wine_name">Informe o nome do vinho</string>

@@ -53,8 +53,6 @@ public class LoginActivity extends Activity {
         ImageView toggleSenha = findViewById(R.id.iconToggleSenha);
         CheckBox checkboxManterLogado = findViewById(R.id.checkboxManterLogado);
 
-        int tipoUsuario = prefs.getInt("tipoUsuario", getIntent().getIntExtra("TIPO_USUARIO", 0));
-        String nomeUsuario;
         String emailPreenchido = getIntent().getStringExtra(getString(R.string.email_input));
         String senhaPreenchida = getIntent().getStringExtra(getString(R.string.senha_input));
         if (emailPreenchido != null) campoEmail.setText(emailPreenchido);
@@ -99,32 +97,14 @@ public class LoginActivity extends Activity {
                 return;
             }
 
-            // if(tipoUsuario == 1){
-            //     verificaLogin(email, senha, tipoUsuario, emails[0], senhas[0], checkboxManterLogado);
-            // }
-            // if(tipoUsuario == 2){
-            //     verificaLogin(email, senha, tipoUsuario, emails[1], senhas[1], checkboxManterLogado);
-            // }
-
-            // Novo login usando banco de dados
-            com.example.vinhedobravioapp.database.dao.UserDAO userDAO = new com.example.vinhedobravioapp.database.dao.UserDAO(this);
-            com.example.vinhedobravioapp.database.model.UserModel user = userDAO.findByEmailAndPassword(email, senha);
-            if (user != null) {
-                if (checkboxManterLogado.isChecked()) {
-                    SharedPreferences.Editor editor = getSharedPreferences("loginPrefs", MODE_PRIVATE).edit();
-                    editor.putBoolean("manterLogado", true);
-                    editor.putString("email", email);
-                    editor.putString("senha", senha);
-                    editor.putInt("tipoUsuario", tipoUsuario);
-                    editor.apply();
-                }
-                Intent intent = new Intent(this, PainelAdmActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                finish();
-            } else {
-                Toast.makeText(this, "E-mail ou senha incorretos", Toast.LENGTH_SHORT).show();
+            if(tipoUsuario == 1){
+                verificaLogin(email, senha, tipoUsuario, emails[0], senhas[0], checkboxManterLogado);
             }
+
+            if(tipoUsuario == 2){
+                verificaLogin(email, senha, tipoUsuario, emails[1], senhas[1], checkboxManterLogado);
+            }
+
         });
 
         esqueceuSenha.setOnClickListener(v -> {
@@ -188,4 +168,3 @@ public class LoginActivity extends Activity {
         dialog.show();
     }
 }
-
