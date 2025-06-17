@@ -23,7 +23,7 @@ public class CadastroVisitasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.visitas_cadastrar_visitas);
+        setContentView(R.layout.activity_visitas_cadastrar_visitas);
 
         CustomHeaderComponent.configurarHeader(this, getString(R.string.add_new_visit));
 

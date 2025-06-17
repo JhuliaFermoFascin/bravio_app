@@ -36,7 +36,7 @@ public class CadastroPedidoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pedidos_cadastrar_pedido);
+        setContentView(R.layout.activity_pedidos_cadastrar_pedido);
 
         CustomHeaderComponent.configurarHeader(this, getString(R.string.add_new_order));
 

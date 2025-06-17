@@ -16,7 +16,7 @@ public class VisitasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.visitas);
+        setContentView(R.layout.activity_visitas);
 
         CustomHeaderComponent.configurarHeader(this, getString(R.string.visit));
 

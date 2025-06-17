@@ -12,7 +12,7 @@ public class MenuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_menu);
+        setContentView(R.layout.activity_menu);
 
         CustomButtonComponent btnAdm = findViewById(R.id.btnEntrarAdm);
         CustomButtonComponent btnRep = findViewById(R.id.btnEntrarRepresentante);

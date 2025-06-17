@@ -40,7 +40,7 @@ public class DashboardAdmActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dashboard_adm);
+        setContentView(R.layout.activity_dashboard_adm);
 
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
 

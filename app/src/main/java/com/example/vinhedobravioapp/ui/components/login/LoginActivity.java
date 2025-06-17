@@ -43,7 +43,7 @@ public class LoginActivity extends Activity {
             finish();
         }
 
-        setContentView(R.layout.home_login);
+        setContentView(R.layout.activity_login);
 
         TextView tituloLogin = findViewById(R.id.login);
         TextView esqueceuSenha = findViewById(R.id.esqueceuSenha);

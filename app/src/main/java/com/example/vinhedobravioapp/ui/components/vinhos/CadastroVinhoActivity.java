@@ -7,8 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -53,7 +51,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.estoque_cadastro_vinho);
+        setContentView(R.layout.activity_estoque_cadastro_vinho);
                 wineDAO = new WineDAO(this);
 
 

@@ -16,7 +16,7 @@ public class PedidosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pedidos);
+        setContentView(R.layout.activity_pedidos);
 
         CustomHeaderComponent.configurarHeader(this, getString(R.string.order_title));
 
