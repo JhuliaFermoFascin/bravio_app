@@ -16,6 +16,10 @@ public class BemVindoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_bem_vindo);
+    }
+    @Override
+    public void onBackPressed() {
+        View dialogView = getLayoutInflater().inflate(R.layout.modal_confirmacao, null);
 
         origemAdm = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0);
 

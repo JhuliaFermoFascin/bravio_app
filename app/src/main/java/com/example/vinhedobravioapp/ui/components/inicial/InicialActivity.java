@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.database.DPOpenHelper;
+import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 
 public class InicialActivity extends Activity {
 
@@ -15,7 +18,18 @@ public class InicialActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_tela_inicial);
+        setContentView(R.layout.activity_tela_inicial);
+        
+        DPOpenHelper db = new DPOpenHelper(this);
+        Log.d("InicialActivity", "Iniciando app, chamando ensureDefaultUsers...");
+        FindAnyUsers.ensureDefaultUsers(this);
+        FindAnyUsers.ensureDefaultWineTypes(this);
+        FindAnyUsers.ensureDefaultGeographicOrigins(this);
+        FindAnyUsers.ensureDefaultGrapes(this);
+        FindAnyUsers.ensureDefaultTastingNotes(this);
+        FindAnyUsers.ensureDefaultWineries(this);
+        Log.d("InicialActivity", "ensureDefaultUsers executado");
+        DaoCrudTester.testAllDaos(this);
 
         new Handler().postDelayed(() -> {
             SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
@@ -38,4 +52,5 @@ public class InicialActivity extends Activity {
             finish();
         }, DELAY_MS);
     }
+
 }

@@ -3,8 +3,9 @@
 
     <!-- Painel Administrativo -->
     <string name="administrative_panel">Painel Adminsitrativo</string>
-    <string name="dashboard">Dashboard</string>
-    <string name="welcome">Bem-vindo(a), user</string>
+    <string name="welcome">Bem-vindo(a), </string>
+    <string name="welcomeUser">Nome Usuário</string>
+    <string name="inventory">Estoque</string>
     <string name="wine">Vinhos</string>
     <string name="customers">Clientes</string>
     <string name="representatives">Representantes</string>
@@ -12,6 +13,10 @@
     <string name="commissions">Comissões</string>
     <string name="reports">Relatórios</string>
     <string name="users">Usuários</string>
+    <!-- Estoque -->
+    <string name="add_wine">+ </string>
+    <!-- Estoque Form -->
+
     <string name="agenda">Agendar Visita</string>
     <string name="visitors">Página de Visitantes</string>
     <string name="representantes">Página de Representantes</string>
@@ -43,6 +48,7 @@
             <string name="ideal_temperature">Temperatura ideal</string>
             <string name="estimated_storage_time">Tempo de guarda estimado</string>
             <string name="reviews">Avaliações</string>
+    <string name="dashboard">Dashboard</string>
 
             <!-- Add Estoque Form -->
                 <string name="add_wine_name">Informe o nome do vinho</string>

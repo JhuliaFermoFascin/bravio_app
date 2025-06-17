@@ -25,4 +25,72 @@ public class TastingNoteDAO extends AbstrataDAO {
         }
         return result;
     }
+
+    public TastingNoteModel getById(long id) {
+        TastingNoteModel model = null;
+        try {
+            Open();
+            android.database.Cursor cursor = db.query(TastingNoteModel.TABLE_NAME, null,
+                TastingNoteModel.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)},
+                null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                model = new TastingNoteModel();
+                model.setTastingNoteId(cursor.getLong(cursor.getColumnIndexOrThrow(TastingNoteModel.COLUMN_ID)));
+                model.setNote(cursor.getString(cursor.getColumnIndexOrThrow(TastingNoteModel.COLUMN_NOTE)));
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return model;
+    }
+
+    public java.util.List<TastingNoteModel> getAll() {
+        java.util.List<TastingNoteModel> list = new java.util.ArrayList<>();
+        try {
+            Open();
+            android.database.Cursor cursor = db.query(TastingNoteModel.TABLE_NAME, null, null, null, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    TastingNoteModel model = new TastingNoteModel();
+                    model.setTastingNoteId(cursor.getLong(cursor.getColumnIndexOrThrow(TastingNoteModel.COLUMN_ID)));
+                    model.setNote(cursor.getString(cursor.getColumnIndexOrThrow(TastingNoteModel.COLUMN_NOTE)));
+                    list.add(model);
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return list;
+    }
+
+    public int update(TastingNoteModel model) {
+        int rows = 0;
+        try {
+            Open();
+            android.content.ContentValues values = new android.content.ContentValues();
+            values.put(TastingNoteModel.COLUMN_NOTE, model.getNote());
+            rows = db.update(TastingNoteModel.TABLE_NAME, values,
+                TastingNoteModel.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(model.getTastingNoteId())});
+        } finally {
+            Close();
+        }
+        return rows;
+    }
+
+    public int delete(long id) {
+        int rows = 0;
+        try {
+            Open();
+            rows = db.delete(TastingNoteModel.TABLE_NAME,
+                TastingNoteModel.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)});
+        } finally {
+            Close();
+        }
+        return rows;
+    }
 }

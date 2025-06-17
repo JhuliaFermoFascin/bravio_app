@@ -52,6 +52,7 @@
                style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextWineName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_wine_name"
@@ -66,6 +67,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextWineryName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_winery_name"
@@ -80,6 +82,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextCommercialCategory"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_commercial_category"
@@ -94,6 +97,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -123,6 +127,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextHarvest"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_harvest"
@@ -138,6 +143,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextGeographicOrigin"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_geographic_origin"
@@ -198,7 +204,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
-                android:id="@+id/wineGrapes"
+                android:id="@+id/editTextGrapes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -237,6 +243,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextAlcoholContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -252,6 +259,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextVolume"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -267,6 +275,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextAcidity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -282,6 +291,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextIdealTemperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -297,6 +307,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextEstimatedStorageTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -326,7 +337,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
-                android:id="@+id/tastingNotes"
+                android:id="@+id/editTextTastingNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -346,6 +357,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/editTextFoodPairings"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_food_parings"
