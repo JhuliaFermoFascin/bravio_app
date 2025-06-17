@@ -10,7 +10,10 @@ import android.widget.PopupWindow;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.inicial.BemVindoActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
+import com.example.vinhedobravioapp.ui.components.pedidos.PedidosActivity;
 import com.example.vinhedobravioapp.ui.components.vinhos.EstoqueActivity;
+import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
 
 public class MenuSuspensoHelper {
     public static void show(Activity activity, boolean isDashboard) {
@@ -35,6 +38,7 @@ public class MenuSuspensoHelper {
         LinearLayout representantes_page_btn = popupView.findViewById(R.id.representantes_page_btn);
         LinearLayout sair_btn = popupView.findViewById(R.id.sair_btn);
         LinearLayout fora_menu = popupView.findViewById(R.id.fora_menu);
+        LinearLayout pedidos_btn = popupView.findViewById(R.id.pedidos_btn);
 
         if (isDashboard) {
             agenda_btn.setVisibility(View.GONE);
@@ -56,12 +60,33 @@ public class MenuSuspensoHelper {
             popupWindow.dismiss();
         });
 
+        agenda_btn.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, VisitasActivity.class);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+        });
+
+        pedidos_btn.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, PedidosActivity.class);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            popupWindow.dismiss();
+        });
+
         visitantes_page_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, BemVindoActivity.class);
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             popupWindow.dismiss();
         });
+
+//        Verificar funcionamento
+//        representantes_page_btn.setOnClickListener(view -> {
+//            Intent intent = new Intent(activity, PainelRepresentanteActivity.class);
+//            activity.startActivity(intent);
+//            activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+//            popupWindow.dismiss();
+//        });
 
         sair_btn.setOnClickListener(view -> {
             popupWindow.dismiss();

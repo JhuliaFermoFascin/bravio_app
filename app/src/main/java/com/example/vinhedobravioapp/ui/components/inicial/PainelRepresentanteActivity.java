@@ -14,12 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.helper.MenuSuspensoHelper;
 
-public class PainelAdmActivity extends AppCompatActivity {
+public class PainelRepresentanteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.painel_administrativo);
+        setContentView(R.layout.dashboard_representante);
 
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
 
@@ -44,7 +44,7 @@ public class PainelAdmActivity extends AppCompatActivity {
             editor.clear();
             editor.apply();
 
-            Intent intent = new Intent(PainelAdmActivity.this, MenuActivity.class);
+            Intent intent = new Intent(PainelRepresentanteActivity.this, MenuActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

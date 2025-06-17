@@ -18,6 +18,7 @@ public class MenuActivity extends Activity {
         CustomButtonComponent btnRep = findViewById(R.id.btnEntrarRepresentante);
         CustomButtonComponent btnVis = findViewById(R.id.BtnEntrarVisitante);
 
+
         btnAdm.setOnClickListener(v -> abrirLogin(1));
         btnRep.setOnClickListener(v -> abrirLogin(2));
         btnVis.setOnClickListener(v -> {

@@ -1,4 +1,4 @@
-package com.example.vinhedobravioapp.ui.components.login;
+package com.example.vinhedobravioapp.ui.components.utils;
 
 import android.content.Context;
 import android.widget.TextView;
