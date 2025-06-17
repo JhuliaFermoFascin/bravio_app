@@ -9,7 +9,6 @@ import android.util.Log;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
-import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 
 public class InicialActivity extends Activity {
 
@@ -18,7 +17,7 @@ public class InicialActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_inicial);
+        setContentView(R.layout.home_tela_inicial);
         
         DPOpenHelper db = new DPOpenHelper(this);
         Log.d("InicialActivity", "Iniciando app, chamando ensureDefaultUsers...");
@@ -34,10 +33,15 @@ public class InicialActivity extends Activity {
         new Handler().postDelayed(() -> {
             SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
             boolean isLoggedIn = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
+            int tipoUsuario = prefs.getInt(getString(R.string.tipo_usuario_shared), 0);
 
             Intent intent;
             if (isLoggedIn) {
-                intent = new Intent(this, PainelRepresentanteActivity.class);
+                if (tipoUsuario == 1) {
+                    intent = new Intent(this, DashboardAdmActivity.class);
+                } else {
+                    intent = new Intent(this, PainelRepresentanteActivity.class);
+                }
             } else {
                 intent = new Intent(this, MenuActivity.class);
             }
