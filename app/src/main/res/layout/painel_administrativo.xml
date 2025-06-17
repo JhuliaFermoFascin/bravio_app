@@ -6,6 +6,13 @@
     android:orientation="vertical"
     android:padding="30dp"
     android:background="@color/background_text_primary">
+    <ImageView
+        android:id="@+id/menu_suspenso"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:contentDescription="@string/icon_menu"
+        android:src="@drawable/icon_menu"
+        android:layout_gravity="start"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -16,6 +23,7 @@
         android:textColor="@color/button_text_green_primary"
         android:textSize="20sp"
         android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         />
 
 

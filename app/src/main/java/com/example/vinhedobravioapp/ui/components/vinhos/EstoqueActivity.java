@@ -24,14 +24,15 @@ public class EstoqueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estoque);
 
-        CustomHeaderComponent.configurarHeader(this, getString(R.string.inventory));
+        CustomHeaderComponent.configurarHeader(this, getString(R.string.wine));
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addWine_btn);
         addWine_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EstoqueActivity.this, CadastroVinhoActivity.class);
-                startActivity(intent);            }
+                startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);}
         });
 
 

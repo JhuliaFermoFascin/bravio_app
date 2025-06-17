@@ -23,12 +23,14 @@ public class MenuActivity extends Activity {
         btnVis.setOnClickListener(v -> {
             Intent intent = new Intent(this, BemVindoActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
     }
 
     private void abrirLogin(int tipoUsuario) {
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.putExtra("TIPO_USUARIO", tipoUsuario);
+        intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }

@@ -3,20 +3,26 @@
 
     <!-- Painel Administrativo -->
     <string name="administrative_panel">Painel Adminsitrativo</string>
+    <string name="dashboard">Dashboard</string>
     <string name="welcome">Bem-vindo(a), user</string>
-    <string name="inventory">Estoque</string>
+    <string name="wine">Vinhos</string>
     <string name="customers">Clientes</string>
     <string name="representatives">Representantes</string>
     <string name="orders">Pedidos</string>
     <string name="commissions">Comissões</string>
     <string name="reports">Relatórios</string>
     <string name="users">Usuários</string>
+    <string name="agenda">Agendar Visita</string>
+    <string name="visitors">Página de Visitantes</string>
+    <string name="representantes">Página de Representantes</string>
+
     <string name="pieChart">Vinhos mais vendidos</string>
     <string name="lineChart">Pedidos por mês</string>
 
     <!-- Estoque -->
         <string name="inventory_search">Buscar por nome ou tipo</string>
         <string name="add_new_wine">Cadastrar Novo Vinho</string>
+
             <!-- Estoque Form -->
             <string name="wine_name">Nome do vinho</string>
             <string name="winery_name">Nome da vinícola</string>
@@ -56,6 +62,7 @@
                 <string name="add_estimated_storage_time">Informe o tempo de guarda estimado</string>
                 <string name="add_reviews">Informe as avaliações</string>
                 <string name="add_grapes">Selecione as uvas</string>
+
             <!-- Estoque Form Titles -->
                 <string name="general_informations">Informações Gerais</string>
                 <string name="identification_origin">Identificação e Origem</string>
@@ -135,11 +142,13 @@
 
     <!--  tela inicial  -->
     <string name="logo_description">Logo da aplicação</string>
+
     <!--  menu  -->
     <string name="bem_vindo">Bem-vindo ao universo\n dos nossos vinhos</string>
     <string name="entrar_administrador">Entrar como Administrador</string>
     <string name="entrar_representante">Entrar como Representante</string>
     <string name="explorar_visitante">Explorar como Visitante</string>
+
     <!--  logins  -->
     <string name="login_geral">Login como %1$s</string>
     <string name="login_representante">Login como Representante</string>
@@ -147,7 +156,18 @@
     <string name="email">E-mail de acesso</string>
     <string name="senha">Senha</string>
     <string name="esqueci_senha">Esqueci minha senha</string>
+    <string name="recuperar_senha">A senha até pode ser esquecida, mas não o seu bom gosto. Entre em contato com nosso SAC e recupere seu acesso.</string>
+    <string name="esqueceu_senha_title">Esqueceu sua senha?</string>
     <string name="retornar_menu">Retornar ao menu inicial</string>
+    <string name="retornar_login">Retornar ao login</string>
+    <string name="manter_logado">Manter-me logado</string>
+    <string name="email_rep">rep@bravio.com</string>
+    <string name="senha_rep">Rep</string>
+    <string name="titulo_rep">Representante</string>
+    <string name="email_adm">adm@bravio.com</string>
+    <string name="senha_adm">Adm</string>
+    <string name="titulo_adm">Administrador</string>
+
     <!--  tela bem vindos  -->
     <string name="titulo_bem_vindo">BEM-VINDO!</string>
     <string name="descricao_vinicola">Descubra a excelência de nossa vinícola.\nNossa missão é produzir vinhos de alta\n qualidade com dedicação e tradição.</string>
@@ -155,4 +175,37 @@
     <string name="botao_sobre_vinicula">Sobre a Vinícola</string>
     <string name="botao_contato">Contato</string>
     <string name="rodape">Endereço\nTelefone\nRedes Sociais</string>
+    <string name="bem_vindo_title">Bem-vindo ao universo\n dos nossos vinhos</string>
+
+    <!-- icons -->
+    <string name="icon_menu">Ícone de menu</string>
+    <string name="icon_vinho">Ícone de vinho</string>
+    <string name="icon_people">Ícone de pessoas</string>
+    <string name="icon_person">Ícone de pessoa</string>
+    <string name="icon_business">Ícone de negócios</string>
+    <string name="icon_document">Ícone de documento</string>
+    <string name="icon_money">Ícone de dinheiro</string>
+    <string name="icon_performance">Ícone de performance</string>
+    <string name="icon_user">Ícone de usuário</string>
+    <string name="icon_out">Ícone de sair</string>
+    <string name="icon_visitors">Ícone de visitante</string>
+    <string name="icon_representante">Ícone de representante</string>
+    <string name="icon_location">Ícone de localização</string>
+
+    <!-- shared preferences -->
+    <string name="preferencia_login">loginPrefs</string>
+    <string name="manter_logado_shared">manterLogado</string>
+    <string name="email_shared">email</string>
+    <string name="senha_shared">senha</string>
+    <string name="tipo_usuario_shared">tipoUsuario</string>
+
+    <!-- erros -->
+    <string name="email_senha_incorreto">E-mail ou senha incorretos</string>
+    <string name="campos_vazios">Preencha todos os campos</string>
+
+    <!-- input -->
+    <string name="senha_input">SENHA_DIGITADA</string>
+    <string name="email_input">EMAIL_DIGITADO</string>
+    <string name="tipo_usuario_input">TIPO_USUARIO</string>
+
 </resources>
