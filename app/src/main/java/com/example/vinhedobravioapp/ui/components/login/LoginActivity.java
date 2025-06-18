@@ -21,6 +21,12 @@ import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
+import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
+import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class LoginActivity extends Activity {
 
@@ -96,12 +102,12 @@ public class LoginActivity extends Activity {
                 return;
             }
 
-            if(tipoUsuario == 1){
-                verificaLogin(email, senha,  checkboxManterLogado);
+            if (tipoUsuario == 1) {
+                verificaLogin(email, senha, checkboxManterLogado);
             }
 
-            if(tipoUsuario == 2){
-                verificaLogin(email, senha,  checkboxManterLogado);
+            if (tipoUsuario == 2) {
+                verificaLogin(email, senha, checkboxManterLogado);
             }
 
         });
@@ -115,21 +121,27 @@ public class LoginActivity extends Activity {
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
     }
-
     private void verificaLogin(String emailDigitado, String senhaDigitada, CheckBox checkboxManterLogado) {
         UserDAO userDAO = new UserDAO(this);
         UserModel user = userDAO.findByEmailAndPassword(emailDigitado, senhaDigitada);
 
         if (user != null) {
-            if (checkboxManterLogado.isChecked()) {
-                SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
-                editor.putBoolean(getString(R.string.manter_logado_shared), true);
-                editor.putString(getString(R.string.email_shared), emailDigitado);
-                editor.putString(getString(R.string.senha_shared), senhaDigitada);
-                editor.putInt(getString(R.string.tipo_usuario_shared), user.getIsAdmin());
-                editor.apply();
-            }
+            String dataAtual = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+            LoginStatus status = new LoginStatus(
+                    user.getUserId(),
+                    dataAtual,
+                    user.getIsAdmin() == 1,
+                    checkboxManterLogado.isChecked()
+            );
 
+            Gson gson = new Gson();
+            String json = gson.toJson(status);
+
+            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
+            editor.putString("login_status", json);
+            editor.apply();
+
+            // Redirecionamento agora fica dentro do IF
             Intent intent;
             if (user.getIsAdmin() == 1) {
                 intent = new Intent(this, PainelAdmActivity.class);

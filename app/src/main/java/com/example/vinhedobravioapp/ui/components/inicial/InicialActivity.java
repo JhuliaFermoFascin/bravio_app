@@ -7,10 +7,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.ui.components.utils.DaoCrudTester;
 import com.example.vinhedobravioapp.ui.components.utils.FindAnyUsers;
+import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
+import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class InicialActivity extends Activity {
 
@@ -20,7 +31,7 @@ public class InicialActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
-        
+        Log.d("InicialActivity", "onCreate:aaaaaaaaaa ");
         DPOpenHelper db = new DPOpenHelper(this);
         Log.d("InicialActivity", "Iniciando app, chamando ensureDefaultUsers...");
         FindAnyUsers.ensureDefaultUsers(this);
@@ -32,13 +43,41 @@ public class InicialActivity extends Activity {
         Log.d("InicialActivity", "ensureDefaultUsers executado");
         DaoCrudTester.testAllDaos(this);
 
+
         new Handler().postDelayed(() -> {
             SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
-            boolean isLoggedIn = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
+            String json = prefs.getString("login_status", null);
 
             Intent intent;
-            if (isLoggedIn) {
-                intent = new Intent(this, PainelRepresentanteActivity.class);
+            if (json != null) {
+                Gson gson = new Gson();
+                LoginStatus status = gson.fromJson(json, LoginStatus.class);
+                Log.d( "onCreate: ", status.toString());
+                boolean manterLogado = status.isManterLogado();
+                boolean dentroDoPrazo = false;
+
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                    Date dataLogin = sdf.parse(status.getDataLogin());
+                    Date hoje = new Date();
+
+                    long diffMillis = hoje.getTime() - dataLogin.getTime();
+                    long dias = TimeUnit.MILLISECONDS.toDays(diffMillis);
+
+                    dentroDoPrazo = dias <= 7;
+                } catch (Exception e) {
+                    e.printStackTrace(); // data inválida = não logar
+                }
+
+                if (manterLogado && dentroDoPrazo) {
+                    if (status.isAdmin()) {
+                        intent = new Intent(this, PainelAdmActivity.class);
+                    } else {
+                        intent = new Intent(this, PainelRepresentanteActivity.class);
+                    }
+                } else {
+                    intent = new Intent(this, MenuActivity.class);
+                }
             } else {
                 intent = new Intent(this, MenuActivity.class);
             }
