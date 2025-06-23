@@ -52,7 +52,7 @@
             android:layout_marginHorizontal="30dp"
             android:paddingTop="80dp">
 
-            <com.example.vinhedobravioapp.components.CustomButtonComponent
+            <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
                 android:id="@+id/btnRetornar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -9,6 +9,8 @@ import android.util.Log;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
+import com.example.vinhedobravioapp.database.FindAnyUsers;
+import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
 
 public class InicialActivity extends Activity {
 

@@ -197,6 +197,7 @@
     <string name="icon_visitors">Ícone de visitante</string>
     <string name="icon_representante">Ícone de representante</string>
     <string name="icon_location">Ícone de localização</string>
+    <string name="icon_dashboard">Ícone de dashboard</string>
 
     <!-- shared preferences -->
     <string name="preferencia_login">loginPrefs</string>

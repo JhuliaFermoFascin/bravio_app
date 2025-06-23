@@ -10,6 +10,7 @@ import android.widget.PopupWindow;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.inicial.BemVindoActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
 import com.example.vinhedobravioapp.ui.components.pedidos.PedidosActivity;
 import com.example.vinhedobravioapp.ui.components.vinhos.EstoqueActivity;
@@ -18,7 +19,7 @@ import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
 public class MenuSuspensoHelper {
     public static void show(Activity activity, boolean isDashboard) {
         LayoutInflater inflater = activity.getLayoutInflater();
-        View popupView = inflater.inflate(R.layout.menu_suspenso, null);
+        View popupView = inflater.inflate(R.layout.home_menu_suspenso, null);
 
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
@@ -29,6 +30,7 @@ public class MenuSuspensoHelper {
 
         popupWindow.showAtLocation(activity.findViewById(android.R.id.content), Gravity.TOP | Gravity.START, 0, 0);
 
+        LinearLayout dashboard_btn = popupView.findViewById(R.id.dashboard_btn);
         LinearLayout estoque_btn = popupView.findViewById(R.id.estoque_btn);
         LinearLayout agenda_btn = popupView.findViewById(R.id.agenda_btn);
         LinearLayout usuarios_btn = popupView.findViewById(R.id.usuarios_btn);
@@ -42,19 +44,32 @@ public class MenuSuspensoHelper {
 
         if (isDashboard) {
             agenda_btn.setVisibility(View.GONE);
+            dashboard_btn.setOnClickListener(view -> {
+                Intent intent = new Intent(activity, DashboardAdmActivity.class);
+                activity.startActivity(intent);
+                activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+            });
         } else{
             relatorios_btn.setVisibility(View.GONE);
             usuarios_btn.setVisibility(View.GONE);
             representantes_btn.setVisibility(View.GONE);
             representantes_page_btn.setVisibility(View.GONE);
+            dashboard_btn.setOnClickListener(view -> {
+                Intent intent = new Intent(activity, PainelRepresentanteActivity.class);
+                activity.startActivity(intent);
+                activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+            });
         }
 
         fora_menu.setOnClickListener(view -> {
             popupWindow.dismiss();
         });
 
+        int tipoUsuario = isDashboard ? 1 : 2;
+
         estoque_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, EstoqueActivity.class);
+            intent.putExtra(activity.getString(R.string.tipo_usuario_input), tipoUsuario);
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             popupWindow.dismiss();
@@ -62,12 +77,15 @@ public class MenuSuspensoHelper {
 
         agenda_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, VisitasActivity.class);
+            intent.putExtra(activity.getString(R.string.tipo_usuario_input), tipoUsuario);
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+            popupWindow.dismiss();
         });
 
         pedidos_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, PedidosActivity.class);
+            intent.putExtra(activity.getString(R.string.tipo_usuario_input), tipoUsuario);
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             popupWindow.dismiss();

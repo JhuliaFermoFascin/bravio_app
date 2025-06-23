@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 
 public class BemVindoActivity extends Activity {
@@ -19,8 +19,8 @@ public class BemVindoActivity extends Activity {
 
         origemAdm = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0);
 
-        CustomButtonComponent btnVoltarMenu = findViewById(R.id.btnVoltar);
-        CustomButtonComponent btnVoltarDashboard = findViewById(R.id.btnVoltarDashboard);
+        CustomButtonHelper btnVoltarMenu = findViewById(R.id.btnVoltar);
+        CustomButtonHelper btnVoltarDashboard = findViewById(R.id.btnVoltarDashboard);
 
         if (origemAdm == 0) {
             btnVoltarDashboard.setVisibility(View.GONE);

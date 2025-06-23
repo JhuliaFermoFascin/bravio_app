@@ -1,14 +1,11 @@
 package com.example.vinhedobravioapp.ui.components.login;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
@@ -49,8 +46,8 @@ public class LoginActivity extends Activity {
 
         TextView tituloLogin = findViewById(R.id.login);
         TextView esqueceuSenha = findViewById(R.id.esqueceuSenha);
-        CustomButtonComponent btnLogin = findViewById(R.id.btnLogin);
-        CustomButtonComponent btnVoltar = findViewById(R.id.btnVoltar);
+        CustomButtonHelper btnLogin = findViewById(R.id.btnLogin);
+        CustomButtonHelper btnVoltar = findViewById(R.id.btnVoltar);
         EditText campoSenha = findViewById(R.id.senha);
         EditText campoEmail = findViewById(R.id.email);
         ImageView toggleSenha = findViewById(R.id.iconToggleSenha);

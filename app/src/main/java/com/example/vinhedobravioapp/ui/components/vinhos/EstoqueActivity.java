@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.WineAdapter;
-import com.example.vinhedobravioapp.components.CustomHeaderComponent;
+import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 import com.example.vinhedobravioapp.database.model.WineModel;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
@@ -24,13 +24,22 @@ public class EstoqueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estoque);
 
-        CustomHeaderComponent.configurarHeader(this, getString(R.string.wine));
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+        boolean isDashboard = (tipoUsuario == 1);
+
+        HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard, true, true);
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addWine_btn);
+
+        if (tipoUsuario == 2) {
+            addWine_btn.setVisibility(View.GONE);
+        }
+
         addWine_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EstoqueActivity.this, CadastroVinhoActivity.class);
+                intent.putExtra("isDashboard", isDashboard);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);}
         });
@@ -44,9 +53,6 @@ public class EstoqueActivity extends AppCompatActivity {
         );
 
         recyclerView.setAdapter(wineAdapter);
-
-        //List<WineModel> listaDeVinhos = buscarVinhos();
-        //wineAdapter.setWineList(listaDeVinhos);
 
         List<WineModel> listaDeVinhos = new ArrayList<>();
 
@@ -141,9 +147,6 @@ public class EstoqueActivity extends AppCompatActivity {
         listaDeVinhos.add(wine5);
         listaDeVinhos.add(wine6);
 
-
-
-        // ✅ Atualiza o adapter com os vinhos mockados
         wineAdapter.setWineList(listaDeVinhos);
     }
 
@@ -153,11 +156,9 @@ public class EstoqueActivity extends AppCompatActivity {
     }
 
     private void editWine(WineModel wine) {
-        // Ex: iniciar uma activity passando o ID do vinho
     }
 
     private void deleteWine(WineModel wine) {
-        // Ex: exibir confirmação e excluir do banco
     }
 
 }

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.database.model.WineModel;
 
 public class DetalhesVinhoActivity  extends DialogFragment {
@@ -46,7 +46,7 @@ public class DetalhesVinhoActivity  extends DialogFragment {
         TextView volume = view.findViewById(R.id.detail_volume);
         TextView valor = view.findViewById(R.id.detail_valor);
         ImageView imagem = view.findViewById(R.id.detail_imagem);
-        CustomButtonComponent closeBtn = view.findViewById(R.id.close_btn);
+        CustomButtonHelper closeBtn = view.findViewById(R.id.close_btn);
 
         closeBtn.setOnClickListener(v -> dismiss());
 
