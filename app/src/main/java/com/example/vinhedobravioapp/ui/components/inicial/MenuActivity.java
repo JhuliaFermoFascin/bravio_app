@@ -6,17 +6,17 @@ import android.os.Bundle;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.login.LoginActivity;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 
 public class MenuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.home_menu);
 
-        CustomButtonComponent btnAdm = findViewById(R.id.btnEntrarAdm);
-        CustomButtonComponent btnRep = findViewById(R.id.btnEntrarRepresentante);
-        CustomButtonComponent btnVis = findViewById(R.id.BtnEntrarVisitante);
+        CustomButtonHelper btnAdm = findViewById(R.id.btnEntrarAdm);
+        CustomButtonHelper btnRep = findViewById(R.id.btnEntrarRepresentante);
+        CustomButtonHelper btnVis = findViewById(R.id.BtnEntrarVisitante);
 
 
         btnAdm.setOnClickListener(v -> abrirLogin(1));

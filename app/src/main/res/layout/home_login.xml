@@ -121,14 +121,14 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp">
 
-            <com.example.vinhedobravioapp.components.CustomButtonComponent
+            <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:btn_style="SECONDARY"
                 app:btn_text="@string/login"
                 />
-            <com.example.vinhedobravioapp.components.CustomButtonComponent
+            <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
                 android:id="@+id/btnVoltar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

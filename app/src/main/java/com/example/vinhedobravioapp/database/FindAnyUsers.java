@@ -1,7 +1,6 @@
-package com.example.vinhedobravioapp.ui.components.inicial;
+package com.example.vinhedobravioapp.database;
 
 import android.content.Context;
-import android.util.Log;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.dao.WineTypeDAO;
 import com.example.vinhedobravioapp.database.dao.GeographicOriginDAO;
@@ -28,7 +27,6 @@ public class FindAnyUsers {
     public static void ensureDefaultUsers(Context context) {
         UserDAO userDAO = new UserDAO(context);
         List<UserModel> users = userDAO.getAll();
-        Log.d("FindAnyUsers", "Antes de inserir: " + usersToString(users));
         if (users.size() < 2) {
             // Usuário Rep
             UserModel rep = new UserModel();
@@ -55,14 +53,11 @@ public class FindAnyUsers {
             userDAO.insert(adm);
         }
         List<UserModel> usersAfter = userDAO.getAll();
-        Log.d("FindAnyUsers", "Depois de inserir: " + usersToString(usersAfter));
-        Log.d("FindAnyUsers", "Users finais: " + listToString(usersAfter));
     }
 
     public static void ensureDefaultWineTypes(Context context) {
         WineTypeDAO wineTypeDAO = new WineTypeDAO(context);
         List<WineTypeModel> wineTypes = wineTypeDAO.getAll();
-        Log.d("FindAnyUsers", "WineType antes de inserir: " + listToString(wineTypes));
         if (wineTypes == null || wineTypes.size() == 0) {
             WineTypeModel tinto = new WineTypeModel();
             tinto.setTypeName("Tinto");
@@ -73,13 +68,11 @@ public class FindAnyUsers {
             wineTypeDAO.insert(seco);
         }
         List<WineTypeModel> wineTypesAfter = wineTypeDAO.getAll();
-        Log.d("FindAnyUsers", "WineType depois de inserir: " + listToString(wineTypesAfter));
     }
 
     public static void ensureDefaultGeographicOrigins(Context context) {
         GeographicOriginDAO originDAO = new GeographicOriginDAO(context);
         List<GeographicOriginModel> origins = originDAO.getAll();
-        Log.d("FindAnyUsers", "GeographicOrigin antes de inserir: " + listToString(origins));
         if (origins == null || origins.size() == 0) {
             GeographicOriginModel chileno = new GeographicOriginModel();
             chileno.setCountry("Chile");
@@ -97,13 +90,11 @@ public class FindAnyUsers {
             originDAO.insert(argentino);
         }
         List<GeographicOriginModel> originsAfter = originDAO.getAll();
-        Log.d("FindAnyUsers", "GeographicOrigin depois de inserir: " + listToString(originsAfter));
     }
 
     public static void ensureDefaultGrapes(Context context) {
         GrapeDAO grapeDAO = new GrapeDAO(context);
         List<GrapeModel> grapes = grapeDAO.getAll();
-        Log.d("FindAnyUsers", "Grape antes de inserir: " + listToString(grapes));
         if (grapes == null || grapes.size() == 0) {
             GrapeModel cabernet = new GrapeModel();
             cabernet.setName("Cabernet Sauvignon");
@@ -114,13 +105,11 @@ public class FindAnyUsers {
             grapeDAO.insert(merlot);
         }
         List<GrapeModel> grapesAfter = grapeDAO.getAll();
-        Log.d("FindAnyUsers", "Grape depois de inserir: " + listToString(grapesAfter));
     }
 
     public static void ensureDefaultTastingNotes(Context context) {
         TastingNoteDAO tastingNoteDAO = new TastingNoteDAO(context);
         List<TastingNoteModel> notes = tastingNoteDAO.getAll();
-        Log.d("FindAnyUsers", "TastingNote antes de inserir: " + listToString(notes));
         if (notes == null || notes.size() == 0) {
             TastingNoteModel frutasVermelhas = new TastingNoteModel();
             frutasVermelhas.setNote("Frutas vermelhas");
@@ -135,13 +124,11 @@ public class FindAnyUsers {
             tastingNoteDAO.insert(citricas);
         }
         List<TastingNoteModel> notesAfter = tastingNoteDAO.getAll();
-        Log.d("FindAnyUsers", "TastingNote depois de inserir: " + listToString(notesAfter));
     }
 
     public static void ensureDefaultWineries(Context context) {
         WineryDAO wineryDAO = new WineryDAO(context);
         List<WineryModel> wineries = wineryDAO.getAll();
-        Log.d("FindAnyUsers", "Winery antes de inserir: " + listToString(wineries));
         if (wineries == null || wineries.size() == 0) {
             WineryModel margaux = new WineryModel();
             margaux.setName("Château Margaux");
@@ -160,7 +147,6 @@ public class FindAnyUsers {
             wineryDAO.insert(penfolds);
         }
         List<WineryModel> wineriesAfter = wineryDAO.getAll();
-        Log.d("FindAnyUsers", "Winery depois de inserir: " + listToString(wineriesAfter));
     }
 
     private static String usersToString(List<UserModel> users) {

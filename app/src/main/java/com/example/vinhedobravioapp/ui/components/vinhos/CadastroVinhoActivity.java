@@ -23,10 +23,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.components.CustomHeaderComponent;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.database.dao.WineDAO;
 import com.example.vinhedobravioapp.database.model.WineModel;
+import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -51,15 +51,15 @@ public class CadastroVinhoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_estoque_cadastro_vinho);
-                wineDAO = new WineDAO(this);
+        setContentView(R.layout.estoque_cadastro_vinho);
 
-
+        wineDAO = new WineDAO(this);
         context = this;
 
-        // Header e botões principais
-        CustomHeaderComponent.configurarHeader(this, getString(R.string.add_new_wine));
-        CustomButtonComponent cancel = findViewById(R.id.cancel_btn);
+        boolean isDashboard = getIntent().getBooleanExtra("isDashboard", false);
+
+        HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard, true, false);
+        CustomButtonHelper cancel = findViewById(R.id.cancel_btn);
         cancel.setOnClickListener(v -> finish());
 
         configurarSpinnerTipoVinho();
@@ -131,10 +131,8 @@ public class CadastroVinhoActivity extends AppCompatActivity {
             }
         });
 
-        CustomButtonComponent saveBtn = findViewById(R.id.save_btn);
+        CustomButtonHelper saveBtn = findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(v -> {
-            Log.d("WineDAO", "Botão salvar clicado");
-            // Recupera os campos do formulário
             EditText nameEt = findViewById(R.id.editTextWineName);
             EditText wineryEt = findViewById(R.id.editTextWineryName);
             EditText categoryEt = findViewById(R.id.editTextCommercialCategory);
@@ -275,8 +273,8 @@ public class CadastroVinhoActivity extends AppCompatActivity {
         AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setView(dialogView);
 
-        CustomButtonComponent btnConfirmar = dialogView.findViewById(R.id.dialogConfirm);
-        CustomButtonComponent btnCancelar = dialogView.findViewById(R.id.dialogCancel);
+        CustomButtonHelper btnConfirmar = dialogView.findViewById(R.id.dialogConfirm);
+        CustomButtonHelper btnCancelar = dialogView.findViewById(R.id.dialogCancel);
 
         btnConfirmar.setOnClickListener(v -> {
             onConfirmar.run();

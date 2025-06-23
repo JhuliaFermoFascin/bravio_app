@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomHeaderComponent;
+import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 public class PedidosActivity extends AppCompatActivity {
@@ -16,16 +16,22 @@ public class PedidosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedidos);
+        setContentView(R.layout.pedidos);
 
-        CustomHeaderComponent.configurarHeader(this, getString(R.string.order_title));
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+        boolean isDashboard = (tipoUsuario == 1);
+
+        HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard, false, true);
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addOrder_btn);
         addWine_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PedidosActivity.this, CadastroPedidoActivity.class);
-                startActivity(intent);            }
+                intent.putExtra("isDashboard", isDashboard);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
         });
     }
 }

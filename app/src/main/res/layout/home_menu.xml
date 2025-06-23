@@ -33,7 +33,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginHorizontal="40dp">
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
             android:id="@+id/btnEntrarAdm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:layout_marginBottom="20dp"
             />
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
             android:id="@+id/btnEntrarRepresentante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             android:layout_marginBottom="20dp"
             />
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
             android:id="@+id/BtnEntrarVisitante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

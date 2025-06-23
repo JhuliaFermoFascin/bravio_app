@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomHeaderComponent;
+import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,9 +23,9 @@ public class CadastroVisitasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visitas_cadastrar_visitas);
+        setContentView(R.layout.visitas_cadastrar_visitas);
 
-        CustomHeaderComponent.configurarHeader(this, getString(R.string.add_new_visit));
+        HeaderHelper.configurarHeader(this, getString(R.string.add_new_visit), false);
 
         dateTimeVisit = findViewById(R.id.date_time_visit);
 

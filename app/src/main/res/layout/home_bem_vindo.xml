@@ -49,7 +49,7 @@
             android:orientation="vertical"
             android:layout_marginHorizontal="30dp">
 
-            <com.example.vinhedobravioapp.components.CustomButtonComponent
+            <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
                 android:id="@+id/btnCatalogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 android:layout_marginBottom="15dp"
                 />
 
-            <com.example.vinhedobravioapp.components.CustomButtonComponent
+            <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
                 android:id="@+id/btnSobre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                 android:layout_marginBottom="15dp"
                 />
 
-            <com.example.vinhedobravioapp.components.CustomButtonComponent
+            <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
                 android:id="@+id/btnContato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,6 +75,23 @@
                 app:btn_text="@string/botao_contato"
                 />
 
+            <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+                android:id="@+id/btnVoltarDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_style="MENU_PRIMARY"
+                app:btn_text="Retornar ao dashboard"
+                android:layout_marginTop="10dp"
+                />
+
+            <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+                android:id="@+id/btnVoltar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_style="MENU_PRIMARY"
+                app:btn_text="@string/retornar_menu"
+                android:layout_marginTop="10dp"
+                />
         </LinearLayout>
 
     </LinearLayout>

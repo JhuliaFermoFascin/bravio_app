@@ -1,4 +1,4 @@
-package com.example.vinhedobravioapp.components;
+package com.example.vinhedobravioapp.ui.components.helper;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -17,22 +17,22 @@ import androidx.core.content.ContextCompat;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.enums.ButtonStyle;
 
-public class CustomButtonComponent extends LinearLayout {
+public class CustomButtonHelper extends LinearLayout {
 
     private FrameLayout container;
     private TextView textView;
     private ImageView iconView;
     private ProgressBar progressView;
 
-    public CustomButtonComponent(Context context) {
+    public CustomButtonHelper(Context context) {
         this(context, null);
     }
 
-    public CustomButtonComponent(Context context, @Nullable AttributeSet attrs) {
+    public CustomButtonHelper(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CustomButtonComponent(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomButtonHelper(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }

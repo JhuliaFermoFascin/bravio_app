@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:background="@color/background_text_primary">
 
-    <include layout="@layout/component_view_custom_header"/>
+    <include
+        layout="@layout/component_view_custom_header"
+        android:id="@+id/component_view_custom_header"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,7 +91,7 @@
                     android:layout_marginBottom="10dp"
                     style="@style/MainTitle"/>
 
-                <com.example.vinhedobravioapp.components.CustomButtonComponent
+                <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
                     android:id="@+id/addOrderItens_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -155,7 +157,7 @@
                 android:layout_weight="2"
                 android:layout_marginBottom="10dp">
 
-                <com.example.vinhedobravioapp.components.CustomButtonComponent
+                <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
                     android:id="@+id/cancel_order_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -165,7 +167,7 @@
                     android:layout_marginEnd="5dp"
                     />
 
-                <com.example.vinhedobravioapp.components.CustomButtonComponent
+                <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
                     android:id="@+id/save_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

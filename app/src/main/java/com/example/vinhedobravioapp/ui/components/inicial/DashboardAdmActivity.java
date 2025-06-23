@@ -4,15 +4,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.adapter.DashboardWineAdapter;
+import com.example.vinhedobravioapp.domain.model.Vinho;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.helper.MenuSuspensoHelper;
 import com.example.vinhedobravioapp.ui.components.utils.MyMarkerView;
@@ -32,6 +34,8 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DashboardAdmActivity extends AppCompatActivity {
 
@@ -41,7 +45,7 @@ public class DashboardAdmActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard_adm);
+        setContentView(R.layout.dashboard_adm);
 
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
 
@@ -52,6 +56,22 @@ public class DashboardAdmActivity extends AppCompatActivity {
 
         lineChart = findViewById(R.id.lineChart);
         configLineChart();
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerVinhos);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
+
+        List<Vinho> vinhosDashboard = Arrays.asList(
+                new Vinho("Cabernet Sauvignon", 320, "15%", true),
+                new Vinho("Merlot", 210, "5%", false),
+                new Vinho("Pinot Noir", 180, "8%", true)
+        );
+
+        DashboardWineAdapter adapter = new DashboardWineAdapter(vinhosDashboard);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -149,7 +169,7 @@ public class DashboardAdmActivity extends AppCompatActivity {
         markerView.setChartView(lineChart);
         lineChart.setMarker(markerView);
 
-        lineChart.setBackgroundColor(getColor(R.color.background_resumo_pedidos));
+        lineChart.setBackgroundColor(getColor(R.color.background_text_primary));
         lineChart.setGridBackgroundColor(Color.TRANSPARENT);
         lineChart.setDrawGridBackground(false);
 
