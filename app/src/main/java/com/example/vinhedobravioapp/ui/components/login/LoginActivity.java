@@ -14,6 +14,10 @@ import android.widget.Toast;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
+import com.example.vinhedobravioapp.database.dao.CommercialCategoryDAO;
+import com.example.vinhedobravioapp.database.dao.UserDAO;
+import com.example.vinhedobravioapp.database.model.CommercialCategoryModel;
+import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
@@ -29,7 +33,6 @@ public class LoginActivity extends Activity {
         boolean manterLogado = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
         int tipoUsuario = prefs.getInt(getString(R.string.tipo_usuario_shared), getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0));
         String nomeUsuario;
-
         if (manterLogado) {
             Intent intent;
             if (tipoUsuario == 1) {
@@ -42,7 +45,7 @@ public class LoginActivity extends Activity {
             finish();
         }
 
-        setContentView(R.layout.home_login);
+        setContentView(R.layout.activity_login);
 
         TextView tituloLogin = findViewById(R.id.login);
         TextView esqueceuSenha = findViewById(R.id.esqueceuSenha);
@@ -58,8 +61,6 @@ public class LoginActivity extends Activity {
         if (emailPreenchido != null) campoEmail.setText(emailPreenchido);
         if (senhaPreenchida != null) campoSenha.setText(senhaPreenchida);
 
-        final String[] senhas = {getString(R.string.senha_adm), getString(R.string.senha_rep)};
-        final String[] emails = {getString(R.string.email_adm), getString(R.string.email_rep)};
         final boolean[] senhaVisivel = {false};
 
         if (tipoUsuario == 1) {
@@ -98,11 +99,11 @@ public class LoginActivity extends Activity {
             }
 
             if(tipoUsuario == 1){
-                verificaLogin(email, senha, tipoUsuario, emails[0], senhas[0], checkboxManterLogado);
+                verificaLogin(email, senha,  checkboxManterLogado);
             }
 
             if(tipoUsuario == 2){
-                verificaLogin(email, senha, tipoUsuario, emails[1], senhas[1], checkboxManterLogado);
+                verificaLogin(email, senha,  checkboxManterLogado);
             }
 
         });
@@ -121,19 +122,22 @@ public class LoginActivity extends Activity {
         });
     }
 
-    private void verificaLogin(String emailDigitado, String senhaDigitada, int tipoUsuario, String emailCerto, String senhaCerta, CheckBox checkboxManterLogado) {
-        if (emailDigitado.equals(emailCerto) && senhaDigitada.equals(senhaCerta)) {
+    private void verificaLogin(String emailDigitado, String senhaDigitada, CheckBox checkboxManterLogado) {
+        UserDAO userDAO = new UserDAO(this);
+        UserModel user = userDAO.findByEmailAndPassword(emailDigitado, senhaDigitada);
+
+        if (user != null) {
             if (checkboxManterLogado.isChecked()) {
                 SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
                 editor.putBoolean(getString(R.string.manter_logado_shared), true);
                 editor.putString(getString(R.string.email_shared), emailDigitado);
                 editor.putString(getString(R.string.senha_shared), senhaDigitada);
-                editor.putInt(getString(R.string.tipo_usuario_shared), tipoUsuario);
+                editor.putInt(getString(R.string.tipo_usuario_shared), user.getIsAdmin());
                 editor.apply();
             }
 
             Intent intent;
-            if (tipoUsuario == 1) {
+            if (user.getIsAdmin() == 1) {
                 intent = new Intent(this, DashboardAdmActivity.class);
             } else {
                 intent = new Intent(this, PainelRepresentanteActivity.class);

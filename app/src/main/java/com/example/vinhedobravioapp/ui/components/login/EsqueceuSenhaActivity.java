@@ -11,7 +11,7 @@ public class EsqueceuSenhaActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.esqueceu_senha);
+        setContentView(R.layout.activity_esqueceu_senha);
 
         CustomButtonHelper btnVoltar = findViewById(R.id.btnRetornar);
 

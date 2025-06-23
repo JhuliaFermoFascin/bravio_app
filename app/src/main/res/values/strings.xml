@@ -167,11 +167,9 @@
     <string name="retornar_menu">Retornar ao menu inicial</string>
     <string name="retornar_login">Retornar ao login</string>
     <string name="manter_logado">Manter-me logado</string>
-    <string name="email_rep">rep@bravio.com</string>
-    <string name="senha_rep">Rep</string>
+
     <string name="titulo_rep">Representante</string>
-    <string name="email_adm">adm@bravio.com</string>
-    <string name="senha_adm">Adm</string>
+
     <string name="titulo_adm">Administrador</string>
 
     <!--  tela bem vindos  -->
