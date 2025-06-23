@@ -187,13 +187,6 @@ public class CadastroVinhoActivity extends AppCompatActivity {
             long id = wineDAO.insert(wine);
             if (id > 0) {
                 Toast.makeText(this, "Vinho cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-
-                // Log do getAll para debug
-                List<WineModel> allWines = wineDAO.getAll();
-                for (WineModel w : allWines) {
-                    Log.d("WineDAO", "Wine: " + w.getWineId() + " - " + w.getName());
-                }
-
                 finish();
             } else {
                 Toast.makeText(this, "Erro ao cadastrar vinho.", Toast.LENGTH_SHORT).show();

@@ -22,14 +22,12 @@ public class InicialActivity extends Activity {
         setContentView(R.layout.home_tela_inicial);
         
         DPOpenHelper db = new DPOpenHelper(this);
-        Log.d("InicialActivity", "Iniciando app, chamando ensureDefaultUsers...");
         FindAnyUsers.ensureDefaultUsers(this);
         FindAnyUsers.ensureDefaultWineTypes(this);
         FindAnyUsers.ensureDefaultGeographicOrigins(this);
         FindAnyUsers.ensureDefaultGrapes(this);
         FindAnyUsers.ensureDefaultTastingNotes(this);
         FindAnyUsers.ensureDefaultWineries(this);
-        Log.d("InicialActivity", "ensureDefaultUsers executado");
         DaoCrudTester.testAllDaos(this);
 
         new Handler().postDelayed(() -> {
