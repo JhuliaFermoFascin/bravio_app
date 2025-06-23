@@ -9,9 +9,13 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.example.vinhedobravioapp.R;
+<<<<<<< HEAD
 import com.example.vinhedobravioapp.ui.components.inicial.BemVindoActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
+=======
+import com.example.vinhedobravioapp.ui.components.inicial.PainelVisitanteActivity;
+>>>>>>> erick
 import com.example.vinhedobravioapp.ui.components.pedidos.PedidosActivity;
 import com.example.vinhedobravioapp.ui.components.vinhos.EstoqueActivity;
 import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
@@ -92,12 +96,16 @@ public class MenuSuspensoHelper {
         });
 
         visitantes_page_btn.setOnClickListener(view -> {
+<<<<<<< HEAD
             Intent intent = new Intent(activity, BemVindoActivity.class);
             if(isDashboard){
                 intent.putExtra(activity.getString(R.string.tipo_usuario_input), 1);
             }else{
                 intent.putExtra(activity.getString(R.string.tipo_usuario_input), 2);
             }
+=======
+            Intent intent = new Intent(activity, PainelVisitanteActivity.class);
+>>>>>>> erick
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             popupWindow.dismiss();

@@ -37,7 +37,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DashboardAdmActivity extends AppCompatActivity {
+public class PainelAdmActivity extends AppCompatActivity {
 
     private PieChart pieChart;
     private LineChart lineChart;
@@ -83,7 +83,7 @@ public class DashboardAdmActivity extends AppCompatActivity {
             editor.clear();
             editor.apply();
 
-            Intent intent = new Intent(DashboardAdmActivity.this, MenuActivity.class);
+            Intent intent = new Intent(PainelAdmActivity.this, MenuActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

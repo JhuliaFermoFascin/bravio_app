@@ -22,7 +22,7 @@ public class MenuActivity extends Activity {
         btnAdm.setOnClickListener(v -> abrirLogin(1));
         btnRep.setOnClickListener(v -> abrirLogin(2));
         btnVis.setOnClickListener(v -> {
-            Intent intent = new Intent(this, BemVindoActivity.class);
+            Intent intent = new Intent(this, PainelVisitanteActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
