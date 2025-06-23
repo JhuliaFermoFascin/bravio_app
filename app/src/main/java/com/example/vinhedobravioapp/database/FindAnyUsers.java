@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:app/src/main/java/com/example/vinhedobravioapp/database/FindAnyUsers.java
 package com.example.vinhedobravioapp.database;
-========
-package com.example.vinhedobravioapp.ui.components.utils;
->>>>>>>> erick:app/src/main/java/com/example/vinhedobravioapp/ui/components/utils/FindAnyUsers.java
 
 import android.content.Context;
 import com.example.vinhedobravioapp.database.dao.UserDAO;

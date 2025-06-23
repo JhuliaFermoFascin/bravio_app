@@ -17,12 +17,8 @@ import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
-import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.database.dao.UserDAO;
-import com.example.vinhedobravioapp.database.model.UserModel;
-import com.example.vinhedobravioapp.ui.components.inicial.PainelAdmActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
 import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
 import com.google.gson.Gson;
@@ -44,7 +40,7 @@ public class LoginActivity extends Activity {
         if (manterLogado) {
             Intent intent;
             if (tipoUsuario == 1) {
-                intent = new Intent(this, PainelAdmActivity.class);
+                intent = new Intent(this, DashboardAdmActivity.class);
             } else {
                 intent = new Intent(this, PainelRepresentanteActivity.class);
             }
@@ -152,7 +148,7 @@ public class LoginActivity extends Activity {
             // Redirecionamento agora fica dentro do IF
             Intent intent;
             if (user.getIsAdmin() == 1) {
-                intent = new Intent(this, PainelAdmActivity.class);
+                intent = new Intent(this, DashboardAdmActivity.class);
             } else {
                 intent = new Intent(this, PainelRepresentanteActivity.class);
             }

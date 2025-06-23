@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:app/src/main/java/com/example/vinhedobravioapp/database/dao/DaoCrudTester.java
 package com.example.vinhedobravioapp.database.dao;
-========
-package com.example.vinhedobravioapp.ui.components.utils;
->>>>>>>> erick:app/src/main/java/com/example/vinhedobravioapp/ui/components/utils/DaoCrudTester.java
 
 import android.content.Context;
 

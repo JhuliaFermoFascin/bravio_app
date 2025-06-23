@@ -12,15 +12,10 @@ import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.FindAnyUsers;
 import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
-import com.example.vinhedobravioapp.ui.components.utils.DaoCrudTester;
-import com.example.vinhedobravioapp.ui.components.utils.FindAnyUsers;
 import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -71,7 +66,7 @@ public class InicialActivity extends Activity {
 
                 if (manterLogado && dentroDoPrazo) {
                     if (status.isAdmin()) {
-                        intent = new Intent(this, PainelAdmActivity.class);
+                        intent = new Intent(this, DashboardAdmActivity.class);
                     } else {
                         intent = new Intent(this, PainelRepresentanteActivity.class);
                     }

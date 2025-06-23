@@ -10,11 +10,29 @@ import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 
-public class PainelVisitanteActivity extends Activity {
+public class BemVindoActivity extends Activity {
+    private int origemAdm = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_painel_visitante);
+        setContentView(R.layout.home_bem_vindo);
+
+        origemAdm = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0);
+
+        CustomButtonHelper btnVoltarMenu = findViewById(R.id.btnVoltar);
+        CustomButtonHelper btnVoltarDashboard = findViewById(R.id.btnVoltarDashboard);
+
+        if (origemAdm == 0) {
+            btnVoltarDashboard.setVisibility(View.GONE);
+        }
+
+        btnVoltarMenu.setOnClickListener(v -> {
+            mostrarConfirmacaoSaida(0);
+        });
+
+        btnVoltarDashboard.setOnClickListener(v -> {
+            mostrarConfirmacaoSaida(origemAdm);
+        });
     }
 
     private void mostrarConfirmacaoSaida(int destinoValor) {
