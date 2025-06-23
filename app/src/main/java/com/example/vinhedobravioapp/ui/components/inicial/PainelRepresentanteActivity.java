@@ -3,12 +3,9 @@ package com.example.vinhedobravioapp.ui.components.inicial;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
@@ -20,7 +17,7 @@ public class PainelRepresentanteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard_representante);
+        setContentView(R.layout.dashboard_representante);
 
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
 

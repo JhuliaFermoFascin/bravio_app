@@ -16,7 +16,7 @@ public class PedidosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedidos);
+        setContentView(R.layout.pedidos);
 
         int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
         boolean isDashboard = (tipoUsuario == 1);

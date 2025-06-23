@@ -19,7 +19,7 @@ public class InicialActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_inicial);
+        setContentView(R.layout.home_tela_inicial);
         
         DPOpenHelper db = new DPOpenHelper(this);
         Log.d("InicialActivity", "Iniciando app, chamando ensureDefaultUsers...");

@@ -14,9 +14,7 @@ import android.widget.Toast;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
-import com.example.vinhedobravioapp.database.dao.CommercialCategoryDAO;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
-import com.example.vinhedobravioapp.database.model.CommercialCategoryModel;
 import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
@@ -45,7 +43,7 @@ public class LoginActivity extends Activity {
             finish();
         }
 
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.home_login);
 
         TextView tituloLogin = findViewById(R.id.login);
         TextView esqueceuSenha = findViewById(R.id.esqueceuSenha);

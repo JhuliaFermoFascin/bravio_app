@@ -36,7 +36,7 @@ public class CadastroPedidoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedidos_cadastrar_pedido);
+        setContentView(R.layout.pedidos_cadastrar_pedido);
 
         boolean isDashboard = getIntent().getBooleanExtra("isDashboard", false);
 
