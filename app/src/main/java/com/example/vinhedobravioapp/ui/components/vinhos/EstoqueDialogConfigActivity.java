@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 
 public class EstoqueDialogConfigActivity extends DialogFragment {
 
@@ -37,8 +37,8 @@ public class EstoqueDialogConfigActivity extends DialogFragment {
 
         TextView titleConfig = view.findViewById(R.id.titleConfig);
         EditText inputTextConfig = view.findViewById(R.id.inputTextConfig);
-        CustomButtonComponent save_btn = view.findViewById(R.id.save_btn);
-        CustomButtonComponent cancel_btn = view.findViewById(R.id.cancel_btn);
+        CustomButtonHelper save_btn = view.findViewById(R.id.save_btn);
+        CustomButtonHelper cancel_btn = view.findViewById(R.id.cancel_btn);
 
         titleConfig.setText(title);
 

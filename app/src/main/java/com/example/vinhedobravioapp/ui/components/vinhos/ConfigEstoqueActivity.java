@@ -7,8 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.components.CustomHeaderComponent;
+
 import com.example.vinhedobravioapp.database.dao.CommercialCategoryDAO;
 import com.example.vinhedobravioapp.database.dao.CompositionTypeDAO;
 import com.example.vinhedobravioapp.database.dao.FoodPairingDAO;
@@ -21,17 +20,21 @@ import com.example.vinhedobravioapp.database.model.FoodPairingModel;
 import com.example.vinhedobravioapp.database.model.GrapeModel;
 import com.example.vinhedobravioapp.database.model.TastingNoteModel;
 import com.example.vinhedobravioapp.database.model.WineTypeModel;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
+import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 
 public class ConfigEstoqueActivity extends AppCompatActivity {
 
-    private CustomButtonComponent addCommercialCategory_btn, addGrapeComposition_btn, addFoodPairing_btn, addTastingNotes_btn, addWineType_btn, addWineGrapes_btn;
+    private CustomButtonHelper addCommercialCategory_btn, addGrapeComposition_btn, addFoodPairing_btn, addTastingNotes_btn, addWineType_btn, addWineGrapes_btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estoque_config);
 
-        CustomHeaderComponent.configurarHeader(this, getString(R.string.config_title));
+        boolean isDashboard = getIntent().getBooleanExtra("isDashboard", false);
+
+        HeaderHelper.configurarHeader(this, getString(R.string.config_title), isDashboard, true, false);
 
         addCommercialCategory_btn = findViewById(R.id.addCommercialCategory_btn);
         addGrapeComposition_btn = findViewById(R.id.addGrapeComposition_btn);

@@ -16,28 +16,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.database.dao.CommercialCategoryDAO;
-import com.example.vinhedobravioapp.database.dao.CompositionTypeDAO;
-import com.example.vinhedobravioapp.database.dao.GeographicOriginDAO;
-import com.example.vinhedobravioapp.database.dao.GrapeDAO;
-import com.example.vinhedobravioapp.database.dao.WineFoodPairingDAO;
-import com.example.vinhedobravioapp.database.dao.WineGrapeDAO;
-import com.example.vinhedobravioapp.database.dao.WineReviewDAO;
-import com.example.vinhedobravioapp.database.dao.WineTastingNoteDAO;
-import com.example.vinhedobravioapp.database.dao.WineryDAO;
-import com.example.vinhedobravioapp.database.model.CommercialCategoryModel;
-import com.example.vinhedobravioapp.database.model.CompositionTypeModel;
-import com.example.vinhedobravioapp.database.model.GeographicOriginModel;
-import com.example.vinhedobravioapp.database.model.GrapeModel;
 import com.example.vinhedobravioapp.database.model.WineModel;
-import com.example.vinhedobravioapp.database.model.WineReviewModel;
-import com.example.vinhedobravioapp.database.model.WineTastingNoteModel;
-import com.example.vinhedobravioapp.database.model.WineryModel;
-import com.example.vinhedobravioapp.ui.components.vinhos.helpers.WineDataHelper;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
+import com.example.vinhedobravioapp.ui.components.vinhos.helpers.WineDataHelper;
 
 public class DetalhesVinhoActivity extends DialogFragment {
 

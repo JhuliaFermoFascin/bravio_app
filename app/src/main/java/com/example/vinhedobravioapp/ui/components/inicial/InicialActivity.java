@@ -10,7 +10,7 @@ import android.util.Log;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.FindAnyUsers;
-import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
+//import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
 
 public class InicialActivity extends Activity {
 
@@ -28,7 +28,7 @@ public class InicialActivity extends Activity {
         FindAnyUsers.ensureDefaultGrapes(this);
         FindAnyUsers.ensureDefaultTastingNotes(this);
         FindAnyUsers.ensureDefaultWineries(this);
-        DaoCrudTester.testAllDaos(this);
+//        DaoCrudTester.testAllDaos(this);
 
         new Handler().postDelayed(() -> {
             SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);

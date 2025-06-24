@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:background="@color/background_text_primary">
 
-    <include layout="@layout/component_view_custom_header"/>
+    <include
+        layout="@layout/component_view_custom_header"
+        android:id="@+id/component_view_custom_header"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +17,7 @@
         android:orientation="vertical"
         android:paddingHorizontal="30dp">
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
             android:id="@+id/addCommercialCategory_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +26,7 @@
             app:btn_icon="@drawable/icon_wine"
             android:layout_marginBottom="20dp"/>
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
             android:id="@+id/addGrapeComposition_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,7 +35,7 @@
             app:btn_icon="@drawable/icon_wine"
             android:layout_marginBottom="20dp"/>
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
             android:id="@+id/addFoodPairing_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +44,7 @@
             app:btn_icon="@drawable/icon_wine"
             android:layout_marginBottom="20dp"/>
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
             android:id="@+id/addTastingNotes_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +53,7 @@
             app:btn_icon="@drawable/icon_wine"
             android:layout_marginBottom="20dp"/>
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
             android:id="@+id/addWineType_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +62,7 @@
             app:btn_icon="@drawable/icon_wine"
             android:layout_marginBottom="20dp"/>
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
             android:id="@+id/addWineGrapes_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

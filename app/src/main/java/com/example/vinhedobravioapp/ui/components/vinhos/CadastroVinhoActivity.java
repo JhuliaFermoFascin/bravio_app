@@ -25,8 +25,7 @@
     import androidx.appcompat.app.AppCompatActivity;
 
     import com.example.vinhedobravioapp.R;
-    import com.example.vinhedobravioapp.components.CustomButtonComponent;
-    import com.example.vinhedobravioapp.components.CustomHeaderComponent;
+
     import com.example.vinhedobravioapp.database.dao.FoodPairingDAO;
     import com.example.vinhedobravioapp.database.dao.GeographicOriginDAO;
     import com.example.vinhedobravioapp.database.dao.GrapeDAO;
@@ -52,6 +51,8 @@
     import com.example.vinhedobravioapp.database.model.WineTastingNoteModel;
     import com.example.vinhedobravioapp.database.model.WineTypeModel;
     import com.example.vinhedobravioapp.database.model.WineryModel;
+    import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
+    import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
     import com.example.vinhedobravioapp.ui.components.vinhos.helpers.GeographicOriginAutoCompleteHelper;
     import com.example.vinhedobravioapp.ui.components.vinhos.helpers.SpinnerConfigHelper;
     import com.example.vinhedobravioapp.ui.components.vinhos.helpers.WineDataHelper;
@@ -68,7 +69,7 @@
     public class CadastroVinhoActivity extends AppCompatActivity {
 
         private MaterialButton winePhotoButton;
-        private CustomButtonComponent save_btn;
+        private CustomButtonHelper save_btn;
         private Spinner wineComposition, wineType, addCommercialCategory;
         private EditText wineName, wineDescription, wineHarvest,
                 alcoholContent, volume, acidity, temperature,
@@ -113,8 +114,10 @@
             carregarUvasDoBanco();
             configurarCampoSafra();
 
-            CustomHeaderComponent.configurarHeader(this, getString(R.string.add_new_wine));
-            CustomButtonComponent cancel = findViewById(R.id.cancel_btn);
+            boolean isDashboard = getIntent().getBooleanExtra("isDashboard", false);
+
+            HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard, true, false);
+            CustomButtonHelper cancel = findViewById(R.id.cancel_btn);
             cancel.setOnClickListener(v -> finish());
 
             wineType = findViewById(R.id.wineType);
@@ -153,8 +156,9 @@
             Intent intent = getIntent();
             if (intent.hasExtra("wine_id")) {
                 editingWineId = intent.getLongExtra("wine_id", -1);
-                CustomHeaderComponent.configurarHeader(this, getString(R.string.update_wine));
-                ((CustomButtonComponent) save_btn).setBtnText(getString(R.string.update));
+
+                HeaderHelper.configurarHeader(this, getString(R.string.update_wine), isDashboard, true, false);
+                ((CustomButtonHelper) save_btn).setBtnText(getString(R.string.update));
                 carregarDadosParaEdicao(editingWineId);
             }
 
@@ -851,8 +855,8 @@
             AlertDialog dialog = new AlertDialog.Builder(this).create();
             dialog.setView(dialogView);
 
-            CustomButtonComponent btnConfirmar = dialogView.findViewById(R.id.dialogConfirm);
-            CustomButtonComponent btnCancelar = dialogView.findViewById(R.id.dialogCancel);
+            CustomButtonHelper btnConfirmar = dialogView.findViewById(R.id.dialogConfirm);
+            CustomButtonHelper btnCancelar = dialogView.findViewById(R.id.dialogCancel);
 
             btnConfirmar.setOnClickListener(v -> {
                 onConfirmar.run();
