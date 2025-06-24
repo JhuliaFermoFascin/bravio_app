@@ -1,7 +1,6 @@
 package com.example.vinhedobravioapp.database.model;
 
-public class ClientModel {
-
+public class CustomerModel {
     public static String TABLE_NAME = "tb_customer";
 
     public static String
@@ -93,5 +92,18 @@ public class ClientModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerModel{" +
+                "customerId=" + customerId +
+                ", nameCompanyName='" + nameCompanyName + '\'' +
+                ", cpfCnpj='" + cpfCnpj + '\'' +
+                ", address='" + address + '\'' +
+                ", region='" + region + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

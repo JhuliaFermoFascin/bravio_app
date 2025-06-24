@@ -52,6 +52,7 @@
                style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/wineName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_wine_name"
@@ -65,7 +66,8 @@
                 android:text="@string/winery_name"
                 style="@style/AddVinhoTitle" />
 
-            <EditText
+            <AutoCompleteTextView
+                android:id="@+id/wineryName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_winery_name"
@@ -79,13 +81,15 @@
                 android:text="@string/commercial_category"
                 style="@style/AddVinhoTitle" />
 
-            <EditText
+            <Spinner
+                android:id="@+id/commercialCategory"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="@string/add_commercial_category"
-                android:inputType="text"
+                style="@style/InputAddVinho"
+                android:popupBackground="@drawable/border_purple"
+                android:spinnerMode="dropdown"
                 android:layout_marginBottom="20dp"
-                style="@style/InputAddVinho"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -94,6 +98,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/wineDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -123,13 +128,16 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/wineHarvest"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_harvest"
-                android:inputType="number"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:inputType="none"
                 android:layout_marginBottom="20dp"
-                style="@style/InputAddVinho"
-                />
+                style="@style/InputAddVinho" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -137,14 +145,24 @@
                 android:text="@string/geographic_origin"
                 style="@style/AddVinhoTitle" />
 
-            <EditText
+            <AutoCompleteTextView
+                android:id="@+id/countryOrigin"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="@string/add_geographic_origin"
+                android:hint="@string/add_country"
                 android:inputType="text"
                 android:layout_marginBottom="20dp"
                 style="@style/InputAddVinho"
                 />
+
+            <AutoCompleteTextView
+                android:id="@+id/campoRegiao"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Região"
+                android:inputType="text"
+                style="@style/InputAddVinho"
+                android:layout_marginBottom="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -237,6 +255,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/alcoholContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -252,6 +271,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/volume"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -267,6 +287,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/acidity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -282,6 +303,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/temperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -297,6 +319,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/storageTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
@@ -346,10 +369,14 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/foodPairings"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_food_parings"
-                android:inputType="text"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:clickable="true"
+                android:cursorVisible="false"
                 android:layout_marginBottom="20dp"
                 style="@style/InputAddVinho"/>
 
@@ -360,6 +387,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/reviews"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_reviews"
@@ -388,6 +416,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/unitPrice"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_unit_price"
@@ -402,6 +431,7 @@
                 style="@style/AddVinhoTitle" />
 
             <EditText
+                android:id="@+id/quantity"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/add_quantity"

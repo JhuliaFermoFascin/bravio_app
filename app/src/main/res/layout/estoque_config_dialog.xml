@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_dialog"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/titleConfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Título do Modal"
+        android:gravity="center"
+        style="@style/AddVinhoTitle"/>
+
+    <EditText
+        android:id="@+id/inputTextConfig"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="text"
+        style="@style/InputAddVinho"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="2"
+        android:layout_marginTop="25dp">
+
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
+            android:id="@+id/cancel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="SECONDARY"
+            app:btn_text="@string/cancel"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            />
+
+        <com.example.vinhedobravioapp.components.CustomButtonComponent
+            android:id="@+id/save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="SAVE"
+            app:btn_text="@string/save"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -22,6 +22,7 @@
     <!-- Estoque -->
         <string name="inventory_search">Buscar por nome ou tipo</string>
         <string name="add_new_wine">Cadastrar Novo Vinho</string>
+    <string name="update_wine">Atualizar Vinho</string>
 
             <!-- Estoque Form -->
             <string name="wine_name">Nome do vinho</string>
@@ -48,7 +49,7 @@
                 <string name="add_wine_name">Informe o nome do vinho</string>
                 <string name="add_winery_name">Informe o nome da vinícola</string>
                 <string name="add_commercial_category">Informe a categoria comercial</string>
-                <string name="add_geographic_origin">Informe a origem geográfica</string>
+                <string name="add_country">Informe o país</string>
                 <string name="add_harvest">Informe o ano da safra</string>
                 <string name="add_description">Descreva o vinho a ser cadastrado</string>
                 <string name="add_tasting_notes">Selecione as notas de degustação</string>
@@ -74,13 +75,22 @@
 
     <!-- Wine Details -->
     <string name="details_wine_name">Nome do vinho:</string>
-    <string name="details_harvest">Safra:</string>
-    <string name="details_wine_type">Tipo:</string>
+    <string name="details_winery_name">Vinícola:</string>
+    <string name="details_commercial_category">Categoria Comercial:</string>
     <string name="details_description">Descrição:</string>
-    <string name="details_tasting_notes">Notas de degustação:</string>
-    <string name="details_food_parings">Harmonizações:</string>
+    <string name="details_harvest">Safra:</string>
+    <string name="details_geographic_origin">Origem geográfica:</string>
+    <string name="details_wine_type">Tipo:</string>
+    <string name="details_composition">Composição:</string>
+    <string name="details_grapes">Uvas:</string>
     <string name="details_alcohol_content">Teor Alcoólico:</string>
     <string name="details_volume">Volume:</string>
+    <string name="detail_acidity">Acidez:</string>
+    <string name="detail_ideal_temperature">Temperatura ideal:</string>
+    <string name="detail_estimated_storage_time">Tempo de guarda estimado:</string>
+    <string name="details_tasting_notes">Notas de degustação:</string>
+    <string name="details_food_parings">Harmonizações:</string>
+    <string name="details_reviews">Avaliações:</string>
     <string name="details_quantity">Quantidade:</string>
     <string name="details_unit_price">Valor unitário:</string>
 
@@ -121,7 +131,8 @@
     <string name="visit_select_address">Informe o endereço</string>
     <string name="visit_add_date_time">Informe a data e horário</string>
 
-
+<!-- Estoque Config -->
+    <string name="config_title">Configurações de Estoque</string>
 
 
     <!-- Utils -->
@@ -133,6 +144,7 @@
     <string name="login">Entrar</string>
     <string name="action_settings">Settings</string>
     <string name="add">+ </string>
+    <string name="update">Atualizar</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

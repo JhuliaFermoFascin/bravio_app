@@ -11,40 +11,52 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <include layout="@layout/component_view_custom_header"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="30dp">
-
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:paddingVertical="10dp"
-            android:paddingHorizontal="20dp"
-            android:hint="@string/inventory_search"
-            style="@style/Filter"
-            android:layout_marginBottom="15dp"/>
+            android:layout_height="wrap_content">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fillViewport="true">
+            <include layout="@layout/component_view_custom_header"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/wine_recycleview"
+            <ImageView
+                android:id="@+id/config_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:clickable="true"
+                android:src="@drawable/icon_config"/>
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            android:orientation="vertical"
+            android:paddingHorizontal="30dp">
 
-        </ScrollView>
+            <EditText
+                style="@style/Filter"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="15dp"
+                android:hint="@string/inventory_search"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="true">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/wine_recycleview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            </ScrollView>
+        </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
-
-
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/addWine_btn"

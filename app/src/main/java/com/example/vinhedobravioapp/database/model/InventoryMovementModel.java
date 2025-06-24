@@ -16,19 +16,19 @@ public class InventoryMovementModel {
         COLUMN_NOTES = "notes";
 
     public static String CREATE_TABLE =
-        "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
-        + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-        + COLUMN_WINE_ID + " INTEGER NOT NULL, "
-        + COLUMN_MOVEMENT_TYPE + " TEXT NOT NULL, "
-        + COLUMN_QUANTITY + " INTEGER NOT NULL, "
-        + COLUMN_UNIT_PRICE + " REAL NOT NULL, "
-        + COLUMN_MOVEMENT_DATE + " DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "
-        + COLUMN_DOCUMENT_REFERENCE + " TEXT DEFAULT NULL, "
-        + COLUMN_USER_ID + " INTEGER NOT NULL, "
-        + COLUMN_NOTES + " TEXT DEFAULT NULL"
-        + "FOREIGN KEY (" + COLUMN_WINE_ID + ") REFERENCES tb_wine(wine_id) ON UPDATE CASCADE, "
-        + "FOREIGN KEY (" + COLUMN_USER_ID + ") REFERENCES tb_user(user_id) ON UPDATE CASCADE, "
-        + ");";
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
+                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + COLUMN_WINE_ID + " INTEGER NOT NULL, "
+                    + COLUMN_MOVEMENT_TYPE + " TEXT NOT NULL, "
+                    + COLUMN_QUANTITY + " INTEGER NOT NULL, "
+                    + COLUMN_UNIT_PRICE + " REAL NOT NULL, "
+                    + COLUMN_MOVEMENT_DATE + " TEXT NOT NULL DEFAULT (datetime('now','localtime')), "
+                    + COLUMN_DOCUMENT_REFERENCE + " TEXT DEFAULT NULL, "
+                    + COLUMN_USER_ID + " INTEGER NOT NULL, "
+                    + COLUMN_NOTES + " TEXT DEFAULT NULL, "
+                    + "FOREIGN KEY (" + COLUMN_WINE_ID + ") REFERENCES tb_wine(wine_id) ON UPDATE CASCADE, "
+                    + "FOREIGN KEY (" + COLUMN_USER_ID + ") REFERENCES tb_user(user_id) ON UPDATE CASCADE"
+                    + ");";
 
     public static String DROP_TABLE =
         "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -63,4 +63,19 @@ public class InventoryMovementModel {
     public void setUserId(long userId) { this.userId = userId; }
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
+
+    @Override
+    public String toString() {
+        return "InventoryMovementModel{" +
+                "movementId=" + movementId +
+                ", wineId=" + wineId +
+                ", movementType='" + movementType + '\'' +
+                ", quantity=" + quantity +
+                ", unitPrice=" + unitPrice +
+                ", movementDate='" + movementDate + '\'' +
+                ", documentReference='" + documentReference + '\'' +
+                ", userId=" + userId +
+                ", notes='" + notes + '\'' +
+                '}';
+    }
 }

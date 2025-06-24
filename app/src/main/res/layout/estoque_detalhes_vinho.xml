@@ -3,8 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="true">
+    android:layout_height="500dp"
+    android:fillViewport="true"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,26 +33,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/general_informations"
+                android:gravity="center"
+                style="@style/DetailsMainTitle"
+                android:layout_marginTop="16dp"
+                />
+
         <TextView
             android:id="@+id/detail_nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/details_wine_name"
-            android:layout_marginTop="16dp"
             style="@style/TextoDetalheVinho"/>
 
         <TextView
-            android:id="@+id/detail_safra"
+            android:id="@+id/detail_winery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/details_harvest"
+            android:text="@string/details_winery_name"
             style="@style/TextoDetalheVinho"/>
 
         <TextView
-            android:id="@+id/detail_tipo"
+            android:id="@+id/detail_commercial_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/details_wine_type"
+            android:text="@string/details_commercial_category"
             style="@style/TextoDetalheVinho"/>
 
         <TextView
@@ -62,11 +71,110 @@
             style="@style/TextoDetalheVinho"/>
 
         <TextView
-            android:id="@+id/detail_quantidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/identification_origin"
+            android:gravity="center"
+            style="@style/DetailsMainTitle"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/detail_safra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/details_quantity"
+            android:text="@string/details_harvest"
             style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_origin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_geographic_origin"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_tipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_wine_type"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grapes_composition"
+            android:gravity="center"
+            style="@style/DetailsMainTitle"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/detail_composition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_composition"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_grapes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_grapes"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/technical_characteristics"
+            android:gravity="center"
+            style="@style/DetailsMainTitle"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/detail_teor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_alcohol_content"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_volume"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_acidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_acidity"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_ideal_temperature"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:id="@+id/detail_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_estimated_storage_time"
+            style="@style/TextoDetalheVinho"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/experience_reviews"
+            android:gravity="center"
+            style="@style/DetailsMainTitle"
+            android:layout_marginTop="10dp"
+            />
 
         <TextView
             android:id="@+id/detail_notas"
@@ -83,24 +191,33 @@
             style="@style/TextoDetalheVinho"/>
 
         <TextView
-            android:id="@+id/detail_teor"
+            android:id="@+id/detail_review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/alcohol_content"
+            android:text="@string/details_reviews"
             style="@style/TextoDetalheVinho"/>
 
         <TextView
-            android:id="@+id/detail_volume"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/details_volume"
-            style="@style/TextoDetalheVinho"/>
+            android:text="@string/inventory_marketing"
+            android:gravity="center"
+            style="@style/DetailsMainTitle"
+            android:layout_marginTop="10dp"
+            />
 
         <TextView
             android:id="@+id/detail_valor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/details_unit_price"
+            style="@style/TextoDetalheVinho"/>
+
+            <TextView
+            android:id="@+id/detail_quantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_quantity"
             style="@style/TextoDetalheVinho"/>
 
         </LinearLayout>
