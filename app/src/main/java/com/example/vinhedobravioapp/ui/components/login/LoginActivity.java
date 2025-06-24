@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.loginManager.LoginManager;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.model.UserModel;
@@ -34,12 +35,11 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
-        boolean manterLogado = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
-        int tipoUsuario = prefs.getInt(getString(R.string.tipo_usuario_shared), getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0));
+        LoginStatus status = LoginManager.getInstance().getLoginStatus();
         String nomeUsuario;
-        if (manterLogado) {
+        if (status.isManterLogado()) {
             Intent intent;
-            if (tipoUsuario == 1) {
+            if (status.isAdmin()) {
                 intent = new Intent(this, DashboardAdmActivity.class);
             } else {
                 intent = new Intent(this, PainelRepresentanteActivity.class);
@@ -67,7 +67,7 @@ public class LoginActivity extends Activity {
 
         final boolean[] senhaVisivel = {false};
 
-        if (tipoUsuario == 1) {
+        if (status.isAdmin()) {
             nomeUsuario = getString(R.string.titulo_adm);
         } else {
             nomeUsuario = getString(R.string.titulo_rep);
@@ -102,11 +102,11 @@ public class LoginActivity extends Activity {
                 return;
             }
 
-            if (tipoUsuario == 1) {
+            if (status.isAdmin()) {
                 verificaLogin(email, senha, checkboxManterLogado);
             }
 
-            if (tipoUsuario == 2) {
+            if (!status.isAdmin()) {
                 verificaLogin(email, senha, checkboxManterLogado);
             }
 
@@ -114,7 +114,7 @@ public class LoginActivity extends Activity {
 
         esqueceuSenha.setOnClickListener(v -> {
             Intent intent = new Intent(this, EsqueceuSenhaActivity.class);
-            intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
+            intent.putExtra(getString(R.string.tipo_usuario_input), status.isAdmin());
             intent.putExtra(getString(R.string.email_input), campoEmail.getText().toString().trim());
             intent.putExtra(getString(R.string.senha_input), campoSenha.getText().toString().trim());
             startActivity(intent);

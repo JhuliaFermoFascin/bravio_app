@@ -199,10 +199,12 @@
 
     <!-- shared preferences -->
     <string name="preferencia_login">loginPrefs</string>
-    <string name="manter_logado_shared">manterLogado</string>
-    <string name="email_shared">email</string>
-    <string name="senha_shared">senha</string>
-    <string name="tipo_usuario_shared">tipoUsuario</string>
+<!--    <string name="manter_logado_shared">manterLogado</string>-->
+<!--    <string name="email_shared">email</string>-->
+<!--    <string name="senha_shared">senha</string>-->
+<!--    <string name="tipo_usuario_shared">tipoUsuario</string>-->
+
+    <string name="login_status">login_status</string>
 
     <!-- erros -->
     <string name="email_senha_incorreto">E-mail ou senha incorretos</string>
