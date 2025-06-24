@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.Cursor;
+import android.database.SQLException;
 
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.WineImageModel;
@@ -11,14 +13,19 @@ import com.example.vinhedobravioapp.database.model.WineModel;
 import com.example.vinhedobravioapp.database.model.WineTypeModel;
 
 import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WineDAO extends AbstrataDAO {
+public class WineDAO extends AbstrataDAO {
 
+    public WineDAO(Context context) {
     public WineDAO(Context context) {
         helper = new DPOpenHelper(context);
     }
 
+    // CREATE
+    public long insert(final WineModel wineModel) {
     // CREATE
     public long insert(final WineModel wineModel) {
         long result = -1;
@@ -27,7 +34,10 @@ public class WineDAO extends AbstrataDAO {
             ContentValues values = new ContentValues();
             values.put(WineModel.NAME_COLUMN, wineModel.getName());
             values.put(WineModel.WINERY_ID_COLUMN, wineModel.getWineryId());
+            values.put(WineModel.WINERY_ID_COLUMN, wineModel.getWineryId());
             values.put(WineModel.WINE_TYPE_ID_COLUMN, wineModel.getWineTypeId());
+            values.put(WineModel.COMMERCIAL_CATEGORY_ID_COLUMN, wineModel.getCommercialCategoryId());
+            values.put(WineModel.ORIGIN_ID_COLUMN, wineModel.getOriginId());
             values.put(WineModel.COMMERCIAL_CATEGORY_ID_COLUMN, wineModel.getCommercialCategoryId());
             values.put(WineModel.ORIGIN_ID_COLUMN, wineModel.getOriginId());
             values.put(WineModel.VINTAGE_COLUMN, wineModel.getVintage());
@@ -41,6 +51,7 @@ public class WineDAO extends AbstrataDAO {
             values.put(WineModel.QUANTITY, wineModel.getQuantity());
             values.put(WineModel.UNIT_PRICE, wineModel.getUnit_price());
             result = db.insert(WineModel.TABLE_NAME, null, values);
+        } finally {
         } finally {
             Close();
         }

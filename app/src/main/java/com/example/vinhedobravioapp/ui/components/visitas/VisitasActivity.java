@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomHeaderComponent;
+import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 public class VisitasActivity extends AppCompatActivity {
@@ -18,7 +18,7 @@ public class VisitasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visitas);
 
-        CustomHeaderComponent.configurarHeader(this, getString(R.string.visit));
+        HeaderHelper.configurarHeader(this, getString(R.string.visit), false, false, true);
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addVisit_btn);
         addWine_btn.setOnClickListener(new View.OnClickListener() {

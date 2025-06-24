@@ -4,15 +4,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.adapter.DashboardWineAdapter;
+import com.example.vinhedobravioapp.domain.model.Vinho;
+import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.helper.MenuSuspensoHelper;
 import com.example.vinhedobravioapp.ui.components.utils.MyMarkerView;
 import com.github.mikephil.charting.animation.Easing;
@@ -31,6 +34,8 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DashboardAdmActivity extends AppCompatActivity {
 
@@ -46,29 +51,34 @@ public class DashboardAdmActivity extends AppCompatActivity {
 
         menu_suspenso.setOnClickListener(v -> MenuSuspensoHelper.show(this, true));
 
-        //        Gráfico pizza
         pieChart = findViewById(R.id.pieChart);
         configPieChart();
 
-//        Gráfico linhas
         lineChart = findViewById(R.id.lineChart);
         configLineChart();
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerVinhos);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
+
+        List<Vinho> vinhosDashboard = Arrays.asList(
+                new Vinho("Cabernet Sauvignon", 320, "15%", true),
+                new Vinho("Merlot", 210, "5%", false),
+                new Vinho("Pinot Noir", 180, "8%", true)
+        );
+
+        DashboardWineAdapter adapter = new DashboardWineAdapter(vinhosDashboard);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onBackPressed() {
-        View dialogView = getLayoutInflater().inflate(R.layout.modal_confirmacao, null);
+        String mensagem = getString(R.string.pergunta_saida, getString(R.string.confirmar_retorno_menu));
 
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(dialogView)
-                .setCancelable(false)
-                .create();
-
-        Button btnYes = dialogView.findViewById(R.id.btnYes);
-        Button btnNo = dialogView.findViewById(R.id.btnNo);
-
-        btnYes.setOnClickListener(v -> {
-            dialog.dismiss();
+        ConfirmacaoHelper.mostrarConfirmacao(this, mensagem, () -> {
             SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
@@ -79,8 +89,6 @@ public class DashboardAdmActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         });
-        btnNo.setOnClickListener(v -> dialog.dismiss());
-        dialog.show();
     }
 
     private void configPieChart() {
@@ -116,7 +124,6 @@ public class DashboardAdmActivity extends AppCompatActivity {
 
         pieChart.setDrawHoleEnabled(false);
 
-        // Esconde os labels dentro da fatia para não aparecer "Item 1" junto do percentual
         pieChart.setEntryLabelColor(Color.TRANSPARENT);
         pieChart.setEntryLabelTextSize(0f);
 
@@ -151,20 +158,18 @@ public class DashboardAdmActivity extends AppCompatActivity {
         dataSet1.setCircleColor(getColor(R.color.border_button_purple_primary));
         dataSet1.setDrawCircles(true);
         dataSet1.setCircleRadius(5f);
-        dataSet1.setDrawValues(false); // NÃO mostrar valores fixos nos pontos, só no MarkerView
+        dataSet1.setDrawValues(false);
         dataSet1.setValueTextSize(12f);
         dataSet1.setValueTextColor(Color.BLACK);
 
         LineData lineData = new LineData(dataSet1);
         lineChart.setData(lineData);
 
-        // Cria e associa o MarkerView
         MyMarkerView markerView = new MyMarkerView(this, R.layout.marker_view);
-        markerView.setChartView(lineChart); // necessário para posicionamento
+        markerView.setChartView(lineChart);
         lineChart.setMarker(markerView);
 
-        // Plano de fundo estilo “paper”
-        lineChart.setBackgroundColor(getColor(R.color.background_resumo_pedidos));
+        lineChart.setBackgroundColor(getColor(R.color.background_text_primary));
         lineChart.setGridBackgroundColor(Color.TRANSPARENT);
         lineChart.setDrawGridBackground(false);
 

@@ -1,14 +1,11 @@
 package com.example.vinhedobravioapp.ui.components.login;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,8 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
+import com.example.vinhedobravioapp.database.dao.UserDAO;
+import com.example.vinhedobravioapp.database.model.UserModel;
+import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
 
 public class LoginActivity extends Activity {
@@ -30,7 +31,6 @@ public class LoginActivity extends Activity {
         boolean manterLogado = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
         int tipoUsuario = prefs.getInt(getString(R.string.tipo_usuario_shared), getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0));
         String nomeUsuario;
-
         if (manterLogado) {
             Intent intent;
             if (tipoUsuario == 1) {
@@ -47,7 +47,8 @@ public class LoginActivity extends Activity {
 
         TextView tituloLogin = findViewById(R.id.login);
         TextView esqueceuSenha = findViewById(R.id.esqueceuSenha);
-        CustomButtonComponent btnLogin = findViewById(R.id.btnLogin);
+        CustomButtonHelper btnLogin = findViewById(R.id.btnLogin);
+        CustomButtonHelper btnVoltar = findViewById(R.id.btnVoltar);
         EditText campoSenha = findViewById(R.id.senha);
         EditText campoEmail = findViewById(R.id.email);
         ImageView toggleSenha = findViewById(R.id.iconToggleSenha);
@@ -58,8 +59,6 @@ public class LoginActivity extends Activity {
         if (emailPreenchido != null) campoEmail.setText(emailPreenchido);
         if (senhaPreenchida != null) campoSenha.setText(senhaPreenchida);
 
-        final String[] senhas = {getString(R.string.senha_adm), getString(R.string.senha_rep)};
-        final String[] emails = {getString(R.string.email_adm), getString(R.string.email_rep)};
         final boolean[] senhaVisivel = {false};
 
         if (tipoUsuario == 1) {
@@ -98,11 +97,11 @@ public class LoginActivity extends Activity {
             }
 
             if(tipoUsuario == 1){
-                verificaLogin(email, senha, tipoUsuario, emails[0], senhas[0], checkboxManterLogado);
+                verificaLogin(email, senha,  checkboxManterLogado);
             }
 
             if(tipoUsuario == 2){
-                verificaLogin(email, senha, tipoUsuario, emails[1], senhas[1], checkboxManterLogado);
+                verificaLogin(email, senha,  checkboxManterLogado);
             }
 
         });
@@ -115,21 +114,28 @@ public class LoginActivity extends Activity {
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
+
+        btnVoltar.setOnClickListener(v -> {
+            mostrarConfirmacaoSaida();
+        });
     }
 
-    private void verificaLogin(String emailDigitado, String senhaDigitada, int tipoUsuario, String emailCerto, String senhaCerta, CheckBox checkboxManterLogado) {
-        if (emailDigitado.equals(emailCerto) && senhaDigitada.equals(senhaCerta)) {
+    private void verificaLogin(String emailDigitado, String senhaDigitada, CheckBox checkboxManterLogado) {
+        UserDAO userDAO = new UserDAO(this);
+        UserModel user = userDAO.findByEmailAndPassword(emailDigitado, senhaDigitada);
+
+        if (user != null) {
             if (checkboxManterLogado.isChecked()) {
                 SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
                 editor.putBoolean(getString(R.string.manter_logado_shared), true);
                 editor.putString(getString(R.string.email_shared), emailDigitado);
                 editor.putString(getString(R.string.senha_shared), senhaDigitada);
-                editor.putInt(getString(R.string.tipo_usuario_shared), tipoUsuario);
+                editor.putInt(getString(R.string.tipo_usuario_shared), user.getIsAdmin());
                 editor.apply();
             }
 
             Intent intent;
-            if (tipoUsuario == 1) {
+            if (user.getIsAdmin() == 1) {
                 intent = new Intent(this, DashboardAdmActivity.class);
             } else {
                 intent = new Intent(this, PainelRepresentanteActivity.class);
@@ -143,29 +149,24 @@ public class LoginActivity extends Activity {
         }
     }
 
+    private void mostrarConfirmacaoSaida() {
+        String mensagem = getString(R.string.pergunta_saida, getString(R.string.confirmar_retorno_menu));
+
+        ConfirmacaoHelper.mostrarConfirmacao(this, mensagem, () -> {
+            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
+            editor.clear();
+            editor.apply();
+
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            finish();
+        });
+    }
+
     @Override
     public void onBackPressed() {
-        View dialogView = getLayoutInflater().inflate(R.layout.modal_confirmacao, null);
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(dialogView)
-                .setCancelable(false)
-                .create();
-
-        Button btnYes = dialogView.findViewById(R.id.btnYes);
-        Button btnNo = dialogView.findViewById(R.id.btnNo);
-
-        btnYes.setOnClickListener(v -> {
-            dialog.dismiss();
-            super.onBackPressed();
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-        });
-
-        btnNo.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-
-        dialog.show();
+        mostrarConfirmacaoSaida();
     }
 }
-

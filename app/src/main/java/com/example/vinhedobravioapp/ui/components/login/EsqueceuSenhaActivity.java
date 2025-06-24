@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 
 public class EsqueceuSenhaActivity extends Activity {
     @Override
@@ -13,7 +13,7 @@ public class EsqueceuSenhaActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.esqueceu_senha);
 
-        CustomButtonComponent btnVoltar = findViewById(R.id.btnRetornar);
+        CustomButtonHelper btnVoltar = findViewById(R.id.btnRetornar);
 
         int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0);
 

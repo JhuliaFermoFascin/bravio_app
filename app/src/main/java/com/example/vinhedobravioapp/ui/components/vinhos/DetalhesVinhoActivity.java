@@ -81,7 +81,7 @@ public class DetalhesVinhoActivity extends DialogFragment {
         TextView reviews = view.findViewById(R.id.detail_review);
 
         ImageView imagem = view.findViewById(R.id.detail_imagem);
-        CustomButtonComponent closeBtn = view.findViewById(R.id.close_btn);
+        CustomButtonHelper closeBtn = view.findViewById(R.id.close_btn);
 
         closeBtn.setOnClickListener(v -> dismiss());
 

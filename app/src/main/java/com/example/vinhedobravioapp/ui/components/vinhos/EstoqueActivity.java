@@ -28,7 +28,10 @@ public class EstoqueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estoque);
 
-        CustomHeaderComponent.configurarHeader(this, getString(R.string.wine));
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+        boolean isDashboard = (tipoUsuario == 1);
+
+        HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard, true, true);
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addWine_btn);
         addWine_btn.setOnClickListener(view -> {

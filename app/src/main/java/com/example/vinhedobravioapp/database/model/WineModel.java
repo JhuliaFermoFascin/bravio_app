@@ -9,6 +9,9 @@ public class WineModel implements Serializable {
         WINE_ID_COLUMN = "wine_id",
         NAME_COLUMN = "name",
         WINERY_ID_COLUMN = "winery_id",
+        WINE_ID_COLUMN = "wine_id",
+        NAME_COLUMN = "name",
+        WINERY_ID_COLUMN = "winery_id",
         WINE_TYPE_ID_COLUMN = "wine_type_id",
         COMMERCIAL_CATEGORY_ID_COLUMN = "commercial_category_id",
         ORIGIN_ID_COLUMN = "origin_id",
@@ -24,9 +27,11 @@ public class WineModel implements Serializable {
         UNIT_PRICE = "unit_price";
 
     public static String CREATE_TABLE_WINE =
+    public static String CREATE_TABLE_WINE =
         "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
         + WINE_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
         + NAME_COLUMN + " TEXT NOT NULL, "
+        + WINERY_ID_COLUMN + " INTEGER, "
         + WINERY_ID_COLUMN + " INTEGER, "
         + WINE_TYPE_ID_COLUMN + " INTEGER NOT NULL, "
         + COMMERCIAL_CATEGORY_ID_COLUMN + " INTEGER, "
@@ -50,12 +55,17 @@ public class WineModel implements Serializable {
 
     public static String DROP_TABLE =
         "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
+        "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
 
     // Fields
     private long wineId;
     private String name;
     private Long wineryId;
+    private Long wineryId;
     private long wineTypeId;
+    private Long commercialCategoryId;
+    private Long originId;
+    private String vintage;
     private Long commercialCategoryId;
     private Long originId;
     private String vintage;
@@ -105,8 +115,16 @@ public class WineModel implements Serializable {
     public void setName(String name) { this.name = name; }
     public Long getWineryId() { return wineryId; }
     public void setWineryId(Long wineryId) { this.wineryId = wineryId; }
+    public Long getWineryId() { return wineryId; }
+    public void setWineryId(Long wineryId) { this.wineryId = wineryId; }
     public long getWineTypeId() { return wineTypeId; }
     public void setWineTypeId(long wineTypeId) { this.wineTypeId = wineTypeId; }
+    public Long getCommercialCategoryId() { return commercialCategoryId; }
+    public void setCommercialCategoryId(Long commercialCategoryId) { this.commercialCategoryId = commercialCategoryId; }
+    public Long getOriginId() { return originId; }
+    public void setOriginId(Long originId) { this.originId = originId; }
+    public String getVintage() { return vintage; }
+    public void setVintage(String vintage) { this.vintage = vintage; }
     public Long getCommercialCategoryId() { return commercialCategoryId; }
     public void setCommercialCategoryId(Long commercialCategoryId) { this.commercialCategoryId = commercialCategoryId; }
     public Long getOriginId() { return originId; }

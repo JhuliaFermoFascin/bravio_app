@@ -3,8 +3,9 @@
 
     <!-- Painel Administrativo -->
     <string name="administrative_panel">Painel Adminsitrativo</string>
-    <string name="dashboard">Dashboard</string>
-    <string name="welcome">Bem-vindo(a), user</string>
+    <string name="welcome">Bem-vindo(a), </string>
+    <string name="welcomeUser">Nome Usuário</string>
+    <string name="inventory">Estoque</string>
     <string name="wine">Vinhos</string>
     <string name="customers">Clientes</string>
     <string name="representatives">Representantes</string>
@@ -12,6 +13,10 @@
     <string name="commissions">Comissões</string>
     <string name="reports">Relatórios</string>
     <string name="users">Usuários</string>
+    <!-- Estoque -->
+    <string name="add_wine">+ </string>
+    <!-- Estoque Form -->
+
     <string name="agenda">Agendar Visita</string>
     <string name="visitors">Página de Visitantes</string>
     <string name="representantes">Página de Representantes</string>
@@ -44,6 +49,7 @@
             <string name="ideal_temperature">Temperatura ideal</string>
             <string name="estimated_storage_time">Tempo de guarda estimado</string>
             <string name="reviews">Avaliações</string>
+    <string name="dashboard">Dashboard</string>
 
             <!-- Add Estoque Form -->
                 <string name="add_wine_name">Informe o nome do vinho</string>
@@ -173,11 +179,9 @@
     <string name="retornar_menu">Retornar ao menu inicial</string>
     <string name="retornar_login">Retornar ao login</string>
     <string name="manter_logado">Manter-me logado</string>
-    <string name="email_rep">rep@bravio.com</string>
-    <string name="senha_rep">Rep</string>
+
     <string name="titulo_rep">Representante</string>
-    <string name="email_adm">adm@bravio.com</string>
-    <string name="senha_adm">Adm</string>
+
     <string name="titulo_adm">Administrador</string>
 
     <!--  tela bem vindos  -->
@@ -203,6 +207,7 @@
     <string name="icon_visitors">Ícone de visitante</string>
     <string name="icon_representante">Ícone de representante</string>
     <string name="icon_location">Ícone de localização</string>
+    <string name="icon_dashboard">Ícone de dashboard</string>
 
     <!-- shared preferences -->
     <string name="preferencia_login">loginPrefs</string>
@@ -219,5 +224,13 @@
     <string name="senha_input">SENHA_DIGITADA</string>
     <string name="email_input">EMAIL_DIGITADO</string>
     <string name="tipo_usuario_input">TIPO_USUARIO</string>
+
+    <!-- modal de confirmação -->
+    <string name="confirmar_saida">CONFIRMAR SAÍDA</string>
+    <string name="pergunta_saida">Deseja realmente voltar para %s?</string>
+    <string name="sim_sair">SIM</string>
+    <string name="nao_sair">NÃO</string>
+    <string name="confirmar_retorno_adm">o dashboard</string>
+    <string name="confirmar_retorno_menu">o menu inicial</string>
 
 </resources>

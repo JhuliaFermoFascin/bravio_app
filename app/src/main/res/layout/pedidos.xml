@@ -14,7 +14,9 @@
         android:orientation="vertical"
         app:layout_anchorGravity="center">
 
-        <include layout="@layout/component_view_custom_header" />
+        <include
+            layout="@layout/component_view_custom_header"
+            android:id="@+id/component_view_custom_header"/>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -15,8 +15,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.components.CustomButtonComponent;
-import com.example.vinhedobravioapp.components.CustomHeaderComponent;
+import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
+import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class CadastroPedidoActivity extends AppCompatActivity {
 
-    private CustomButtonComponent addOrderItens_btn;
+    private CustomButtonHelper addOrderItens_btn;
     private TextView textTotal, summarySelectedItens;
     private View viewTotal;
 
@@ -38,7 +38,9 @@ public class CadastroPedidoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pedidos_cadastrar_pedido);
 
-        CustomHeaderComponent.configurarHeader(this, getString(R.string.add_new_order));
+        boolean isDashboard = getIntent().getBooleanExtra("isDashboard", false);
+
+        HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard);
 
         addOrderItens_btn = findViewById(R.id.addOrderItens_btn);
         summarySelectedItens = findViewById(R.id.summarSelectedItens);
@@ -61,7 +63,7 @@ public class CadastroPedidoActivity extends AppCompatActivity {
         EditText productName = dialogView.findViewById(R.id.productName);
         EditText productQuantity = dialogView.findViewById(R.id.productQuantity);
         TextView productUnitPrice = dialogView.findViewById(R.id.productUnitPrice);
-        CustomButtonComponent saveItem_btn = dialogView.findViewById(R.id.saveItem_btn);
+        CustomButtonHelper saveItem_btn = dialogView.findViewById(R.id.saveItem_btn);
 
         AlertDialog dialog = new AlertDialog.Builder(this).setView(dialogView).create();
 

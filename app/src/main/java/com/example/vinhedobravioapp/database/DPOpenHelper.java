@@ -24,6 +24,12 @@ import com.example.vinhedobravioapp.database.model.GeographicOriginModel;
 import com.example.vinhedobravioapp.database.model.GrapeModel;
 import com.example.vinhedobravioapp.database.model.WineGrapeModel;
 import com.example.vinhedobravioapp.database.model.WineReviewModel;
+import com.example.vinhedobravioapp.database.model.WineryModel;
+import com.example.vinhedobravioapp.database.model.CommercialCategoryModel;
+import com.example.vinhedobravioapp.database.model.GeographicOriginModel;
+import com.example.vinhedobravioapp.database.model.GrapeModel;
+import com.example.vinhedobravioapp.database.model.WineGrapeModel;
+import com.example.vinhedobravioapp.database.model.WineReviewModel;
 
 public class DPOpenHelper extends SQLiteOpenHelper {
 
@@ -37,6 +43,7 @@ public class DPOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(UserModel.CREATE_TABLE_USER);
+        sqLiteDatabase.execSQL(CustomerModel.CREATE_TABLE_CUSTOMER);
         sqLiteDatabase.execSQL(CustomerModel.CREATE_TABLE_CUSTOMER);
         sqLiteDatabase.execSQL(WineTypeModel.CREATE_TABLE_WINE_TYPE);
         sqLiteDatabase.execSQL(CompositionTypeModel.CREATE_TABLE_COMPOSITION_TYPE);
@@ -55,6 +62,7 @@ public class DPOpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(OrderItemModel.CREATE_TABLE);
         sqLiteDatabase.execSQL(InventoryMovementModel.CREATE_TABLE);
         sqLiteDatabase.execSQL(VisitModel.CREATE_TABLE);
+        sqLiteDatabase.execSQL(WineImageModel.CREATE_TABLE);
         sqLiteDatabase.execSQL(WineImageModel.CREATE_TABLE);
     }
 

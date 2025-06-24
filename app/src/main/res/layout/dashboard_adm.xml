@@ -1,72 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
     android:background="@color/background_text_primary">
     <ImageView
         android:id="@+id/menu_suspenso"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="30dp"
+        android:paddingHorizontal="30dp"
         android:contentDescription="@string/icon_menu"
         android:src="@drawable/icon_menu"
         android:layout_gravity="start"/>
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome"
-        android:fontFamily="@font/baskervville"
-        android:textStyle="bold"
-        android:textColor="@color/button_text_green_primary"
-        android:textSize="20sp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
-        />
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="always"
+        android:scrollbars="vertical">
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/administrative_panel"
-        android:gravity="center"
-        style="@style/MainTitle"
-        android:layout_marginBottom="20dp"
-        />
-
-
-        <TextView
-            android:id="@+id/titulo_pizza"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pieChart"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp"
-            android:layout_gravity="center_horizontal" />
-
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/pieChart"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginBottom="20dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lineChart"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp"
-            android:layout_gravity="center_horizontal" />
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/lineChart"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            />
+            android:orientation="vertical"
+            android:paddingBottom="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome"
+                android:fontFamily="@font/baskervville"
+                android:textStyle="bold"
+                android:textColor="@color/button_text_green_primary"
+                android:textSize="20sp"
+                android:layout_marginBottom="30dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard"
+                android:gravity="center"
+                style="@style/MainTitle"
+                android:layout_marginBottom="20dp"
+                />
+
+            <TextView
+                android:id="@+id/titulo_pizza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/button_text_green_primary"
+                android:text="@string/pieChart"
+                android:textStyle="bold"
+                android:fontFamily="@font/baskervville"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="center_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerVinhos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:clipToPadding="false"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:overScrollMode="never"/>
+            </LinearLayout>
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lineChart"
+                android:textColor="@color/button_text_green_primary"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:fontFamily="@font/baskervville"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="30dp">
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
