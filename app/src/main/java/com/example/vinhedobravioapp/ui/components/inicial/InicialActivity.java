@@ -11,7 +11,6 @@ import android.util.Log;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.FindAnyUsers;
-import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
 import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
 import com.google.gson.Gson;
 
