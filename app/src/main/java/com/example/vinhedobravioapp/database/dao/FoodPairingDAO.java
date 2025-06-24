@@ -86,4 +86,24 @@ public class FoodPairingDAO extends AbstrataDAO{
         return model;
     }
 
+    public FoodPairingModel getByName(String name) {
+        FoodPairingModel model = null;
+        try {
+            Open();
+            Cursor cursor = db.query(FoodPairingModel.TABLE_NAME, null,
+                    FoodPairingModel.COLUMN_NAME + " = ?",
+                    new String[]{name},
+                    null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                model = new FoodPairingModel();
+                model.setFoodPairingId(cursor.getLong(cursor.getColumnIndexOrThrow(FoodPairingModel.COLUMN_ID)));
+                model.setName(cursor.getString(cursor.getColumnIndexOrThrow(FoodPairingModel.COLUMN_NAME)));
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return model;
+    }
+
 }
