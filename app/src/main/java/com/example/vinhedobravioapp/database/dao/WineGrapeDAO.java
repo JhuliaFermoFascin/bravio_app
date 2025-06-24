@@ -3,6 +3,7 @@ package com.example.vinhedobravioapp.database.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
+import com.example.vinhedobravioapp.database.model.GrapeModel;
 import com.example.vinhedobravioapp.database.model.WineGrapeModel;
 
 import java.util.ArrayList;
@@ -133,7 +134,7 @@ public class WineGrapeDAO extends AbstrataDAO {
                 long grapeId = cursor.getLong(cursor.getColumnIndexOrThrow(WineGrapeModel.COLUMN_GRAPE_ID));
                 GrapeModel grape = grapeDAO.getById(grapeId);
                 if (grape != null) {
-                    grapeNames.add(grape.getUva()); // Supondo que o nome da uva seja retornado por getUva()
+                    grapeNames.add(grape.getName()); // Supondo que o nome da uva seja retornado por getUva()
                 }
             } while (cursor.moveToNext());
             cursor.close();

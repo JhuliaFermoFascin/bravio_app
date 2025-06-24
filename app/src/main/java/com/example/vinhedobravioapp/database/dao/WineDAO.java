@@ -116,24 +116,24 @@ public class WineDAO extends AbstrataDAO {
         return wine;
     }
 
-    public List<WineModel> getItemInformations(Context context){
-        List<WineModel> wineList = getAll();
-        WineTypeDAO wineTypeDAO = new WineTypeDAO(context);
-        WineImageDAO wineImageDAO = new WineImageDAO(context);
-
-        for(WineModel wine : wineList){
-            WineTypeModel wineType = wineTypeDAO.getById(wine.getWineTypeId());
-            if (wineType != null) {
-                wine.setWineTypeName(wineType.getTypeName());
-            }
-
-            WineImageModel wineImage = wineImageDAO.getByWineId(wine.getWineId());
-            if (wineImage != null) {
-                wine.setImageBase64(wineImage.getImageBase64());
-            }
-        }
-        return wineList;
-    }
+//    public List<WineModel> getItemInformations(Context context){
+//        List<WineModel> wineList = getAll();
+//        WineTypeDAO wineTypeDAO = new WineTypeDAO(context);
+//        WineImageDAO wineImageDAO = new WineImageDAO(context);
+//
+//        for(WineModel wine : wineList){
+//            WineTypeModel wineType = wineTypeDAO.getById(wine.getWineTypeId());
+//            if (wineType != null) {
+//                wine.setWineTypeName(wineType.getTypeName());
+//            }
+//
+//            WineImageModel wineImage = wineImageDAO.getByWineId(wine.getWineId());
+//            if (wineImage != null) {
+//                wine.setImageBase64(wineImage.getImageBase64());
+//            }
+//        }
+//        return wineList;
+//    }
 
     // UPDATE
     public int update(WineModel wineModel) {
