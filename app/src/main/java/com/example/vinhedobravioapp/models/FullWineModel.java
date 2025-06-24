@@ -134,6 +134,17 @@ public class FullWineModel  {
     public String getImageBase64() { return imageBase64; }
     public void setImageBase64(String imageBase64) { this.imageBase64 = imageBase64; }
 
+    // Retorna todos os vinhos como FullWineModel
+    public static List<FullWineModel> getAllFullWineModels(Context context) {
+        WineDAO wineDAO = new WineDAO(context);
+        List<WineModel> wineModels = wineDAO.getAll();
+        List<FullWineModel> fullWineList = new java.util.ArrayList<>();
+        for (WineModel wine : wineModels) {
+            fullWineList.add(new FullWineModel(context, wine.getWineId()));
+        }
+        return fullWineList;
+    }
+
     // Save all changes to DB
     public void saveFullWine(Context context) {
         // Atualiza o objeto wine com os campos ramificados
