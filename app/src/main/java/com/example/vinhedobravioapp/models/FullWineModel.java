@@ -1,6 +1,10 @@
 package com.example.vinhedobravioapp.models;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import com.example.vinhedobravioapp.database.dao.*;
 import com.example.vinhedobravioapp.database.model.*;
 import java.util.List;
@@ -16,6 +20,7 @@ public class FullWineModel  {
     private List<String> foodPairings;
     private WineReviewModel wineReview;
     private String imageBase64;
+    public Bitmap wineImageBitmap;
 
     // Ramificação dos campos do WineModel
     private long wineId;
@@ -77,6 +82,7 @@ public class FullWineModel  {
             this.idealTemperatureCelsius = wine.getIdealTemperatureCelsius();
             this.agingPotential = wine.getAgingPotential();
             this.unitPrice = wine.getUnitPrice();
+            this.wineImageBitmap = decodeBase64ToBitmap(this.imageBase64);
         }
     }
 
@@ -238,6 +244,17 @@ public class FullWineModel  {
                     wineFoodPairingDAO.insert(wfp);
                 }
             }
+        }
+    }
+    
+    private static Bitmap decodeBase64ToBitmap(String base64Str) {
+        if (base64Str == null || base64Str.isEmpty()) return null;
+        try {
+            byte[] decodedBytes = Base64.decode(base64Str, Base64.DEFAULT);
+            return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
