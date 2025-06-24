@@ -39,6 +39,7 @@ public class WineDAO extends AbstrataDAO {
             values.put(WineModel.ACIDITY_COLUMN, wineModel.getAcidity());
             values.put(WineModel.IDEAL_TEMPERATURE_COLUMN, wineModel.getIdealTemperatureCelsius());
             values.put(WineModel.AGING_POTENTIAL_COLUMN, wineModel.getAgingPotential());
+            values.put(WineModel.UNIT_PRICE_COLUMN, wineModel.getUnitPrice());
             result = db.insert(WineModel.TABLE_NAME, null, values);
         } finally {
             Close();
@@ -72,6 +73,7 @@ public class WineDAO extends AbstrataDAO {
                     wine.setAcidity(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.ACIDITY_COLUMN)));
                     wine.setIdealTemperatureCelsius(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.IDEAL_TEMPERATURE_COLUMN)));
                     wine.setAgingPotential(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.AGING_POTENTIAL_COLUMN)));
+                    wine.setUnitPrice(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.UNIT_PRICE_COLUMN)));
                     wineList.add(wine);
                 } while (cursor.moveToNext());
                 cursor.close();
@@ -110,6 +112,7 @@ public class WineDAO extends AbstrataDAO {
                 wine.setAcidity(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.ACIDITY_COLUMN)));
                 wine.setIdealTemperatureCelsius(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.IDEAL_TEMPERATURE_COLUMN)));
                 wine.setAgingPotential(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.AGING_POTENTIAL_COLUMN)));
+                wine.setUnitPrice(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.UNIT_PRICE_COLUMN)));
                 cursor.close();
             }
         } finally {
@@ -140,6 +143,7 @@ public class WineDAO extends AbstrataDAO {
             values.put(WineModel.ACIDITY_COLUMN, wineModel.getAcidity());
             values.put(WineModel.IDEAL_TEMPERATURE_COLUMN, wineModel.getIdealTemperatureCelsius());
             values.put(WineModel.AGING_POTENTIAL_COLUMN, wineModel.getAgingPotential());
+            values.put(WineModel.UNIT_PRICE_COLUMN, wineModel.getUnitPrice());
             rows = db.update(WineModel.TABLE_NAME, values,
                     WineModel.WINE_ID_COLUMN + " = ?",
                     new String[]{String.valueOf(wineModel.getWineId())});

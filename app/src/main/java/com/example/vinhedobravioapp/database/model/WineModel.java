@@ -22,7 +22,8 @@ public class WineModel implements Serializable {
         GRAPE_ID_COLUMN = "grape_id",
         ACIDITY_COLUMN = "acidity",
         IDEAL_TEMPERATURE_COLUMN = "ideal_temperature_celsius",
-        AGING_POTENTIAL_COLUMN = "aging_potential";
+        AGING_POTENTIAL_COLUMN = "aging_potential",
+        UNIT_PRICE_COLUMN = "unit_price";
 
     public static String CREATE_TABLE_WINE =
         "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
@@ -43,6 +44,7 @@ public class WineModel implements Serializable {
         + ACIDITY_COLUMN + " TEXT, "
         + IDEAL_TEMPERATURE_COLUMN + " REAL, "
         + AGING_POTENTIAL_COLUMN + " TEXT, "
+        + UNIT_PRICE_COLUMN + " REAL, "
         + "FOREIGN KEY (" + WINERY_ID_COLUMN + ") REFERENCES tb_winery(winery_id), "
         + "FOREIGN KEY (" + WINE_TYPE_ID_COLUMN + ") REFERENCES tb_wine_type(wine_type_id), "
         + "FOREIGN KEY (" + COMMERCIAL_CATEGORY_ID_COLUMN + ") REFERENCES tb_commercial_category(category_id), "
@@ -72,6 +74,7 @@ public class WineModel implements Serializable {
     private String acidity;
     private Double idealTemperatureCelsius;
     private String agingPotential;
+    private Double unitPrice;
 
     // Default constructor
     public WineModel() {}
@@ -80,7 +83,7 @@ public class WineModel implements Serializable {
     public WineModel(long wineId, String name, Long wineryId, long wineTypeId, Long commercialCategoryId,
                      Long originId, String vintage, String description, String compositionType,
                      Long tastingNoteId, String foodPairings, Double alcoholContent, Integer volume,
-                     Long grapeId, String acidity, Double idealTemperatureCelsius, String agingPotential) {
+                     Long grapeId, String acidity, Double idealTemperatureCelsius, String agingPotential, Double unitPrice) {
         this.wineId = wineId;
         this.name = name;
         this.wineryId = wineryId;
@@ -98,6 +101,7 @@ public class WineModel implements Serializable {
         this.acidity = acidity;
         this.idealTemperatureCelsius = idealTemperatureCelsius;
         this.agingPotential = agingPotential;
+        this.unitPrice = unitPrice;
     }
 
     // Getters and Setters
@@ -135,4 +139,30 @@ public class WineModel implements Serializable {
     public void setIdealTemperatureCelsius(Double idealTemperatureCelsius) { this.idealTemperatureCelsius = idealTemperatureCelsius; }
     public String getAgingPotential() { return agingPotential; }
     public void setAgingPotential(String agingPotential) { this.agingPotential = agingPotential; }
+    public Double getUnitPrice() { return unitPrice; }
+    public void setUnitPrice(Double unitPrice) { this.unitPrice = unitPrice; }
+
+    @Override
+    public String toString() {
+        return "WineModel{" +
+                "wineId=" + wineId +
+                ", name='" + name + '\'' +
+                ", wineryId=" + wineryId +
+                ", wineTypeId=" + wineTypeId +
+                ", commercialCategoryId=" + commercialCategoryId +
+                ", originId=" + originId +
+                ", vintage='" + vintage + '\'' +
+                ", description='" + description + '\'' +
+                ", compositionType='" + compositionType + '\'' +
+                ", tastingNoteId=" + tastingNoteId +
+                ", foodPairings='" + foodPairings + '\'' +
+                ", alcoholContent=" + alcoholContent +
+                ", volume=" + volume +
+                ", grapeId=" + grapeId +
+                ", acidity='" + acidity + '\'' +
+                ", idealTemperatureCelsius=" + idealTemperatureCelsius +
+                ", agingPotential='" + agingPotential + '\'' +
+                ", unitPrice=" + unitPrice +
+                '}';
+    }
 }

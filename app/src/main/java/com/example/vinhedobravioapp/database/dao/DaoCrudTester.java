@@ -118,10 +118,12 @@ public class DaoCrudTester {
         wine.setAcidity("Média");
         wine.setIdealTemperatureCelsius(16.0);
         wine.setAgingPotential("5 anos");
+        wine.setUnitPrice(99.99);
         long wineId = wineDAO.insert(wine);
         WineModel loadedWine = wineDAO.getById(wineId);
         wine.setWineId(wineId);
         wine.setName("Vinho Atualizado");
+        wine.setUnitPrice(149.99);
         wineDAO.update(wine);
         wineDAO.delete(wineId);
 
