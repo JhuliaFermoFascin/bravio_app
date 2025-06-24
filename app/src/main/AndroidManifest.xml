@@ -38,6 +38,7 @@
         <activity android:name=".ui.components.pedidos.CadastroPedidoActivity" />
         <activity android:name=".ui.components.visitas.VisitasActivity" />
         <activity android:name=".ui.components.visitas.CadastroVisitasActivity" />
+        <activity android:name=".ui.components.vinhos.ConfigEstoqueActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_text_primary">
+
+    <include
+        layout="@layout/component_view_custom_header"
+        android:id="@+id/component_view_custom_header"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp">
+
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+            android:id="@+id/addCommercialCategory_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/commercial_category"
+            app:btn_icon="@drawable/icon_wine"
+            android:layout_marginBottom="20dp"/>
+
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+            android:id="@+id/addGrapeComposition_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/grapes_composition"
+            app:btn_icon="@drawable/icon_wine"
+            android:layout_marginBottom="20dp"/>
+
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+            android:id="@+id/addFoodPairing_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/food_parings"
+            app:btn_icon="@drawable/icon_wine"
+            android:layout_marginBottom="20dp"/>
+
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+            android:id="@+id/addTastingNotes_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/tasting_notes"
+            app:btn_icon="@drawable/icon_wine"
+            android:layout_marginBottom="20dp"/>
+
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+            android:id="@+id/addWineType_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/wine_type"
+            app:btn_icon="@drawable/icon_wine"
+            android:layout_marginBottom="20dp"/>
+
+        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+            android:id="@+id/addWineGrapes_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_style="PRIMARY"
+            app:btn_text="@string/grapes"
+            app:btn_icon="@drawable/icon_wine" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

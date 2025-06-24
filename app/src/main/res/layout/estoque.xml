@@ -11,9 +11,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include
-            layout="@layout/component_view_custom_header"
-            android:id="@+id/component_view_custom_header"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                layout="@layout/component_view_custom_header"
+                android:id="@+id/component_view_custom_header"/>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,13 +28,13 @@
             android:paddingHorizontal="30dp">
 
             <EditText
+                style="@style/Filter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="20dp"
+                android:layout_marginBottom="15dp"
                 android:hint="@string/inventory_search"
-                style="@style/Filter"
-                android:layout_marginBottom="15dp"/>
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp" />
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -36,11 +42,11 @@
                 android:layout_weight="1"
                 android:fillViewport="true">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/wine_recycleview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/wine_recycleview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             </ScrollView>
         </LinearLayout>

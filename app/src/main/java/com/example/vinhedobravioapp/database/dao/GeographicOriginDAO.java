@@ -2,8 +2,13 @@ package com.example.vinhedobravioapp.database.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.GeographicOriginModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GeographicOriginDAO extends AbstrataDAO {
     public GeographicOriginDAO(Context context) { helper = new DPOpenHelper(context); }
@@ -35,6 +40,52 @@ public class GeographicOriginDAO extends AbstrataDAO {
         } finally { Close(); }
         return model;
     }
+
+    public long getIdByCountryAndRegion(String country, String region) {
+        long id = -1;
+        try {
+            Open();
+            android.database.Cursor cursor = db.query(
+                    GeographicOriginModel.TABLE_NAME,
+                    new String[]{GeographicOriginModel.COLUMN_ID},
+                    GeographicOriginModel.COLUMN_COUNTRY + " = ? AND " + GeographicOriginModel.COLUMN_REGION + " = ?",
+                    new String[]{country, region},
+                    null, null, null
+            );
+            if (cursor != null && cursor.moveToFirst()) {
+                id = cursor.getLong(cursor.getColumnIndexOrThrow(GeographicOriginModel.COLUMN_ID));
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return id;
+    }
+
+    public List<String> getRegionsByCountry(String country) {
+        List<String> regions = new ArrayList<>();
+        try {
+            Open();
+            Cursor cursor = db.query(GeographicOriginModel.TABLE_NAME,
+                    new String[]{GeographicOriginModel.COLUMN_REGION},
+                    GeographicOriginModel.COLUMN_COUNTRY + " = ?",
+                    new String[]{country},
+                    null, null, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    regions.add(cursor.getString(cursor.getColumnIndexOrThrow(GeographicOriginModel.COLUMN_REGION)));
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return regions;
+    }
+
+
+
 
     public java.util.List<GeographicOriginModel> getAll() {
         java.util.List<GeographicOriginModel> list = new java.util.ArrayList<>();

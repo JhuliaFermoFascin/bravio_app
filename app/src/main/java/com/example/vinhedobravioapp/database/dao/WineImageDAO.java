@@ -71,6 +71,22 @@ public class WineImageDAO extends AbstrataDAO {
         return rows;
     }
 
+    public int deleteByWineId(long wineId) {
+        int rows = 0;
+        try {
+            Open();
+            rows = db.delete(
+                    WineImageModel.TABLE_NAME,
+                    WineImageModel.COLUMN_WINE_ID + " = ?",
+                    new String[]{String.valueOf(wineId)}
+            );
+        } finally {
+            Close();
+        }
+        return rows;
+    }
+
+
     public int delete(long wineId) {
         int rows = 0;
         try { Open();
