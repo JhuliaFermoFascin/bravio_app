@@ -33,6 +33,34 @@ public class WineryDAO extends AbstrataDAO {
         } finally { Close(); }
         return model;
     }
+    public long getIdByName(final String name) {
+        long id = -1;
+        try {
+            Open();
+            String selection = WineryModel.COLUMN_NAME + " = ?";
+            String[] selectionArgs = new String[]{ name };
+
+            android.database.Cursor cursor = db.query(
+                    WineryModel.TABLE_NAME,
+                    new String[]{ WineryModel.COLUMN_ID },
+                    selection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null
+            );
+
+            if (cursor != null && cursor.moveToFirst()) {
+                id = cursor.getLong(
+                        cursor.getColumnIndexOrThrow(WineryModel.COLUMN_ID)
+                );
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return id;
+    }
 
     public java.util.List<WineryModel> getAll() {
         java.util.List<WineryModel> list = new java.util.ArrayList<>();

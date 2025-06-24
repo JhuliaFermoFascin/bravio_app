@@ -2,6 +2,8 @@ package com.example.vinhedobravioapp.database.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.WineReviewModel;
 
@@ -38,6 +40,39 @@ public class WineReviewDAO extends AbstrataDAO {
         return model;
     }
 
+    public WineReviewModel getByWineId(long wineId) {
+        WineReviewModel model = null;
+        try {
+            Open();
+            Cursor cursor = db.query(
+                    WineReviewModel.TABLE_NAME,
+                    null,
+                    WineReviewModel.COLUMN_WINE_ID + " = ?",
+                    new String[]{ String.valueOf(wineId) },
+                    null, null, null
+            );
+            if (cursor != null && cursor.moveToFirst()) {
+                model = new WineReviewModel();
+                model.setReviewId(cursor.getLong(
+                        cursor.getColumnIndexOrThrow(WineReviewModel.COLUMN_ID)
+                ));
+                model.setWineId(cursor.getLong(
+                        cursor.getColumnIndexOrThrow(WineReviewModel.COLUMN_WINE_ID)
+                ));
+                model.setReviewText(cursor.getString(
+                        cursor.getColumnIndexOrThrow(WineReviewModel.COLUMN_REVIEW_TEXT)
+                ));
+                model.setRating(cursor.getDouble(
+                        cursor.getColumnIndexOrThrow(WineReviewModel.COLUMN_RATING)
+                ));
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return model;
+    }
+
     public java.util.List<WineReviewModel> getAll() {
         java.util.List<WineReviewModel> list = new java.util.ArrayList<>();
         try { Open();
@@ -70,6 +105,22 @@ public class WineReviewDAO extends AbstrataDAO {
         } finally { Close(); }
         return rows;
     }
+
+    public int deleteByWineId(long wineId) {
+        int rows = 0;
+        try {
+            Open();
+            rows = db.delete(
+                    WineReviewModel.TABLE_NAME,
+                    WineReviewModel.COLUMN_WINE_ID + " = ?",
+                    new String[]{String.valueOf(wineId)}
+            );
+        } finally {
+            Close();
+        }
+        return rows;
+    }
+
 
     public int delete(long id) {
         int rows = 0;

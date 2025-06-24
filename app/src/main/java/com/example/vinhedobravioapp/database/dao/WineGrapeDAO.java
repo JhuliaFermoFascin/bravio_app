@@ -5,6 +5,9 @@ import android.content.Context;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.WineGrapeModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WineGrapeDAO extends AbstrataDAO {
     public WineGrapeDAO(Context context) { helper = new DPOpenHelper(context); }
     public long insert(final WineGrapeModel model) {
@@ -52,6 +55,28 @@ public class WineGrapeDAO extends AbstrataDAO {
         return list;
     }
 
+    public List<Long> getGrapeIdsByWineId(long wineId) {
+        List<Long> grapeIds = new ArrayList<>();
+        try { Open();
+            android.database.Cursor cursor = db.query(
+                    WineGrapeModel.TABLE_NAME,
+                    new String[]{WineGrapeModel.COLUMN_GRAPE_ID},
+                    WineGrapeModel.COLUMN_WINE_ID + " = ?",
+                    new String[]{String.valueOf(wineId)},
+                    null, null, null
+            );
+
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    grapeIds.add(cursor.getLong(cursor.getColumnIndexOrThrow(WineGrapeModel.COLUMN_GRAPE_ID)));
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+        } finally { Close(); }
+        return grapeIds;
+    }
+
+
     public int update(WineGrapeModel model) {
         int rows = 0;
         try { Open();
@@ -64,6 +89,22 @@ public class WineGrapeDAO extends AbstrataDAO {
         } finally { Close(); }
         return rows;
     }
+
+    public int deleteByWineId(long wineId) {
+        int rows = 0;
+        try {
+            Open();
+            rows = db.delete(
+                    WineGrapeModel.TABLE_NAME,
+                    WineGrapeModel.COLUMN_WINE_ID + " = ?",
+                    new String[]{String.valueOf(wineId)}
+            );
+        } finally {
+            Close();
+        }
+        return rows;
+    }
+
 
     public int delete(long wineId, long grapeId) {
         int rows = 0;

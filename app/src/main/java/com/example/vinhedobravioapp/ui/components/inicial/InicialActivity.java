@@ -13,6 +13,7 @@ import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.FindAnyUsers;
 import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
 import com.example.vinhedobravioapp.loginManager.LoginManager;
+
 import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
 import com.google.gson.Gson;
 
@@ -20,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+//import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
 
 public class InicialActivity extends Activity {
 
@@ -37,7 +39,7 @@ public class InicialActivity extends Activity {
         FindAnyUsers.ensureDefaultGrapes(this);
         FindAnyUsers.ensureDefaultTastingNotes(this);
         FindAnyUsers.ensureDefaultWineries(this);
-        DaoCrudTester.testAllDaos(this);
+//        DaoCrudTester.testAllDaos(this);
 
 
         new Handler().postDelayed(() -> {

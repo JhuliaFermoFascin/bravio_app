@@ -2,6 +2,7 @@ package com.example.vinhedobravioapp.database.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.TastingNoteModel;
@@ -44,6 +45,25 @@ public class TastingNoteDAO extends AbstrataDAO {
         }
         return model;
     }
+
+    public long getIdByNoteText(String note) {
+        long id = -1;
+        try {
+            Open();
+            Cursor cursor = db.query(TastingNoteModel.TABLE_NAME, null,
+                    TastingNoteModel.COLUMN_NOTE + " = ?",
+                    new String[]{note},
+                    null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                id = cursor.getLong(cursor.getColumnIndexOrThrow(TastingNoteModel.COLUMN_ID));
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return id;
+    }
+
 
     public java.util.List<TastingNoteModel> getAll() {
         java.util.List<TastingNoteModel> list = new java.util.ArrayList<>();
