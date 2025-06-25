@@ -36,7 +36,7 @@ public class LoginActivity extends Activity {
         int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
         SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
         LoginStatus status = LoginManager.getInstance().getLoginStatus();
-        String UserTypeName = tipoUsuario == 1? "Administrador" : tipoUsuario == 0? "Representante": "erro";
+        String UserTypeName = tipoUsuario == 1? getString(R.string.administrador) : tipoUsuario == 0? getString(R.string.representante): "erro";
 
         setContentView(R.layout.home_login);
 
@@ -114,7 +114,7 @@ public class LoginActivity extends Activity {
         if (user != null) {
 
             if (user.getIsAdmin() == isAdmin) {
-                String dataAtual = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                String dataAtual = new SimpleDateFormat(getString(R.string.yyyy_mm_dd), Locale.getDefault()).format(new Date());
                 LoginStatus status = new LoginStatus(
                         user.getUserId(),
                         dataAtual,
@@ -129,7 +129,6 @@ public class LoginActivity extends Activity {
                 editor.putString(getString(R.string.login_status), json);
                 editor.apply();
 
-                // Redirecionamento agora fica dentro do IF
                 Intent intent;
                 if (user.getIsAdmin() == 1) {
                     intent = new Intent(this, DashboardAdmActivity.class);
@@ -142,7 +141,6 @@ public class LoginActivity extends Activity {
                 finish();
             }else {
                 error = true;
-
             }
         } else {
             error =true;

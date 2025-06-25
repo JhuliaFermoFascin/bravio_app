@@ -73,7 +73,7 @@ public class LoginManager {
             }
 
             try {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                SimpleDateFormat sdf = new SimpleDateFormat(context.getString(R.string.yyyy_mm_dd), Locale.getDefault());
                 Date dataLogin = sdf.parse(loginStatus.getDataLogin());
                 long dias = TimeUnit.MILLISECONDS.toDays(new Date().getTime() - dataLogin.getTime());
 

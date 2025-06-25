@@ -235,4 +235,9 @@
     <string name="confirmar_retorno_adm">o dashboard</string>
     <string name="confirmar_retorno_menu">o menu inicial</string>
 
+    <!--Erick -->
+    <string name="yyyy_mm_dd">yyyy-MM-dd</string>
+    <string name="administrador">Administrador</string>
+    <string name="representante">Representante</string>
+
 </resources>
