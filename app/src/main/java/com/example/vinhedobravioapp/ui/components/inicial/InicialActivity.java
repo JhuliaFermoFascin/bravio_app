@@ -39,14 +39,6 @@ public class InicialActivity extends Activity {
         FindAnyUsers.ensureDefaultTastingNotes(this);
         FindAnyUsers.ensureDefaultWineries(this);
 
-        // Log dos vinhos cadastrados
-        com.example.vinhedobravioapp.database.dao.WineDAO wineDAO = new com.example.vinhedobravioapp.database.dao.WineDAO(this);
-        java.util.List<com.example.vinhedobravioapp.database.model.WineModel> wines = wineDAO.getAll();
-        for (com.example.vinhedobravioapp.database.model.WineModel wine : wines) {
-            Log.d("WINE_DAO", wine.toString());
-        }
-
-
         new Handler().postDelayed(() -> {
             Intent intent = LoginManager.getInstance().getNextActivity(this);
             startActivity(intent);
