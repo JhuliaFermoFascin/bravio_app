@@ -33,21 +33,10 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
         SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
         LoginStatus status = LoginManager.getInstance().getLoginStatus();
-        String nomeUsuario;
-        if (status.isManterLogado()) {
-            Intent intent;
-            if (status.isAdmin()) {
-                intent = new Intent(this, DashboardAdmActivity.class);
-            } else {
-                intent = new Intent(this, PainelRepresentanteActivity.class);
-            }
-            startActivity(intent);
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            finish();
-        }
+        String UserTypeName = tipoUsuario == 1? "Administrador" : tipoUsuario == 0? "Representante": "erro";
 
         setContentView(R.layout.home_login);
 
@@ -67,12 +56,6 @@ public class LoginActivity extends Activity {
 
         final boolean[] senhaVisivel = {false};
 
-        if (status.isAdmin()) {
-            nomeUsuario = getString(R.string.titulo_adm);
-        } else {
-            nomeUsuario = getString(R.string.titulo_rep);
-        }
-
         toggleSenha.setOnClickListener(v -> {
             if (senhaVisivel[0]) {
                 campoSenha.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -85,7 +68,7 @@ public class LoginActivity extends Activity {
             senhaVisivel[0] = !senhaVisivel[0];
         });
 
-        String textoFinal = getString(R.string.login_geral, nomeUsuario);
+        String textoFinal = getString(R.string.login_geral, UserTypeName);
         tituloLogin.setText(textoFinal);
 
         btnLogin.setOnClickListener(v -> {
@@ -102,20 +85,19 @@ public class LoginActivity extends Activity {
                 return;
             }
 
-            if (status.isAdmin()) {
-                verificaLogin(email, senha, checkboxManterLogado);
-            }
-
-            if (!status.isAdmin()) {
-                verificaLogin(email, senha, checkboxManterLogado);
+            if (tipoUsuario == 1) {
+                verificaLogin(tipoUsuario,email, senha, checkboxManterLogado);
+            } else {
+                verificaLogin(tipoUsuario, email, senha, checkboxManterLogado);
             }
 
         });
 
         esqueceuSenha.setOnClickListener(v -> {
             Intent intent = new Intent(this, EsqueceuSenhaActivity.class);
-            intent.putExtra(getString(R.string.tipo_usuario_input), status.isAdmin());
+            intent.putExtra(getString(R.string.tipo_usuario_input), UserTypeName);
             intent.putExtra(getString(R.string.email_input), campoEmail.getText().toString().trim());
+            intent.putExtra(getString(R.string.senha_input), campoSenha.getText().toString().trim());
             intent.putExtra(getString(R.string.senha_input), campoSenha.getText().toString().trim());
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -125,38 +107,47 @@ public class LoginActivity extends Activity {
             mostrarConfirmacaoSaida();
         });
     }
-    private void verificaLogin(String emailDigitado, String senhaDigitada, CheckBox checkboxManterLogado) {
+    private void verificaLogin(int isAdmin, String emailDigitado, String senhaDigitada, CheckBox checkboxManterLogado) {
         UserDAO userDAO = new UserDAO(this);
         UserModel user = userDAO.findByEmailAndPassword(emailDigitado, senhaDigitada);
-
+        boolean error = false;
         if (user != null) {
-            String dataAtual = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-            LoginStatus status = new LoginStatus(
-                    user.getUserId(),
-                    dataAtual,
-                    user.getIsAdmin() == 1,
-                    checkboxManterLogado.isChecked()
-            );
 
-            Gson gson = new Gson();
-            String json = gson.toJson(status);
+            if (user.getIsAdmin() == isAdmin) {
+                String dataAtual = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                LoginStatus status = new LoginStatus(
+                        user.getUserId(),
+                        dataAtual,
+                        user.getIsAdmin() == 1,
+                        checkboxManterLogado.isChecked()
+                );
 
-            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
-            editor.putString("login_status", json);
-            editor.apply();
+                Gson gson = new Gson();
+                String json = gson.toJson(status);
 
-            // Redirecionamento agora fica dentro do IF
-            Intent intent;
-            if (user.getIsAdmin() == 1) {
-                intent = new Intent(this, DashboardAdmActivity.class);
-            } else {
-                intent = new Intent(this, PainelRepresentanteActivity.class);
+                SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
+                editor.putString(getString(R.string.login_status), json);
+                editor.apply();
+
+                // Redirecionamento agora fica dentro do IF
+                Intent intent;
+                if (user.getIsAdmin() == 1) {
+                    intent = new Intent(this, DashboardAdmActivity.class);
+                } else {
+                    intent = new Intent(this, PainelRepresentanteActivity.class);
+                }
+
+                startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                finish();
+            }else {
+                error = true;
+
             }
-
-            startActivity(intent);
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            finish();
         } else {
+            error =true;
+        }
+        if (error) {
             Toast.makeText(this, getString(R.string.email_senha_incorreto), Toast.LENGTH_SHORT).show();
         }
     }
