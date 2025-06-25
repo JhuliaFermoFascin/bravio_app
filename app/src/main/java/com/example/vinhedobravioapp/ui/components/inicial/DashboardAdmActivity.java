@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.DashboardWineAdapter;
 import com.example.vinhedobravioapp.domain.model.Vinho;
+import com.example.vinhedobravioapp.loginManager.LoginManager;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.helper.MenuSuspensoHelper;
 import com.example.vinhedobravioapp.ui.components.utils.MyMarkerView;
@@ -82,6 +83,7 @@ public class DashboardAdmActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
+            LoginManager.getInstance().clearLoginStatus(this);
 
             Intent intent = new Intent(DashboardAdmActivity.this, MenuActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
