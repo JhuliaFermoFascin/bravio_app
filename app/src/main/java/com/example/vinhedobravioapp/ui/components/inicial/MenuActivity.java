@@ -20,7 +20,7 @@ public class MenuActivity extends Activity {
 
 
         btnAdm.setOnClickListener(v -> abrirLogin(1));
-        btnRep.setOnClickListener(v -> abrirLogin(2));
+        btnRep.setOnClickListener(v -> abrirLogin(0));
         btnVis.setOnClickListener(v -> {
             Intent intent = new Intent(this, BemVindoActivity.class);
             startActivity(intent);
