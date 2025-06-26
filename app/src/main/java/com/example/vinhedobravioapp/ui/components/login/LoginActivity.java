@@ -117,6 +117,7 @@ public class LoginActivity extends Activity {
                 String dataAtual = new SimpleDateFormat(getString(R.string.yyyy_mm_dd), Locale.getDefault()).format(new Date());
                 LoginStatus status = new LoginStatus(
                         user.getUserId(),
+                        user.getName(),
                         dataAtual,
                         user.getIsAdmin() == 1,
                         checkboxManterLogado.isChecked()
