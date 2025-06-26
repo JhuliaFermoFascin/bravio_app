@@ -21,7 +21,7 @@ public class VisitasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visitas);
 
-        HeaderHelper.configurarHeader(this, getString(R.string.visit), 2, false, true, false);
+        HeaderHelper.configurarHeader(this, getString(R.string.visit), 0, false, true, false);
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addVisit_btn);
         addWine_btn.setOnClickListener(new View.OnClickListener() {
