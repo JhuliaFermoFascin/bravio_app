@@ -51,6 +51,8 @@ public class MenuVisitanteHelper {
 
         historia_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, HistoriaActivity.class);
+            intent.putExtra(activity.getString(R.string.tipo_usuario_input), origemAdm);
+            intent.putExtra("forcar_menu_visitante", true);
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             popupWindow.dismiss();

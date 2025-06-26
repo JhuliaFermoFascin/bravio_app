@@ -15,17 +15,17 @@ import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
 
 public class HistoriaActivity extends AppCompatActivity {
     private int tipoUsuario = -1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_historia);
 
-        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+        this.tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
 
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
 
         menu_suspenso.setOnClickListener(v -> MenuVisitanteHelper.show(this, tipoUsuario));
-
     }
 
     @Override
