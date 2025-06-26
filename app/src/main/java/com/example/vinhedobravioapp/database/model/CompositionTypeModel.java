@@ -6,6 +6,7 @@ public class CompositionTypeModel {
     public static final String COLUMN_ID = "composition_type_id";
     public static final String COLUMN_NAME = "composition_name";
 
+
     public static final String CREATE_TABLE_COMPOSITION_TYPE =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
                     + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -17,7 +18,9 @@ public class CompositionTypeModel {
 
     private long compositionTypeId;
     private String compositionName;
+    public CompositionTypeModel() {
 
+    }
     public long getCompositionTypeId() { return compositionTypeId; }
     public void setCompositionTypeId(long compositionTypeId) { this.compositionTypeId = compositionTypeId; }
     public String getCompositionName() { return compositionName; }

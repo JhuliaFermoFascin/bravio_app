@@ -10,8 +10,8 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.database.CreateDefaults;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
-import com.example.vinhedobravioapp.database.FindAnyUsers;
 import com.example.vinhedobravioapp.loginManager.LoginManager;
 
 import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
@@ -33,12 +33,7 @@ public class InicialActivity extends AppCompatActivity {
         setContentView(R.layout.home_tela_inicial);
         
         DPOpenHelper db = new DPOpenHelper(this);
-        FindAnyUsers.ensureDefaultUsers(this);
-        FindAnyUsers.ensureDefaultWineTypes(this);
-        FindAnyUsers.ensureDefaultGeographicOrigins(this);
-        FindAnyUsers.ensureDefaultGrapes(this);
-        FindAnyUsers.ensureDefaultTastingNotes(this);
-        FindAnyUsers.ensureDefaultWineries(this);
+        CreateDefaults.Start(this);
 
         new Handler().postDelayed(() -> {
             Intent intent = LoginManager.getInstance().getNextActivity(this);
