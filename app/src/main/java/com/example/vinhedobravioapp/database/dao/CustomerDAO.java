@@ -17,7 +17,6 @@ public class CustomerDAO extends AbstrataDAO {
         try {
             Open();
             ContentValues values = new ContentValues();
-            values.put(CustomerModel.COLUMN_ID, customer.getCustomerId());
             values.put(CustomerModel.COLUMN_NAME_COMPANY, customer.getNameCompanyName());
             values.put(CustomerModel.COLUMN_CPF_CNPJ, customer.getCpfCnpj());
             values.put(CustomerModel.COLUMN_ADDRESS, customer.getAddress());

@@ -1,0 +1,126 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="@drawable/border_purple">
+
+        <!-- Dados principais do cliente -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <!-- Nome em destaque -->
+            <TextView
+                android:id="@+id/customerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome Cliente"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000" />
+
+            <!-- CPF/CNPJ -->
+            <TextView
+                android:id="@+id/customerCpfCnpj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CPF/CNPJ"
+                android:textSize="14sp"
+                android:textColor="#666"
+                android:layout_marginTop="4dp" />
+
+            <!-- Endereço -->
+            <TextView
+                android:id="@+id/customerAdress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Endereço"
+                android:textSize="14sp"
+                android:textColor="#666"
+                android:layout_marginTop="6dp" />
+
+            <!-- Região abaixo do endereço -->
+            <TextView
+                android:id="@+id/customerRegion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Região"
+                android:textSize="14sp"
+                android:textColor="#666"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Contatos -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contatos"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:id="@+id/customerTelephone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefone"
+                android:textSize="14sp"
+                android:textColor="#666" />
+
+            <TextView
+                android:id="@+id/customerEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail"
+                android:textSize="14sp"
+                android:textColor="#666"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Botões Editar / Deletar com menos espaço entre eles -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="top|end"
+            android:layout_marginStart="8dp">
+
+            <ImageButton
+                android:id="@+id/btnEditar"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="6dp"
+                android:src="@drawable/icon_pencil"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+
+            <ImageButton
+                android:id="@+id/btnDeletar"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="6dp"
+                android:src="@drawable/icon_trash"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

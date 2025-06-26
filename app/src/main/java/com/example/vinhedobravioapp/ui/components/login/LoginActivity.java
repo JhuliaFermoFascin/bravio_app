@@ -150,6 +150,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
     private void mostrarConfirmacaoSaida() {
         String mensagem = getString(R.string.pergunta_saida, getString(R.string.confirmar_retorno_menu));
 

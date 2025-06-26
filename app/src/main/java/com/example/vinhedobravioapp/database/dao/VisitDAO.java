@@ -2,9 +2,13 @@ package com.example.vinhedobravioapp.database.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.VisitModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class VisitDAO extends AbstrataDAO {
 
@@ -22,6 +26,7 @@ public class VisitDAO extends AbstrataDAO {
             values.put(VisitModel.COLUMN_DATE_TIME, visitModel.getDateTime());
             values.put(VisitModel.COLUMN_LOCATION, visitModel.getLocation());
             values.put(VisitModel.COLUMN_WINES, visitModel.getWines());
+            values.put(VisitModel.COLUMN_DESCRIPTION, visitModel.getDescription()); // NOVO
             values.put(VisitModel.COLUMN_USER_ID, visitModel.getUserId());
             result = db.insert(VisitModel.TABLE_NAME, null, values);
         } finally {
@@ -34,7 +39,7 @@ public class VisitDAO extends AbstrataDAO {
         VisitModel model = null;
         try {
             Open();
-            android.database.Cursor cursor = db.query(VisitModel.TABLE_NAME, null,
+            Cursor cursor = db.query(VisitModel.TABLE_NAME, null,
                     VisitModel.COLUMN_ID + " = ?",
                     new String[]{String.valueOf(id)},
                     null, null, null);
@@ -45,6 +50,7 @@ public class VisitDAO extends AbstrataDAO {
                 model.setDateTime(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DATE_TIME)));
                 model.setLocation(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_LOCATION)));
                 model.setWines(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_WINES)));
+                model.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DESCRIPTION))); // NOVO
                 model.setUserId(cursor.getLong(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_USER_ID)));
                 cursor.close();
             }
@@ -54,11 +60,11 @@ public class VisitDAO extends AbstrataDAO {
         return model;
     }
 
-    public java.util.List<VisitModel> getAll() {
-        java.util.List<VisitModel> list = new java.util.ArrayList<>();
+    public List<VisitModel> getAll() {
+        List<VisitModel> list = new ArrayList<>();
         try {
             Open();
-            android.database.Cursor cursor = db.query(VisitModel.TABLE_NAME, null, null, null, null, null, null);
+            Cursor cursor = db.query(VisitModel.TABLE_NAME, null, null, null, null, null, null);
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     VisitModel model = new VisitModel();
@@ -67,6 +73,7 @@ public class VisitDAO extends AbstrataDAO {
                     model.setDateTime(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DATE_TIME)));
                     model.setLocation(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_LOCATION)));
                     model.setWines(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_WINES)));
+                    model.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DESCRIPTION))); // NOVO
                     model.setUserId(cursor.getLong(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_USER_ID)));
                     list.add(model);
                 } while (cursor.moveToNext());
@@ -82,11 +89,12 @@ public class VisitDAO extends AbstrataDAO {
         int rows = 0;
         try {
             Open();
-            android.content.ContentValues values = new android.content.ContentValues();
+            ContentValues values = new ContentValues();
             values.put(VisitModel.COLUMN_CUSTOMER_ID, model.getCustomerId());
             values.put(VisitModel.COLUMN_DATE_TIME, model.getDateTime());
             values.put(VisitModel.COLUMN_LOCATION, model.getLocation());
             values.put(VisitModel.COLUMN_WINES, model.getWines());
+            values.put(VisitModel.COLUMN_DESCRIPTION, model.getDescription()); // NOVO
             values.put(VisitModel.COLUMN_USER_ID, model.getUserId());
             rows = db.update(VisitModel.TABLE_NAME, values,
                     VisitModel.COLUMN_ID + " = ?",

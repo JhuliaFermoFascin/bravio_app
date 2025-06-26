@@ -2,9 +2,11 @@ package com.example.vinhedobravioapp.database.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.InventoryMovementModel;
+import com.example.vinhedobravioapp.database.model.WineModel;
 
 public class InventoryMovementDAO extends AbstrataDAO {
 
@@ -12,26 +14,32 @@ public class InventoryMovementDAO extends AbstrataDAO {
         helper = new DPOpenHelper(context);
     }
 
-    public long insert(final InventoryMovementModel model) {
-        long result = -1;
-        try {
-            Open();
-            ContentValues values = new ContentValues();
-            values.put(InventoryMovementModel.COLUMN_ID, model.getMovementId());
-            values.put(InventoryMovementModel.COLUMN_WINE_ID, model.getWineId());
-            values.put(InventoryMovementModel.COLUMN_MOVEMENT_TYPE, model.getMovementType());
-            values.put(InventoryMovementModel.COLUMN_QUANTITY, model.getQuantity());
-            values.put(InventoryMovementModel.COLUMN_UNIT_PRICE, model.getUnitPrice());
-            values.put(InventoryMovementModel.COLUMN_MOVEMENT_DATE, model.getMovementDate());
-            values.put(InventoryMovementModel.COLUMN_DOCUMENT_REFERENCE, model.getDocumentReference());
-            values.put(InventoryMovementModel.COLUMN_USER_ID, model.getUserId());
-            values.put(InventoryMovementModel.COLUMN_NOTES, model.getNotes());
-            result = db.insert(InventoryMovementModel.TABLE_NAME, null, values);
-        } finally {
-            Close();
-        }
-        return result;
+    public long insert(SQLiteDatabase db, InventoryMovementModel mov) {
+        ContentValues values = new ContentValues();
+        values.put(InventoryMovementModel.COLUMN_WINE_ID,       mov.getWineId());
+        values.put(InventoryMovementModel.COLUMN_MOVEMENT_TYPE, mov.getMovementType());
+        values.put(InventoryMovementModel.COLUMN_QUANTITY,      mov.getQuantity());
+        values.put(InventoryMovementModel.COLUMN_UNIT_PRICE,    mov.getUnitPrice());
+        values.put(InventoryMovementModel.COLUMN_DOCUMENT_REFERENCE, mov.getDocumentReference());
+        values.put(InventoryMovementModel.COLUMN_USER_ID,       mov.getUserId());
+        values.put(InventoryMovementModel.COLUMN_NOTES,         mov.getNotes());
+
+        long id = db.insertOrThrow(InventoryMovementModel.TABLE_NAME, null, values);
+
+        int delta = mov.getMovementType().equalsIgnoreCase("ENTRADA")
+                ? mov.getQuantity()
+                : -mov.getQuantity();
+
+        db.execSQL(
+                "UPDATE tb_wine " +
+                        "SET " + WineModel.QUANTITY + " = " + WineModel.QUANTITY + " + ? " +
+                        "WHERE " + WineModel.WINE_ID_COLUMN + " = ?",
+                new Object[]{ delta, mov.getWineId() }
+        );
+
+        return id;
     }
+
 
     public InventoryMovementModel getById(long id) {
         InventoryMovementModel model = null;

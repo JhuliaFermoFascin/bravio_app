@@ -8,13 +8,15 @@ public class OrderModel {
         COLUMN_ID = "order_id",
         COLUMN_CUSTOMER_ID = "customer_id",
         COLUMN_DATE = "date",
+        COLUMN_TOTAL = "total",
         COLUMN_STATUS = "status",
-        COLUMN_USER_ID = "user_id"; // Corrigido para user_id
+        COLUMN_USER_ID = "user_id";
 
     public static String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
                     + COLUMN_ID + " INTEGER PRIMARY KEY, "
                     + COLUMN_CUSTOMER_ID + " INTEGER NOT NULL, "
+                    + COLUMN_TOTAL + " DOUBLE NOT NULL, "
                     + COLUMN_DATE + " DATE NOT NULL, "
                     + COLUMN_STATUS + " TEXT NOT NULL, "
                     + COLUMN_USER_ID + " INTEGER NOT NULL, "
@@ -29,10 +31,10 @@ public class OrderModel {
     private long orderId;
     private long customerId;
     private String date;
+    private Double total;
     private String status;
     private long userId;
 
-    // Getters and Setters
     public long getOrderId() { return orderId; }
     public void setOrderId(long orderId) { this.orderId = orderId; }
     public long getCustomerId() { return customerId; }
@@ -43,4 +45,6 @@ public class OrderModel {
     public void setStatus(String status) { this.status = status; }
     public long getUserId() { return userId; }
     public void setUserId(long userId) { this.userId = userId; }
+    public Double getTotal() {return total;}
+    public void setTotal(Double total) {this.total = total;}
 }

@@ -18,7 +18,7 @@ public class OrderItemModel {
                     + COLUMN_VALUE + " REAL NOT NULL, "
                     + COLUMN_QUANTITY + " INTEGER NOT NULL, "
                     + COLUMN_ORDER_ID + " INTEGER NOT NULL, "
-                    + "UNIQUE (" + COLUMN_ID + "), "       // vírgula e espaço obrigatórios aqui
+                    + "UNIQUE (" + COLUMN_ID + "), "
                     + "FOREIGN KEY (" + COLUMN_WINE_ID + ") REFERENCES tb_wine(wine_id) ON UPDATE CASCADE, "
                     + "FOREIGN KEY (" + COLUMN_ORDER_ID + ") REFERENCES tb_order(order_id) ON UPDATE CASCADE"
                     + ");";

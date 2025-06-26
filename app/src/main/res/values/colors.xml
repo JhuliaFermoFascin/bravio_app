@@ -13,4 +13,9 @@
     <color name="text_red_primary">#c53c3c</color>
     <color name="background_popup_black">#73000000</color>
     <color name="background_resumo_pedidos">#F9F5ED</color>
+    <color name="item_background">#e8dfca</color>
+    <color name="status_red_bg">#B04A4A</color>
+    <color name="status_blue_bg">#4A6B8C</color>
+    <color name="status_green_bg">#4A6B4E</color>
+
 </resources>

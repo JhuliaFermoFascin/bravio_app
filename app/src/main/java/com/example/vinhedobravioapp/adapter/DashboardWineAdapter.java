@@ -45,11 +45,14 @@ public class DashboardWineAdapter extends RecyclerView.Adapter<DashboardWineAdap
 
         holder.comparacao.setTextColor(cor);
 
-        int iconRes = vinho.subiu
-                ? R.drawable.icon_up
-                : R.drawable.icon_down;
-
-        holder.iconArrow.setImageResource(iconRes);
+        if ("Novo!".equalsIgnoreCase(vinho.comparacao)) {
+            holder.iconArrow.setImageResource(R.drawable.icon_plus);
+        } else {
+            int iconRes = vinho.subiu
+                    ? R.drawable.icon_up
+                    : R.drawable.icon_down;
+            holder.iconArrow.setImageResource(iconRes);
+        }
     }
 
     @Override

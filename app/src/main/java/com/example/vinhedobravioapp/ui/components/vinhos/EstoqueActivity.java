@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.WineAdapter;
 import com.example.vinhedobravioapp.database.dao.WineDAO;
-import com.example.vinhedobravioapp.database.model.WineModel;
 import com.example.vinhedobravioapp.database.utils.GetAllFullWineModel;
 import com.example.vinhedobravioapp.models.FullWineModel;
 import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;

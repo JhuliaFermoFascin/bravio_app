@@ -85,5 +85,9 @@
         <item name="android:textSize">20sp</item>
         <item name="android:background">@color/background_text_primary</item>
     </style>
+
+
     <style name="Theme.VinhedoBravioApp" parent="Base.Theme.VinhedoBravioApp" />
+
+
 </resources>

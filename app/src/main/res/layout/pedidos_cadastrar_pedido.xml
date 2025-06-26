@@ -53,7 +53,8 @@
                     android:text="@string/order_customer"
                     style="@style/AddVinhoTitle" />
 
-                <EditText
+                <AutoCompleteTextView
+                    android:id="@+id/orderCustomer"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:hint="@string/add_order_customer"
@@ -64,16 +65,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/order_representative"
+                    android:text="@string/order_user"
                     style="@style/AddVinhoTitle" />
 
-                <EditText
+                <AutoCompleteTextView
+                    android:id="@+id/orderUser"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="@string/add_order_representative"
+                    android:hint="@string/add_order_user"
                     android:inputType="text"
                     android:layout_marginBottom="20dp"
                     style="@style/InputAddVinho"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -168,7 +171,7 @@
                     />
 
                 <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
-                    android:id="@+id/save_btn"
+                    android:id="@+id/save_order_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:btn_style="SAVE"

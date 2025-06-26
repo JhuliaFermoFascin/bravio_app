@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:backgroundTint="@color/item_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="12dp">
+
+            <ImageView
+                android:id="@+id/imagemVinho"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/labelEsgotado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#AA000000"
+                android:text="ESGOTADO"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:padding="4dp"
+                android:visibility="gone"
+                android:textSize="14sp"/>
+        </FrameLayout>
+
+        <!-- Detalhes do vinho -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nomeVinho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cabernet Sauvignon"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tipoVinho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2021 • Tinto Seco"
+                android:textSize="14sp"
+                android:textColor="#666" />
+
+            <TextView
+                android:id="@+id/precoVinho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R$ 75,00"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_marginTop="4dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/btnMenos"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="Diminuir"
+                    android:text="-"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:background="?attr/selectableItemBackgroundBorderless" />
+
+                <TextView
+                    android:id="@+id/quantidadeSelecionada"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/btnMais"
+                    android:text="+"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:textSize="25sp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="?attr/selectableItemBackgroundBorderless" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
