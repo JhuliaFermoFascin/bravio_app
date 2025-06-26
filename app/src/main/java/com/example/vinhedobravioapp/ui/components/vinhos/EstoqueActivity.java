@@ -48,12 +48,6 @@ public class EstoqueActivity extends AppCompatActivity {
         );
         recyclerView.setAdapter(wineAdapter);
 
-//        ImageView config_icon = findViewById(R.id.config_icon);
-//        config_icon.setOnClickListener(view -> {
-//            Intent intent = new Intent(EstoqueActivity.this, ConfigEstoqueActivity.class);
-//            startActivity(intent);
-//            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-//        });
     }
 
     @Override

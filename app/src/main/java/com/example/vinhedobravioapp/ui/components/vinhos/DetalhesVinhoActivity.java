@@ -73,7 +73,7 @@ public class DetalhesVinhoActivity extends DialogFragment {
         descricao.setText(getString(R.string.details_description) + " " + data.wine.getDescription());
         safra.setText(getString(R.string.details_harvest) + " " + data.wine.getVintage());
         origin.setText(getString(R.string.details_geographic_origin) + " " + data.geographicOrigin.getCountry() + ", " + data.geographicOrigin.getRegion());
-        tipo.setText(getString(R.string.details_wine_type) + " " + data.wine.getWineTypeId());
+        tipo.setText(getString(R.string.details_wine_type) + " " + data.wineType.getTypeName());
         composition.setText(getString(R.string.details_composition) + " " + data.compositionType.getCompositionName());
         grapes.setText(getString(R.string.details_grapes) + " " + data.grapesConcatenated);
         teor.setText(getString(R.string.details_alcohol_content) + " " + data.wine.getAlcoholContent() + "%");

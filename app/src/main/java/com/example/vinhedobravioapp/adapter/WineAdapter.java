@@ -82,13 +82,11 @@
             }
 
             int quantidade = wine.getQuantity();
-            if (quantidade == 0) {
+            if (quantidade <= 0) {
                 holder.quantidadeVinho.setText("Esgotado");
                 holder.badgeEsgotado.setVisibility(View.VISIBLE);
                 holder.itemView.setAlpha(0.5f);
                 holder.itemView.setClickable(false);
-                holder.btnEditar.setEnabled(false);
-                holder.btnDeletar.setEnabled(false);
             } else {
                 holder.quantidadeVinho.setText("Qtd: " + quantidade);
                 holder.badgeEsgotado.setVisibility(View.GONE);
@@ -101,7 +99,7 @@
                 if (quantidade > 0) itemClickListener.onItemClick(wine);
             });
             holder.btnEditar.setOnClickListener(v -> {
-                if (quantidade > 0) editClickListener.onEditClick(wine);
+                editClickListener.onEditClick(wine);
             });
             holder.btnDeletar.setOnClickListener(v -> deleteClickListener.onDeleteClick(wine));
         }

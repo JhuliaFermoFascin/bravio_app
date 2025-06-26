@@ -21,11 +21,16 @@ import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class LoginActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
         boolean manterLogado = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
@@ -125,6 +130,10 @@ public class LoginActivity extends Activity {
         UserModel user = userDAO.findByEmailAndPassword(emailDigitado, senhaDigitada);
 
         if (user != null) {
+            String dataAtual = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
+            user.setLastLogin(dataAtual);
+            userDAO.update(user);
+
             if (checkboxManterLogado.isChecked()) {
                 SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
                 editor.putBoolean(getString(R.string.manter_logado_shared), true);
@@ -148,6 +157,7 @@ public class LoginActivity extends Activity {
             Toast.makeText(this, getString(R.string.email_senha_incorreto), Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private void mostrarConfirmacaoSaida() {
         String mensagem = getString(R.string.pergunta_saida, getString(R.string.confirmar_retorno_menu));

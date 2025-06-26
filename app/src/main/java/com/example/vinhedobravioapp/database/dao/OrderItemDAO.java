@@ -2,9 +2,13 @@ package com.example.vinhedobravioapp.database.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.OrderItemModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderItemDAO extends AbstrataDAO {
 
@@ -12,21 +16,13 @@ public class OrderItemDAO extends AbstrataDAO {
         helper = new DPOpenHelper(context);
     }
 
-    public long insert(final OrderItemModel orderItemModel) {
-        long result = -1;
-        try {
-            Open();
-            ContentValues values = new ContentValues();
-            values.put(OrderItemModel.COLUMN_ID, orderItemModel.getOrderItemId());
-            values.put(OrderItemModel.COLUMN_WINE_ID, orderItemModel.getWineId());
-            values.put(OrderItemModel.COLUMN_VALUE, orderItemModel.getValue());
-            values.put(OrderItemModel.COLUMN_QUANTITY, orderItemModel.getQuantity());
-            values.put(OrderItemModel.COLUMN_ORDER_ID, orderItemModel.getOrderId());
-            result = db.insert(OrderItemModel.TABLE_NAME, null, values);
-        } finally {
-            Close();
-        }
-        return result;
+    public long insert(SQLiteDatabase db, OrderItemModel item) {
+        ContentValues v = new ContentValues();
+        v.put(OrderItemModel.COLUMN_WINE_ID,  item.getWineId());
+        v.put(OrderItemModel.COLUMN_VALUE,    item.getValue());
+        v.put(OrderItemModel.COLUMN_QUANTITY, item.getQuantity());
+        v.put(OrderItemModel.COLUMN_ORDER_ID, item.getOrderId());
+        return db.insertOrThrow(OrderItemModel.TABLE_NAME, null, v);
     }
 
     public OrderItemModel getById(long id) {
@@ -51,6 +47,33 @@ public class OrderItemDAO extends AbstrataDAO {
         }
         return model;
     }
+
+    public List<OrderItemModel> getByOrderId(long orderId) {
+        List<OrderItemModel> list = new ArrayList<>();
+        try {
+            Open();
+            android.database.Cursor cursor = db.query(OrderItemModel.TABLE_NAME, null,
+                    OrderItemModel.COLUMN_ORDER_ID + " = ?",
+                    new String[]{String.valueOf(orderId)},
+                    null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    OrderItemModel model = new OrderItemModel();
+                    model.setOrderItemId(cursor.getLong(cursor.getColumnIndexOrThrow(OrderItemModel.COLUMN_ID)));
+                    model.setWineId(cursor.getLong(cursor.getColumnIndexOrThrow(OrderItemModel.COLUMN_WINE_ID)));
+                    model.setValue(cursor.getDouble(cursor.getColumnIndexOrThrow(OrderItemModel.COLUMN_VALUE)));
+                    model.setQuantity(cursor.getInt(cursor.getColumnIndexOrThrow(OrderItemModel.COLUMN_QUANTITY)));
+                    model.setOrderId(cursor.getLong(cursor.getColumnIndexOrThrow(OrderItemModel.COLUMN_ORDER_ID)));
+                    list.add(model);
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return list;
+    }
+
 
     public java.util.List<OrderItemModel> getAll() {
         java.util.List<OrderItemModel> list = new java.util.ArrayList<>();

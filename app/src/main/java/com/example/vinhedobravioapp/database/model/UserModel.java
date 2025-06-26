@@ -23,9 +23,9 @@ public class UserModel {
         + COLUMN_PASSWORD + " TEXT NOT NULL, "
         + COLUMN_IS_ADMIN + " INTEGER NOT NULL, "
         + COLUMN_STATUS + " INTEGER NOT NULL, "
-        + COLUMN_CREATED_AT + " DATE NOT NULL, "
-        + COLUMN_LAST_UPDATE + " DATE DEFAULT NULL, "
-        + COLUMN_LAST_LOGIN + " DATE DEFAULT NULL"
+        + COLUMN_CREATED_AT + " TEXT NOT NULL, "
+        + COLUMN_LAST_UPDATE + " TEXT DEFAULT NULL, "
+        + COLUMN_LAST_LOGIN + " TEXT DEFAULT NULL"
         + ");";
 
     public static String DROP_TABLE =

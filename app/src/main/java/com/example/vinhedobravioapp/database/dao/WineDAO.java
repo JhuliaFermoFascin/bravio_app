@@ -82,7 +82,31 @@ public class WineDAO extends AbstrataDAO {
         return wineList;
     }
 
-    // READ BY ID
+    public String getNomeById(long id) {
+        String nome = null;
+        Cursor cursor = null;
+        try {
+            Open();
+            cursor = db.query(
+                    WineModel.TABLE_NAME,
+                    new String[]{WineModel.NAME_COLUMN},
+                    WineModel.WINE_ID_COLUMN + " = ?",
+                    new String[]{String.valueOf(id)},
+                    null, null, null
+            );
+
+            if (cursor != null && cursor.moveToFirst()) {
+                nome = cursor.getString(cursor.getColumnIndexOrThrow(WineModel.NAME_COLUMN));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) cursor.close();
+            Close();
+        }
+        return nome != null ? nome : "Desconhecido";
+    }
+
     public WineModel getById(long id) {
         WineModel wine = null;
         try {

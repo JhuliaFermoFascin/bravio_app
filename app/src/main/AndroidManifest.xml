@@ -39,6 +39,11 @@
         <activity android:name=".ui.components.visitas.VisitasActivity" />
         <activity android:name=".ui.components.visitas.CadastroVisitasActivity" />
         <activity android:name=".ui.components.vinhos.ConfigEstoqueActivity" />
+        <activity android:name=".ui.components.clientes.ClientesActivity"/>
+        <activity android:name=".ui.components.clientes.CadastroClientesActivity"/>
+        <activity android:name=".ui.components.usuarios.UsuarioActivity"/>
+        <activity android:name=".ui.components.usuarios.CadastroUsuarioActivity"/>
+        <activity android:name=".ui.components.representantes.RepresentantesActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

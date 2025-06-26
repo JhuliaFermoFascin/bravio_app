@@ -9,10 +9,13 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.ui.components.clientes.ClientesActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.BemVindoActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
 import com.example.vinhedobravioapp.ui.components.pedidos.PedidosActivity;
+import com.example.vinhedobravioapp.ui.components.representantes.RepresentantesActivity;
+import com.example.vinhedobravioapp.ui.components.usuarios.UsuarioActivity;
 import com.example.vinhedobravioapp.ui.components.vinhos.EstoqueActivity;
 import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
 
@@ -41,11 +44,17 @@ public class MenuSuspensoHelper {
         LinearLayout sair_btn = popupView.findViewById(R.id.sair_btn);
         LinearLayout fora_menu = popupView.findViewById(R.id.fora_menu);
         LinearLayout pedidos_btn = popupView.findViewById(R.id.pedidos_btn);
+        LinearLayout cliente_btn = popupView.findViewById(R.id.cliente_btn);
 
         if (isDashboard) {
             agenda_btn.setVisibility(View.GONE);
             dashboard_btn.setOnClickListener(view -> {
                 Intent intent = new Intent(activity, DashboardAdmActivity.class);
+                activity.startActivity(intent);
+                activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+            });
+            usuarios_btn.setOnClickListener(view -> {
+                Intent intent = new Intent(activity, UsuarioActivity.class);
                 activity.startActivity(intent);
                 activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             });
@@ -89,6 +98,20 @@ public class MenuSuspensoHelper {
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             popupWindow.dismiss();
+        });
+
+        cliente_btn.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ClientesActivity.class);
+            intent.putExtra(activity.getString(R.string.tipo_usuario_input), tipoUsuario);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            popupWindow.dismiss();
+        });
+
+        representantes_btn.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, RepresentantesActivity.class);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         });
 
         visitantes_page_btn.setOnClickListener(view -> {

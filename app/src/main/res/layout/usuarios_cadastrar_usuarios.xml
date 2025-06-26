@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_text_primary">
+
+    <include
+        layout="@layout/component_view_custom_header"
+        android:id="@+id/component_view_custom_header"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clipChildren="false"
+        android:paddingBottom="20dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:paddingBottom="20dp"
+            android:clipToPadding="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="20dp"
+                android:background="@drawable/border_purple"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_name"
+                        style="@style/AddVinhoTitle" />
+
+                    <EditText
+                        android:id="@+id/userName"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="Informe nome do usuário"
+                        android:inputType="textEmailAddress"
+                        android:autofillHints="emailAddress"
+                        android:importantForAutofill="yes"
+                        android:layout_marginBottom="20dp"
+                        style="@style/InputAddVinho" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_email"
+                        style="@style/AddVinhoTitle" />
+
+                    <EditText
+                        android:id="@+id/userEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="Informe o e-mail"
+                        android:inputType="textEmailAddress"
+                        android:autofillHints="emailAddress"
+                        android:importantForAutofill="yes"
+                        android:layout_marginBottom="20dp"
+                        style="@style/InputAddVinho" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_password"
+                        style="@style/AddVinhoTitle" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:padding="0dp"
+                        android:layout_marginBottom="20dp">
+
+                        <EditText
+                            android:id="@+id/userPassword"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:hint="@string/user_password_hint"
+                            android:inputType="textPassword"
+                            android:autofillHints="password"
+                            android:importantForAutofill="yes"
+                            style="@style/InputAddVinho" />
+
+                        <ImageView
+                            android:id="@+id/iconToggleSenha"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:padding="8dp"
+                            android:src="@drawable/icon_eye_close"
+                            android:clickable="true"
+                            android:focusable="true" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_type"
+                        style="@style/AddVinhoTitle" />
+
+                    <RadioGroup
+                        android:id="@+id/userType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+
+                        <RadioButton
+                            android:id="@+id/radioAdm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_type_adm" />
+
+                        <RadioButton
+                            android:id="@+id/radioRepresentative"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_type_representative"
+                            android:layout_marginStart="20dp"/>
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_status"
+                        style="@style/AddVinhoTitle" />
+
+                    <Spinner
+                        android:id="@+id/userStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="20dp"
+                        style="@style/InputAddVinho" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+                            android:id="@+id/cancel_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            app:btn_style="SECONDARY"
+                            app:btn_text="@string/cancel" />
+
+                        <com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper
+                            android:id="@+id/save_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            app:btn_style="SAVE"
+                            app:btn_text="@string/save" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

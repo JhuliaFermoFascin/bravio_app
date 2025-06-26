@@ -105,26 +105,82 @@
     <string name="order_search">Buscar por cliente ou status</string>
     <string name="order_title">Pedidos</string>
     <string name="add_new_order">Cadastrar Novo Pedido</string>
+    <string name="requester_name">Nome do requisitante:</string>
+    <string name="order_data">Data:</string>
+    <string name="products_title">Produtos</string>
+    <string name="total_details">Total:</string>
+    <string-array name="status_orders">
+        <item>ABERTO</item>
+        <item>CONCLUIDO</item>
+        <item>CANCELADO</item>
+    </string-array>
 <!--    Pedidos Fomr-->
         <string name="order_products">Itens</string>
         <string name="selected_products">Produtos selecionados:</string>
         <string name="order_payment">Pagamento</string>
         <string name="order_summary">Resumo do Pedido</string>
         <string name="order_customer">Cliente</string>
-        <string name="order_representative">Representante</string>
+        <string name="order_user">Usuário</string>
         <string name="order_total">Total</string>
         <string name="order_search_item">Buscar produto ...</string>
         <string name="order_unit_price">Valor unitário: R$ 0,00</string>
         <string name="order_select">Selecione o produto</string>
         <string name="order_quantity">Quantidade</string>
         <string name="add_order_customer">Informe o cliente</string>
-        <string name="add_order_representative">Informe o representante</string>
+        <string name="add_order_user">Informe o usuário</string>
         <string name="add_order_products">Adicionar produtos</string>
-    
-    
-    
-<!--    Representantes -->
-<!--    Visitas-->
+
+    <!--     Representantes  -->
+
+    <!--  Metas e comissões  -->
+    <string name="hint_select_month">Selecionar Mês</string>
+    <string name="title_goals">Metas</string>
+    <string name="goal_of_month">Meta do mês:</string>
+    <string name="goal_achieved">Já atingido:</string>
+    <string name="progress">Progresso (%):</string>
+    <string name="remaining_orders">Pedidos restantes:</string>
+    <string name="status">Status: Faltam x reais/ Meta atingida:</string>
+    <string name="title_commission">Comissão</string>
+    <string name="total_sales">Total de vendas efetuadas:</string>
+    <string name="commission_value">Valor comissão:</string>
+    <!--     Usuários  -->
+    <string name="user_search_hint">Buscar por nome</string>
+    <string name="user_title">Usuários</string>
+    <!--     Cadastrar Usuários  -->
+    <string name="add_user_title">Cadastrar novo usuários</string>
+    <string name="user_name">Nome</string>
+    <string name="user_email">E-mail</string>
+    <string name="user_email_hint">Informe seu e-mail</string>
+    <string name="user_password">Senha</string>
+    <string name="user_password_hint">Digite a senha</string>
+    <string name="user_type">Tipo: ADM/Representante</string>
+    <string name="user_type_adm">ADM</string>
+    <string name="user_type_representative">Representante</string>
+    <string name="user_status">Status:</string>
+    <string-array name="status_users">
+        <item>ATIVO</item>
+        <item>INATIVO</item>
+    </string-array>
+
+    <!--     Clientes  -->
+    <string name="costumer_search_hint">Buscar por nome ou CPF/CNPJ</string>
+    <string name="customer_title">Clientes</string>
+    <!--     Cadastrar Cliente  -->
+    <string name="add_customer_title">Cadastrar novo cliente</string>
+    <string name="customer_name">Nome/Razão Social:</string>
+    <string name="customer_add_name">Informe o nome/razão social</string>
+    <string name="customer_cpf_cnpj">CPF/CNPJ:</string>
+    <string name="customer_add_cpf_cnpj">Informe o CPF ou CNPJ</string>
+    <string name="customer_address">Endereço</string>
+    <string name="customer_add_adress">Informe o endereço</string>
+    <string name="customer_region">Região</string>
+    <string name="customer_add_region">Informe a região</string>
+    <string name="customer_contacts">Contatos</string>
+    <string name="customer_add_contacts">Informe o telefone de contato</string>
+    <string name="customer_add_email">Informe o e-mail de contato</string>
+
+
+    <!--    Visitas-->
     <string name="visit">Visitas</string>
     <string name="add_new_visit">Adicionar Nova Visita</string>
     <string name="visit_filter">Buscar por cliente</string>
@@ -139,7 +195,6 @@
 
 <!-- Estoque Config -->
     <string name="config_title">Configurações de Estoque</string>
-
 
     <!-- Utils -->
     <string name="exit">Sair</string>

@@ -125,6 +125,43 @@ public class UserDAO extends AbstrataDAO {
         return userList;
     }
 
+    public List<UserModel> getRepresentantes() {
+        List<UserModel> representantes = new ArrayList<>();
+        try {
+            Open();
+            Cursor cursor = db.query(
+                    UserModel.TABLE_NAME,
+                    null,
+                    UserModel.COLUMN_IS_ADMIN + " = ?",
+                    new String[]{"0"}, // Somente usuários com isAdmin = 0
+                    null, null, null
+            );
+
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    UserModel user = new UserModel();
+                    user.setUserId(cursor.getLong(cursor.getColumnIndexOrThrow(UserModel.COLUMN_ID)));
+                    user.setName(cursor.getString(cursor.getColumnIndexOrThrow(UserModel.COLUMN_NAME)));
+                    user.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(UserModel.COLUMN_EMAIL)));
+                    user.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(UserModel.COLUMN_PASSWORD)));
+                    user.setIsAdmin(cursor.getInt(cursor.getColumnIndexOrThrow(UserModel.COLUMN_IS_ADMIN)));
+                    user.setStatus(cursor.getInt(cursor.getColumnIndexOrThrow(UserModel.COLUMN_STATUS)));
+                    user.setCreatedAt(cursor.getString(cursor.getColumnIndexOrThrow(UserModel.COLUMN_CREATED_AT)));
+                    user.setLastUpdate(cursor.getString(cursor.getColumnIndexOrThrow(UserModel.COLUMN_LAST_UPDATE)));
+                    user.setLastLogin(cursor.getString(cursor.getColumnIndexOrThrow(UserModel.COLUMN_LAST_LOGIN)));
+                    representantes.add(user);
+                } while (cursor.moveToNext());
+
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+
+        return representantes;
+    }
+
+
     public UserModel findByEmailAndPassword(String email, String password) {
         UserModel user = null;
         try {
