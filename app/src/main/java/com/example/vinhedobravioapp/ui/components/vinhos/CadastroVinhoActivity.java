@@ -116,7 +116,7 @@
 
             int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
 
-            HeaderHelper.configurarHeader(this, getString(R.string.wine), tipoUsuario, true, false);
+            HeaderHelper.configurarHeader(this, getString(R.string.wine), tipoUsuario, true, false, false);
             CustomButtonHelper cancel = findViewById(R.id.cancel_btn);
             cancel.setOnClickListener(v -> finish());
 
@@ -157,7 +157,7 @@
             if (intent.hasExtra("wine_id")) {
                 editingWineId = intent.getLongExtra("wine_id", -1);
 
-                HeaderHelper.configurarHeader(this, getString(R.string.update_wine), tipoUsuario, true, false);
+                HeaderHelper.configurarHeader(this, getString(R.string.update_wine), tipoUsuario, true, false, false);
                 ((CustomButtonHelper) save_btn).setBtnText(getString(R.string.update));
                 carregarDadosParaEdicao(editingWineId);
             }
@@ -251,8 +251,7 @@
             wineModel.setAcidity(acidity.getText().toString());
             wineModel.setIdealTemperatureCelsius(Double.parseDouble(temperature.getText().toString()));
             wineModel.setAgingPotential(storageTime.getText().toString());
-            wineModel.setQuantity(Integer.parseInt(quantity.getText().toString()));
-            wineModel.setUnit_price(Double.parseDouble(unitPrice.getText().toString()));
+            wineModel.setUnitPrice(Double.parseDouble(unitPrice.getText().toString()));
 
             WineDAO wineDAO = new WineDAO(this);
             long wineId = wineDAO.insert(wineModel);
@@ -409,8 +408,7 @@
             wineModel.setAcidity(acidity.getText().toString());
             wineModel.setIdealTemperatureCelsius(Double.parseDouble(temperature.getText().toString()));
             wineModel.setAgingPotential(storageTime.getText().toString());
-            wineModel.setQuantity(Integer.parseInt(quantity.getText().toString()));
-            wineModel.setUnit_price(Double.parseDouble(unitPrice.getText().toString()));
+            wineModel.setUnitPrice(Double.parseDouble(unitPrice.getText().toString()));
 
             // Atualiza o vinho principal
             int updatedRows = wineDAO.update(wineModel);
@@ -588,8 +586,7 @@
             tastingNotes.setText(data.tastingNotesConcatenated);
             foodPairings.setText(data.foodPairingsConcatenated);
             reviews.setText(data.wineReview != null ? data.wineReview.getReviewText() : "");
-            unitPrice.setText(String.valueOf(data.wine.getUnit_price()));
-            quantity.setText(String.valueOf(data.wine.getQuantity()));
+            unitPrice.setText(String.valueOf(data.wine.getUnitPrice()));
 
             wineryName.setText(data.winery.getName());
             campoRegiao.setText(data.geographicOrigin.getRegion());

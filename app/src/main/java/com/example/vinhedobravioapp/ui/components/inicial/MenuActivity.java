@@ -22,9 +22,10 @@ public class MenuActivity extends AppCompatActivity {
 
 
         btnAdm.setOnClickListener(v -> abrirLogin(1));
-        btnRep.setOnClickListener(v -> abrirLogin(2));
+        btnRep.setOnClickListener(v -> abrirLogin(0));
         btnVis.setOnClickListener(v -> {
             Intent intent = new Intent(this, HistoriaActivity.class);
+            intent.putExtra(getString(R.string.tipo_usuario_input), -1);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });

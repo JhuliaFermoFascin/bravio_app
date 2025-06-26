@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.example.vinhedobravioapp.R;
 
 public class HeaderHelper {
-    public static void configurarHeader(Activity activity, String title, Integer tipoUsuario, boolean isEstoque, boolean isPageInitial) {
+    public static void configurarHeader(Activity activity, String title, Integer tipoUsuario, boolean isEstoque, boolean isPageInitial, boolean isVisitante) {
         View header = activity.findViewById(R.id.component_view_custom_header);
         if (header == null) return;
 
@@ -25,7 +25,11 @@ public class HeaderHelper {
             menuIcon.setVisibility(View.VISIBLE);
             backIcon.setVisibility(View.GONE);
             menuIcon.setOnClickListener(v -> {
-                MenuSuspensoHelper.show(activity, tipoUsuario);
+                if (isVisitante) {
+                    MenuVisitanteHelper.show(activity, tipoUsuario);
+                } else {
+                    MenuSuspensoHelper.show(activity, tipoUsuario);
+                }
             });
         } else {
             backIcon.setVisibility(View.VISIBLE);
@@ -42,6 +46,6 @@ public class HeaderHelper {
         });
     }
     public static void configurarHeader(Activity activity, String title, Integer tipoUsuario) {
-        configurarHeader(activity, title, tipoUsuario, false, false);
+        configurarHeader(activity, title, tipoUsuario, false, false, false);
     }
 }

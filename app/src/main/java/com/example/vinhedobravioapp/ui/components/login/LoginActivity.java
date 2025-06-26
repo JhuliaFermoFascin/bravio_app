@@ -14,35 +14,28 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.loginManager.LoginManager;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
-import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
+import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
+import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
+import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
-        boolean manterLogado = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
-        int tipoUsuario = prefs.getInt(getString(R.string.tipo_usuario_shared), getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0));
-        String nomeUsuario;
-        if (manterLogado) {
-            Intent intent;
-            if (tipoUsuario == 1) {
-                intent = new Intent(this, DashboardAdmActivity.class);
-            } else {
-                intent = new Intent(this, VisitasActivity.class);
-            }
-            startActivity(intent);
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            finish();
-        }
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+        String UserTypeName = tipoUsuario == 1? getString(R.string.administrador) : tipoUsuario == 0? getString(R.string.representante): "erro";
 
         setContentView(R.layout.home_login);
 
@@ -62,12 +55,6 @@ public class LoginActivity extends AppCompatActivity {
 
         final boolean[] senhaVisivel = {false};
 
-        if (tipoUsuario == 1) {
-            nomeUsuario = getString(R.string.titulo_adm);
-        } else {
-            nomeUsuario = getString(R.string.titulo_rep);
-        }
-
         toggleSenha.setOnClickListener(v -> {
             if (senhaVisivel[0]) {
                 campoSenha.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -80,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             senhaVisivel[0] = !senhaVisivel[0];
         });
 
-        String textoFinal = getString(R.string.login_geral, nomeUsuario);
+        String textoFinal = getString(R.string.login_geral, UserTypeName);
         tituloLogin.setText(textoFinal);
 
         btnLogin.setOnClickListener(v -> {
@@ -97,20 +84,19 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            if(tipoUsuario == 1){
-                verificaLogin(email, senha,  checkboxManterLogado);
-            }
-
-            if(tipoUsuario == 2){
-                verificaLogin(email, senha,  checkboxManterLogado);
+            if (tipoUsuario == 1) {
+                verificaLogin(tipoUsuario,email, senha, checkboxManterLogado);
+            } else {
+                verificaLogin(tipoUsuario, email, senha, checkboxManterLogado);
             }
 
         });
 
         esqueceuSenha.setOnClickListener(v -> {
             Intent intent = new Intent(this, EsqueceuSenhaActivity.class);
-            intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
+            intent.putExtra(getString(R.string.tipo_usuario_input), UserTypeName);
             intent.putExtra(getString(R.string.email_input), campoEmail.getText().toString().trim());
+            intent.putExtra(getString(R.string.senha_input), campoSenha.getText().toString().trim());
             intent.putExtra(getString(R.string.senha_input), campoSenha.getText().toString().trim());
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -120,20 +106,28 @@ public class LoginActivity extends AppCompatActivity {
             mostrarConfirmacaoSaida();
         });
     }
-
-    private void verificaLogin(String emailDigitado, String senhaDigitada, CheckBox checkboxManterLogado) {
+    private void verificaLogin(int isAdmin, String emailDigitado, String senhaDigitada, CheckBox checkboxManterLogado) {
         UserDAO userDAO = new UserDAO(this);
         UserModel user = userDAO.findByEmailAndPassword(emailDigitado, senhaDigitada);
-
+        boolean error = false;
         if (user != null) {
-            if (checkboxManterLogado.isChecked()) {
+
+            if (user.getIsAdmin() == isAdmin) {
+                String dataAtual = new SimpleDateFormat(getString(R.string.yyyy_mm_dd), Locale.getDefault()).format(new Date());
+                LoginStatus status = new LoginStatus(
+                        user.getUserId(),
+                        user.getName(),
+                        dataAtual,
+                        user.getIsAdmin() == 1,
+                        checkboxManterLogado.isChecked()
+                );
+
+                Gson gson = new Gson();
+                String json = gson.toJson(status);
+
                 SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
-                editor.putBoolean(getString(R.string.manter_logado_shared), true);
-                editor.putString(getString(R.string.email_shared), emailDigitado);
-                editor.putString(getString(R.string.senha_shared), senhaDigitada);
-                editor.putInt(getString(R.string.tipo_usuario_shared), user.getIsAdmin());
+                editor.putString(getString(R.string.login_status), json);
                 editor.apply();
-            }
 
             Intent intent;
             if (user.getIsAdmin() == 1) {
@@ -142,10 +136,16 @@ public class LoginActivity extends AppCompatActivity {
                 intent = new Intent(this, VisitasActivity.class);
             }
 
-            startActivity(intent);
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-            finish();
+                startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                finish();
+            }else {
+                error = true;
+            }
         } else {
+            error =true;
+        }
+        if (error) {
             Toast.makeText(this, getString(R.string.email_senha_incorreto), Toast.LENGTH_SHORT).show();
         }
     }

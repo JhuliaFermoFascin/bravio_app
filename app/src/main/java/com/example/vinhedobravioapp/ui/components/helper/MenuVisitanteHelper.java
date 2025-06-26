@@ -60,10 +60,10 @@ public class MenuVisitanteHelper {
             popupWindow.dismiss();
             mostrarConfirmacaoSaida(origemAdm, activity);
         });
-
         vinhos_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, EstoqueActivity.class);
-            intent.putExtra(activity.getString(R.string.tipo_usuario_input), 0);
+            intent.putExtra(activity.getString(R.string.tipo_usuario_input), origemAdm);
+            intent.putExtra("forcar_menu_visitante", true);
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             popupWindow.dismiss();

@@ -20,7 +20,7 @@ public class PedidosActivity extends AppCompatActivity {
 
         int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
 
-        HeaderHelper.configurarHeader(this, getString(R.string.order_title), tipoUsuario, false, true);
+        HeaderHelper.configurarHeader(this, getString(R.string.order_title), tipoUsuario, false, true, false);
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addOrder_btn);
         addWine_btn.setOnClickListener(new View.OnClickListener() {

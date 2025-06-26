@@ -72,4 +72,21 @@ public class GrapeDAO extends AbstrataDAO {
         } finally { Close(); }
         return rows;
     }
+
+    public GrapeModel getByName(String name) {
+        GrapeModel model = null;
+        try { Open();
+            android.database.Cursor cursor = db.query(GrapeModel.TABLE_NAME, null,
+                GrapeModel.COLUMN_NAME + " = ?",
+                new String[]{name},
+                null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                model = new GrapeModel();
+                model.setGrapeId(cursor.getLong(cursor.getColumnIndexOrThrow(GrapeModel.COLUMN_ID)));
+                model.setName(cursor.getString(cursor.getColumnIndexOrThrow(GrapeModel.COLUMN_NAME)));
+                cursor.close();
+            }
+        } finally { Close(); }
+        return model;
+    }
 }

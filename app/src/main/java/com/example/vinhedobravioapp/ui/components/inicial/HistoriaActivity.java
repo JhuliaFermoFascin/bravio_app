@@ -14,23 +14,23 @@ import com.example.vinhedobravioapp.ui.components.helper.MenuVisitanteHelper;
 import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
 
 public class HistoriaActivity extends AppCompatActivity {
-    private int origemAdm = 0;
+    private int tipoUsuario = -1;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_historia);
 
-        origemAdm = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), 0);
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
 
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
 
-        menu_suspenso.setOnClickListener(v -> MenuVisitanteHelper.show(this, origemAdm));
+        menu_suspenso.setOnClickListener(v -> MenuVisitanteHelper.show(this, tipoUsuario));
 
     }
 
     @Override
     public void onBackPressed() {
-        String destinoTexto = (origemAdm == 1 || origemAdm == 2) ?
+        String destinoTexto = (tipoUsuario == 1 || tipoUsuario == 0) ?
                 getString(R.string.confirmar_retorno_adm) :
                 getString(R.string.confirmar_retorno_menu);
 
@@ -39,9 +39,9 @@ public class HistoriaActivity extends AppCompatActivity {
         ConfirmacaoHelper.mostrarConfirmacao(this, mensagem, () -> {
             Intent intent;
 
-            if (origemAdm == 1) {
+            if (tipoUsuario == 1) {
                 intent = new Intent(this, DashboardAdmActivity.class);
-            } else if (origemAdm == 2) {
+            } else if (tipoUsuario == 0) {
                 intent = new Intent(this, VisitasActivity.class);
             } else {
                 SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();

@@ -223,10 +223,12 @@
 
     <!-- shared preferences -->
     <string name="preferencia_login">loginPrefs</string>
-    <string name="manter_logado_shared">manterLogado</string>
-    <string name="email_shared">email</string>
-    <string name="senha_shared">senha</string>
-    <string name="tipo_usuario_shared">tipoUsuario</string>
+<!--    <string name="manter_logado_shared">manterLogado</string>-->
+<!--    <string name="email_shared">email</string>-->
+<!--    <string name="senha_shared">senha</string>-->
+<!--    <string name="tipo_usuario_shared">tipoUsuario</string>-->
+
+    <string name="login_status">login_status</string>
 
     <!-- erros -->
     <string name="email_senha_incorreto">E-mail ou senha incorretos</string>
@@ -255,5 +257,10 @@
         <string name="missoes_text">O Vinhedo Bravio tem como propósito produzir vinhos que expressem o caráter único da Serra Catarinense, mantendo viva a tradição da vitivinicultura local com foco na qualidade. Busca ser reconhecido como referência no estado de Santa Catarina, valorizando o terroir regional e cultivando a confiança de quem aprecia um vinho bem feito.</string>
         <string name="localizacao_text">Localizada na Serra Catarinense, o Vinhedo Bravio ocupa cerca de 50 hectares em solo ideal para o cultivo de uvas finas, com clima frio e inverno rigoroso que favorecem o amadurecimento lento das frutas, proporcionando vinhos encorpados e equilibrados.</string>
         <string name="reconhecimento_text">O Vinhedo Bravio já conquistou prêmios em concursos estaduais e nacionais, principalmente por seus vinhos tintos elaborados com uvas Cabernet Sauvignon e Merlot. É respeitada no mercado catarinense pela qualidade consistente de seus produtos e pelo reconhecimento entre enófilos da região.</string>
+
+    <!--Erick -->
+    <string name="yyyy_mm_dd">yyyy-MM-dd</string>
+    <string name="administrador">Administrador</string>
+    <string name="representante">Representante</string>
 
 </resources>
