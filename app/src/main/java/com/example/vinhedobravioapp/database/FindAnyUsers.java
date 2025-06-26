@@ -7,12 +7,14 @@ import com.example.vinhedobravioapp.database.dao.GeographicOriginDAO;
 import com.example.vinhedobravioapp.database.dao.GrapeDAO;
 import com.example.vinhedobravioapp.database.dao.TastingNoteDAO;
 import com.example.vinhedobravioapp.database.dao.WineryDAO;
+import com.example.vinhedobravioapp.database.dao.WineDAO;
 import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.database.model.WineTypeModel;
 import com.example.vinhedobravioapp.database.model.GeographicOriginModel;
 import com.example.vinhedobravioapp.database.model.GrapeModel;
 import com.example.vinhedobravioapp.database.model.TastingNoteModel;
 import com.example.vinhedobravioapp.database.model.WineryModel;
+import com.example.vinhedobravioapp.database.model.WineModel;
 import java.util.List;
 
 public class FindAnyUsers {
@@ -149,14 +151,44 @@ public class FindAnyUsers {
         List<WineryModel> wineriesAfter = wineryDAO.getAll();
     }
 
-    private static String usersToString(List<UserModel> users) {
-        StringBuilder sb = new StringBuilder();
-        for (UserModel user : users) {
-            sb.append("[")
-              .append(user.getUserId()).append(", ")
-              .append(user.getName()).append(", ")
-              .append(user.getEmail()).append("] ");
+    // Adiciona vinhos genéricos para testes ou inicialização
+    public static void ensureDefaultWines(Context context) {
+        WineDAO wineDAO = new WineDAO(context);
+        List<WineModel> wines = wineDAO.getAll();
+        if (wines == null || wines.size() == 0) {
+            WineModel vinho1 = new WineModel();
+            vinho1.setName("Vinho Genérico 1");
+            vinho1.setWineryId(1L); // Ajuste conforme IDs existentes
+            vinho1.setWineTypeId(1L);
+            vinho1.setCommercialCategoryId(1L);
+            vinho1.setOriginId(1L);
+            vinho1.setVintage("2020");
+            vinho1.setDescription("Vinho de teste 1");
+            vinho1.setCompositionTypeId(1L);
+            vinho1.setAlcoholContent(13.5);
+            vinho1.setVolume(750);
+            vinho1.setAcidity("3.5");
+            vinho1.setIdealTemperatureCelsius(16.0);
+            vinho1.setAgingPotential("5 anos");
+            vinho1.setUnitPrice(99.90);
+            wineDAO.insert(vinho1);
+
+            WineModel vinho2 = new WineModel();
+            vinho2.setName("Vinho Genérico 2");
+            vinho2.setWineryId(2L);
+            vinho2.setWineTypeId(2L);
+            vinho2.setCommercialCategoryId(1L);
+            vinho2.setOriginId(2L);
+            vinho2.setVintage("2021");
+            vinho2.setDescription("Vinho de teste 2");
+            vinho2.setCompositionTypeId(1L);
+            vinho2.setAlcoholContent(12.0);
+            vinho2.setVolume(750);
+            vinho2.setAcidity("3.7");
+            vinho2.setIdealTemperatureCelsius(14.0);
+            vinho2.setAgingPotential("3 anos");
+            vinho2.setUnitPrice(59.90);
+            wineDAO.insert(vinho2);
         }
-        return sb.toString();
     }
 }
