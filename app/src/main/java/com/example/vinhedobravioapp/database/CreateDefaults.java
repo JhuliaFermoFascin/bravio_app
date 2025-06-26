@@ -1,6 +1,9 @@
 package com.example.vinhedobravioapp.database;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.example.vinhedobravioapp.database.dao.CompositionTypeDAO;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.dao.WineTypeDAO;
 import com.example.vinhedobravioapp.database.dao.GeographicOriginDAO;
@@ -8,6 +11,7 @@ import com.example.vinhedobravioapp.database.dao.GrapeDAO;
 import com.example.vinhedobravioapp.database.dao.TastingNoteDAO;
 import com.example.vinhedobravioapp.database.dao.WineryDAO;
 import com.example.vinhedobravioapp.database.dao.WineDAO;
+import com.example.vinhedobravioapp.database.model.CompositionTypeModel;
 import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.database.model.WineTypeModel;
 import com.example.vinhedobravioapp.database.model.GeographicOriginModel;
@@ -15,10 +19,14 @@ import com.example.vinhedobravioapp.database.model.GrapeModel;
 import com.example.vinhedobravioapp.database.model.TastingNoteModel;
 import com.example.vinhedobravioapp.database.model.WineryModel;
 import com.example.vinhedobravioapp.database.model.WineModel;
+import com.example.vinhedobravioapp.database.utils.GetAllFullWineModel;
+import com.example.vinhedobravioapp.models.FullWineModel;
+
 import java.util.List;
 
-public class FindAnyUsers {
-            public static String listToString(List<?> list) {
+public class CreateDefaults {
+
+    public static String listToString(List<?> list) {
         if (list == null || list.isEmpty()) return "[]";
         StringBuilder sb = new StringBuilder();
         for (Object item : list) {
@@ -26,6 +34,40 @@ public class FindAnyUsers {
         }
         return sb.toString();
     }
+
+    public static void Start(Context context) {
+        ensureDefaultUsers(context);
+        ensureDefaultCompositionTypes(context);
+        ensureDefaultWineTypes(context);
+        ensureDefaultGeographicOrigins(context);
+        ensureDefaultGrapes(context);
+        ensureDefaultTastingNotes(context);
+        ensureDefaultWineries(context);
+        ensureDefaultWines(context);
+    }
+public static void ensureDefaultCompositionTypes(Context context) {
+    CompositionTypeDAO dao = new CompositionTypeDAO(context);
+    List<CompositionTypeModel> list = dao.getAll();
+
+    if (list.isEmpty()) {
+        CompositionTypeModel tipo1 = new CompositionTypeModel();
+        tipo1.setCompositionName("Varietal");
+        dao.insert(tipo1);
+
+        CompositionTypeModel tipo2 = new CompositionTypeModel();
+        tipo2.setCompositionName("Blend");
+        dao.insert(tipo2);
+
+        CompositionTypeModel tipo3 = new CompositionTypeModel();
+        tipo3.setCompositionName("Field Blend");
+        dao.insert(tipo3);
+
+        CompositionTypeModel tipo4 = new CompositionTypeModel();
+        tipo4.setCompositionName("Cofermentado");
+        dao.insert(tipo4);
+    }
+}
+
     public static void ensureDefaultUsers(Context context) {
         UserDAO userDAO = new UserDAO(context);
         List<UserModel> users = userDAO.getAll();
@@ -155,6 +197,11 @@ public class FindAnyUsers {
     public static void ensureDefaultWines(Context context) {
         WineDAO wineDAO = new WineDAO(context);
         List<WineModel> wines = wineDAO.getAll();
+        Log.e("estoque1", "Total de vinhos: " + wines.size());
+
+        List<FullWineModel> winesList = GetAllFullWineModel.getAll(context);
+
+        Log.e("estoque1", "Total de vinhos: " + winesList.size());
         if (wines == null || wines.size() == 0) {
             WineModel vinho1 = new WineModel();
             vinho1.setName("Vinho Genérico 1");
