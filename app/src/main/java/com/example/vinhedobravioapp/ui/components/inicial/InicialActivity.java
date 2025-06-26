@@ -1,12 +1,13 @@
 package com.example.vinhedobravioapp.ui.components.inicial;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
@@ -22,7 +23,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 //import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
 
-public class InicialActivity extends Activity {
+public class InicialActivity extends AppCompatActivity {
 
     private static final int DELAY_MS = 2000;
 

@@ -8,8 +8,8 @@ import android.util.Log;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
-import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
 import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
+import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
@@ -79,7 +79,7 @@ public class LoginManager {
 
                 if (dias <= 7) {
                     return new Intent(context,
-                            loginStatus.isAdmin() ? DashboardAdmActivity.class : PainelRepresentanteActivity.class
+                            loginStatus.isAdmin() ? DashboardAdmActivity.class : VisitasActivity.class
                     );
                 }
 

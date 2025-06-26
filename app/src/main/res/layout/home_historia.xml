@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_text_primary"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/menu_suspenso"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="30dp"
+        android:paddingHorizontal="30dp"
+        android:contentDescription="@string/icon_menu"
+        android:src="@drawable/icon_menu"
+        android:layout_gravity="start"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="37dp"
+            android:gravity="center_horizontal"
+            android:paddingBottom="37dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:contentDescription="@string/logo_description"
+                android:src="@drawable/logo"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/historia_title"
+                    android:textColor="@color/border_text_purple_primary"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/cinzel"
+                    android:layout_marginBottom="9dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/historia_text"
+                    android:textColor="@color/border_text_purple_primary"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/baskervville"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="24dp"
+                    android:justificationMode="inter_word"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/missoes_title"
+                    android:textColor="@color/border_text_purple_primary"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/cinzel"
+                    android:layout_marginBottom="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/missoes_text"
+                    android:textColor="@color/border_text_purple_primary"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/baskervville"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="24dp"
+                    android:justificationMode="inter_word"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reconhecimento_title"
+                    android:textColor="@color/border_text_purple_primary"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/cinzel"
+                    android:layout_marginBottom="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reconhecimento_text"
+                    android:textColor="@color/border_text_purple_primary"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/baskervville"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="24dp"
+                    android:justificationMode="inter_word"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/localizacao_title"
+                    android:textColor="@color/border_text_purple_primary"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/cinzel"
+                    android:layout_marginBottom="9dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/localizacao_text"
+                    android:textColor="@color/border_text_purple_primary"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/baskervville"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="24dp"
+                    android:justificationMode="inter_word"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

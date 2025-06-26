@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.login.LoginActivity;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 
-public class MenuActivity extends Activity {
+public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +24,8 @@ public class MenuActivity extends Activity {
         btnAdm.setOnClickListener(v -> abrirLogin(1));
         btnRep.setOnClickListener(v -> abrirLogin(0));
         btnVis.setOnClickListener(v -> {
-            Intent intent = new Intent(this, BemVindoActivity.class);
+            Intent intent = new Intent(this, HistoriaActivity.class);
+            intent.putExtra(getString(R.string.tipo_usuario_input), -1);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });

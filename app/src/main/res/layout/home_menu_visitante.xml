@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/background_popup_black">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/border_button_purple_primary"
+        android:padding="12dp"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MENU"
+                android:padding="10dp"
+                android:fontFamily="@font/baskervville"
+                android:textColor="@color/background_text_primary"/>
+
+            <LinearLayout
+                android:id="@+id/historia_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_history"
+                        android:src="@drawable/icon_history"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/historia_title"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="192dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/celular_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_celular"
+                        android:src="@drawable/icon_celular"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contatos"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="192dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/vinhos_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_vinho"
+                        android:src="@drawable/icon_wine"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wine"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="192dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dashboard_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/icon_dashboard"
+                        android:src="@drawable/icon_dashboard"/>
+
+                    <TextView
+                        android:id="@+id/dashboard_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:fontFamily="@font/baskervville"
+                        android:textColor="@color/background_text_primary" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="192dp"
+                    android:layout_height="1dp"
+                    android:background="@color/background_text_primary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sair_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/icon_out"
+                android:src="@drawable/icon_out"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exit"
+                android:padding="10dp"
+                android:fontFamily="@font/baskervville"
+                android:textColor="@color/background_text_primary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fora_menu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@android:color/transparent">
+
+    </LinearLayout>
+
+</LinearLayout>

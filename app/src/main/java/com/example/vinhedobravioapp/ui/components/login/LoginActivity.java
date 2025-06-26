@@ -1,6 +1,5 @@
 package com.example.vinhedobravioapp.ui.components.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.loginManager.LoginManager;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
@@ -20,7 +21,7 @@ import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
-import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
+import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
 import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
 import com.google.gson.Gson;
 
@@ -28,14 +29,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
-        SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
-        LoginStatus status = LoginManager.getInstance().getLoginStatus();
         String UserTypeName = tipoUsuario == 1? getString(R.string.administrador) : tipoUsuario == 0? getString(R.string.representante): "erro";
 
         setContentView(R.layout.home_login);
@@ -130,12 +129,12 @@ public class LoginActivity extends Activity {
                 editor.putString(getString(R.string.login_status), json);
                 editor.apply();
 
-                Intent intent;
-                if (user.getIsAdmin() == 1) {
-                    intent = new Intent(this, DashboardAdmActivity.class);
-                } else {
-                    intent = new Intent(this, PainelRepresentanteActivity.class);
-                }
+            Intent intent;
+            if (user.getIsAdmin() == 1) {
+                intent = new Intent(this, DashboardAdmActivity.class);
+            } else {
+                intent = new Intent(this, VisitasActivity.class);
+            }
 
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
