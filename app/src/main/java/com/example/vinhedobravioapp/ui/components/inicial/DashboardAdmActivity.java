@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -56,6 +57,10 @@ public class DashboardAdmActivity extends AppCompatActivity {
         configPieChart();
 
         lineChart = findViewById(R.id.lineChart);
+
+        String userName = LoginManager.getInstance().getLoginStatus().getNome();
+        TextView userNameField = findViewById(R.id.user_name);
+        userNameField.setText(userName);
 
         configLineChart();
 
