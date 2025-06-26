@@ -64,7 +64,7 @@ public class DashboardAdmActivity extends AppCompatActivity {
         setContentView(R.layout.dashboard_adm);
 
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
-        menu_suspenso.setOnClickListener(v -> MenuSuspensoHelper.show(this, true));
+        menu_suspenso.setOnClickListener(v -> MenuSuspensoHelper.show(this, 1));
 
         pieChart = findViewById(R.id.pieChart);
         popularPieChartVinhosMaisVendidosMesAtual();

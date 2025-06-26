@@ -22,8 +22,8 @@ public class CadastroClientesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clientes_cadastrar_clientes);
 
-        boolean isDashboard = getIntent().getBooleanExtra("isDashboard", false);
-        HeaderHelper.configurarHeader(this, getString(R.string.add_customer_title), isDashboard);
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+        HeaderHelper.configurarHeader(this, getString(R.string.order_title), tipoUsuario);
 
         customerName = findViewById(R.id.customerName);
         customerCpfCnpj = findViewById(R.id.customerCpfCnpj);

@@ -31,8 +31,9 @@ public class ClientesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clientes);
 
-        boolean isDashboard = getIntent().getBooleanExtra("isDashboard", true);
-        HeaderHelper.configurarHeader(this, getString(R.string.customer_title), isDashboard);
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+
+        HeaderHelper.configurarHeader(this, getString(R.string.order_title), tipoUsuario, false, true, false);
 
         dao = new CustomerDAO(this);
 
@@ -46,6 +47,7 @@ public class ClientesActivity extends AppCompatActivity {
             public void onEditClick(CustomerModel customer) {
                 Intent intent = new Intent(ClientesActivity.this, CadastroClientesActivity.class);
                 intent.putExtra("customerId", customer.getCustomerId());
+                intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
                 startActivityForResult(intent, REQUEST_CODE_EDIT);
             }
             @Override

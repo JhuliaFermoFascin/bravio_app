@@ -84,7 +84,6 @@ public class PedidosActivity extends AppCompatActivity {
 
         addOrder_btn.setOnClickListener(v -> {
             Intent intent = new Intent(PedidosActivity.this, CadastroPedidoActivity.class);
-            intent.putExtra("isDashboard", isDashboard);
             startActivityForResult(intent, REQ_CADASTRO_PEDIDO);
         });
     }

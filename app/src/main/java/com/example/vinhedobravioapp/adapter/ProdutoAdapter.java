@@ -90,7 +90,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
         );
         String valorFmt = NumberFormat
                 .getCurrencyInstance(new Locale("pt", "BR"))
-                .format(wine.getUnit_price());
+                .format(wine.getUnitPrice());
         holder.precoVinho.setText(valorFmt);
 
         int estoqueDisponivel = wine.getQuantity();
@@ -170,7 +170,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
             OrderItemModel novo = new OrderItemModel();
             novo.setWineId(wine.getWineId());
             novo.setQuantity(quantidade);
-            novo.setValue(wine.getUnit_price());
+            novo.setValue(wine.getUnitPrice());
             itensSelecionados.add(novo);
         }
     }
