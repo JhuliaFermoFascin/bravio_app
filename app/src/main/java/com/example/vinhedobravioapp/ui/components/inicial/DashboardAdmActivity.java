@@ -49,12 +49,13 @@ public class DashboardAdmActivity extends AppCompatActivity {
 
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
 
-        menu_suspenso.setOnClickListener(v -> MenuSuspensoHelper.show(this, true));
+        menu_suspenso.setOnClickListener(v -> MenuSuspensoHelper.show(this, 1));
 
         pieChart = findViewById(R.id.pieChart);
         configPieChart();
 
         lineChart = findViewById(R.id.lineChart);
+
         configLineChart();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerVinhos);

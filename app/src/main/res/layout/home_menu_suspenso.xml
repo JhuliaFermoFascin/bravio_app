@@ -41,51 +41,17 @@
                     android:gravity="center_vertical">
 
                     <ImageView
+                        android:id="@+id/dashboard_image"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:contentDescription="@string/icon_dashboard"
                         android:src="@drawable/icon_dashboard"/>
 
                     <TextView
+                        android:id="@+id/dashboard_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/dashboard"
-                        android:padding="10dp"
-                        android:fontFamily="@font/baskervville"
-                        android:textColor="@color/background_text_primary" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="167dp"
-                    android:layout_height="1dp"
-                    android:background="@color/background_text_primary" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/agenda_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:contentDescription="@string/icon_location"
-                        android:src="@drawable/icon_location"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/agenda"
                         android:padding="10dp"
                         android:fontFamily="@font/baskervville"
                         android:textColor="@color/background_text_primary" />
@@ -377,41 +343,6 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="167dp"
-                    android:layout_height="1dp"
-                    android:background="@color/background_text_primary" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/representantes_page_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:contentDescription="@string/icon_representante"
-                        android:src="@drawable/icon_adm"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/representantes"
-                        android:padding="10dp"
-                        android:fontFamily="@font/baskervville"
-                        android:textColor="@color/background_text_primary" />
-
-                </LinearLayout>
                 <View
                     android:layout_width="167dp"
                     android:layout_height="1dp"

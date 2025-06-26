@@ -38,9 +38,9 @@ public class CadastroPedidoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pedidos_cadastrar_pedido);
 
-        boolean isDashboard = getIntent().getBooleanExtra("isDashboard", false);
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
 
-        HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard);
+        HeaderHelper.configurarHeader(this, getString(R.string.order_title), tipoUsuario);
 
         addOrderItens_btn = findViewById(R.id.addOrderItens_btn);
         summarySelectedItens = findViewById(R.id.summarSelectedItens);

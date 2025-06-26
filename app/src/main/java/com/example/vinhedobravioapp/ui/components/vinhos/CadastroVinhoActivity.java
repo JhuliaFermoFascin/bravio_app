@@ -114,9 +114,9 @@
             carregarUvasDoBanco();
             configurarCampoSafra();
 
-            boolean isDashboard = getIntent().getBooleanExtra("isDashboard", false);
+            int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
 
-            HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard, true, false);
+            HeaderHelper.configurarHeader(this, getString(R.string.wine), tipoUsuario, true, false);
             CustomButtonHelper cancel = findViewById(R.id.cancel_btn);
             cancel.setOnClickListener(v -> finish());
 
@@ -157,7 +157,7 @@
             if (intent.hasExtra("wine_id")) {
                 editingWineId = intent.getLongExtra("wine_id", -1);
 
-                HeaderHelper.configurarHeader(this, getString(R.string.update_wine), isDashboard, true, false);
+                HeaderHelper.configurarHeader(this, getString(R.string.update_wine), tipoUsuario, true, false);
                 ((CustomButtonHelper) save_btn).setBtnText(getString(R.string.update));
                 carregarDadosParaEdicao(editingWineId);
             }

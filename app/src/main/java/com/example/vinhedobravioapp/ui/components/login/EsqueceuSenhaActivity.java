@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 
-public class EsqueceuSenhaActivity extends Activity {
+public class EsqueceuSenhaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

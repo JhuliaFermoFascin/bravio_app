@@ -25,7 +25,7 @@ public class CadastroVisitasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visitas_cadastrar_visitas);
 
-        HeaderHelper.configurarHeader(this, getString(R.string.add_new_visit), false);
+        HeaderHelper.configurarHeader(this, getString(R.string.add_new_visit), 2);
 
         dateTimeVisit = findViewById(R.id.date_time_visit);
 

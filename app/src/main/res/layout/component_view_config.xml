@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background_click_area"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_popup_black">
+
+    <LinearLayout
+        android:id="@+id/popup_menu"
+        android:layout_gravity="end|top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/border_button_purple_primary"
+        android:padding="12dp"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:id="@+id/addCommercialCategory_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/icon_dashboard"
+                    android:src="@drawable/icon_comercial"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/commercial_category"
+                    android:padding="10dp"
+                    android:fontFamily="@font/baskervville"
+                    android:textColor="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="175dp"
+                android:layout_height="1dp"
+                android:background="@color/background_text_primary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addGrapeComposition_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/icon_uva"
+                    android:src="@drawable/icon_composicao_vinho"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baskervville"
+                    android:padding="10dp"
+                    android:text="@string/grapes_composition"
+                    android:textColor="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="175dp"
+                android:layout_height="1dp"
+                android:background="@color/background_text_primary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addFoodPairing_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/icon_harmonizacoes"
+                    android:src="@drawable/icon_harmonizacoes"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/food_parings"
+                    android:padding="10dp"
+                    android:fontFamily="@font/baskervville"
+                    android:textColor="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="175dp"
+                android:layout_height="1dp"
+                android:background="@color/background_text_primary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addTastingNotes_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/icon_notas"
+                    android:src="@drawable/icon_notas"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tasting_notes"
+                    android:padding="10dp"
+                    android:fontFamily="@font/baskervville"
+                    android:textColor="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="175dp"
+                android:layout_height="1dp"
+                android:background="@color/background_text_primary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addWineType_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/icon_tipo_vinho"
+                    android:src="@drawable/icon_tipo_vinho"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wine_type"
+                    android:padding="10dp"
+                    android:fontFamily="@font/baskervville"
+                    android:textColor="@color/background_text_primary" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="175dp"
+                android:layout_height="1dp"
+                android:background="@color/background_text_primary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addWineGrapes_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/icon_uva"
+                android:src="@drawable/icon_uva"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/grapes"
+                android:padding="10dp"
+                android:fontFamily="@font/baskervville"
+                android:textColor="@color/background_text_primary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--<LinearLayout
+        android:id="@+id/fora_menu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@android:color/transparent">-->
+
+</FrameLayout>

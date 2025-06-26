@@ -15,7 +15,7 @@ public class ConfirmacaoHelper {
     }
 
     public static void mostrarConfirmacao(Activity activity, String mensagem, ConfirmacaoCallback callback) {
-        View dialogView = LayoutInflater.from(activity).inflate(R.layout.modal_confirmacao, null);
+        View dialogView = LayoutInflater.from(activity).inflate(R.layout.component_view_confirmacao, null);
 
         AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setView(dialogView)

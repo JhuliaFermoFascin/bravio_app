@@ -1,6 +1,5 @@
 package com.example.vinhedobravioapp.ui.components.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
@@ -19,9 +20,9 @@ import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
-import com.example.vinhedobravioapp.ui.components.inicial.PainelRepresentanteActivity;
+import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class LoginActivity extends Activity {
             if (tipoUsuario == 1) {
                 intent = new Intent(this, DashboardAdmActivity.class);
             } else {
-                intent = new Intent(this, PainelRepresentanteActivity.class);
+                intent = new Intent(this, VisitasActivity.class);
             }
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -138,7 +139,7 @@ public class LoginActivity extends Activity {
             if (user.getIsAdmin() == 1) {
                 intent = new Intent(this, DashboardAdmActivity.class);
             } else {
-                intent = new Intent(this, PainelRepresentanteActivity.class);
+                intent = new Intent(this, VisitasActivity.class);
             }
 
             startActivity(intent);

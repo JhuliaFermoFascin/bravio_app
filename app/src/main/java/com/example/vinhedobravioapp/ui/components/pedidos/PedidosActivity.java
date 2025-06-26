@@ -19,16 +19,15 @@ public class PedidosActivity extends AppCompatActivity {
         setContentView(R.layout.pedidos);
 
         int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
-        boolean isDashboard = (tipoUsuario == 1);
 
-        HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard, false, true);
+        HeaderHelper.configurarHeader(this, getString(R.string.order_title), tipoUsuario, false, true);
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addOrder_btn);
         addWine_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PedidosActivity.this, CadastroPedidoActivity.class);
-                intent.putExtra("isDashboard", isDashboard);
+                intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }

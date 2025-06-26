@@ -1,18 +1,18 @@
 package com.example.vinhedobravioapp.ui.components.inicial;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.FindAnyUsers;
-//import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
+import com.example.vinhedobravioapp.ui.components.visitas.VisitasActivity;
 
-public class InicialActivity extends Activity {
+public class InicialActivity extends AppCompatActivity {
 
     private static final int DELAY_MS = 2000;
 
@@ -40,7 +40,7 @@ public class InicialActivity extends Activity {
                 if (tipoUsuario == 1) {
                     intent = new Intent(this, DashboardAdmActivity.class);
                 } else {
-                    intent = new Intent(this, PainelRepresentanteActivity.class);
+                    intent = new Intent(this, VisitasActivity.class);
                 }
             } else {
                 intent = new Intent(this, MenuActivity.class);

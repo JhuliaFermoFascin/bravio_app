@@ -3,6 +3,7 @@ package com.example.vinhedobravioapp.ui.components.vinhos;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -28,19 +29,27 @@ public class EstoqueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estoque);
 
-        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
-        boolean isDashboard = (tipoUsuario == 1);
-
-        HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard, true, true);
-
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addWine_btn);
+        RecyclerView recyclerView = findViewById(R.id.wine_recycleview);
+        View header = findViewById(R.id.component_view_custom_header);
+
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+
+        if(tipoUsuario == 1 ){
+            HeaderHelper.configurarHeader(this, getString(R.string.wine), tipoUsuario, true, true);
+        }
+        else{
+            HeaderHelper.configurarHeader(this, getString(R.string.wine), tipoUsuario, false, true);
+            addWine_btn.setVisibility(View.GONE);
+        }
+
         addWine_btn.setOnClickListener(view -> {
             Intent intent = new Intent(EstoqueActivity.this, CadastroVinhoActivity.class);
+            intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });
 
-        RecyclerView recyclerView = findViewById(R.id.wine_recycleview);
         wineAdapter = new WineAdapter(this, new ArrayList<>(),
                 this::showDetailsDialog,
                 this::editWine,
