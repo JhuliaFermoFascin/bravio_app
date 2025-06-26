@@ -1,18 +1,21 @@
 package com.example.vinhedobravioapp.ui.components.helper;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.vinhedobravioapp.R;
-import com.example.vinhedobravioapp.ui.components.vinhos.ConfigEstoqueActivity;
-import com.example.vinhedobravioapp.ui.components.vinhos.EstoqueActivity;
 
 public class HeaderHelper {
-    public static void configurarHeader(Activity activity, String title, boolean isDashboard, boolean isEstoque, boolean isPageInitial) {
+    public static void configurarHeader(Activity activity, String title, Integer tipoUsuario, boolean isEstoque, boolean isPageInitial, boolean isVisitante) {
         View header = activity.findViewById(R.id.component_view_custom_header);
         if (header == null) return;
+
+        TextView titleView = header.findViewById(R.id.header_title);
+        if (titleView != null) {
+            titleView.setText(title);
+        }
 
         ImageView menuIcon = header.findViewById(R.id.menu_suspenso);
         ImageView backIcon = header.findViewById(R.id.header_back);
@@ -22,7 +25,11 @@ public class HeaderHelper {
             menuIcon.setVisibility(View.VISIBLE);
             backIcon.setVisibility(View.GONE);
             menuIcon.setOnClickListener(v -> {
-                MenuSuspensoHelper.show(activity, isDashboard);
+                if (isVisitante) {
+                    MenuVisitanteHelper.show(activity, tipoUsuario);
+                } else {
+                    MenuSuspensoHelper.show(activity, tipoUsuario);
+                }
             });
         } else {
             backIcon.setVisibility(View.VISIBLE);
@@ -35,12 +42,10 @@ public class HeaderHelper {
         }
 
         configIcon.setOnClickListener(view -> {
-            Intent intent = new Intent(activity, ConfigEstoqueActivity.class);
-            activity.startActivity(intent);
-            activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            ConfigHelper.show(activity);
         });
     }
-    public static void configurarHeader(Activity activity, String title, boolean isDashboard) {
-        configurarHeader(activity, title, isDashboard, false, false);
+    public static void configurarHeader(Activity activity, String title, Integer tipoUsuario) {
+        configurarHeader(activity, title, tipoUsuario, false, false, false);
     }
 }

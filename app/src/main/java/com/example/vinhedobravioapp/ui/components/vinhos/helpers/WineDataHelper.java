@@ -97,20 +97,10 @@ public class WineDataHelper {
         WineImageModel imageModel = imageDAO.getByWineId(wine.getWineId());
 
         if (imageModel != null && imageModel.getImageBase64() != null) {
-            data.wineImageBitmap = decodeBase64ToBitmap(imageModel.getImageBase64());
+            //data.wineImageBitmap = decodeBase64ToBitmap(imageModel.getImageBase64());
         }
 
         return data;
     }
 
-    private static Bitmap decodeBase64ToBitmap(String base64Str) {
-        if (base64Str == null || base64Str.isEmpty()) return null;
-        try {
-            byte[] decodedBytes = Base64.decode(base64Str, Base64.DEFAULT);
-            return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

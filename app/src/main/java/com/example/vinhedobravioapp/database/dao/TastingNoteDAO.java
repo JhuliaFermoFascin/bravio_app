@@ -64,6 +64,25 @@ public class TastingNoteDAO extends AbstrataDAO {
         return id;
     }
 
+    public TastingNoteModel getByNoteText(String note) {
+        TastingNoteModel model = null;
+        try {
+            Open();
+            Cursor cursor = db.query(TastingNoteModel.TABLE_NAME, null,
+                    TastingNoteModel.COLUMN_NOTE + " = ?",
+                    new String[]{note},
+                    null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                model = new TastingNoteModel();
+                model.setTastingNoteId(cursor.getLong(cursor.getColumnIndexOrThrow(TastingNoteModel.COLUMN_ID)));
+                model.setNote(cursor.getString(cursor.getColumnIndexOrThrow(TastingNoteModel.COLUMN_NOTE)));
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return model;
+    }
 
     public java.util.List<TastingNoteModel> getAll() {
         java.util.List<TastingNoteModel> list = new java.util.ArrayList<>();

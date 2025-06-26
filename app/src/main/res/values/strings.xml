@@ -13,6 +13,9 @@
     <string name="commissions">Comissões</string>
     <string name="reports">Relatórios</string>
     <string name="users">Usuários</string>
+    <string name="contatos">Contatos</string>
+    <string name="adm">Página de Admnistração</string>
+    <string name="rep">Página de Representante</string>
     <!-- Estoque -->
     <string name="add_wine">+ </string>
     <!-- Estoque Form -->
@@ -35,7 +38,7 @@
             <string name="commercial_category">Categoria Comercial</string>
             <string name="geographic_origin">Origem geográfica</string>
             <string name="harvest">Safra</string>
-            <string name="wine_type">Tipo</string>
+            <string name="wine_type">Tipo de vinho</string>
             <string name="description">Descrição</string>
             <string name="tasting_notes">Notas de degustação</string>
             <string name="food_parings">Harmonizações</string>
@@ -263,13 +266,24 @@
     <string name="icon_representante">Ícone de representante</string>
     <string name="icon_location">Ícone de localização</string>
     <string name="icon_dashboard">Ícone de dashboard</string>
+    <string name="icon_comercial">Ícone de categoria comercial</string>
+    <string name="icon_uva">Ícone de uva</string>
+    <string name="icon_composicao_vinho">Ícone de composição de vinhos</string>
+    <string name="icon_harmonizacoes">Ícone de harmonizações</string>
+    <string name="icon_notas">Ícone de notas dos vinhos</string>
+    <string name="icon_tipo_vinho">Ícone de tipos de vinhos</string>
+    <string name="icon_history">Ícone de história</string>
+    <string name="icon_celular">Ícone de celular</string>
+
 
     <!-- shared preferences -->
     <string name="preferencia_login">loginPrefs</string>
-    <string name="manter_logado_shared">manterLogado</string>
-    <string name="email_shared">email</string>
-    <string name="senha_shared">senha</string>
-    <string name="tipo_usuario_shared">tipoUsuario</string>
+<!--    <string name="manter_logado_shared">manterLogado</string>-->
+<!--    <string name="email_shared">email</string>-->
+<!--    <string name="senha_shared">senha</string>-->
+<!--    <string name="tipo_usuario_shared">tipoUsuario</string>-->
+
+    <string name="login_status">login_status</string>
 
     <!-- erros -->
     <string name="email_senha_incorreto">E-mail ou senha incorretos</string>
@@ -287,5 +301,21 @@
     <string name="nao_sair">NÃO</string>
     <string name="confirmar_retorno_adm">o dashboard</string>
     <string name="confirmar_retorno_menu">o menu inicial</string>
+
+    <!-- visitantes-->
+        <!--historia-->
+        <string name="historia_title">História da Vinícola</string>
+        <string name="missoes_title">Missão e valores</string>
+        <string name="localizacao_title">Localização</string>
+        <string name="reconhecimento_title">Reconhecimento</string>
+        <string name="historia_text">O Vinhedo Bravio foi fundado em 1998 na Serra Catarinense, região reconhecida pela produção de vinhos de qualidade no Brasil. Desde então, a vinícola vem trabalhando com variedades tradicionais de uvas, buscando preservar a técnica clássica da vitivinicultura e entregar vinhos que traduzem o terroir único de Santa Catarina.</string>
+        <string name="missoes_text">O Vinhedo Bravio tem como propósito produzir vinhos que expressem o caráter único da Serra Catarinense, mantendo viva a tradição da vitivinicultura local com foco na qualidade. Busca ser reconhecido como referência no estado de Santa Catarina, valorizando o terroir regional e cultivando a confiança de quem aprecia um vinho bem feito.</string>
+        <string name="localizacao_text">Localizada na Serra Catarinense, o Vinhedo Bravio ocupa cerca de 50 hectares em solo ideal para o cultivo de uvas finas, com clima frio e inverno rigoroso que favorecem o amadurecimento lento das frutas, proporcionando vinhos encorpados e equilibrados.</string>
+        <string name="reconhecimento_text">O Vinhedo Bravio já conquistou prêmios em concursos estaduais e nacionais, principalmente por seus vinhos tintos elaborados com uvas Cabernet Sauvignon e Merlot. É respeitada no mercado catarinense pela qualidade consistente de seus produtos e pelo reconhecimento entre enófilos da região.</string>
+
+    <!--Erick -->
+    <string name="yyyy_mm_dd">yyyy-MM-dd</string>
+    <string name="administrador">Administrador</string>
+    <string name="representante">Representante</string>
 
 </resources>

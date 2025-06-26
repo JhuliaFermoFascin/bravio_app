@@ -118,4 +118,28 @@ public class InventoryMovementDAO extends AbstrataDAO {
         } finally { Close(); }
         return rows;
     }
+
+    public int getCurrentQuantityByWineId(long wineId) {
+        int total = 0;
+        try {
+            Open();
+            android.database.Cursor cursor = db.query(InventoryMovementModel.TABLE_NAME, null,
+                InventoryMovementModel.COLUMN_WINE_ID + " = ?",
+                new String[]{String.valueOf(wineId)},
+                null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    String type = cursor.getString(cursor.getColumnIndexOrThrow(InventoryMovementModel.COLUMN_MOVEMENT_TYPE));
+                    int qty = cursor.getInt(cursor.getColumnIndexOrThrow(InventoryMovementModel.COLUMN_QUANTITY));
+                    if ("ENTRADA".equalsIgnoreCase(type)) {
+                        total += qty;
+                    } else if ("SAIDA".equalsIgnoreCase(type)) {
+                        total -= qty;
+                    }
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+        } finally { Close(); }
+        return total;
+    }
 }

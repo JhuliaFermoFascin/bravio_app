@@ -24,6 +24,7 @@ import com.example.vinhedobravioapp.database.dao.WineDAO;
 import com.example.vinhedobravioapp.database.model.OrderItemModel;
 import com.example.vinhedobravioapp.database.model.OrderModel;
 import com.example.vinhedobravioapp.domain.model.Vinho;
+import com.example.vinhedobravioapp.loginManager.LoginManager;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
 import com.example.vinhedobravioapp.ui.components.helper.MenuSuspensoHelper;
 import com.example.vinhedobravioapp.ui.components.utils.MyMarkerView;
@@ -69,6 +70,7 @@ public class DashboardAdmActivity extends AppCompatActivity {
         popularPieChartVinhosMaisVendidosMesAtual();
 
         lineChart = findViewById(R.id.lineChart);
+
         configLineChart();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerVinhos);
@@ -92,6 +94,7 @@ public class DashboardAdmActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
+            LoginManager.getInstance().clearLoginStatus(this);
 
             Intent intent = new Intent(DashboardAdmActivity.this, MenuActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

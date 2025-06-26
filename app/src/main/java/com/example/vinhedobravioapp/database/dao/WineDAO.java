@@ -38,8 +38,7 @@ public class WineDAO extends AbstrataDAO {
             values.put(WineModel.ACIDITY_COLUMN, wineModel.getAcidity());
             values.put(WineModel.IDEAL_TEMPERATURE_COLUMN, wineModel.getIdealTemperatureCelsius());
             values.put(WineModel.AGING_POTENTIAL_COLUMN, wineModel.getAgingPotential());
-            values.put(WineModel.QUANTITY, wineModel.getQuantity());
-            values.put(WineModel.UNIT_PRICE, wineModel.getUnit_price());
+            values.put(WineModel.UNIT_PRICE_COLUMN, wineModel.getUnitPrice());
             result = db.insert(WineModel.TABLE_NAME, null, values);
         } finally {
             Close();
@@ -70,8 +69,8 @@ public class WineDAO extends AbstrataDAO {
                     wine.setAcidity(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.ACIDITY_COLUMN)));
                     wine.setIdealTemperatureCelsius(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.IDEAL_TEMPERATURE_COLUMN)));
                     wine.setAgingPotential(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.AGING_POTENTIAL_COLUMN)));
-                    wine.setQuantity(cursor.getInt(cursor.getColumnIndexOrThrow(WineModel.QUANTITY)));
-                    wine.setUnit_price(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.UNIT_PRICE)));
+                    wine.setUnitPrice(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.UNIT_PRICE_COLUMN)));
+
                     wineList.add(wine);
                 } while (cursor.moveToNext());
                 cursor.close();
@@ -131,8 +130,8 @@ public class WineDAO extends AbstrataDAO {
                 wine.setAcidity(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.ACIDITY_COLUMN)));
                 wine.setIdealTemperatureCelsius(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.IDEAL_TEMPERATURE_COLUMN)));
                 wine.setAgingPotential(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.AGING_POTENTIAL_COLUMN)));
-                wine.setQuantity(cursor.getInt(cursor.getColumnIndexOrThrow(WineModel.QUANTITY)));
-                wine.setUnit_price(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.UNIT_PRICE)));
+                wine.setUnitPrice(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.UNIT_PRICE_COLUMN)));
+
                 cursor.close();
             }
         } finally {
@@ -141,24 +140,24 @@ public class WineDAO extends AbstrataDAO {
         return wine;
     }
 
-    public List<WineModel> getItemInformations(Context context){
-        List<WineModel> wineList = getAll();
-        WineTypeDAO wineTypeDAO = new WineTypeDAO(context);
-        WineImageDAO wineImageDAO = new WineImageDAO(context);
-
-        for(WineModel wine : wineList){
-            WineTypeModel wineType = wineTypeDAO.getById(wine.getWineTypeId());
-            if (wineType != null) {
-                wine.setWineTypeName(wineType.getTypeName());
-            }
-
-            WineImageModel wineImage = wineImageDAO.getByWineId(wine.getWineId());
-            if (wineImage != null) {
-                wine.setImageBase64(wineImage.getImageBase64());
-            }
-        }
-        return wineList;
-    }
+//    public List<WineModel> getItemInformations(Context context){
+//        List<WineModel> wineList = getAll();
+//        WineTypeDAO wineTypeDAO = new WineTypeDAO(context);
+//        WineImageDAO wineImageDAO = new WineImageDAO(context);
+//
+//        for(WineModel wine : wineList){
+//            WineTypeModel wineType = wineTypeDAO.getById(wine.getWineTypeId());
+//            if (wineType != null) {
+//                wine.setWineTypeName(wineType.getTypeName());
+//            }
+//
+//            WineImageModel wineImage = wineImageDAO.getByWineId(wine.getWineId());
+//            if (wineImage != null) {
+//                wine.setImageBase64(wineImage.getImageBase64());
+//            }
+//        }
+//        return wineList;
+//    }
 
     // UPDATE
     public int update(WineModel wineModel) {
@@ -179,8 +178,7 @@ public class WineDAO extends AbstrataDAO {
             values.put(WineModel.ACIDITY_COLUMN, wineModel.getAcidity());
             values.put(WineModel.IDEAL_TEMPERATURE_COLUMN, wineModel.getIdealTemperatureCelsius());
             values.put(WineModel.AGING_POTENTIAL_COLUMN, wineModel.getAgingPotential());
-            values.put(WineModel.QUANTITY, wineModel.getQuantity());
-            values.put(WineModel.UNIT_PRICE, wineModel.getUnit_price());
+            values.put(WineModel.UNIT_PRICE_COLUMN, wineModel.getUnitPrice());
             rows = db.update(WineModel.TABLE_NAME, values,
                     WineModel.WINE_ID_COLUMN + " = ?",
                     new String[]{String.valueOf(wineModel.getWineId())});

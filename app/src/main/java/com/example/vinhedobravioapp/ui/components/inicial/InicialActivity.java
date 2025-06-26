@@ -1,18 +1,29 @@
 package com.example.vinhedobravioapp.ui.components.inicial;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.FindAnyUsers;
+import com.example.vinhedobravioapp.loginManager.LoginManager;
+
+import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
+import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 //import com.example.vinhedobravioapp.database.dao.DaoCrudTester;
 
-public class InicialActivity extends Activity {
+public class InicialActivity extends AppCompatActivity {
 
     private static final int DELAY_MS = 2000;
 
@@ -28,28 +39,14 @@ public class InicialActivity extends Activity {
         FindAnyUsers.ensureDefaultGrapes(this);
         FindAnyUsers.ensureDefaultTastingNotes(this);
         FindAnyUsers.ensureDefaultWineries(this);
-//        DaoCrudTester.testAllDaos(this);
 
         new Handler().postDelayed(() -> {
-            SharedPreferences prefs = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE);
-            boolean isLoggedIn = prefs.getBoolean(getString(R.string.manter_logado_shared), false);
-            int tipoUsuario = prefs.getInt(getString(R.string.tipo_usuario_shared), 0);
-
-            Intent intent;
-            if (isLoggedIn) {
-                if (tipoUsuario == 1) {
-                    intent = new Intent(this, DashboardAdmActivity.class);
-                } else {
-                    intent = new Intent(this, PainelRepresentanteActivity.class);
-                }
-            } else {
-                intent = new Intent(this, MenuActivity.class);
-            }
-
+            Intent intent = LoginManager.getInstance().getNextActivity(this);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         }, DELAY_MS);
+
     }
 
 }

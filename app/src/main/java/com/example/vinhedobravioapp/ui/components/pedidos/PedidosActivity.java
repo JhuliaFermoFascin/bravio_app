@@ -39,8 +39,7 @@ public class PedidosActivity extends AppCompatActivity {
         setContentView(R.layout.pedidos);
 
         int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
-        boolean isDashboard = (tipoUsuario == 1);
-        HeaderHelper.configurarHeader(this, getString(R.string.wine), isDashboard, false, true);
+        HeaderHelper.configurarHeader(this, getString(R.string.order_title), tipoUsuario, false, true, false);
 
         recyclerView = findViewById(R.id.orders_recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
