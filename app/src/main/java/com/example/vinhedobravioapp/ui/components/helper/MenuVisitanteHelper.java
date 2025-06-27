@@ -43,7 +43,7 @@ public class MenuVisitanteHelper {
 
         if(origemAdm == 1){
             dashboardText.setText(activity.getString(R.string.adm));
-        } else if(origemAdm == 2){
+        } else if(origemAdm == 0){
             dashboardText.setText(activity.getString(R.string.rep));
         }  else{
             dashboard_btn.setVisibility(View.GONE);
@@ -92,7 +92,7 @@ public class MenuVisitanteHelper {
             if (destinoValor == 1) {
                 Intent intent = new Intent(activity, DashboardAdmActivity.class);
                 activity.startActivity(intent);
-            } else if (destinoValor == 2) {
+            } else if (destinoValor == 0) {
                 Intent intent = new Intent(activity, VisitasActivity.class);
                 activity.startActivity(intent);
             } else {

@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
                 editor.putString(getString(R.string.login_status), json);
-                editor.apply();
+                editor.commit();
 
             Intent intent;
             if (user.getIsAdmin() == 1) {
