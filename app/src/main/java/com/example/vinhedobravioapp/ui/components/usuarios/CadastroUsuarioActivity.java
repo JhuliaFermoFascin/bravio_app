@@ -43,8 +43,8 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
         userDAO = new UserDAO(this);
 
-        int isDashboard = LoginManager.getInstance().getLoginStatus().isAdminInt();
-        HeaderHelper.configurarHeader(this, getString(R.string.add_user_title), isDashboard);
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+        HeaderHelper.configurarHeader(this, getString(R.string.order_title), tipoUsuario);
 
         userName = findViewById(R.id.userName);
         userEmail = findViewById(R.id.userEmail);

@@ -29,7 +29,8 @@ public class RepresentantesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.representantes);
 
-        HeaderHelper.configurarHeader(this, getString(R.string.representante), 0, false, true, false);
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+        HeaderHelper.configurarHeader(this, getString(R.string.representante), tipoUsuario, false, true, false);
 
         userDAO = new UserDAO(this);
 

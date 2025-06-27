@@ -33,8 +33,9 @@ public class UsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.usuarios);
 
-        int isDashboard = LoginManager.getInstance().getLoginStatus().isAdminInt();
-        HeaderHelper.configurarHeader(this, getString(R.string.user_title), isDashboard);
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+
+        HeaderHelper.configurarHeader(this, getString(R.string.user_title), tipoUsuario, false, true, false);
 
         userDAO = new UserDAO(this);
 
@@ -73,6 +74,7 @@ public class UsuarioActivity extends AppCompatActivity {
         addUser_btn = findViewById(R.id.addUser_btn);
         addUser_btn.setOnClickListener(v -> {
             Intent intent = new Intent(UsuarioActivity.this, CadastroUsuarioActivity.class);
+            intent.putExtra(getString(R.string.tipo_usuario_input), tipoUsuario);
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         });

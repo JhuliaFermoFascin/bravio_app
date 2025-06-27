@@ -172,21 +172,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/relatorios_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-
-                <View
-                    android:layout_width="167dp"
-                    android:layout_height="1dp"
-                    android:background="@color/background_text_primary" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/representantes_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
