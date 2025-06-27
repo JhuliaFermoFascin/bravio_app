@@ -42,15 +42,47 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/order_customer"
+                        android:text="Nome"
                         style="@style/AddVinhoTitle" />
 
                     <EditText
+                        android:id="@+id/visit_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="text"
+                        android:layout_marginBottom="20dp"
+                        android:textColor="@color/text_green_secondary"
+                        style="@style/InputAddVinho"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Objetivo da visita"
+                        style="@style/AddVinhoTitle" />
+
+                    <EditText
+                        android:id="@+id/visit_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="text"
+                        android:layout_marginBottom="20dp"
+                        android:textColor="@color/text_green_secondary"
+                        style="@style/InputAddVinho"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_customer"
+                        style="@style/AddVinhoTitle" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/customer_name"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:hint="@string/visit_select_customer"
                         android:inputType="text"
                         android:layout_marginBottom="20dp"
+                        android:textColor="@color/text_green_secondary"
                         style="@style/InputAddVinho"/>
 
                     <TextView
@@ -60,12 +92,15 @@
                         style="@style/AddVinhoTitle" />
 
                     <EditText
+                        android:id="@+id/customer_cpf"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="text"
                         android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/cinzel"
                         style="@style/InputAddVinho"
                         android:clickable="false"
+                        android:textColor="@color/text_green_secondary"
                         android:focusable="false"/>
 
                     <TextView
@@ -75,10 +110,13 @@
                         style="@style/AddVinhoTitle" />
 
                     <EditText
+                        android:id="@+id/customer_contacts"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="text"
+                        android:fontFamily="@font/cinzel"
                         android:layout_marginBottom="20dp"
+                        android:textColor="@color/text_green_secondary"
                         style="@style/InputAddVinho"/>
 
                     <TextView
@@ -88,10 +126,12 @@
                         style="@style/AddVinhoTitle" />
 
                     <EditText
+                        android:id="@+id/customer_address"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="text"
                         android:layout_marginBottom="20dp"
+                        android:textColor="@color/text_green_secondary"
                         style="@style/InputAddVinho"/>
 
                     <TextView
@@ -106,6 +146,7 @@
                         android:layout_height="50dp"
                         android:inputType="none"
                         android:layout_marginBottom="20dp"
+                        android:textColor="@color/text_green_secondary"
                         android:hint="@string/visit_add_date_time"
                         style="@style/InputAddVinho"
                         android:focusable="false"
