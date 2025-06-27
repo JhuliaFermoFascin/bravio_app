@@ -112,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
         boolean error = false;
         boolean permissaoNegada = false;
         if (user != null) {
-
             if (user.getIsAdmin() == isAdmin) {
                 String dataAtual = new SimpleDateFormat(getString(R.string.yyyy_mm_dd), Locale.getDefault()).format(new Date());
                 LoginStatus status = new LoginStatus(
@@ -126,22 +125,27 @@ public class LoginActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 String json = gson.toJson(status);
 
+                // Salva o status de login SOMENTE se o tipo de usuário for permitido
                 SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
                 editor.putString(getString(R.string.login_status), json);
                 editor.commit();
 
-            Intent intent;
-            if (user.getIsAdmin() == 1) {
-                intent = new Intent(this, DashboardAdmActivity.class);
-            } else {
-                intent = new Intent(this, VisitasActivity.class);
-            }
+                Intent intent;
+                if (user.getIsAdmin() == 1) {
+                    intent = new Intent(this, DashboardAdmActivity.class);
+                } else {
+                    intent = new Intent(this, VisitasActivity.class);
+                }
 
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 finish();
             } else {
                 permissaoNegada = true;
+                // Limpa qualquer status de login salvo indevidamente
+                SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
+                editor.remove(getString(R.string.login_status));
+                editor.apply();
             }
         } else {
             error = true;
