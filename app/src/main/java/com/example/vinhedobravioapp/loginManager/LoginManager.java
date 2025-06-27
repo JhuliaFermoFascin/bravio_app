@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.database.dao.UserDAO;
+import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
 import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
@@ -50,7 +52,13 @@ public class LoginManager {
         );
         prefs.edit()
                 .putString(context.getString(R.string.login_status), new Gson().toJson(loginStatus))
-                .apply();
+                .commit();
+        UserDAO userDAO= new UserDAO(context);
+        UserModel userModel = userDAO.getById(loginStatus.getIdUsuario());
+        String dataAtual = new SimpleDateFormat(context.getString(R.string.yyyy_mm_dd), Locale.getDefault()).format(new Date());
+
+        userModel.setLastLogin(dataAtual);
+        userDAO.update(userModel);
         Log.d("LoginManager", "Status salvo.");
     }
 
