@@ -15,13 +15,14 @@ public class InventoryMovementDAO extends AbstrataDAO {
         helper = new DPOpenHelper(context);
     }
 
-    public long insert(SQLiteDatabase db, InventoryMovementModel mov) {
+    public long insert(InventoryMovementModel mov) {
         ContentValues values = new ContentValues();
 
         values.put(InventoryMovementModel.COLUMN_WINE_ID, mov.getWineId());
         values.put(InventoryMovementModel.COLUMN_MOVEMENT_TYPE, mov.getMovementType());
         values.put(InventoryMovementModel.COLUMN_QUANTITY, mov.getQuantity());
         values.put(InventoryMovementModel.COLUMN_UNIT_PRICE, mov.getUnitPrice());
+        values.put(InventoryMovementModel.COLUMN_MOVEMENT_DATE, mov.getMovementDate());
         values.put(InventoryMovementModel.COLUMN_DOCUMENT_REFERENCE, mov.getDocumentReference());
         values.put(InventoryMovementModel.COLUMN_USER_ID, mov.getUserId());
         values.put(InventoryMovementModel.COLUMN_NOTES, mov.getNotes());
