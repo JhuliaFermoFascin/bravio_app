@@ -328,5 +328,6 @@
     <string name="yyyy_mm_dd">yyyy-MM-dd</string>
     <string name="administrador">Administrador</string>
     <string name="representante">Representante</string>
+    <string name="permissao_negada">Você não tem permissão para acessar este perfil com este usuário.</string>
 
 </resources>

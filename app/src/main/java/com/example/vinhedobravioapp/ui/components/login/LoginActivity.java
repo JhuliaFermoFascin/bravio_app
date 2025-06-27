@@ -110,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         UserDAO userDAO = new UserDAO(this);
         UserModel user = userDAO.findByEmailAndPassword(emailDigitado, senhaDigitada);
         boolean error = false;
+        boolean permissaoNegada = false;
         if (user != null) {
 
             if (user.getIsAdmin() == isAdmin) {
@@ -139,13 +140,15 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 finish();
-            }else {
-                error = true;
+            } else {
+                permissaoNegada = true;
             }
         } else {
-            error =true;
+            error = true;
         }
-        if (error) {
+        if (permissaoNegada) {
+            Toast.makeText(this, getString(R.string.permissao_negada), Toast.LENGTH_SHORT).show();
+        } else if (error) {
             Toast.makeText(this, getString(R.string.email_senha_incorreto), Toast.LENGTH_SHORT).show();
         }
     }

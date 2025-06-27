@@ -73,7 +73,7 @@ public class MenuVisitanteHelper {
 
         sair_btn.setOnClickListener(view -> {
             popupWindow.dismiss();
-            mostrarConfirmacaoSaida(0, activity);
+            mostrarConfirmacaoSaida(-1, activity); // Corrigido: garante que visitante volta para o MenuActivity
         });
 
         fora_menu.setOnClickListener(view -> {
