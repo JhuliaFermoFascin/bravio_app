@@ -17,4 +17,14 @@ public class GetAllFullWineModel {
         }
         return fullWineList;
     }
+
+    public static List<FullWineModel> findByNameLike(Context context, String nameLike) {
+        WineDAO wineDAO = new WineDAO(context);
+        List<WineModel> wineModels = wineDAO.findByNameLike(nameLike);
+        List<FullWineModel> fullWineList = new ArrayList<>();
+        for (WineModel wine : wineModels) {
+            fullWineList.add(new FullWineModel(context, wine.getWineId()));
+        }
+        return fullWineList;
+    }
 }

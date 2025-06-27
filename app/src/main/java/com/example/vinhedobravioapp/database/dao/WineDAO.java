@@ -201,4 +201,43 @@ public class WineDAO extends AbstrataDAO {
         }
         return rows;
     }
+
+    public List<WineModel> findByNameLike(String nameLike) {
+        List<WineModel> wineList = new ArrayList<>();
+        try {
+            Open();
+            Cursor cursor = db.query(
+                WineModel.TABLE_NAME,
+                null,
+                WineModel.NAME_COLUMN + " LIKE ?",
+                new String[]{"%" + nameLike + "%"},
+                null, null, null
+            );
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    WineModel wine = new WineModel();
+                    wine.setWineId(cursor.getLong(cursor.getColumnIndexOrThrow(WineModel.WINE_ID_COLUMN)));
+                    wine.setName(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.NAME_COLUMN)));
+                    wine.setWineryId(cursor.getLong(cursor.getColumnIndexOrThrow(WineModel.WINERY_ID_COLUMN)));
+                    wine.setWineTypeId(cursor.getLong(cursor.getColumnIndexOrThrow(WineModel.WINE_TYPE_ID_COLUMN)));
+                    wine.setCommercialCategoryId(cursor.getLong(cursor.getColumnIndexOrThrow(WineModel.COMMERCIAL_CATEGORY_ID_COLUMN)));
+                    wine.setOriginId(cursor.getLong(cursor.getColumnIndexOrThrow(WineModel.ORIGIN_ID_COLUMN)));
+                    wine.setVintage(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.VINTAGE_COLUMN)));
+                    wine.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.DESCRIPTION_COLUMN)));
+                    wine.setCompositionTypeId(cursor.getLong(cursor.getColumnIndexOrThrow(WineModel.COMPOSITION_TYPE_ID_COLUMN)));
+                    wine.setAlcoholContent(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.ALCOHOL_CONTENT_COLUMN)));
+                    wine.setVolume(cursor.getInt(cursor.getColumnIndexOrThrow(WineModel.VOLUME_COLUMN)));
+                    wine.setAcidity(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.ACIDITY_COLUMN)));
+                    wine.setIdealTemperatureCelsius(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.IDEAL_TEMPERATURE_COLUMN)));
+                    wine.setAgingPotential(cursor.getString(cursor.getColumnIndexOrThrow(WineModel.AGING_POTENTIAL_COLUMN)));
+                    wine.setUnitPrice(cursor.getDouble(cursor.getColumnIndexOrThrow(WineModel.UNIT_PRICE_COLUMN)));
+                    wineList.add(wine);
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return wineList;
+    }
 }
