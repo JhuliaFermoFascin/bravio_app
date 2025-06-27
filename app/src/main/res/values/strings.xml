@@ -55,24 +55,33 @@
     <string name="dashboard">Dashboard</string>
 
             <!-- Add Estoque Form -->
-                <string name="add_wine_name">Informe o nome do vinho</string>
-                <string name="add_winery_name">Informe o nome da vinícola</string>
-                <string name="add_commercial_category">Informe a categoria comercial</string>
-                <string name="add_country">Informe o país</string>
-                <string name="add_harvest">Informe o ano da safra</string>
-                <string name="add_description">Descreva o vinho a ser cadastrado</string>
-                <string name="add_tasting_notes">Selecione as notas de degustação</string>
-                <string name="add_food_parings">Harmonizações sugeridas</string>
-                <string name="add_alcohol_content">Informe o teor Alcoólico</string>
-                <string name="add_volume">Informe o volume</string>
-                <string name="add_quantity">Informe a quantidade disponível</string>
-                <string name="add_unit_price">Informe o valor unitário</string>
-                <string name="add_acidity">Informe a acidez</string>
-                <string name="add_ideal_temperature">Informe a temperatura ideal</string>
-                <string name="add_estimated_storage_time">Informe o tempo de guarda estimado</string>
-                <string name="add_reviews">Informe as avaliações</string>
-                <string name="add_grapes">Selecione as uvas</string>
+                <string name="add_wine_name">Ex: Cabernet Sauvignon Reserva</string>
+                <string name="add_winery_name">Ex: Vinícola Aurora</string>
+                <string name="add_commercial_category">Ex: Premium</string>
+                <string name="add_country">Ex: Brasil</string>
+                <string name="add_harvest">Ex: 2022</string>
+                <string name="add_description">Ex: Vinho tinto encorpado, com notas de frutas vermelhas e especiarias.</string>
+                <string name="add_tasting_notes">Ex: Frutas vermelhas, especiarias, baunilha</string>
+                <string name="add_food_parings">Ex: Carnes vermelhas, massas, queijos</string>
+                <string name="add_alcohol_content">Ex: 13.5</string>
+                <string name="add_volume">Ex: 750</string>
+                <string name="add_quantity">Ex: 24</string>
+                <string name="add_unit_price">Ex: 89.90</string>
+                <string name="add_acidity">Ex: 5.8</string>
+                <string name="add_ideal_temperature">Ex: 16</string>
+                <string name="add_estimated_storage_time">Ex: 5 anos</string>
+                <string name="add_reviews">Ex: Excelente vinho, recomendo!</string>
+                <string name="add_grapes">Ex: Cabernet Sauvignon, Merlot</string>
+                
+                <!-- Contatos -->
+                <string name="contact">CONTATO</string>
+                <string name="contact_name">Nome</string>
+                <string name="contact_email">Email</string>
+                <string name="contact_message">Mensagem</string>
 
+                <string name="back_button_description">Voltar</string>
+                <string name="send_btn">Enviar</string>
+                <string name="representative_search_hint">pesquise pelo nome</string>
             <!-- Estoque Form Titles -->
                 <string name="general_informations">Informações Gerais</string>
                 <string name="identification_origin">Identificação e Origem</string>
@@ -81,6 +90,8 @@
                 <string name="experience_reviews">Experiência e Avaliação</string>
                 <string name="inventory_marketing">Estoque e Comercialização</string>
 
+
+    <string name="client_title">Clientes</string>
 
     <!-- Wine Details -->
     <string name="details_wine_name">Nome do vinho:</string>

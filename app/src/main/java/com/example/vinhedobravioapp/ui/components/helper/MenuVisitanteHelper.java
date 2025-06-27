@@ -82,7 +82,7 @@ public class MenuVisitanteHelper {
     }
 
     private static void mostrarConfirmacaoSaida(int destinoValor, Activity activity) {
-        String destinoTexto = (destinoValor == 1 || destinoValor == 2) ?
+        String destinoTexto = (destinoValor == 1 || destinoValor == 0) ?
                 activity.getString(R.string.confirmar_retorno_adm) :
                 activity.getString(R.string.confirmar_retorno_menu);
 
