@@ -19,7 +19,8 @@ public class CommercialCategoryDAO extends AbstrataDAO {
 
     public CommercialCategoryModel getById(long id) {
         CommercialCategoryModel model = null;
-        try { Open();
+        try {
+            Open();
             android.database.Cursor cursor = db.query(CommercialCategoryModel.TABLE_NAME, null,
                 CommercialCategoryModel.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(id)},

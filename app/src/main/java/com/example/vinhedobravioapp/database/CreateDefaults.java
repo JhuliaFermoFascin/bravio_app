@@ -45,6 +45,7 @@ public class CreateDefaults {
         ensureDefaultGrapes(context);
         ensureDefaultTastingNotes(context);
         ensureDefaultWineries(context);
+        ensureDefaultCommercialCategories(context);
         ensureDefaultWines(context);
         ensureDefaultInventoryMovements(context);
     }
@@ -294,4 +295,17 @@ public static void ensureDefaultCompositionTypes(Context context) {
             }
             return sb.toString();
         }
+
+    public static void ensureDefaultCommercialCategories(Context context) {
+        com.example.vinhedobravioapp.database.dao.CommercialCategoryDAO dao = new com.example.vinhedobravioapp.database.dao.CommercialCategoryDAO(context);
+        java.util.List<com.example.vinhedobravioapp.database.model.CommercialCategoryModel> list = dao.getAll();
+        if (list == null || list.isEmpty()) {
+            String[] categorias = {"Popular", "Intermediário", "Premium", "Superpremium"};
+            for (String nome : categorias) {
+                com.example.vinhedobravioapp.database.model.CommercialCategoryModel cat = new com.example.vinhedobravioapp.database.model.CommercialCategoryModel();
+                cat.setName(nome);
+                dao.insert(cat);
+            }
+        }
+    }
 }
