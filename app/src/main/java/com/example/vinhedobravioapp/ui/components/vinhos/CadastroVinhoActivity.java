@@ -332,7 +332,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
 //                    mov.setUserId(selectedUserIdAuto);
                     mov.setNotes("Entrada inicial ao criar vinho");
 
-                    movDao.insert(db, mov);
+                    movDao.insert( mov);
                     db.setTransactionSuccessful();
                 } finally {
                     db.endTransaction();

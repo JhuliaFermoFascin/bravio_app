@@ -106,14 +106,13 @@ public static void ensureDefaultCompositionTypes(Context context) {
         WineTypeDAO wineTypeDAO = new WineTypeDAO(context);
         List<WineTypeModel> wineTypes = wineTypeDAO.getAll();
         if (wineTypes == null || wineTypes.isEmpty()) {
-            WineTypeModel tinto = new WineTypeModel();
-            tinto.setTypeName("Tinto");
-            wineTypeDAO.insert(tinto);
-            WineTypeModel seco = new WineTypeModel();
-            seco.setTypeName("Seco");
-            wineTypeDAO.insert(seco);
+            String[] tipos = {"Tinto", "Seco", "Branco", "Rosé", "Espumante"};
+            for (String tipo : tipos) {
+                WineTypeModel model = new WineTypeModel();
+                model.setTypeName(tipo);
+                wineTypeDAO.insert(model);
+            }
         }
-        List<WineTypeModel> wineTypesAfter = wineTypeDAO.getAll();
     }
 
     public static void ensureDefaultGeographicOrigins(Context context) {
@@ -121,89 +120,70 @@ public static void ensureDefaultCompositionTypes(Context context) {
         List<GeographicOriginModel> origins = originDAO.getAll();
         if (origins == null || origins.isEmpty()) {
             // Brasil
-            GeographicOriginModel serraGaucha = new GeographicOriginModel();
-            serraGaucha.setCountry("Brasil");
-            serraGaucha.setRegion("Serra Gaúcha");
-            originDAO.insert(serraGaucha);
-            GeographicOriginModel serraMineira = new GeographicOriginModel();
-            serraMineira.setCountry("Brasil");
-            serraMineira.setRegion("Serra Mineira");
-            originDAO.insert(serraMineira);
-            GeographicOriginModel campanha = new GeographicOriginModel();
-            campanha.setCountry("Brasil");
-            campanha.setRegion("Campanha Gaúcha");
-            originDAO.insert(campanha);
+            originDAO.insert(new GeographicOriginModel("Brasil", "Serra Gaúcha"));
+            originDAO.insert(new GeographicOriginModel("Brasil", "Serra Mineira"));
+            originDAO.insert(new GeographicOriginModel("Brasil", "Campanha Gaúcha"));
+            originDAO.insert(new GeographicOriginModel("Brasil", "Vale dos Vinhedos"));
+            originDAO.insert(new GeographicOriginModel("Brasil", "Planalto Catarinense"));
             // Chile
-            GeographicOriginModel maipo = new GeographicOriginModel();
-            maipo.setCountry("Chile");
-            maipo.setRegion("Valle do Maipo");
-            originDAO.insert(maipo);
-            GeographicOriginModel colchagua = new GeographicOriginModel();
-            colchagua.setCountry("Chile");
-            colchagua.setRegion("Colchagua");
-            originDAO.insert(colchagua);
+            originDAO.insert(new GeographicOriginModel("Chile", "Valle do Maipo"));
+            originDAO.insert(new GeographicOriginModel("Chile", "Colchagua"));
+            originDAO.insert(new GeographicOriginModel("Chile", "Casablanca"));
+            originDAO.insert(new GeographicOriginModel("Chile", "Aconcágua"));
             // Argentina
-            GeographicOriginModel mendoza = new GeographicOriginModel();
-            mendoza.setCountry("Argentina");
-            mendoza.setRegion("Mendoza");
-            originDAO.insert(mendoza);
-            GeographicOriginModel patagonia = new GeographicOriginModel();
-            patagonia.setCountry("Argentina");
-            patagonia.setRegion("Patagônia");
-            originDAO.insert(patagonia);
+            originDAO.insert(new GeographicOriginModel("Argentina", "Mendoza"));
+            originDAO.insert(new GeographicOriginModel("Argentina", "Patagônia"));
+            originDAO.insert(new GeographicOriginModel("Argentina", "Salta"));
+            originDAO.insert(new GeographicOriginModel("Argentina", "San Juan"));
         }
-        List<GeographicOriginModel> originsAfter = originDAO.getAll();
     }
 
     public static void ensureDefaultGrapes(Context context) {
         GrapeDAO grapeDAO = new GrapeDAO(context);
         List<GrapeModel> grapes = grapeDAO.getAll();
         if (grapes == null || grapes.isEmpty()) {
-            GrapeModel cabernet = new GrapeModel();
-            cabernet.setName("Cabernet Sauvignon");
-            grapeDAO.insert(cabernet);
-            GrapeModel merlot = new GrapeModel();
-            merlot.setName("Merlot");
-            grapeDAO.insert(merlot);
+            String[] uvas = {
+                "Cabernet Sauvignon", "Merlot", "Malbec", "Chardonnay", "Syrah",
+                "Pinot Noir", "Tannat", "Carmenère", "Sauvignon Blanc", "Tempranillo"
+            };
+            for (String uva : uvas) {
+                GrapeModel model = new GrapeModel();
+                model.setName(uva);
+                grapeDAO.insert(model);
+            }
         }
-        List<GrapeModel> grapesAfter = grapeDAO.getAll();
     }
 
     public static void ensureDefaultTastingNotes(Context context) {
         TastingNoteDAO tastingNoteDAO = new TastingNoteDAO(context);
         List<TastingNoteModel> notes = tastingNoteDAO.getAll();
         if (notes == null || notes.isEmpty()) {
-            TastingNoteModel frutasVermelhas = new TastingNoteModel();
-            frutasVermelhas.setNote("Frutas vermelhas");
-            tastingNoteDAO.insert(frutasVermelhas);
-            TastingNoteModel frutasNegras = new TastingNoteModel();
-            frutasNegras.setNote("Frutas negras");
-            tastingNoteDAO.insert(frutasNegras);
-            TastingNoteModel citricas = new TastingNoteModel();
-            citricas.setNote("Cítricas");
-            tastingNoteDAO.insert(citricas);
+            String[] notas = {
+                "Frutas vermelhas", "Frutas negras", "Cítricas", "Especiarias", "Baunilha",
+                "Chocolate", "Amadeirado", "Florais", "Herbáceo", "Tostado"
+            };
+            for (String nota : notas) {
+                TastingNoteModel model = new TastingNoteModel();
+                model.setNote(nota);
+                tastingNoteDAO.insert(model);
+            }
         }
-        List<TastingNoteModel> notesAfter = tastingNoteDAO.getAll();
     }
 
     public static void ensureDefaultWineries(Context context) {
         WineryDAO wineryDAO = new WineryDAO(context);
         List<WineryModel> wineries = wineryDAO.getAll();
         if (wineries == null || wineries.isEmpty()) {
-            WineryModel margaux = new WineryModel();
-            margaux.setName("Château Margaux");
-            wineryDAO.insert(margaux);
-            WineryModel vegaSicilia = new WineryModel();
-            vegaSicilia.setName("Bodegas Vega Sicilia");
-            wineryDAO.insert(vegaSicilia);
-            WineryModel mondavi = new WineryModel();
-            mondavi.setName("Robert Mondavi Winery");
-            wineryDAO.insert(mondavi);
-            WineryModel penfolds = new WineryModel();
-            penfolds.setName("Penfolds");
-            wineryDAO.insert(penfolds);
+            String[] vinicolas = {
+                "Château Margaux", "Bodegas Vega Sicilia", "Robert Mondavi Winery", "Penfolds", "Miolo",
+                "Concha y Toro", "Catena Zapata", "Salton", "Aurora", "Casa Valduga"
+            };
+            for (String nome : vinicolas) {
+                WineryModel model = new WineryModel();
+                model.setName(nome);
+                wineryDAO.insert(model);
+            }
         }
-        List<WineryModel> wineriesAfter = wineryDAO.getAll();
     }
 
     // Adiciona vinhos genéricos para testes ou inicialização
@@ -212,93 +192,92 @@ public static void ensureDefaultCompositionTypes(Context context) {
         List<WineModel> wines = wineDAO.getAll();
         Log.e("estoque1", "Total de vinhos: " + wines.size());
 
-        List<FullWineModel> winesList = GetAllFullWineModel.getAll(context);
-
-        Log.e("estoque1", "Total de vinhos: " + winesList.size());
         if (wines == null || wines.isEmpty()) {
-            WineModel vinho1 = new WineModel();
-            vinho1.setName("Vinho Genérico 1");
-            vinho1.setWineryId(1L); // Ajuste conforme IDs existentes
-            vinho1.setWineTypeId(1L);
-            vinho1.setCommercialCategoryId(1L);
-            vinho1.setOriginId(1L);
-            vinho1.setVintage("2020");
-            vinho1.setDescription("Vinho de teste 1");
-            vinho1.setCompositionTypeId(1L);
-            vinho1.setAlcoholContent(13.5);
-            vinho1.setVolume(750);
-            vinho1.setAcidity("3.5");
-            vinho1.setIdealTemperatureCelsius(16.0);
-            vinho1.setAgingPotential("5 anos");
-            vinho1.setUnitPrice(99.90);
-            wineDAO.insert(vinho1);
+            String[] nomes = {
+                "Vinho Genérico 1", "Vinho Genérico 2", "Vinho Genérico 3", "Vinho Genérico 4", "Vinho Genérico 5",
+                "Vinho Genérico 6", "Vinho Genérico 7", "Vinho Genérico 8", "Vinho Genérico 9", "Vinho Genérico 10"
+            };
+            String[] descricoes = {
+                "Vinho de teste 1", "Vinho de teste 2", "Vinho de teste 3", "Vinho de teste 4", "Vinho de teste 5",
+                "Vinho de teste 6", "Vinho de teste 7", "Vinho de teste 8", "Vinho de teste 9", "Vinho de teste 10"
+            };
+            double[] teorAlcoolico = {13.5, 12.0, 14.0, 13.0, 12.5, 13.8, 14.2, 12.8, 13.1, 13.9};
+            String[] acidez = {"3.5", "3.7", "3.6", "3.8", "3.4", "3.9", "3.3", "3.5", "3.6", "3.7"};
+            double[] temperatura = {16.0, 14.0, 15.0, 16.5, 15.5, 14.5, 15.8, 16.2, 15.3, 14.8};
+            String[] safra = {"2020", "2021", "2019", "2018", "2022", "2020", "2021", "2017", "2016", "2015"};
+            double[] preco = {99.90, 59.90, 79.90, 89.90, 109.90, 69.90, 119.90, 129.90, 139.90, 149.90};
 
-            WineModel vinho2 = new WineModel();
-            vinho2.setName("Vinho Genérico 2");
-            vinho2.setWineryId(2L);
-            vinho2.setWineTypeId(2L);
-            vinho2.setCommercialCategoryId(1L);
-            vinho2.setOriginId(2L);
-            vinho2.setVintage("2021");
-            vinho2.setDescription("Vinho de teste 2");
-            vinho2.setCompositionTypeId(1L);
-            vinho2.setAlcoholContent(12.0);
-            vinho2.setVolume(750);
-            vinho2.setAcidity("3.7");
-            vinho2.setIdealTemperatureCelsius(14.0);
-            vinho2.setAgingPotential("3 anos");
-            vinho2.setUnitPrice(59.90);
-            wineDAO.insert(vinho2);
+            for (int i = 0; i < 10; i++) {
+                WineModel vinho = new WineModel();
+                vinho.setName(nomes[i]);
+                vinho.setWineryId((i % 5) + 1L); // alterna entre 5 vinícolas
+                vinho.setWineTypeId(((i % 5) + 1L)); // alterna entre 5 tipos
+                vinho.setCommercialCategoryId(((i % 5) + 1L));
+                vinho.setOriginId(((i % 10) + 1L)); // alterna entre 10 origens
+                vinho.setVintage(safra[i]);
+                vinho.setDescription(descricoes[i]);
+                vinho.setCompositionTypeId(((i % 4) + 1L));
+                vinho.setAlcoholContent(teorAlcoolico[i]);
+                vinho.setVolume(750);
+                vinho.setAcidity(acidez[i]);
+                vinho.setIdealTemperatureCelsius(temperatura[i]);
+                vinho.setAgingPotential((3 + i) + " anos");
+                vinho.setUnitPrice(preco[i]);
+                wineDAO.insert(vinho);
+            }
         }
     }
 
     public static void ensureDefaultInventoryMovements(Context context) {
         WineDAO wineDAO = new WineDAO(context);
         List<WineModel> wines = wineDAO.getAll();
-        if (wines != null && wines.size() >= 2) {
-            WineModel vinho1 = wines.get(0);
-            WineModel vinho2 = wines.get(1);
+        if (wines != null && wines.size() >= 10) {
             InventoryMovementDAO movementDAO = new InventoryMovementDAO(context);
-            SQLiteDatabase db = new DPOpenHelper(context).getWritableDatabase(); // abre o banco manualmente
+            long userId = 1L;
+            String[] docsEntrada = {"NF-100", "NF-101", "NF-102", "NF-103", "NF-104", "NF-105", "NF-106", "NF-107", "NF-108", "NF-109"};
+            String[] docsSaida = {"VENDA-200", "VENDA-201", "VENDA-202", "VENDA-203", "VENDA-204", "VENDA-205", "VENDA-206", "VENDA-207", "VENDA-208", "VENDA-209"};
+            double[] precosEntrada = {49.90, 39.90, 59.90, 44.90, 54.90, 42.90, 51.90, 47.90, 53.90, 45.90};
+            double[] precosSaida = {89.90, 69.90, 99.90, 79.90, 109.90, 74.90, 95.90, 85.90, 105.90, 92.90};
 
-            db.beginTransaction();
-            try {
-                InventoryMovementModel mov1 = new InventoryMovementModel();
-                mov1.setWineId(vinho1.getWineId());
-                mov1.setMovementType("ENTRADA");
-                mov1.setQuantity(50);
-                mov1.setUnitPrice(99.90);
-                mov1.setDocumentReference("NF-001");
-                mov1.setUserId(1L);
-                mov1.setNotes("Estoque inicial vinho 1");
-                movementDAO.insert(db, mov1); // agora com o db
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault());
+            java.util.Calendar cal = java.util.Calendar.getInstance();
 
-                InventoryMovementModel mov2 = new InventoryMovementModel();
-                mov2.setWineId(vinho2.getWineId());
-                mov2.setMovementType("ENTRADA");
-                mov2.setQuantity(30);
-                mov2.setUnitPrice(59.90);
-                mov2.setDocumentReference("NF-002");
-                mov2.setUserId(1L);
-                mov2.setNotes("Estoque inicial vinho 2");
-                movementDAO.insert(db, mov2);
+            for (int i = 0; i < 10; i++) {
+                long wineId = wines.get(i).getWineId();
 
-                InventoryMovementModel movSaida = new InventoryMovementModel();
-                movSaida.setWineId(vinho1.getWineId());
-                movSaida.setMovementType("SAIDA");
-                movSaida.setQuantity(5);
-                movSaida.setUnitPrice(99.90);
-                movSaida.setDocumentReference("VENDA-001");
-                movSaida.setUserId(1L);
-                movSaida.setNotes("Saída fictícia vinho 1");
-                movementDAO.insert(db, movSaida);
+                // Entradas: uma por mês, 8 meses atrás até agora
+                for (int m = 8; m >= 1; m--) {
+                    cal.setTime(new java.util.Date());
+                    cal.add(java.util.Calendar.MONTH, -m);
+                    String dataEntrada = sdf.format(cal.getTime());
 
-                db.setTransactionSuccessful();
-            } finally {
-                db.endTransaction();
-                db.close();
+                    InventoryMovementModel entrada = new InventoryMovementModel();
+                    entrada.setWineId(wineId);
+                    entrada.setMovementType("ENTRADA");
+                    entrada.setQuantity(30 + (i % 5) * 5 + m); // Quantidade variada
+                    entrada.setUnitPrice(precosEntrada[i]);
+                    entrada.setMovementDate(dataEntrada);
+                    entrada.setDocumentReference(docsEntrada[i]);
+                    entrada.setUserId(userId);
+                    entrada.setNotes("Entrada estoque mês " + m + " vinho " + (i + 1));
+                    movementDAO.insert(entrada);
+
+                    // Saída: metade da quantidade da entrada, valor maior, data alguns dias após entrada
+                    cal.add(java.util.Calendar.DAY_OF_MONTH, 10 + (i % 3));
+                    String dataSaida = sdf.format(cal.getTime());
+
+                    InventoryMovementModel saida = new InventoryMovementModel();
+                    saida.setWineId(wineId);
+                    saida.setMovementType("SAIDA");
+                    saida.setQuantity((entrada.getQuantity() / 2) + (i % 2)); // Quantidade variada
+                    saida.setUnitPrice(precosSaida[i]);
+                    saida.setMovementDate(dataSaida);
+                    saida.setDocumentReference(docsSaida[i]);
+                    saida.setUserId(userId);
+                    saida.setNotes("Venda fictícia mês " + m + " vinho " + (i + 1));
+                    movementDAO.insert(saida);
+                }
             }
-
         }
     }
 
@@ -317,7 +296,7 @@ public static void ensureDefaultCompositionTypes(Context context) {
         com.example.vinhedobravioapp.database.dao.CommercialCategoryDAO dao = new com.example.vinhedobravioapp.database.dao.CommercialCategoryDAO(context);
         java.util.List<com.example.vinhedobravioapp.database.model.CommercialCategoryModel> list = dao.getAll();
         if (list == null || list.isEmpty()) {
-            String[] categorias = {"Popular", "Intermediário", "Premium", "Superpremium"};
+            String[] categorias = {"Popular", "Intermediário", "Premium", "Superpremium", "Ultra Premium"};
             for (String nome : categorias) {
                 com.example.vinhedobravioapp.database.model.CommercialCategoryModel cat = new com.example.vinhedobravioapp.database.model.CommercialCategoryModel();
                 cat.setName(nome);
@@ -359,16 +338,8 @@ public static void ensureDefaultCompositionTypes(Context context) {
         java.util.List<com.example.vinhedobravioapp.database.model.FoodPairingModel> list = dao.getAll();
         if (list == null || list.isEmpty()) {
             String[] harmonizacoes = {
-                "Carnes vermelhas",
-                "Carnes brancas",
-                "Massas",
-                "Queijos",
-                "Peixes",
-                "Frutos do mar",
-                "Risotos",
-                "Sobremesas",
-                "Aves",
-                "Charcutaria"
+                "Carnes vermelhas", "Carnes brancas", "Massas", "Queijos", "Peixes",
+                "Frutos do mar", "Risotos", "Sobremesas", "Aves", "Charcutaria"
             };
             for (String nome : harmonizacoes) {
                 com.example.vinhedobravioapp.database.model.FoodPairingModel model = new com.example.vinhedobravioapp.database.model.FoodPairingModel();
@@ -382,50 +353,49 @@ public static void ensureDefaultCompositionTypes(Context context) {
         com.example.vinhedobravioapp.database.dao.CustomerDAO dao = new com.example.vinhedobravioapp.database.dao.CustomerDAO(context);
         java.util.List<com.example.vinhedobravioapp.database.model.CustomerModel> list = dao.getAll();
         if (list == null || list.isEmpty()) {
-            com.example.vinhedobravioapp.database.model.CustomerModel c1 = new com.example.vinhedobravioapp.database.model.CustomerModel();
-            c1.setNameCompanyName("Restaurante Sabor & Arte");
-            c1.setCpfCnpj("12.345.678/0001-90");
-            c1.setAddress("Rua das Flores, 123, Centro, Florianópolis");
-            c1.setRegion("Sul");
-            c1.setPhone("(48) 99999-1111");
-            c1.setEmail("contato@saborearte.com");
-            dao.insert(c1);
+            String[] nomes = {
+                "Restaurante Sabor & Arte", "Adega do Vinho Fino", "Empório Gourmet Brasil", "Supermercado Bom Preço", "Bar do Zé",
+                "Restaurante Bella Itália", "Mercado Central", "Bistrô Paris", "Cantina do Sul", "Churrascaria Gaúcha"
+            };
+            String[] cpfs = {
+                "12.345.678/0001-90", "23.456.789/0001-01", "34.567.890/0001-12", "45.678.901/0001-23", "56.789.012/0001-34",
+                "67.890.123/0001-45", "78.901.234/0001-56", "89.012.345/0001-67", "90.123.456/0001-78", "01.234.567/0001-89"
+            };
+            String[] enderecos = {
+                "Rua das Flores, 123, Centro, Florianópolis",
+                "Av. Central, 456, Centro, Blumenau",
+                "Rua Gourmet, 789, Centro, Joinville",
+                "Av. Brasil, 1010, Centro, Itajaí",
+                "Rua do Lazer, 202, Centro, Balneário Camboriú",
+                "Rua Itália, 321, Centro, Curitiba",
+                "Praça XV, 100, Centro, Porto Alegre",
+                "Rua Paris, 88, Centro, São Paulo",
+                "Rua Sul, 55, Centro, Pelotas",
+                "Av. Churrasco, 77, Centro, Caxias do Sul"
+            };
+            String[] regioes = {
+                "Sul", "Vale do Itajaí", "Norte", "Litoral", "Litoral Norte",
+                "Centro", "Sul", "Sudeste", "Sul", "Sul"
+            };
+            String[] telefones = {
+                "(48) 99999-1111", "(47) 98888-2222", "(47) 97777-3333", "(47) 96666-4444", "(47) 95555-5555",
+                "(41) 94444-6666", "(51) 93333-7777", "(11) 92222-8888", "(53) 91111-9999", "(54) 90000-0000"
+            };
+            String[] emails = {
+                "contato@saborearte.com", "vendas@adegadovinhofino.com", "contato@emporiogourmet.com", "compras@bompreco.com", "bar@zebar.com",
+                "contato@bellaitalia.com", "contato@mercadocentral.com", "contato@bistroparis.com", "contato@cantinadosul.com", "contato@churrascariagaucha.com"
+            };
 
-            com.example.vinhedobravioapp.database.model.CustomerModel c2 = new com.example.vinhedobravioapp.database.model.CustomerModel();
-            c2.setNameCompanyName("Adega do Vinho Fino");
-            c2.setCpfCnpj("23.456.789/0001-01");
-            c2.setAddress("Av. Central, 456, Centro, Blumenau");
-            c2.setRegion("Vale do Itajaí");
-            c2.setPhone("(47) 98888-2222");
-            c2.setEmail("vendas@adegadovinhofino.com");
-            dao.insert(c2);
-
-            com.example.vinhedobravioapp.database.model.CustomerModel c3 = new com.example.vinhedobravioapp.database.model.CustomerModel();
-            c3.setNameCompanyName("Empório Gourmet Brasil");
-            c3.setCpfCnpj("34.567.890/0001-12");
-            c3.setAddress("Rua Gourmet, 789, Centro, Joinville");
-            c3.setRegion("Norte");
-            c3.setPhone("(47) 97777-3333");
-            c3.setEmail("contato@emporiogourmet.com");
-            dao.insert(c3);
-
-            com.example.vinhedobravioapp.database.model.CustomerModel c4 = new com.example.vinhedobravioapp.database.model.CustomerModel();
-            c4.setNameCompanyName("Supermercado Bom Preço");
-            c4.setCpfCnpj("45.678.901/0001-23");
-            c4.setAddress("Av. Brasil, 1010, Centro, Itajaí");
-            c4.setRegion("Litoral");
-            c4.setPhone("(47) 96666-4444");
-            c4.setEmail("compras@bompreco.com");
-            dao.insert(c4);
-
-            com.example.vinhedobravioapp.database.model.CustomerModel c5 = new com.example.vinhedobravioapp.database.model.CustomerModel();
-            c5.setNameCompanyName("Bar do Zé");
-            c5.setCpfCnpj("56.789.012/0001-34");
-            c5.setAddress("Rua do Lazer, 202, Centro, Balneário Camboriú");
-            c5.setRegion("Litoral Norte");
-            c5.setPhone("(47) 95555-5555");
-            c5.setEmail("bar@zebar.com");
-            dao.insert(c5);
+            for (int i = 0; i < 10; i++) {
+                com.example.vinhedobravioapp.database.model.CustomerModel c = new com.example.vinhedobravioapp.database.model.CustomerModel();
+                c.setNameCompanyName(nomes[i]);
+                c.setCpfCnpj(cpfs[i]);
+                c.setAddress(enderecos[i]);
+                c.setRegion(regioes[i]);
+                c.setPhone(telefones[i]);
+                c.setEmail(emails[i]);
+                dao.insert(c);
+            }
         }
     }
 }

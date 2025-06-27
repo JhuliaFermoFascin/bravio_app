@@ -13,6 +13,11 @@ public class GeographicOriginModel {
         + COLUMN_REGION + " TEXT"
         + ");";
 
+    public GeographicOriginModel() {}
+    public GeographicOriginModel( String country, String region) {
+        this.country = country;
+        this.region = region;
+    }
     public static final String DROP_TABLE =
         "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
 
