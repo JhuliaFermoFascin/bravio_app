@@ -131,7 +131,7 @@ public class OrderDAO extends AbstrataDAO {
                 mov.setUnitPrice(it.getValue());
                 mov.setDocumentReference("PEDIDO #" + pedidoId);
                 mov.setUserId(usuarioId);
-                movDAO.insert(db, mov);
+                movDAO.insert( mov);
             }
 
             db.setTransactionSuccessful();

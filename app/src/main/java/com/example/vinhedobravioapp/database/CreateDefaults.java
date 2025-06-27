@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.vinhedobravioapp.database.dao.CompositionTypeDAO;
+import com.example.vinhedobravioapp.database.dao.InventoryMovementDAO;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.dao.WineTypeDAO;
 import com.example.vinhedobravioapp.database.dao.GeographicOriginDAO;
@@ -12,6 +13,7 @@ import com.example.vinhedobravioapp.database.dao.TastingNoteDAO;
 import com.example.vinhedobravioapp.database.dao.WineryDAO;
 import com.example.vinhedobravioapp.database.dao.WineDAO;
 import com.example.vinhedobravioapp.database.model.CompositionTypeModel;
+import com.example.vinhedobravioapp.database.model.InventoryMovementModel;
 import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.database.model.WineTypeModel;
 import com.example.vinhedobravioapp.database.model.GeographicOriginModel;
@@ -44,6 +46,7 @@ public class CreateDefaults {
         ensureDefaultTastingNotes(context);
         ensureDefaultWineries(context);
         ensureDefaultWines(context);
+        ensureDefaultInventoryMovements(context);
     }
 public static void ensureDefaultCompositionTypes(Context context) {
     CompositionTypeDAO dao = new CompositionTypeDAO(context);
@@ -238,4 +241,57 @@ public static void ensureDefaultCompositionTypes(Context context) {
             wineDAO.insert(vinho2);
         }
     }
+
+    public static void ensureDefaultInventoryMovements(Context context) {
+        WineDAO wineDAO = new WineDAO(context);
+        List<WineModel> wines = wineDAO.getAll();
+        if (wines.size() >= 2) {
+            WineModel vinho1 = wines.get(0);
+            WineModel vinho2 = wines.get(1);
+            InventoryMovementDAO movementDAO = new InventoryMovementDAO(context);
+
+            InventoryMovementModel mov1 = new InventoryMovementModel();
+            mov1.setWineId(vinho1.getWineId());
+            mov1.setMovementType("ENTRADA");
+            mov1.setQuantity(50);
+            mov1.setUnitPrice(99.90);
+            mov1.setDocumentReference("NF-001");
+            mov1.setUserId(1L);
+            mov1.setNotes("Estoque inicial vinho 1");
+            movementDAO.insert(mov1);
+
+            InventoryMovementModel mov2 = new InventoryMovementModel();
+            mov2.setWineId(vinho2.getWineId());
+            mov2.setMovementType("ENTRADA");
+            mov2.setQuantity(30);
+            mov2.setUnitPrice(59.90);
+            mov2.setDocumentReference("NF-002");
+            mov2.setUserId(1L);
+            mov2.setNotes("Estoque inicial vinho 2");
+            movementDAO.insert(mov2);
+
+            InventoryMovementModel movSaida = new InventoryMovementModel();
+            movSaida.setWineId(vinho1.getWineId());
+            movSaida.setMovementType("SAIDA");
+            movSaida.setQuantity(5);
+            movSaida.setUnitPrice(99.90);
+            movSaida.setDocumentReference("VENDA-001");
+            movSaida.setUserId(1L);
+            movSaida.setNotes("Saída fictícia vinho 1");
+            movementDAO.insert(movSaida);
+            String movimentos = CreateDefaults.getAllInventoryMovementsAsString(context);
+            Log.d("MovimentosEstoque", movimentos);
+        }
+    }
+
+        public static String getAllInventoryMovementsAsString(Context context) {
+            InventoryMovementDAO movementDAO = new InventoryMovementDAO(context);
+            List<InventoryMovementModel> movements = movementDAO.getAll();
+            if (movements == null || movements.isEmpty()) return "[]";
+            StringBuilder sb = new StringBuilder();
+            for (InventoryMovementModel mov : movements) {
+                sb.append(mov.toString()).append("\n");
+            }
+            return sb.toString();
+        }
 }
