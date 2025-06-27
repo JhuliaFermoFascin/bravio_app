@@ -76,6 +76,7 @@ public static void ensureDefaultCompositionTypes(Context context) {
         UserDAO userDAO = new UserDAO(context);
         List<UserModel> users = userDAO.getAll();
         if (users == null || users.size() < 2) {
+            String dataAtual = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
             // Usuário Rep
             UserModel rep = new UserModel();
             rep.setName("Representante");
@@ -83,7 +84,7 @@ public static void ensureDefaultCompositionTypes(Context context) {
             rep.setPassword("Rep");
             rep.setIsAdmin(0);
             rep.setStatus(1);
-            rep.setCreatedAt(String.valueOf(System.currentTimeMillis()));
+            rep.setCreatedAt(dataAtual);
             rep.setLastUpdate(null);
             rep.setLastLogin(null);
             userDAO.insert(rep);
@@ -94,7 +95,7 @@ public static void ensureDefaultCompositionTypes(Context context) {
             adm.setPassword("Adm");
             adm.setIsAdmin(1);
             adm.setStatus(1);
-            adm.setCreatedAt(String.valueOf(System.currentTimeMillis()));
+            adm.setCreatedAt(dataAtual);
             adm.setLastUpdate(null);
             adm.setLastLogin(null);
             userDAO.insert(adm);
@@ -395,6 +396,18 @@ public static void ensureDefaultCompositionTypes(Context context) {
                 c.setPhone(telefones[i]);
                 c.setEmail(emails[i]);
                 dao.insert(c);
+            }
+        }
+    }
+
+    public static void printAllUsers(Context context) {
+        UserDAO userDAO = new UserDAO(context);
+        List<UserModel> users = userDAO.getAll();
+        if (users == null || users.isEmpty()) {
+            Log.d("CreateDefaults", "Nenhum usuário encontrado.");
+        } else {
+            for (UserModel user : users) {
+                Log.d("CreateDefaults", user.toString());
             }
         }
     }
