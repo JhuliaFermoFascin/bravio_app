@@ -124,6 +124,7 @@ public class CadastroVisitasActivity extends AppCompatActivity {
 
             if (result != -1) {
                 Toast.makeText(this, "Visita salva com sucesso!", Toast.LENGTH_SHORT).show();
+                setResult(RESULT_OK);
                 finish();
             } else {
                 Toast.makeText(this, "Erro ao salvar visita", Toast.LENGTH_SHORT).show();
