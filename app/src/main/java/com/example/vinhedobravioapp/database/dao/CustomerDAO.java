@@ -101,4 +101,35 @@ public class CustomerDAO extends AbstrataDAO {
         } finally { Close(); }
         return rows;
     }
+
+    public java.util.List<CustomerModel> findByNameLike(String nameLike) {
+        java.util.List<CustomerModel> list = new java.util.ArrayList<>();
+        try {
+            Open();
+            android.database.Cursor cursor = db.query(
+                CustomerModel.TABLE_NAME,
+                null,
+                CustomerModel.COLUMN_NAME_COMPANY + " LIKE ?",
+                new String[]{"%" + nameLike + "%"},
+                null, null, null
+            );
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    CustomerModel model = new CustomerModel();
+                    model.setCustomerId(cursor.getLong(cursor.getColumnIndexOrThrow(CustomerModel.COLUMN_ID)));
+                    model.setNameCompanyName(cursor.getString(cursor.getColumnIndexOrThrow(CustomerModel.COLUMN_NAME_COMPANY)));
+                    model.setCpfCnpj(cursor.getString(cursor.getColumnIndexOrThrow(CustomerModel.COLUMN_CPF_CNPJ)));
+                    model.setAddress(cursor.getString(cursor.getColumnIndexOrThrow(CustomerModel.COLUMN_ADDRESS)));
+                    model.setRegion(cursor.getString(cursor.getColumnIndexOrThrow(CustomerModel.COLUMN_REGION)));
+                    model.setPhone(cursor.getString(cursor.getColumnIndexOrThrow(CustomerModel.COLUMN_PHONE)));
+                    model.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(CustomerModel.COLUMN_EMAIL)));
+                    list.add(model);
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+        } finally {
+            Close();
+        }
+        return list;
+    }
 }

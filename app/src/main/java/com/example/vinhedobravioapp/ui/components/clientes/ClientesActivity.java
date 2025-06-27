@@ -3,6 +3,9 @@ package com.example.vinhedobravioapp.ui.components.clientes;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -33,7 +36,7 @@ public class ClientesActivity extends AppCompatActivity {
 
         int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
 
-        HeaderHelper.configurarHeader(this, getString(R.string.order_title), tipoUsuario, false, true, false);
+        HeaderHelper.configurarHeader(this, getString(R.string.client_title), tipoUsuario, false, true, false);
 
         dao = new CustomerDAO(this);
 
@@ -75,6 +78,22 @@ public class ClientesActivity extends AppCompatActivity {
             Intent intent = new Intent(ClientesActivity.this, CadastroClientesActivity.class);
             startActivityForResult(intent, REQUEST_CODE_EDIT);
         });
+
+        // --- IMPLEMENTAÇÃO DA BARRA DE PESQUISA ---
+        EditText searchEditText = findViewById(R.id.Filter);
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String query = s.toString();
+                List<CustomerModel> filtered = query.isEmpty() ? dao.getAll() : dao.findByNameLike(query);
+                adapter.setCustomers(filtered);
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+        // --- FIM DA IMPLEMENTAÇÃO DA BARRA DE PESQUISA ---
     }
 
     private void loadCustomers() {

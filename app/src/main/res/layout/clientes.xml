@@ -27,6 +27,7 @@
             android:paddingHorizontal="30dp">
 
             <EditText
+                android:id="@+id/Filter" 
                 style="@style/Filter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
