@@ -25,7 +25,7 @@
     <string name="representantes">Página de Representantes</string>
 
     <string name="pieChart">Vinhos mais vendidos</string>
-    <string name="lineChart">Pedidos por mês</string>
+    <string name="lineChart">Faturamento mensal</string>
 
     <!-- Estoque -->
         <string name="inventory_search">Buscar por nome ou tipo</string>

@@ -14,8 +14,10 @@ import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.OrderAdapter;
 import com.example.vinhedobravioapp.database.dao.CustomerDAO;
 import com.example.vinhedobravioapp.database.dao.OrderDAO;
+import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.model.CustomerModel;
 import com.example.vinhedobravioapp.database.model.OrderModel;
+import com.example.vinhedobravioapp.database.model.UserModel;
 import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
@@ -55,10 +57,19 @@ public class PedidosActivity extends AppCompatActivity {
         orderDAO = new OrderDAO(this);
         List<OrderModel> pedidos = orderDAO.getAll();
 
+        UserDAO userDAO = new UserDAO(this);
+        List<UserModel> users = userDAO.getAll();
+
+        Map<Long, String> userNames = new HashMap<>();
+        for (UserModel u : users) {
+            userNames.put(u.getUserId(), u.getName());
+        }
+
         adapter = new OrderAdapter(
                 this,
                 pedidos,
                 customerNames,
+                userNames,
                 order -> {
                     new androidx.appcompat.app.AlertDialog.Builder(this)
                             .setTitle("Confirmar exclusão")

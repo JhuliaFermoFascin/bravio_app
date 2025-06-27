@@ -41,17 +41,21 @@ public class WineAdapter extends RecyclerView.Adapter<WineAdapter.WineViewHolder
     private final OnItemClickListener itemClickListener;
     private final OnEditClickListener editClickListener;
     private final OnDeleteClickListener deleteClickListener;
+    private final int tipoUsuario;
 
     public WineAdapter(Context context,
                        List<FullWineModel> wineList,
                        OnItemClickListener itemClickListener,
                        OnEditClickListener editClickListener,
-                       OnDeleteClickListener deleteClickListener) {
+                       OnDeleteClickListener deleteClickListener,
+                       int tipoUsuario
+    ) {
         this.context = context;
         this.wineList = wineList;
         this.itemClickListener = itemClickListener;
         this.editClickListener = editClickListener;
         this.deleteClickListener = deleteClickListener;
+        this.tipoUsuario = tipoUsuario;
     }
 
     @NonNull
@@ -102,6 +106,15 @@ public class WineAdapter extends RecyclerView.Adapter<WineAdapter.WineViewHolder
             holder.btnEditar.setEnabled(true);
             holder.btnDeletar.setEnabled(true);
         }
+
+        if (tipoUsuario != 1) {
+            holder.btnEditar.setVisibility(View.GONE);
+            holder.btnDeletar.setVisibility(View.GONE);
+        } else {
+            holder.btnEditar.setVisibility(View.VISIBLE);
+            holder.btnDeletar.setVisibility(View.VISIBLE);
+        }
+
         final int quantidadeFinal = quantidade;
 
         holder.itemView.setOnClickListener(v -> {

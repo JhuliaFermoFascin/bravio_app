@@ -14,10 +14,10 @@ public class OrderModel {
 
     public static String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
-                    + COLUMN_ID + " INTEGER PRIMARY KEY, "
+                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + COLUMN_CUSTOMER_ID + " INTEGER NOT NULL, "
                     + COLUMN_TOTAL + " DOUBLE NOT NULL, "
-                    + COLUMN_DATE + " DATE NOT NULL, "
+                    + COLUMN_DATE + " TEXT NOT NULL, "
                     + COLUMN_STATUS + " TEXT NOT NULL, "
                     + COLUMN_USER_ID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY (" + COLUMN_CUSTOMER_ID + ") REFERENCES tb_customer(customer_id) ON UPDATE CASCADE, "

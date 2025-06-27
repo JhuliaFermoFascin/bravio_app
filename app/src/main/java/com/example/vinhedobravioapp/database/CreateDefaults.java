@@ -1,6 +1,7 @@
 package com.example.vinhedobravioapp.database;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.vinhedobravioapp.database.dao.CompositionTypeDAO;
@@ -258,8 +259,10 @@ public static void ensureDefaultCompositionTypes(Context context) {
             WineModel vinho1 = wines.get(0);
             WineModel vinho2 = wines.get(1);
             InventoryMovementDAO movementDAO = new InventoryMovementDAO(context);
-            List<InventoryMovementModel> movimentos = movementDAO.getAll();
-            if (movimentos == null || movimentos.isEmpty()) {
+            SQLiteDatabase db = new DPOpenHelper(context).getWritableDatabase(); // abre o banco manualmente
+
+            db.beginTransaction();
+            try {
                 InventoryMovementModel mov1 = new InventoryMovementModel();
                 mov1.setWineId(vinho1.getWineId());
                 mov1.setMovementType("ENTRADA");
@@ -268,7 +271,8 @@ public static void ensureDefaultCompositionTypes(Context context) {
                 mov1.setDocumentReference("NF-001");
                 mov1.setUserId(1L);
                 mov1.setNotes("Estoque inicial vinho 1");
-                movementDAO.insert(mov1);
+                movementDAO.insert(db, mov1); // agora com o db
+
                 InventoryMovementModel mov2 = new InventoryMovementModel();
                 mov2.setWineId(vinho2.getWineId());
                 mov2.setMovementType("ENTRADA");
@@ -277,7 +281,8 @@ public static void ensureDefaultCompositionTypes(Context context) {
                 mov2.setDocumentReference("NF-002");
                 mov2.setUserId(1L);
                 mov2.setNotes("Estoque inicial vinho 2");
-                movementDAO.insert(mov2);
+                movementDAO.insert(db, mov2);
+
                 InventoryMovementModel movSaida = new InventoryMovementModel();
                 movSaida.setWineId(vinho1.getWineId());
                 movSaida.setMovementType("SAIDA");
@@ -286,8 +291,14 @@ public static void ensureDefaultCompositionTypes(Context context) {
                 movSaida.setDocumentReference("VENDA-001");
                 movSaida.setUserId(1L);
                 movSaida.setNotes("Saída fictícia vinho 1");
-                movementDAO.insert(movSaida);
+                movementDAO.insert(db, movSaida);
+
+                db.setTransactionSuccessful();
+            } finally {
+                db.endTransaction();
+                db.close();
             }
+
         }
     }
 
