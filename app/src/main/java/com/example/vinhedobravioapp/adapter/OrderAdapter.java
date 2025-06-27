@@ -33,15 +33,18 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     private OnDeleteClickListener deleteListener;
     private OnOrderClickListener orderClickListener;
     private Map<Long, String> customerNames;
+    private Map<Long, String> userNames;
 
     public OrderAdapter(Context context,
                         List<OrderModel> orders,
                         Map<Long, String> customerNames,
+                        Map<Long, String> userNames,
                         OnDeleteClickListener deleteListener,
                         OnOrderClickListener orderClickListener) {
         this.context = context;
         this.orders = orders;
         this.customerNames = customerNames;
+        this.userNames = userNames;
         this.deleteListener = deleteListener;
         this.orderClickListener = orderClickListener;
     }

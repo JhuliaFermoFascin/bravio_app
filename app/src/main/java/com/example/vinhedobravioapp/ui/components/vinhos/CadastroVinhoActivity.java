@@ -3,6 +3,7 @@ package com.example.vinhedobravioapp.ui.components.vinhos;
 import android.content.Context;
 import android.content.Intent;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -26,9 +27,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinhedobravioapp.R;
 
+import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.dao.FoodPairingDAO;
 import com.example.vinhedobravioapp.database.dao.GeographicOriginDAO;
 import com.example.vinhedobravioapp.database.dao.GrapeDAO;
+import com.example.vinhedobravioapp.database.dao.InventoryMovementDAO;
 import com.example.vinhedobravioapp.database.dao.TastingNoteDAO;
 import com.example.vinhedobravioapp.database.dao.WineDAO;
 import com.example.vinhedobravioapp.database.dao.WineFoodPairingDAO;
@@ -42,6 +45,7 @@ import com.example.vinhedobravioapp.database.model.CompositionTypeModel;
 import com.example.vinhedobravioapp.database.model.FoodPairingModel;
 import com.example.vinhedobravioapp.database.model.GeographicOriginModel;
 import com.example.vinhedobravioapp.database.model.GrapeModel;
+import com.example.vinhedobravioapp.database.model.InventoryMovementModel;
 import com.example.vinhedobravioapp.database.model.TastingNoteModel;
 import com.example.vinhedobravioapp.database.model.WineFoodPairingModel;
 import com.example.vinhedobravioapp.database.model.WineGrapeModel;
@@ -299,6 +303,43 @@ public class CadastroVinhoActivity extends AppCompatActivity {
                     }
                 }
             }
+
+            if (wineId == -1) {
+                Toast.makeText(this, "Erro ao salvar vinho!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            int initialQty = 0;
+            String qtyText = quantity.getText().toString().trim();
+            if (!qtyText.isEmpty()) {
+                try {
+                    initialQty = Integer.parseInt(qtyText);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Quantidade inválida, usando 0", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            if (initialQty > 0) {
+                InventoryMovementDAO movDao = new InventoryMovementDAO(this);
+                SQLiteDatabase db = new DPOpenHelper(this).getWritableDatabase();
+                db.beginTransaction();
+                try {
+                    InventoryMovementModel mov = new InventoryMovementModel();
+                    mov.setWineId(wineId);
+                    mov.setMovementType("ENTRADA");
+                    mov.setQuantity(initialQty);
+                    mov.setUnitPrice(wineModel.getUnitPrice());
+                    mov.setDocumentReference("ESTOQUE INICIAL");
+//                    mov.setUserId(selectedUserIdAuto);
+                    mov.setNotes("Entrada inicial ao criar vinho");
+
+                    movDao.insert(db, mov);
+                    db.setTransactionSuccessful();
+                } finally {
+                    db.endTransaction();
+                    db.close();
+                }
+            }
+
         }
 
 

@@ -18,11 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.DashboardWineAdapter;
-import com.example.vinhedobravioapp.database.dao.OrderDAO;
-import com.example.vinhedobravioapp.database.dao.OrderItemDAO;
+import com.example.vinhedobravioapp.database.dao.InventoryMovementDAO;
 import com.example.vinhedobravioapp.database.dao.WineDAO;
-import com.example.vinhedobravioapp.database.model.OrderItemModel;
-import com.example.vinhedobravioapp.database.model.OrderModel;
+import com.example.vinhedobravioapp.database.model.InventoryMovementModel;
 import com.example.vinhedobravioapp.domain.model.Vinho;
 import com.example.vinhedobravioapp.loginManager.LoginManager;
 import com.example.vinhedobravioapp.ui.components.helper.ConfirmacaoHelper;
@@ -45,12 +43,17 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+
 
 public class DashboardAdmActivity extends AppCompatActivity {
 
@@ -70,36 +73,34 @@ public class DashboardAdmActivity extends AppCompatActivity {
         popularPieChartVinhosMaisVendidosMesAtual();
 
         lineChart = findViewById(R.id.lineChart);
-
-        String userName = LoginManager.getInstance().getLoginStatus().getNome();
-        TextView userNameField = findViewById(R.id.user_name);
-        userNameField.setText(userName);
-
         configLineChart();
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerVinhos);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
+        TextView userNameField = findViewById(R.id.user_name);
+        if (LoginManager.getInstance().getLoginStatus() != null) {
+            String userName = LoginManager.getInstance().getLoginStatus().getNome();
+            userNameField.setText(userName);
+        } else {
+            userNameField.setText("Usuário");
+            // Você pode também redirecionar para o login se preferir
+            // startActivity(new Intent(this, LoginActivity.class));
+            // finish(); return;
+        }
 
-        PagerSnapHelper snapHelper = new PagerSnapHelper();
-        snapHelper.attachToRecyclerView(recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerVinhos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        new PagerSnapHelper().attachToRecyclerView(recyclerView);
 
         List<Vinho> vinhosDashboard = getTop3VinhosDashboard();
-
-        DashboardWineAdapter adapter = new DashboardWineAdapter(vinhosDashboard);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new DashboardWineAdapter(vinhosDashboard));
     }
 
     @Override
     public void onBackPressed() {
         String mensagem = getString(R.string.pergunta_saida, getString(R.string.confirmar_retorno_menu));
-
         ConfirmacaoHelper.mostrarConfirmacao(this, mensagem, () -> {
             SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
-            editor.clear();
-            editor.apply();
+            editor.clear().apply();
             LoginManager.getInstance().clearLoginStatus(this);
-
             Intent intent = new Intent(DashboardAdmActivity.this, MenuActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -115,442 +116,361 @@ public class DashboardAdmActivity extends AppCompatActivity {
         configLineChart();
     }
 
+    // Top 3 vinhos comparando SAIDA no mês atual x mês anterior
     private List<Vinho> getTop3VinhosDashboard() {
-        OrderItemDAO itemDAO = new OrderItemDAO(this);
+        List<InventoryMovementModel> movs = new InventoryMovementDAO(this).getAll();
+        Calendar c = Calendar.getInstance();
+        int mAtual = c.get(Calendar.MONTH) + 1, aAtual = c.get(Calendar.YEAR);
+        int mAnt = mAtual == 1 ? 12 : mAtual - 1;
+        int aAnt = mAtual == 1 ? aAtual - 1 : aAtual;
+
+        Map<Long, Integer> qtdAtual = new HashMap<>();
+        Map<Long, Integer> qtdAnterior = new HashMap<>();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        for (InventoryMovementModel mov : movs) {
+            if (!"SAIDA".equalsIgnoreCase(mov.getMovementType())) continue;
+            String d = mov.getMovementDate();
+            if (d == null || d.length() < 10) continue;
+
+            try {
+                Date data = sdf.parse(d);
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(data);
+                int ano = cal.get(Calendar.YEAR);
+                int mes = cal.get(Calendar.MONTH) + 1;
+
+                if (ano == aAtual && mes == mAtual)
+                    qtdAtual.merge(mov.getWineId(), mov.getQuantity(), Integer::sum);
+                else if (ano == aAnt && mes == mAnt)
+                    qtdAnterior.merge(mov.getWineId(), mov.getQuantity(), Integer::sum);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                // opcional: continue para ignorar datas inválidas
+            }
+        }
+
+        List<Map.Entry<Long,Integer>> ord = new ArrayList<>(qtdAtual.entrySet());
+        ord.sort((a,b)-> Integer.compare(b.getValue(), a.getValue()));
+
         WineDAO wineDAO = new WineDAO(this);
-
-        List<OrderModel> pedidos = getPedidosConcluidos();
-
-        List<Long> idsPedidosMesAtual = new ArrayList<>();
-        List<Long> idsPedidosMesAnterior = new ArrayList<>();
-
-        Calendar agora = Calendar.getInstance();
-        int mesAtual = agora.get(Calendar.MONTH) + 1;
-        int anoAtual = agora.get(Calendar.YEAR);
-
-        // Mês anterior
-        int mesAnterior = mesAtual - 1;
-        int anoAnterior = anoAtual;
-        if (mesAnterior == 0) {
-            mesAnterior = 12;
-            anoAnterior--;
-        }
-
-        for (OrderModel pedido : pedidos) {
-            String data = pedido.getDate();
-            if (data != null) {
-                try {
-                    int mes = Integer.parseInt(data.substring(3, 5));
-                    int ano = Integer.parseInt(data.substring(6, 10));
-
-                    if (ano == anoAtual && mes == mesAtual) {
-                        idsPedidosMesAtual.add(pedido.getOrderId());
-                    } else if (ano == anoAnterior && mes == mesAnterior) {
-                        idsPedidosMesAnterior.add(pedido.getOrderId());
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        Map<Long, Integer> qtdAtualPorVinho = new HashMap<>();
-        Map<Long, Integer> qtdAnteriorPorVinho = new HashMap<>();
-
-        for (long id : idsPedidosMesAtual) {
-            for (OrderItemModel item : itemDAO.getByOrderId(id)) {
-                long vinhoId = item.getWineId();
-                qtdAtualPorVinho.put(vinhoId, qtdAtualPorVinho.getOrDefault(vinhoId, 0) + item.getQuantity());
-            }
-        }
-
-        for (long id : idsPedidosMesAnterior) {
-            for (OrderItemModel item : itemDAO.getByOrderId(id)) {
-                long vinhoId = item.getWineId();
-                qtdAnteriorPorVinho.put(vinhoId, qtdAnteriorPorVinho.getOrDefault(vinhoId, 0) + item.getQuantity());
-            }
-        }
-
-        List<Map.Entry<Long, Integer>> ordenado = new ArrayList<>(qtdAtualPorVinho.entrySet());
-        ordenado.sort((a, b) -> Integer.compare(b.getValue(), a.getValue())); // decrescente
-
-        List<Vinho> listaVinhos = new ArrayList<>();
-
-        for (int i = 0; i < Math.min(3, ordenado.size()); i++) {
-            long vinhoId = ordenado.get(i).getKey();
-            int qtdAtual = ordenado.get(i).getValue();
-            int qtdAnterior = qtdAnteriorPorVinho.getOrDefault(vinhoId, 0);
-
-            String nome = wineDAO.getNomeById(vinhoId);
+        List<Vinho> top3 = new ArrayList<>();
+        for (int i=0; i<Math.min(3, ord.size()); i++) {
+            long id = ord.get(i).getKey();
+            int qAt = ord.get(i).getValue();
+            int qAnt = qtdAnterior.getOrDefault(id,0);
+            String nome = wineDAO.getNomeById(id);
 
             String variacao;
             boolean subiu;
-            if (qtdAnterior > 0) {
-                float diff = ((qtdAtual - qtdAnterior) * 100f) / qtdAnterior;
+            if (qAnt > 0) {
+                float diff = (qAt - qAnt) * 100f / qAnt;
                 variacao = String.format("%.1f%%", Math.abs(diff));
-                subiu = qtdAtual >= qtdAnterior;
+                subiu = qAt >= qAnt;
             } else {
                 variacao = "Novo!";
                 subiu = true;
             }
-
-            listaVinhos.add(new Vinho(nome, qtdAtual, variacao, subiu));
+            top3.add(new Vinho(nome, qAt, variacao, subiu));
         }
-
-        return listaVinhos;
+        return top3;
     }
 
 
-    private List<OrderModel> getPedidosConcluidos() {
-        OrderDAO orderDAO = new OrderDAO(this);
-        List<OrderModel> pedidos = orderDAO.getAll();
-        List<OrderModel> concluídos = new ArrayList<>();
-
-        for (OrderModel pedido : pedidos) {
-            if (pedido.getStatus() != null && pedido.getStatus().equalsIgnoreCase("CONCLUIDO")) {
-                concluídos.add(pedido);
-            }
-        }
-        return concluídos;
-    }
-
+    // PieChart: vinhos mais vendidos (SAIDA) no mês atual
     private void popularPieChartVinhosMaisVendidosMesAtual() {
-        OrderItemDAO itemDAO = new OrderItemDAO(this);
-        WineDAO wineDAO = new WineDAO(this);
+        InventoryMovementDAO movDAO = new InventoryMovementDAO(this);
+        List<InventoryMovementModel> movs = movDAO.getAll();
+        Calendar c = Calendar.getInstance();
+        int mes = c.get(Calendar.MONTH) + 1, ano = c.get(Calendar.YEAR);
 
-        List<OrderModel> pedidos = getPedidosConcluidos();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        sdf.setLenient(false);
 
-        List<Long> idsPedidosConcluidosMesAtual = new ArrayList<>();
-        Calendar agora = Calendar.getInstance();
-        int mesAtual = agora.get(Calendar.MONTH) + 1;
-        int anoAtual = agora.get(Calendar.YEAR);
-
-        for (OrderModel pedido : pedidos) {
-            String data = pedido.getDate();
-            if (data != null) {
-                try {
-                    int mes = Integer.parseInt(data.substring(3, 5));
-                    int ano = Integer.parseInt(data.substring(6, 10));
-                    if (ano == anoAtual && mes == mesAtual) {
-                        idsPedidosConcluidosMesAtual.add(pedido.getOrderId());
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        Map<Long, Integer> qtdPorVinho = new HashMap<>();
+        for (InventoryMovementModel mov : movs) {
+            if (!"SAIDA".equalsIgnoreCase(mov.getMovementType())) continue;
+            try {
+                String d = mov.getMovementDate();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(sdf.parse(d));
+                int m = cal.get(Calendar.MONTH) + 1;
+                int y = cal.get(Calendar.YEAR);
+                if (m == mes && y == ano)
+                    qtdPorVinho.merge(mov.getWineId(), mov.getQuantity(), Integer::sum);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
         }
 
-        Map<Long, Integer> quantidadePorVinho = new HashMap<>();
-        for (long pedidoId : idsPedidosConcluidosMesAtual) {
-            List<OrderItemModel> itens = itemDAO.getByOrderId(pedidoId);
-            for (OrderItemModel item : itens) {
-                long vinhoId = item.getWineId();
-                int qtd = quantidadePorVinho.getOrDefault(vinhoId, 0);
-                quantidadePorVinho.put(vinhoId, qtd + item.getQuantity());
-            }
-        }
-
-        List<Map.Entry<Long, Integer>> ordenado = new ArrayList<>(quantidadePorVinho.entrySet());
-        ordenado.sort((e1, e2) -> Integer.compare(e2.getValue(), e1.getValue()));
-
-        int totalVendido = 0;
-        for (Map.Entry<Long, Integer> entry : ordenado) {
-            totalVendido += entry.getValue();
-        }
-        if (totalVendido == 0) {
+        int total = qtdPorVinho.values().stream().mapToInt(i -> i).sum();
+        if (total == 0) {
             pieChart.clear();
             pieChart.invalidate();
             return;
         }
 
+        List<Map.Entry<Long, Integer>> list = new ArrayList<>(qtdPorVinho.entrySet());
+        list.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
+
         ArrayList<PieEntry> entries = new ArrayList<>();
         int outros = 0;
-
-        for (int i = 0; i < ordenado.size(); i++) {
-            long vinhoId = ordenado.get(i).getKey();
-            int qtd = ordenado.get(i).getValue();
-            float porcentagem = (float) qtd / totalVendido * 100f;
-
-            String nomeVinho = wineDAO.getNomeById(vinhoId);
-
-            if (nomeVinho != null && !nomeVinho.isEmpty()) {
-                if (i < 3) {
-                    entries.add(new PieEntry(porcentagem, nomeVinho));
-                    quantidadePorNome.put(nomeVinho, qtd);
-                } else {
-                    outros += qtd;
-                }
+        WineDAO wineDAO = new WineDAO(this);
+        for (int i = 0; i < list.size(); i++) {
+            long id = list.get(i).getKey();
+            int q = list.get(i).getValue();
+            float pct = q * 100f / total;
+            String nome = wineDAO.getNomeById(id);
+            if (i < 3) {
+                entries.add(new PieEntry(pct, nome));
+                quantidadePorNome.put(nome, q);
+            } else {
+                outros += q;
             }
         }
-
         if (outros > 0) {
-            float porcentagemOutros = (float) outros / totalVendido * 100f;
-            entries.add(new PieEntry(porcentagemOutros, "Outros"));
+            float pctOut = outros * 100f / total;
+            entries.add(new PieEntry(pctOut, "Outros"));
             quantidadePorNome.put("Outros", outros);
         }
 
-        PieDataSet dataSet = new PieDataSet(entries, "");
-        ArrayList<Integer> cores = new ArrayList<>();
-        cores.add(getColor(R.color.button_text_green_primary));
-        cores.add(getColor(R.color.button_green_primary));
-        cores.add(getColor(R.color.button_green_terciary));
-        cores.add(getColor(R.color.border_button_purple_primary));
-        dataSet.setColors(cores);
-
-        dataSet.setValueFormatter(new PercentFormatter(pieChart));
-        dataSet.setValueTextSize(12f);
-        dataSet.setValueTextColor(Color.WHITE);
-        dataSet.setSliceSpace(2f);
-        dataSet.setSelectionShift(8f);
+        PieDataSet ds = new PieDataSet(entries, "");
+        ds.setColors(
+                getColor(R.color.button_text_green_primary),
+                getColor(R.color.button_green_primary),
+                getColor(R.color.button_green_terciary),
+                getColor(R.color.border_button_purple_primary)
+        );
+        ds.setValueFormatter(new PercentFormatter(pieChart));
+        ds.setValueTextSize(12f);
+        ds.setValueTextColor(Color.WHITE);
+        ds.setSliceSpace(2f);
+        ds.setSelectionShift(8f);
 
         pieChart.setUsePercentValues(true);
         pieChart.setDrawHoleEnabled(false);
-        pieChart.setEntryLabelColor(Color.TRANSPARENT);
-        pieChart.setEntryLabelTextSize(0f);
-
-        Legend legend = pieChart.getLegend();
-        legend.setEnabled(true);
-        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-        legend.setTextSize(14f);
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setYEntrySpace(4f);
-        legend.setXEntrySpace(10f);
-
+        pieChart.getLegend().setEnabled(false);
         pieChart.getDescription().setEnabled(false);
 
-        PieData data = new PieData(dataSet);
-        pieChart.setData(data);
+        pieChart.setData(new PieData(ds));
         pieChart.animateY(900, Easing.EaseInOutQuad);
         pieChart.invalidate();
 
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-            PopupWindow popupWindow;
+            PopupWindow popup;
 
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-                if (popupWindow != null) {
-                    popupWindow.dismiss();
-                }
-
-                if (e instanceof PieEntry) {
-                    PieEntry entry = (PieEntry) e;
-                    String label = entry.getLabel();
-                    int qtd = quantidadePorNome.getOrDefault(label, 0);
-
-                    TextView textView = new TextView(DashboardAdmActivity.this);
-                    textView.setText(label + ": " + qtd + " unidades");
-                    textView.setTextColor(Color.WHITE);
-                    textView.setBackgroundColor(Color.DKGRAY);
-                    textView.setPadding(20, 10, 20, 10);
-
-                    popupWindow = new PopupWindow(textView,
-                            WindowManager.LayoutParams.WRAP_CONTENT,
-                            WindowManager.LayoutParams.WRAP_CONTENT);
-                    popupWindow.setOutsideTouchable(true);
-                    popupWindow.setFocusable(true);
-
-                    pieChart.post(() -> {
-                        int[] location = new int[2];
-                        pieChart.getLocationOnScreen(location);
-                        float x = h.getXPx();
-                        float y = h.getYPx();
-                        popupWindow.showAtLocation(pieChart, Gravity.NO_GRAVITY,
-                                (int) x + location[0], (int) y + location[1]);
-                    });
-                }
+                if (popup != null) popup.dismiss();
+                PieEntry pe = (PieEntry) e;
+                String label = pe.getLabel();
+                int q = quantidadePorNome.getOrDefault(label, 0);
+                TextView tv = new TextView(DashboardAdmActivity.this);
+                tv.setText(label + ": " + q + " unidades");
+                tv.setTextColor(Color.WHITE);
+                tv.setBackgroundColor(Color.DKGRAY);
+                tv.setPadding(20, 10, 20, 10);
+                popup = new PopupWindow(tv, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                popup.setOutsideTouchable(true);
+                popup.setFocusable(true);
+                pieChart.post(() -> {
+                    int[] loc = new int[2];
+                    pieChart.getLocationOnScreen(loc);
+                    popup.showAtLocation(pieChart, Gravity.NO_GRAVITY,
+                            (int) h.getXPx() + loc[0], (int) h.getYPx() + loc[1]);
+                });
             }
 
             @Override
             public void onNothingSelected() {
-                if (popupWindow != null) {
-                    popupWindow.dismiss();
-                }
+                if (popup != null) popup.dismiss();
             }
         });
     }
 
-    private Map<String, Integer> getPedidosPorMesAno() {
-        List<OrderModel> pedidos = getPedidosConcluidos();
-        Map<String, Integer> contagem = new HashMap<>();
-
-        for (OrderModel pedido : pedidos) {
-            String data = pedido.getDate();
-            if (data != null) {
-                try {
-                    int mes = Integer.parseInt(data.substring(3, 5));
-                    int ano = Integer.parseInt(data.substring(6, 10));
-                    String chave = ano + "-" + String.format("%02d", mes);
-
-                    contagem.put(chave, contagem.getOrDefault(chave, 0) + 1);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+    // --- LINHA ---
+    private Map<String, Integer> getSaidasPorMesAno() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Map<String, Integer> cont = new HashMap<>();
+        for (InventoryMovementModel mov : new InventoryMovementDAO(this).getAll()) {
+            if (!"SAIDA".equalsIgnoreCase(mov.getMovementType())) continue;
+            String d = mov.getMovementDate();
+            try {
+                Date date = sdf.parse(d);
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                String chave = String.format("%04d-%02d",
+                        cal.get(Calendar.YEAR),
+                        cal.get(Calendar.MONTH) + 1
+                );
+                cont.merge(chave, mov.getQuantity(), Integer::sum);
+            } catch (ParseException e) {
             }
         }
-        return contagem;
+        return cont;
     }
 
-    private Map<String, Double> getValorTotalPedidosPorMesAno() {
-        OrderDAO orderDAO = new OrderDAO(this);
-        List<OrderModel> pedidos = orderDAO.getAll();
 
-        Map<String, Double> valorTotalPorMesAno = new HashMap<>();
-
-        for (OrderModel pedido : pedidos) {
-            String data = pedido.getDate();
-            String status = pedido.getStatus();
-
-            if (data != null && status.equalsIgnoreCase("CONCLUIDO")) {
-                try {
-                    int mes = Integer.parseInt(data.substring(3, 5));
-                    int ano = Integer.parseInt(data.substring(6, 10));
-                    String chave = ano + "-" + String.format("%02d", mes);
-
-                    double valorAtual = valorTotalPorMesAno.getOrDefault(chave, 0.0);
-                    valorTotalPorMesAno.put(chave, valorAtual + pedido.getTotal());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+    private Map<String, Double> getValorSaidasPorMesAno() {
+        List<InventoryMovementModel> movs = new InventoryMovementDAO(this).getAll();
+        Map<String, Double> total = new HashMap<>();
+        for (InventoryMovementModel mov : movs) {
+            if (!"SAIDA".equalsIgnoreCase(mov.getMovementType())) continue;
+            String d = mov.getMovementDate();
+            String chave = d.substring(6, 10) + "-" + d.substring(3, 5);
+            double val = mov.getQuantity() * mov.getUnitPrice();
+            total.merge(chave, val, Double::sum);
         }
-        return valorTotalPorMesAno;
+        return total;
     }
 
     private ArrayList<Entry> montarEntradasGraficoLinha() {
-        Map<String, Integer> contagem = getPedidosPorMesAno();
-        List<String> chaves = new ArrayList<>(contagem.keySet());
-        chaves.sort(String::compareTo);
-
+        Map<String, Double> valores = getValorSaidasPorMesAno();
+        List<String> meses = new ArrayList<>(valores.keySet());
+        Collections.sort(meses);
         ArrayList<Entry> entries = new ArrayList<>();
-        for (int i = 0; i < chaves.size(); i++) {
-            entries.add(new Entry(i, contagem.get(chaves.get(i))));
+        for (int i = 0; i < meses.size(); i++) {
+            entries.add(new Entry(i, valores.get(meses.get(i)).floatValue()));
         }
         return entries;
     }
 
-    private List<String> obterChavesOrdenadas() {
-        List<String> chaves = new ArrayList<>(getPedidosPorMesAno().keySet());
-        chaves.sort(String::compareTo);
-        return chaves;
-    }
-    private void configLineChart() {
-        ArrayList<Entry> entries1 = montarEntradasGraficoLinha();
 
-        if (entries1.isEmpty()) {
+    private List<String> obterChavesOrdenadas() {
+        List<String> meses = new ArrayList<>(getSaidasPorMesAno().keySet());
+        Collections.sort(meses);
+        return meses;
+    }
+
+    private void configLineChart() {
+        ArrayList<Entry> e = montarEntradasGraficoLinha();
+        if (e.isEmpty()) {
             lineChart.clear();
             lineChart.invalidate();
             return;
         }
+        LineDataSet ds = new LineDataSet(e, "Movimentações de saída");
+        ds.setColor(getColor(R.color.border_button_purple_primary));
+        ds.setCircleColor(getColor(R.color.border_button_purple_primary));
+        ds.setDrawCircles(true);
+        ds.setCircleRadius(5f);
+        ds.setDrawValues(false);
 
-        LineDataSet dataSet1 = new LineDataSet(entries1, "Pedidos por mês");
-        dataSet1.setColor(getColor(R.color.border_button_purple_primary));
-        dataSet1.setCircleColor(getColor(R.color.border_button_purple_primary));
-        dataSet1.setDrawCircles(true);
-        dataSet1.setCircleRadius(5f);
-        dataSet1.setDrawValues(false);
-        dataSet1.setValueTextSize(12f);
-        dataSet1.setValueTextColor(Color.BLACK);
+        lineChart.setData(new LineData(ds));
+        lineChart.getDescription().setEnabled(false);
+        lineChart.getLegend().setEnabled(false);
 
-        LineData lineData = new LineData(dataSet1);
-        lineChart.setData(lineData);
+        MyMarkerView mv = new MyMarkerView(this, R.layout.marker_view);
+        mv.setChartView(lineChart);
+        lineChart.setMarker(mv);
 
-        MyMarkerView markerView = new MyMarkerView(this, R.layout.marker_view);
-        markerView.setChartView(lineChart);
-        lineChart.setMarker(markerView);
-
-        lineChart.setBackgroundColor(getColor(R.color.background_text_primary));
-        lineChart.setGridBackgroundColor(Color.TRANSPARENT);
-        lineChart.setDrawGridBackground(false);
-
-        XAxis xAxis = lineChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawAxisLine(false);
-        xAxis.setTextColor(Color.BLACK);
-        xAxis.setGranularity(1f);
-
-        xAxis.setValueFormatter(new ValueFormatter() {
+        XAxis x = lineChart.getXAxis();
+        x.setPosition(XAxis.XAxisPosition.BOTTOM);
+        x.setDrawAxisLine(false);
+        x.setGranularity(1f);
+        x.setTextColor(Color.BLACK);
+        x.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-                int index = (int) value;
-                List<String> mesesOrdenados = obterChavesOrdenadas();
-                if (index >= 0 && index < mesesOrdenados.size()) {
-                    String chave = mesesOrdenados.get(index);
-                    String[] partes = chave.split("-");
-                    String ano = partes[0];
-                    String mes = partes[1];
-                    return mes + "/" + ano.substring(2); // ex: 06/23
+                int idx = (int) value;
+                List<String> meses = obterChavesOrdenadas();
+                if (idx >= 0 && idx < meses.size()) {
+                    String chave = meses.get(idx);
+                    String[] p = chave.split("-");
+                    if (p.length == 2 && p[0].length() >= 4 && p[1].length() >= 2) {
+                        // p[0] = "2025", p[1] = "06"
+                        return p[1] + "/" + p[0].substring(2);
+                    }
                 }
                 return "";
             }
         });
 
-        YAxis yAxis = lineChart.getAxisLeft();
-        yAxis.setTextColor(Color.BLACK);
-        yAxis.setAxisMinimum(0f);
-        yAxis.setAxisLineColor(Color.TRANSPARENT);
-        yAxis.setGridColor(Color.parseColor("#D3D0C8"));
-        yAxis.enableGridDashedLine(8f, 8f, 0f);
-
+        YAxis y = lineChart.getAxisLeft();
+        y.setTextColor(Color.BLACK);
+        y.setAxisMinimum(0f);
+        y.enableGridDashedLine(8f, 8f, 0f);
         lineChart.getAxisRight().setEnabled(false);
 
-        Legend l = lineChart.getLegend();
-        l.setEnabled(false);
-        lineChart.getDescription().setEnabled(false);
-
         lineChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-            PopupWindow popupWindow;
+            PopupWindow popup;
 
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-                if (popupWindow != null) {
-                    popupWindow.dismiss();
-                }
+                if (popup != null) popup.dismiss();
+                int idx = (int) e.getX();
+                List<String> meses = obterChavesOrdenadas();
+                if (idx >= 0 && idx < meses.size()) {
+                    String chave = meses.get(idx);
+                    int quantidadePedidos = contarPedidosPorMes(chave);
+                    String[] p = chave.split("-");
+                    String txt = p[1] + "/" + p[0] + ": " + quantidadePedidos + " unidades vendidas";
 
-                int index = (int) e.getX();
-                List<String> mesesOrdenados = obterChavesOrdenadas();
-                Map<String, Double> valoresPorMes = getValorTotalPedidosPorMesAno();
+                    TextView tv = new TextView(DashboardAdmActivity.this);
+                    tv.setText(txt);
+                    tv.setTextColor(Color.WHITE);
+                    tv.setBackgroundColor(Color.DKGRAY);
+                    tv.setPadding(20, 10, 20, 10);
 
-                if (index >= 0 && index < mesesOrdenados.size()) {
-                    String chave = mesesOrdenados.get(index);
-                    double valorTotal = valoresPorMes.getOrDefault(chave, 0.0);
-
-                    String[] partes = chave.split("-");
-                    String ano = partes[0];
-                    String mes = partes[1];
-                    String dataFormatada = mes + "/" + ano;  // pode usar ano.substring(2) para "23"
-
-                    String valorFormatado = String.format("R$ %.2f", valorTotal).replace(".", ",");
-
-                    TextView textView = new TextView(DashboardAdmActivity.this);
-                    textView.setText(dataFormatada + ": " + valorFormatado);
-                    textView.setTextColor(Color.WHITE);
-                    textView.setBackgroundColor(Color.DKGRAY);
-                    textView.setPadding(20, 10, 20, 10);
-
-                    popupWindow = new PopupWindow(textView,
-                            WindowManager.LayoutParams.WRAP_CONTENT,
-                            WindowManager.LayoutParams.WRAP_CONTENT);
-                    popupWindow.setOutsideTouchable(true);
-                    popupWindow.setFocusable(true);
-
+                    popup = new PopupWindow(tv, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                    popup.setOutsideTouchable(true);
+                    popup.setFocusable(true);
                     lineChart.post(() -> {
-                        int[] location = new int[2];
-                        lineChart.getLocationOnScreen(location);
-                        popupWindow.showAtLocation(lineChart, Gravity.NO_GRAVITY,
-                                (int) h.getXPx() + location[0], (int) h.getYPx() + location[1]);
+                        int[] loc = new int[2];
+                        lineChart.getLocationOnScreen(loc);
+                        popup.showAtLocation(lineChart, Gravity.NO_GRAVITY,
+                                (int) h.getXPx() + loc[0], (int) h.getYPx() + loc[1]);
                     });
                 }
             }
+
             @Override
             public void onNothingSelected() {
-                if (popupWindow != null) {
-                    popupWindow.dismiss();
-                }
+                if (popup != null) popup.dismiss();
             }
         });
 
-        lineChart.animateX(800, Easing.EaseInOutQuad);
-        lineChart.invalidate();
     }
+
+    private double calcularValorTotalPorMes(String mesAno) {
+        List<InventoryMovementModel> movs = new InventoryMovementDAO(this).getAll();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        double total = 0.0;
+        for (InventoryMovementModel mov : movs) {
+            if (!"SAIDA".equalsIgnoreCase(mov.getMovementType())) continue;
+            String data = mov.getMovementDate();
+            try {
+                Date date = sdf.parse(data);
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                String chave = String.format("%04d-%02d", cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1);
+                if (chave.equals(mesAno)) {
+                    total += mov.getQuantity() * mov.getUnitPrice();
+                }
+            } catch (ParseException ex) {
+            }
+        }
+        return total;
+    }
+
+    private int contarPedidosPorMes(String mesAno) {
+        List<InventoryMovementModel> movs = new InventoryMovementDAO(this).getAll();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        int total = 0;
+        for (InventoryMovementModel mov : movs) {
+            if (!"SAIDA".equalsIgnoreCase(mov.getMovementType())) continue;
+            try {
+                Date date = sdf.parse(mov.getMovementDate());
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                String chave = String.format("%04d-%02d", cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1);
+                if (chave.equals(mesAno)) {
+                    total++;
+                }
+            } catch (ParseException ignored) {}
+        }
+        return total;
+    }
+
+
 }

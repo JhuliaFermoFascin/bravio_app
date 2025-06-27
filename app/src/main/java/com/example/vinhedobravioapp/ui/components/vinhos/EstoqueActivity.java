@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +46,8 @@ public class EstoqueActivity extends AppCompatActivity {
         else{
             HeaderHelper.configurarHeader(this, getString(R.string.wine), tipoUsuario, false, true, visitante);
             addWine_btn.setVisibility(View.GONE);
+
+
         }
 
         addWine_btn.setOnClickListener(view -> {
@@ -57,7 +60,8 @@ public class EstoqueActivity extends AppCompatActivity {
         wineAdapter = new WineAdapter(this, new ArrayList<>(),
                 this::showDetailsDialog,
                 this::editWine,
-                this::deleteWine
+                this::deleteWine,
+                tipoUsuario
         );
         recyclerView.setAdapter(wineAdapter);
 
