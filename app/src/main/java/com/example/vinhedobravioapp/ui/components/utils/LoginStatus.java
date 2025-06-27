@@ -26,7 +26,9 @@ public class LoginStatus {
 
     public boolean isAdmin() { return isAdmin; }
     public void setAdmin(boolean admin) { isAdmin = admin; }
-
+    public int isAdminInt() {
+        return isAdmin ? 1 : 0;
+    }
     public boolean isManterLogado() { return manterLogado; }
     public void setManterLogado(boolean manterLogado) { this.manterLogado = manterLogado; }
     @Override
