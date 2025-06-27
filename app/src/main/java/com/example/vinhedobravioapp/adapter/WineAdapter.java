@@ -80,7 +80,7 @@ public class WineAdapter extends RecyclerView.Adapter<WineAdapter.WineViewHolder
         }
 
         // If FullWineModel exposes quantity, use it. Otherwise, fallback to 0.
-        int quantidade = 0;
+        int quantidade = wine.getQuantity();
         try {
             java.lang.reflect.Method m = wine.getClass().getMethod("getQuantity");
             Object q = m.invoke(wine);

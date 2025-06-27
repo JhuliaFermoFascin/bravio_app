@@ -14,7 +14,9 @@ import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.UserAdapter;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.model.UserModel;
+import com.example.vinhedobravioapp.loginManager.LoginManager;
 import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
+import com.example.vinhedobravioapp.ui.components.utils.LoginStatus;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.List;
@@ -31,7 +33,7 @@ public class UsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.usuarios);
 
-        boolean isDashboard = getIntent().getBooleanExtra("isDashboard", true);
+        int isDashboard = LoginManager.getInstance().getLoginStatus().isAdminInt();
         HeaderHelper.configurarHeader(this, getString(R.string.user_title), isDashboard);
 
         userDAO = new UserDAO(this);

@@ -3,6 +3,7 @@ package com.example.vinhedobravioapp.database.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.InventoryMovementModel;
@@ -14,28 +15,26 @@ public class InventoryMovementDAO extends AbstrataDAO {
         helper = new DPOpenHelper(context);
     }
 
-    public long insert(SQLiteDatabase db, InventoryMovementModel mov) {
+    public long insert(InventoryMovementModel mov) {
         ContentValues values = new ContentValues();
-        values.put(InventoryMovementModel.COLUMN_WINE_ID,       mov.getWineId());
-        values.put(InventoryMovementModel.COLUMN_MOVEMENT_TYPE, mov.getMovementType());
-        values.put(InventoryMovementModel.COLUMN_QUANTITY,      mov.getQuantity());
-        values.put(InventoryMovementModel.COLUMN_UNIT_PRICE,    mov.getUnitPrice());
-        values.put(InventoryMovementModel.COLUMN_DOCUMENT_REFERENCE, mov.getDocumentReference());
-        values.put(InventoryMovementModel.COLUMN_USER_ID,       mov.getUserId());
-        values.put(InventoryMovementModel.COLUMN_NOTES,         mov.getNotes());
+        long id = -1;
 
-        long id = db.insertOrThrow(InventoryMovementModel.TABLE_NAME, null, values);
+        try {
+            Open();
 
-        int delta = mov.getMovementType().equalsIgnoreCase("ENTRADA")
-                ? mov.getQuantity()
-                : -mov.getQuantity();
+            values.put(InventoryMovementModel.COLUMN_WINE_ID,       mov.getWineId());
+            values.put(InventoryMovementModel.COLUMN_MOVEMENT_TYPE, mov.getMovementType());
+            values.put(InventoryMovementModel.COLUMN_QUANTITY,      mov.getQuantity());
+            values.put(InventoryMovementModel.COLUMN_UNIT_PRICE,    mov.getUnitPrice());
+            values.put(InventoryMovementModel.COLUMN_DOCUMENT_REFERENCE, mov.getDocumentReference());
+            values.put(InventoryMovementModel.COLUMN_USER_ID,       mov.getUserId());
+            values.put(InventoryMovementModel.COLUMN_NOTES,         mov.getNotes());
 
-        db.execSQL(
-                "UPDATE tb_wine " +
-                        "SET " + WineModel.QUANTITY + " = " + WineModel.QUANTITY + " + ? " +
-                        "WHERE " + WineModel.WINE_ID_COLUMN + " = ?",
-                new Object[]{ delta, mov.getWineId() }
-        );
+            id = db.insertOrThrow(InventoryMovementModel.TABLE_NAME, null, values);
+
+        } finally {
+            Close();
+        }
 
         return id;
     }
@@ -119,27 +118,68 @@ public class InventoryMovementDAO extends AbstrataDAO {
         return rows;
     }
 
-    public int getCurrentQuantityByWineId(long wineId) {
-        int total = 0;
-        try {
-            Open();
-            android.database.Cursor cursor = db.query(InventoryMovementModel.TABLE_NAME, null,
-                InventoryMovementModel.COLUMN_WINE_ID + " = ?",
-                new String[]{String.valueOf(wineId)},
-                null, null, null);
-            if (cursor != null && cursor.moveToFirst()) {
+    /**
+     * Retorna a quantidade disponível em estoque para um vinho específico.
+     * Soma as quantidades das movimentações do tipo "ENTRADA" e subtrai as do tipo "SAIDA".
+     */
+    public int getAvailableQuantityByWineId(long wineId) {
+    int total = 0;
+    Log.d("InventoryCheck", ">>> Iniciando cálculo de quantidade para wineId: " + wineId);
+
+    try {
+        Open();
+        Log.d("InventoryCheck", ">>> Banco de dados aberto com sucesso");
+
+        android.database.Cursor cursor = db.query(
+            InventoryMovementModel.TABLE_NAME,
+            null,
+            InventoryMovementModel.COLUMN_WINE_ID + " = ?",
+            new String[]{String.valueOf(wineId)},
+            null, null, null
+        );
+
+        Log.d("InventoryCheck", ">>> Executada query para wineId: " + wineId);
+
+        if (cursor != null) {
+            Log.d("InventoryCheck", ">>> Cursor não é nulo");
+
+            if (cursor.moveToFirst()) {
+                Log.d("InventoryCheck", ">>> Cursor tem registros");
+
                 do {
                     String type = cursor.getString(cursor.getColumnIndexOrThrow(InventoryMovementModel.COLUMN_MOVEMENT_TYPE));
                     int qty = cursor.getInt(cursor.getColumnIndexOrThrow(InventoryMovementModel.COLUMN_QUANTITY));
+
+                    Log.d("InventoryCheck", ">>> Tipo: " + type + " | Quantidade: " + qty);
+
                     if ("ENTRADA".equalsIgnoreCase(type)) {
                         total += qty;
+                        Log.d("InventoryCheck", ">>> Adicionando " + qty + " | Total agora: " + total);
                     } else if ("SAIDA".equalsIgnoreCase(type)) {
                         total -= qty;
+                        Log.d("InventoryCheck", ">>> Subtraindo " + qty + " | Total agora: " + total);
+                    } else {
+                        Log.w("InventoryCheck", ">>> Tipo de movimento desconhecido: " + type);
                     }
                 } while (cursor.moveToNext());
-                cursor.close();
+
+            } else {
+                Log.d("InventoryCheck", ">>> Cursor está vazio");
             }
-        } finally { Close(); }
-        return total;
+
+            cursor.close();
+        } else {
+            Log.w("InventoryCheck", ">>> Cursor é nulo");
+        }
+    } catch (Exception e) {
+        Log.e("InventoryCheck", ">>> Erro ao calcular quantidade: " + e.getMessage(), e);
+    } finally {
+        Close();
+        Log.d("InventoryCheck", ">>> Banco de dados fechado");
     }
+
+    Log.d("InventoryCheck", ">>> Quantidade final disponível para wineId " + wineId + ": " + total);
+    return total;
+}
+
 }

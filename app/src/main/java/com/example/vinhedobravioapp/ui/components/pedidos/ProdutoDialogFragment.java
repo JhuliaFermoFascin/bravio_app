@@ -15,6 +15,7 @@ import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.ProdutoAdapter;
 import com.example.vinhedobravioapp.database.model.OrderItemModel;
 import com.example.vinhedobravioapp.database.model.WineModel;
+import com.example.vinhedobravioapp.models.FullWineModel;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.ui.components.vinhos.DetalhesVinhoActivity;
 
@@ -57,7 +58,7 @@ public class ProdutoDialogFragment extends DialogFragment {
 
             @Override
             public void onItemClick(WineModel vinho) {
-                DetalhesVinhoActivity detalhesVinhoActivity = DetalhesVinhoActivity.newInstance(vinho);
+                DetalhesVinhoActivity detalhesVinhoActivity = DetalhesVinhoActivity.newInstance(new FullWineModel(getContext(), vinho.getWineId()));
                 detalhesVinhoActivity.show(getParentFragmentManager(), "detalhes_vinho");
             }
         });

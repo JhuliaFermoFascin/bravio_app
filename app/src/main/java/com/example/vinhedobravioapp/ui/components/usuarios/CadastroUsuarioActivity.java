@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat;
 import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.model.UserModel;
+import com.example.vinhedobravioapp.loginManager.LoginManager;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 
@@ -42,7 +43,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
         userDAO = new UserDAO(this);
 
-        boolean isDashboard = getIntent().getBooleanExtra("isDashboard", false);
+        int isDashboard = LoginManager.getInstance().getLoginStatus().isAdminInt();
         HeaderHelper.configurarHeader(this, getString(R.string.add_user_title), isDashboard);
 
         userName = findViewById(R.id.userName);

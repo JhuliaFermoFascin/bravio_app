@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.database.dao.InventoryMovementDAO;
 import com.example.vinhedobravioapp.database.dao.WineImageDAO;
 import com.example.vinhedobravioapp.database.model.OrderItemModel;
 import com.example.vinhedobravioapp.database.model.WineImageModel;
@@ -68,7 +69,8 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         WineModel wine = lista.get(position);
-
+        InventoryMovementDAO im = new InventoryMovementDAO(context);
+        int quantity = im.getAvailableQuantityByWineId(wine.getWineId());
         WineImageDAO wineImageDAO = new WineImageDAO(context);
         WineImageModel imgModel = wineImageDAO.getByWineId(wine.getWineId());
         Bitmap bitmap = null;
@@ -80,20 +82,19 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
                 ? bitmap
                 : BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_photo)
         );
-
         holder.nomeVinho.setText(wine.getName());
         WineDataHelper.WineCompleteData data = WineDataHelper.getCompleteData(context, wine);
         holder.tipoVinho.setText(
                 wine.getVintage() + " • " +
                         data.compositionType.getCompositionName() +
-                        " • Qtd disp. " + wine.getQuantity()
-        );
+                        " • Qtd disp. " +quantity );
+
         String valorFmt = NumberFormat
                 .getCurrencyInstance(new Locale("pt", "BR"))
                 .format(wine.getUnitPrice());
         holder.precoVinho.setText(valorFmt);
 
-        int estoqueDisponivel = wine.getQuantity();
+        int estoqueDisponivel = quantity;
 
         if (estoqueDisponivel <= 0) {
             holder.labelEsgotado.setVisibility(View.VISIBLE);

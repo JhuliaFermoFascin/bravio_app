@@ -21,7 +21,7 @@ public class FullWineModel  {
     private WineReviewModel wineReview;
     private String imageBase64;
     public Bitmap wineImageBitmap;
-
+    private int quantity;
     // Ramificação dos campos do WineModel
     private long wineId;
     private String name;
@@ -38,8 +38,11 @@ public class FullWineModel  {
     private Double idealTemperatureCelsius;
     private String agingPotential;
     private Double unitPrice;
+    
 
     public FullWineModel(Context context, long wineId) {
+                InventoryMovementDAO inventoryMovementDAO = new InventoryMovementDAO(context);
+
         WineDAO wineDAO = new WineDAO(context);
         WineTypeDAO wineTypeDAO = new WineTypeDAO(context);
         WineryDAO wineryDAO = new WineryDAO(context);
@@ -65,6 +68,7 @@ public class FullWineModel  {
             this.wineReview = wineReviewDAO.getByWineId(wineId);
             WineImageModel img = wineImageDAO.getByWineId(wineId);
             this.imageBase64 = img != null ? img.getImageBase64() : null;
+            this.quantity = inventoryMovementDAO.getAvailableQuantityByWineId(wineId);
 
             // Ramificar campos do WineModel
             this.wineId = wine.getWineId();
@@ -85,7 +89,9 @@ public class FullWineModel  {
             this.wineImageBitmap = decodeBase64ToBitmap(this.imageBase64);
         }
     }
-
+    public int getQuantity() {
+        return quantity;
+    }
     // Getters e setters dos campos ramificados
     public long getWineId() { return wineId; }
     public void setWineId(long wineId) { this.wineId = wineId; if (wine != null) wine.setWineId(wineId); }
