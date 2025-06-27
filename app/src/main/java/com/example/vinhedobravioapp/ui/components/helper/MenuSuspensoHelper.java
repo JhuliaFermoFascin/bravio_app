@@ -62,6 +62,7 @@ public class MenuSuspensoHelper {
             });
             usuarios_btn.setOnClickListener(view -> {
                 Intent intent = new Intent(activity, UsuarioActivity.class);
+                intent.putExtra(activity.getString(R.string.tipo_usuario_input), tipoUsuario);
                 activity.startActivity(intent);
                 activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             });
@@ -108,6 +109,7 @@ public class MenuSuspensoHelper {
 
         representantes_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, RepresentantesActivity.class);
+            intent.putExtra(activity.getString(R.string.tipo_usuario_input), tipoUsuario);
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         });
