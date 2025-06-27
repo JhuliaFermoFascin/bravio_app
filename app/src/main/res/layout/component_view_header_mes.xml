@@ -1,0 +1,25 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_header_mes" />
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:textColor="@color/background_text_primary"
+        android:fontFamily="@font/baskervville"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="32dp"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4" />
+</FrameLayout>
