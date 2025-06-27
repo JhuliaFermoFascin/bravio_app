@@ -219,6 +219,8 @@
     <string name="icon_tipo_vinho">Ícone de tipos de vinhos</string>
     <string name="icon_history">Ícone de história</string>
     <string name="icon_celular">Ícone de celular</string>
+    <string name="icon_search">Ícone de lupa de pesquisa</string>
+    <string name="icon_calendar">Ícone de calendário</string>
 
 
     <!-- shared preferences -->

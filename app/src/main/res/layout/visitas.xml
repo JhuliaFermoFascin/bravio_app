@@ -9,45 +9,84 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_text_primary"
         android:orientation="vertical">
-
-        <include
-            layout="@layout/component_view_custom_header"
-            android:id="@+id/component_view_custom_header"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="30dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <EditText
-                style="@style/Filter"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="15dp"
-                android:hint="@string/visit_filter"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="10dp" />
+            <ImageView
+                android:id="@+id/menu_suspenso"
+                android:layout_width="90dp"
+                android:layout_height="70dp"
+                android:paddingTop="40dp"
+                android:paddingBottom="10dp"
+                android:paddingHorizontal="30dp"
+                android:contentDescription="@string/icon_search"
+                android:src="@drawable/icon_menu"
+                android:layout_gravity="start"/>
 
-            <ScrollView
-                android:layout_width="match_parent"
+            <View
+                android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:fillViewport="true">
+                android:layout_weight="1" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/orders_recycleview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <ImageView
+                android:id="@+id/icon_search"
+                android:layout_width="90dp"
+                android:layout_height="70dp"
+                android:paddingTop="38dp"
+                android:paddingBottom="9dp"
+                android:paddingHorizontal="10dp"
+                android:contentDescription="@string/icon_calendar"
+                android:src="@drawable/icon_search_purple"
+                android:layout_gravity="start"/>
 
-            </ScrollView>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/icon_calendar"
+                android:layout_width="90dp"
+                android:layout_height="70dp"
+                android:paddingTop="37dp"
+                android:paddingBottom="8dp"
+                android:paddingHorizontal="20dp"
+                android:contentDescription="@string/icon_menu"
+                android:src="@drawable/icon_calendar_purple"
+                android:layout_gravity="start"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/data_balao"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:text="U"
+                android:layout_marginHorizontal="28.5dp"
+                android:background="@drawable/button_purple2"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="2dp"
+                android:textColor="@color/background_text_primary"
+                android:fontFamily="@font/cinzel"/>
 
         </LinearLayout>
 
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/orders_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
