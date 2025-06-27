@@ -97,8 +97,6 @@ public class WineAdapter extends RecyclerView.Adapter<WineAdapter.WineViewHolder
             holder.badgeEsgotado.setVisibility(View.VISIBLE);
             holder.itemView.setAlpha(0.5f);
             holder.itemView.setClickable(false);
-            holder.btnEditar.setEnabled(false);
-            holder.btnDeletar.setEnabled(false);
         } else {
             holder.quantidadeVinho.setText("Qtd: " + quantidade);
             holder.badgeEsgotado.setVisibility(View.GONE);
@@ -121,7 +119,7 @@ public class WineAdapter extends RecyclerView.Adapter<WineAdapter.WineViewHolder
             if (quantidadeFinal > 0) itemClickListener.onItemClick(wine);
         });
         holder.btnEditar.setOnClickListener(v -> {
-            if (quantidadeFinal > 0) editClickListener.onEditClick(wine);
+            editClickListener.onEditClick(wine);
         });
         holder.btnDeletar.setOnClickListener(v -> deleteClickListener.onDeleteClick(wine));
     }
