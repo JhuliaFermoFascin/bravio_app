@@ -3,7 +3,10 @@ package com.example.vinhedobravioapp.ui.components.vinhos;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +34,7 @@ public class EstoqueActivity extends AppCompatActivity {
 
         ExtendedFloatingActionButton addWine_btn = findViewById(R.id.addWine_btn);
         RecyclerView recyclerView = findViewById(R.id.wine_recycleview);
+        EditText searchEditText = findViewById(R.id.Filter);
 
         int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
         boolean visitante = getIntent().getBooleanExtra("forcar_menu_visitante", false);
@@ -56,6 +60,23 @@ public class EstoqueActivity extends AppCompatActivity {
                 this::deleteWine
         );
         recyclerView.setAdapter(wineAdapter);
+
+        // --- IMPLEMENTAÇÃO DA BARRA DE PESQUISA DE VINHOS ---
+        if (searchEditText != null) {
+            searchEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String query = s.toString();
+                    List<FullWineModel> winesList = query.isEmpty() ? GetAllFullWineModel.getAll(EstoqueActivity.this) : GetAllFullWineModel.findByNameLike(EstoqueActivity.this, query);
+                    wineAdapter.setWineList(winesList);
+                }
+                @Override
+                public void afterTextChanged(Editable s) {}
+            });
+        }
+        // --- FIM DA IMPLEMENTAÇÃO DA BARRA DE PESQUISA DE VINHOS ---
 
 //        ImageView config_icon = findViewById(R.id.config_icon);
 //        config_icon.setOnClickListener(view -> {
