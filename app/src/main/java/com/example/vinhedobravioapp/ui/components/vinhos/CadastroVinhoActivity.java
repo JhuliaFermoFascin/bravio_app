@@ -193,7 +193,32 @@ public class CadastroVinhoActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Valida campos obrigatórios do vinho. Retorna true se tudo ok, false se faltar algo.
+     */
+    private boolean validateWineFields() {
+        if (wineName == null || TextUtils.isEmpty(wineName.getText().toString().trim())) {
+            Toast.makeText(this, "Preencha o nome do vinho!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (wineType == null || wineType.getSelectedItemPosition() < 0) {
+            Toast.makeText(this, "Selecione o tipo de vinho!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (wineHarvest == null || TextUtils.isEmpty(wineHarvest.getText().toString().trim())) {
+            Toast.makeText(this, "Preencha a safra do vinho!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (wineComposition == null || wineComposition.getSelectedItemPosition() < 0) {
+            Toast.makeText(this, "Selecione o tipo de composição!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
     private void saveWine() {
+        if (!validateWineFields()) return;
+
         WineModel wineModel = new WineModel();
         wineModel.setName(wineName.getText().toString());
 
@@ -332,7 +357,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
 //                    mov.setUserId(selectedUserIdAuto);
                     mov.setNotes("Entrada inicial ao criar vinho");
 
-                    movDao.insert(db, mov);
+                    movDao.insert( mov);
                     db.setTransactionSuccessful();
                 } finally {
                     db.endTransaction();
@@ -399,6 +424,8 @@ public class CadastroVinhoActivity extends AppCompatActivity {
         }
     }
     private void updateWine() {
+        if (!validateWineFields()) return;
+
         WineDAO wineDAO = new WineDAO(this);
         WineModel wineModel = wineDAO.getById(editingWineId);
 

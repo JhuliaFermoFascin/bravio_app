@@ -37,7 +37,7 @@ public class InicialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_tela_inicial);
-        
+        CreateDefaults.printAllUsers(this);
         DPOpenHelper db = new DPOpenHelper(this);
         CreateDefaults.Start(this);
         InventoryMovementDAO a = new InventoryMovementDAO(this);

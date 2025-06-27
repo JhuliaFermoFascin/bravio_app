@@ -13,6 +13,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.vinhedobravioapp.R;
+import com.example.vinhedobravioapp.ui.components.bemvindo.ContatoActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.DashboardAdmActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.HistoriaActivity;
 import com.example.vinhedobravioapp.ui.components.inicial.MenuActivity;
@@ -36,6 +37,7 @@ public class MenuVisitanteHelper {
 
         LinearLayout dashboard_btn = popupView.findViewById(R.id.dashboard_btn);
         LinearLayout historia_btn = popupView.findViewById(R.id.historia_btn);
+        LinearLayout celular_btn = popupView.findViewById(R.id.celular_btn);
         LinearLayout vinhos_btn = popupView.findViewById(R.id.vinhos_btn);
         LinearLayout sair_btn = popupView.findViewById(R.id.sair_btn);
         LinearLayout fora_menu = popupView.findViewById(R.id.fora_menu);
@@ -58,10 +60,18 @@ public class MenuVisitanteHelper {
             popupWindow.dismiss();
         });
 
+        celular_btn.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ContatoActivity.class);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+            popupWindow.dismiss();
+        });
+
         dashboard_btn.setOnClickListener(view -> {
             popupWindow.dismiss();
             mostrarConfirmacaoSaida(origemAdm, activity);
         });
+
         vinhos_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, EstoqueActivity.class);
             intent.putExtra(activity.getString(R.string.tipo_usuario_input), origemAdm);

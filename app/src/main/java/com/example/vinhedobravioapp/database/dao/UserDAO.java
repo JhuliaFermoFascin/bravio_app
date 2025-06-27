@@ -26,7 +26,12 @@ public class UserDAO extends AbstrataDAO {
             values.put(UserModel.COLUMN_PASSWORD, userModel.getPassword());
             values.put(UserModel.COLUMN_IS_ADMIN, userModel.getIsAdmin());
             values.put(UserModel.COLUMN_STATUS, userModel.getStatus());
-            values.put(UserModel.COLUMN_CREATED_AT, userModel.getCreatedAt());
+            // Se createdAt vier null, gera data atual yyyy-MM-dd
+            String createdAt = userModel.getCreatedAt();
+            if (createdAt == null) {
+                createdAt = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
+            }
+            values.put(UserModel.COLUMN_CREATED_AT, createdAt);
             values.put(UserModel.COLUMN_LAST_UPDATE, userModel.getLastUpdate());
             values.put(UserModel.COLUMN_LAST_LOGIN, userModel.getLastLogin());
             result = db.insert(UserModel.TABLE_NAME, null, values);
