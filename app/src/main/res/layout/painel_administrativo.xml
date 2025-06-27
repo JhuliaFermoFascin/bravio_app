@@ -120,16 +120,13 @@
             android:orientation="vertical"
             android:paddingHorizontal="40dp">
 
-        <com.example.vinhedobravioapp.components.CustomButtonComponent
-            android:id="@+id/exit_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_style="EXIT"
-            app:btn_text="@string/exit"
-            app:btn_icon="@drawable/icon_out"
-            />
-        </LinearLayout>
-
+            <com.example.vinhedobravioapp.components.CustomButtonComponent
+                android:id="@+id/exit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_style="EXIT"
+                app:btn_text="@string/exit"
+                app:btn_icon="@drawable/icon_out" />
     </LinearLayout>
-
+    </LinearLayout>
 </LinearLayout>

@@ -11,7 +11,9 @@
     <string name="commissions">Comissões</string>
     <string name="reports">Relatórios</string>
     <string name="users">Usuários</string>
-        <!-- Estoque -->
+
+
+    <!-- Estoque -->
         <string name="inventory_search">Buscar por nome ou tipo</string>
         <string name="add_wine">+ </string>
         <string name="add_new_wine">Cadastrar Novo Vinho</string>
