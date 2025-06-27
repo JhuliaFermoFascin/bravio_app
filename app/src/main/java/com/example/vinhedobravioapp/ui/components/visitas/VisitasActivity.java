@@ -37,6 +37,7 @@ public class VisitasActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<AgendaItem> listaAgrupada;
+    private static final int REQUEST_CODE_CADASTRO = 1001;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +50,8 @@ public class VisitasActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.orders_recycleview);
         ImageView icon_calendar = findViewById(R.id.icon_calendar);
         ImageView menu_suspenso = findViewById(R.id.menu_suspenso);
+
+        atualizarListaVisitas();
 
         // Obtem visitas reais do banco
         VisitDAO visitDAO = new VisitDAO(this);
@@ -124,7 +127,7 @@ public class VisitasActivity extends AppCompatActivity {
 
         addVisit_btn.setOnClickListener(view -> {
             Intent intent = new Intent(VisitasActivity.this, CadastroVisitasActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE_CADASTRO);
         });
 
         icon_calendar.setOnClickListener(view -> showDatePicker());
@@ -198,6 +201,88 @@ public class VisitasActivity extends AppCompatActivity {
             });
         } else {
             Toast.makeText(this, "Nenhum evento encontrado para essa data", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_CADASTRO && resultCode == RESULT_OK) {
+            atualizarListaVisitas();  // método que você cria para recarregar a lista
+        }
+    }
+
+    private void atualizarListaVisitas() {
+        VisitDAO visitDAO = new VisitDAO(this);
+        List<VisitModel> visitasSalvas = visitDAO.getAll();
+
+        List<Agenda> listaVisitas = new ArrayList<>();
+        for (VisitModel visita : visitasSalvas) {
+            String data = "";
+            String horaInicio = "";
+
+            try {
+                SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+                SimpleDateFormat formatoDataISO = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm", Locale.getDefault());
+
+                Date dataHora = formatoEntrada.parse(visita.getDateTime());
+                if (dataHora != null) {
+                    data = formatoDataISO.format(dataHora);
+                    horaInicio = formatoHora.format(dataHora);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            Agenda agenda = new Agenda(
+                    visita.getName(),
+                    visita.getDescription(),
+                    data,
+                    horaInicio,
+                    "",
+                    visita.getLocation()
+            );
+            listaVisitas.add(agenda);
+        }
+
+        List<FeriadosUtils.Feriado> feriados = FeriadosUtils.carregarFeriados(this);
+        if (feriados != null) {
+            for (FeriadosUtils.Feriado feriado : feriados) {
+                listaVisitas.add(new Agenda(
+                        feriado.nome,
+                        "Feriado Nacional",
+                        feriado.data,
+                        "",
+                        "",
+                        ""
+                ));
+            }
+        }
+
+        listaAgrupada = AgendaAdapter.agruparPorSemana(listaVisitas);
+
+        AgendaAdapter adapter = new AgendaAdapter(listaAgrupada, this);
+        recyclerView.setAdapter(adapter);
+
+        // Opcional: fazer scroll para o dia atual
+        int posicaoHoje = -1;
+        String hojeStr = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        for (int i = 0; i < listaAgrupada.size(); i++) {
+            AgendaItem item = listaAgrupada.get(i);
+            if (item.type == AgendaItem.TYPE_EVENT && item.agenda != null && item.agenda.data.equals(hojeStr)) {
+                posicaoHoje = i;
+                break;
+            }
+            if (item.type == AgendaItem.TYPE_NO_EVENT && item.agenda == null) {
+                posicaoHoje = i;
+                break;
+            }
+        }
+
+        if (posicaoHoje != -1) {
+            recyclerView.scrollToPosition(posicaoHoje);
         }
     }
 }
