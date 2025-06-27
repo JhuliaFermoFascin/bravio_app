@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -55,6 +56,7 @@ import com.example.vinhedobravioapp.database.model.WineReviewModel;
 import com.example.vinhedobravioapp.database.model.WineTastingNoteModel;
 import com.example.vinhedobravioapp.database.model.WineTypeModel;
 import com.example.vinhedobravioapp.database.model.WineryModel;
+import com.example.vinhedobravioapp.loginManager.LoginManager;
 import com.example.vinhedobravioapp.ui.components.helper.CustomButtonHelper;
 import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 import com.example.vinhedobravioapp.ui.components.vinhos.helpers.GeographicOriginAutoCompleteHelper;
@@ -310,6 +312,7 @@ public class CadastroVinhoActivity extends AppCompatActivity {
         }
 
         String notasTexto = tastingNotes.getText().toString().trim();
+        int initialQty = 0;
         if (!notasTexto.isEmpty()) {
             List<String> notasSelecionadas = Arrays.asList(notasTexto.split(",\\s*"));
 
@@ -328,45 +331,46 @@ public class CadastroVinhoActivity extends AppCompatActivity {
                     }
                 }
             }
-
-            if (wineId == -1) {
-                Toast.makeText(this, "Erro ao salvar vinho!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            int initialQty = 0;
-            String qtyText = quantity.getText().toString().trim();
-            if (!qtyText.isEmpty()) {
-                try {
-                    initialQty = Integer.parseInt(qtyText);
-                } catch (NumberFormatException e) {
-                    Toast.makeText(this, "Quantidade inválida, usando 0", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            if (initialQty > 0) {
-                InventoryMovementDAO movDao = new InventoryMovementDAO(this);
-                SQLiteDatabase db = new DPOpenHelper(this).getWritableDatabase();
-                db.beginTransaction();
-                try {
-                    InventoryMovementModel mov = new InventoryMovementModel();
-                    mov.setWineId(wineId);
-                    mov.setMovementType("ENTRADA");
-                    mov.setQuantity(initialQty);
-                    mov.setUnitPrice(wineModel.getUnitPrice());
-                    mov.setDocumentReference("ESTOQUE INICIAL");
-//                    mov.setUserId(selectedUserIdAuto);
-                    mov.setNotes("Entrada inicial ao criar vinho");
-
-                    movDao.insert( mov);
-                    db.setTransactionSuccessful();
-                } finally {
-                    db.endTransaction();
-                    db.close();
-                }
-            }
-
         }
 
+        String qtyText = quantity.getText().toString().trim();
+        if (!qtyText.isEmpty()) {
+            try {
+                initialQty = Integer.parseInt(qtyText);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Quantidade inválida, usando 0", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (initialQty > 0) {
+            InventoryMovementDAO movDao = new InventoryMovementDAO(this);
+            DPOpenHelper helper = new DPOpenHelper(this);
+            SQLiteDatabase db = helper.getWritableDatabase();
+
+            db.beginTransaction();
+            try {
+                InventoryMovementModel mov = new InventoryMovementModel();
+                mov.setWineId(wineId);
+                mov.setMovementType("ENTRADA");
+                mov.setQuantity(initialQty);
+                mov.setUnitPrice(wineModel.getUnitPrice());
+                mov.setDocumentReference("ESTOQUE INICIAL");
+                mov.setUserId(LoginManager.getInstance().getLoginStatus().getIdUsuario());
+                mov.setNotes("Entrada inicial ao criar vinho");
+
+                long movId = movDao.insert(db, mov);
+                if (movId == -1) {
+                    Toast.makeText(this, "Vinho salvo, mas falha ao registrar estoque inicial!", Toast.LENGTH_SHORT).show();
+                }
+
+                db.setTransactionSuccessful();
+            } catch (Exception e) {
+                Log.e("saveWine", "Erro ao registrar estoque inicial", e);
+            } finally {
+                db.endTransaction();
+                db.close();
+            }
+        }
 
         if (selectedImageDrawable != null) {
             String imageBase64 = WineImageHelper.converterDrawableParaBase64Jpeg(selectedImageDrawable);
@@ -399,9 +403,6 @@ public class CadastroVinhoActivity extends AppCompatActivity {
             }
         }
 
-        Toast.makeText(this, "Cadastro concluído com sucesso!", Toast.LENGTH_SHORT).show();
-        finish();
-
         String harmonizacoesTexto = foodPairings.getText().toString().trim();
         if (!harmonizacoesTexto.isEmpty()) {
             List<String> harmonizacoesSelecionadas = Arrays.asList(harmonizacoesTexto.split(",\\s*"));
@@ -422,7 +423,11 @@ public class CadastroVinhoActivity extends AppCompatActivity {
                 }
             }
         }
+
+        Toast.makeText(this, "Cadastro concluído com sucesso!", Toast.LENGTH_SHORT).show();
+        finish();
     }
+
     private void updateWine() {
         if (!validateWineFields()) return;
 
