@@ -47,6 +47,7 @@ public class MenuSuspensoHelper {
         LinearLayout sair_btn = popupView.findViewById(R.id.sair_btn);
         LinearLayout fora_menu = popupView.findViewById(R.id.fora_menu);
         LinearLayout pedidos_btn = popupView.findViewById(R.id.pedidos_btn);
+        LinearLayout comissoes_btn = popupView.findViewById(R.id.comissoes_btn);
         TextView dashboardText = dashboard_btn.findViewById(R.id.dashboard_text);
         ImageView dashboardImage = dashboard_btn.findViewById(R.id.dashboard_image);
         LinearLayout cliente_btn = popupView.findViewById(R.id.cliente_btn);
@@ -136,6 +137,13 @@ public class MenuSuspensoHelper {
                 activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 activity.finish();
             });
+        });
+
+        comissoes_btn.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, com.example.vinhedobravioapp.ui.components.comissoes.ComissoesActivity.class);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            popupWindow.dismiss();
         });
     }
 }
