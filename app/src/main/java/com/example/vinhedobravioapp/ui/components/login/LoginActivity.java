@@ -122,13 +122,9 @@ public class LoginActivity extends AppCompatActivity {
                         checkboxManterLogado.isChecked()
                 );
 
-                Gson gson = new Gson();
-                String json = gson.toJson(status);
-
-                // Salva o status de login SOMENTE se o tipo de usuário for permitido
-                SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preferencia_login), MODE_PRIVATE).edit();
-                editor.putString(getString(R.string.login_status), json);
-                editor.commit();
+                // Usa LoginManager para garantir atualização do lastLogin
+                LoginManager.getInstance().setLoginStatus(status);
+                LoginManager.getInstance().saveLoginStatus(this);
 
                 Intent intent;
                 if (user.getIsAdmin() == 1) {
