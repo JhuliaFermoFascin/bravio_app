@@ -19,6 +19,10 @@
     <!-- Estoque -->
     <string name="add_wine">+ </string>
     <!-- Estoque Form -->
+    <string name="preencha_nome_vinho">Preencha o nome do vinho!</string>
+    <string name="selecione_tipo_vinho">Selecione o tipo de vinho!</string>
+    <string name="preencha_safra_vinho">Preencha a safra do vinho!</string>
+    <string name="selecione_tipo_composicao">Selecione o tipo de composição!</string>
 
     <string name="agenda">Agendar Visita</string>
     <string name="visitors">Página de Visitantes</string>

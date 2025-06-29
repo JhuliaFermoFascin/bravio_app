@@ -3,15 +3,12 @@ package com.example.vinhedobravioapp.database.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-
 import com.example.vinhedobravioapp.database.DPOpenHelper;
 import com.example.vinhedobravioapp.database.model.UserModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO extends AbstrataDAO {
-
     public UserDAO(Context context) {
         helper = new DPOpenHelper(context);
     }
@@ -26,7 +23,6 @@ public class UserDAO extends AbstrataDAO {
             values.put(UserModel.COLUMN_PASSWORD, userModel.getPassword());
             values.put(UserModel.COLUMN_IS_ADMIN, userModel.getIsAdmin());
             values.put(UserModel.COLUMN_STATUS, userModel.getStatus());
-            // Se createdAt vier null, gera data atual yyyy-MM-dd
             String createdAt = userModel.getCreatedAt();
             if (createdAt == null) {
                 createdAt = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
@@ -138,10 +134,9 @@ public class UserDAO extends AbstrataDAO {
                     UserModel.TABLE_NAME,
                     null,
                     UserModel.COLUMN_IS_ADMIN + " = ?",
-                    new String[]{"0"}, // Somente usuários com isAdmin = 0
+                    new String[]{"0"},
                     null, null, null
             );
-
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     UserModel user = new UserModel();
@@ -156,16 +151,13 @@ public class UserDAO extends AbstrataDAO {
                     user.setLastLogin(cursor.getString(cursor.getColumnIndexOrThrow(UserModel.COLUMN_LAST_LOGIN)));
                     representantes.add(user);
                 } while (cursor.moveToNext());
-
                 cursor.close();
             }
         } finally {
             Close();
         }
-
         return representantes;
     }
-
 
     public UserModel findByEmailAndPassword(String email, String password) {
         UserModel user = null;
