@@ -141,7 +141,7 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             vh.tituloEvento.setText(agenda.titulo);
             vh.objetivoEvento.setText(agenda.objetivo);
-            vh.horaEvento.setText(agenda.horaInicio + " – " + agenda.horaFim);
+            vh.horaEvento.setText(agenda.horaInicio);
             vh.localEvento.setText(agenda.endereco);
 
             View semAgenda = vh.itemView.findViewById(R.id.sem_agenda);

@@ -113,19 +113,19 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:contentDescription="@string/icon_money"
-                        android:src="@drawable/icon_money"/>
+<!--                    <ImageView-->
+<!--                        android:layout_width="20dp"-->
+<!--                        android:layout_height="20dp"-->
+<!--                        android:contentDescription="@string/icon_money"-->
+<!--                        android:src="@drawable/icon_money"/>-->
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/commissions"
-                        android:padding="10dp"
-                        android:fontFamily="@font/baskervville"
-                        android:textColor="@color/background_text_primary" />
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/commissions"-->
+<!--                        android:padding="10dp"-->
+<!--                        android:fontFamily="@font/baskervville"-->
+<!--                        android:textColor="@color/background_text_primary" />-->
 
                 </LinearLayout>
 
@@ -158,42 +158,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/orders"
-                        android:padding="10dp"
-                        android:fontFamily="@font/baskervville"
-                        android:textColor="@color/background_text_primary" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="167dp"
-                    android:layout_height="1dp"
-                    android:background="@color/background_text_primary" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/relatorios_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:contentDescription="icone de vinho"
-                        android:src="@drawable/icon_performance"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reports"
                         android:padding="10dp"
                         android:fontFamily="@font/baskervville"
                         android:textColor="@color/background_text_primary" />

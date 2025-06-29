@@ -37,6 +37,24 @@ public class InventoryMovementDAO extends AbstrataDAO {
         return id;
     }
 
+    public long insert(SQLiteDatabase db, InventoryMovementModel mov) {
+        long id = -1;
+        try {
+            ContentValues values = new ContentValues();
+            values.put(InventoryMovementModel.COLUMN_WINE_ID, mov.getWineId());
+            values.put(InventoryMovementModel.COLUMN_MOVEMENT_TYPE, mov.getMovementType());
+            values.put(InventoryMovementModel.COLUMN_QUANTITY, mov.getQuantity());
+            values.put(InventoryMovementModel.COLUMN_UNIT_PRICE, mov.getUnitPrice());
+            values.put(InventoryMovementModel.COLUMN_DOCUMENT_REFERENCE, mov.getDocumentReference());
+            values.put(InventoryMovementModel.COLUMN_USER_ID, mov.getUserId());
+            values.put(InventoryMovementModel.COLUMN_NOTES, mov.getNotes());
+            id = db.insertOrThrow(InventoryMovementModel.TABLE_NAME, null, values);
+        } catch (Exception e) {
+            Log.e("InventoryMovementDAO", "Erro ao inserir movimento: " + e.getMessage(), e);
+        }
+        return id;
+    }
+
 
 
     public InventoryMovementModel getById(long id) {

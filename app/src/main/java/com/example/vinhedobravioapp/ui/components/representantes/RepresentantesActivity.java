@@ -12,6 +12,7 @@ import com.example.vinhedobravioapp.R;
 import com.example.vinhedobravioapp.adapter.UserAdapter;
 import com.example.vinhedobravioapp.database.dao.UserDAO;
 import com.example.vinhedobravioapp.database.model.UserModel;
+import com.example.vinhedobravioapp.ui.components.helper.HeaderHelper;
 import com.example.vinhedobravioapp.ui.components.usuarios.CadastroUsuarioActivity;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
@@ -27,6 +28,9 @@ public class RepresentantesActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.representantes);
+
+        int tipoUsuario = getIntent().getIntExtra(getString(R.string.tipo_usuario_input), -1);
+        HeaderHelper.configurarHeader(this, getString(R.string.representante), tipoUsuario, false, true, false);
 
         userDAO = new UserDAO(this);
 

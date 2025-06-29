@@ -11,6 +11,7 @@ public class VisitModel {
             COLUMN_LOCATION = "location",
             COLUMN_WINES = "wines",
             COLUMN_DESCRIPTION = "description",
+            COLUMN_NAME = "visit_name",
             COLUMN_USER_ID = "user_id";
 
     public static String CREATE_TABLE =
@@ -21,6 +22,7 @@ public class VisitModel {
                     + COLUMN_LOCATION + " TEXT NOT NULL, "
                     + COLUMN_WINES + " TEXT NOT NULL, "
                     + COLUMN_DESCRIPTION + " TEXT NOT NULL, "
+                    + COLUMN_NAME + " TEXT NOT NULL, "
                     + COLUMN_USER_ID + " INTEGER NOT NULL, "
                     + "FOREIGN KEY (" + COLUMN_CUSTOMER_ID + ") REFERENCES tb_customer(customer_id) ON UPDATE CASCADE, "
                     + "FOREIGN KEY (" + COLUMN_USER_ID + ") REFERENCES tb_user(user_id) ON UPDATE CASCADE"
@@ -35,7 +37,8 @@ public class VisitModel {
     private String dateTime;
     private String location;
     private String wines;
-    private String description; // ← novo campo
+    private String description;
+    private String name;
     private long userId;
 
     // Getters and Setters
@@ -54,8 +57,11 @@ public class VisitModel {
     public String getWines() { return wines; }
     public void setWines(String wines) { this.wines = wines; }
 
-    public String getDescription() { return description; } // ← getter
-    public void setDescription(String description) { this.description = description; } // ← setter
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public String getName() {    return name; }
+    public void setName(String name) { this.name = name; }
 
     public long getUserId() { return userId; }
     public void setUserId(long userId) { this.userId = userId; }
@@ -69,6 +75,7 @@ public class VisitModel {
                 ", location='" + location + '\'' +
                 ", wines='" + wines + '\'' +
                 ", description='" + description + '\'' +
+                ", name='" + name + '\'' +
                 ", userId=" + userId +
                 '}';
     }

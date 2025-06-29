@@ -21,12 +21,12 @@ public class VisitDAO extends AbstrataDAO {
         try {
             Open();
             ContentValues values = new ContentValues();
-            values.put(VisitModel.COLUMN_ID, visitModel.getVisitId());
             values.put(VisitModel.COLUMN_CUSTOMER_ID, visitModel.getCustomerId());
             values.put(VisitModel.COLUMN_DATE_TIME, visitModel.getDateTime());
             values.put(VisitModel.COLUMN_LOCATION, visitModel.getLocation());
             values.put(VisitModel.COLUMN_WINES, visitModel.getWines());
-            values.put(VisitModel.COLUMN_DESCRIPTION, visitModel.getDescription()); // NOVO
+            values.put(VisitModel.COLUMN_DESCRIPTION, visitModel.getDescription());
+            values.put(VisitModel.COLUMN_NAME, visitModel.getName());
             values.put(VisitModel.COLUMN_USER_ID, visitModel.getUserId());
             result = db.insert(VisitModel.TABLE_NAME, null, values);
         } finally {
@@ -50,7 +50,8 @@ public class VisitDAO extends AbstrataDAO {
                 model.setDateTime(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DATE_TIME)));
                 model.setLocation(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_LOCATION)));
                 model.setWines(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_WINES)));
-                model.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DESCRIPTION))); // NOVO
+                model.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DESCRIPTION)));
+                model.setName(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_NAME)));
                 model.setUserId(cursor.getLong(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_USER_ID)));
                 cursor.close();
             }
@@ -73,7 +74,8 @@ public class VisitDAO extends AbstrataDAO {
                     model.setDateTime(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DATE_TIME)));
                     model.setLocation(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_LOCATION)));
                     model.setWines(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_WINES)));
-                    model.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DESCRIPTION))); // NOVO
+                    model.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_DESCRIPTION)));
+                    model.setName(cursor.getString(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_NAME)));
                     model.setUserId(cursor.getLong(cursor.getColumnIndexOrThrow(VisitModel.COLUMN_USER_ID)));
                     list.add(model);
                 } while (cursor.moveToNext());
@@ -94,7 +96,8 @@ public class VisitDAO extends AbstrataDAO {
             values.put(VisitModel.COLUMN_DATE_TIME, model.getDateTime());
             values.put(VisitModel.COLUMN_LOCATION, model.getLocation());
             values.put(VisitModel.COLUMN_WINES, model.getWines());
-            values.put(VisitModel.COLUMN_DESCRIPTION, model.getDescription()); // NOVO
+            values.put(VisitModel.COLUMN_DESCRIPTION, model.getDescription());
+            values.put(VisitModel.COLUMN_NAME, model.getName());
             values.put(VisitModel.COLUMN_USER_ID, model.getUserId());
             rows = db.update(VisitModel.TABLE_NAME, values,
                     VisitModel.COLUMN_ID + " = ?",

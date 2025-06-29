@@ -42,7 +42,6 @@ public class MenuSuspensoHelper {
         LinearLayout estoque_btn = popupView.findViewById(R.id.estoque_btn);
         LinearLayout usuarios_btn = popupView.findViewById(R.id.usuarios_btn);
         LinearLayout representantes_btn = popupView.findViewById(R.id.representantes_btn);
-        LinearLayout relatorios_btn = popupView.findViewById(R.id.relatorios_btn);
         LinearLayout visitantes_page_btn = popupView.findViewById(R.id.visitantes_page_btn);
         LinearLayout sair_btn = popupView.findViewById(R.id.sair_btn);
         LinearLayout fora_menu = popupView.findViewById(R.id.fora_menu);
@@ -62,11 +61,11 @@ public class MenuSuspensoHelper {
             });
             usuarios_btn.setOnClickListener(view -> {
                 Intent intent = new Intent(activity, UsuarioActivity.class);
+                intent.putExtra(activity.getString(R.string.tipo_usuario_input), tipoUsuario);
                 activity.startActivity(intent);
                 activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             });
         } else {
-            relatorios_btn.setVisibility(View.GONE);
             usuarios_btn.setVisibility(View.GONE);
             representantes_btn.setVisibility(View.GONE);
             dashboardText.setText(activity.getString(R.string.agenda));
@@ -108,6 +107,7 @@ public class MenuSuspensoHelper {
 
         representantes_btn.setOnClickListener(view -> {
             Intent intent = new Intent(activity, RepresentantesActivity.class);
+            intent.putExtra(activity.getString(R.string.tipo_usuario_input), tipoUsuario);
             activity.startActivity(intent);
             activity.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         });
